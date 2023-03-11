@@ -56,7 +56,7 @@ const UpdateProfile = ({ setUpdateProfileModal }) => {
                 <form className='m-auto mt-2 gap-3  flex items-center justify-center flex-col' onSubmit={updateProfile}>
                     <div className='flex flex-col'>
                         <label htmlFor="gender" className='text-sm pb-0.5'>Gender</label>
-                        <select required id="gender" className='py-1.5 rounded-lg px-3 w-[20rem] border-2 border-yellow-400 bg-yellow-400 bg-opacity-20' onChange={handleChange}>
+                        <select required id="gender" className='py-1.5 rounded-lg px-3 w-[20rem] border-2 border-yellow-400 bg-yellow-400 bg-opacity-20' value={formData.gender} onChange={handleChange}>
                             <option className='bg-yellow-700' value="Male">Male</option>
                             <option className='bg-yellow-700' value="Female">Female</option>
                             <option className='bg-yellow-700' value="Other">Other</option>

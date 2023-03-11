@@ -41,8 +41,6 @@ const Profile = () => {
     }
   }
 
-  checkUser();
-
   // get profile details from firestore
   const getProfile = async () => {
     try {
@@ -54,6 +52,7 @@ const Profile = () => {
       toast.error("Could not get profile details!");
     }
     setLoading(false);
+    await checkUser();
   }
 
   useEffect(() => {
@@ -124,7 +123,7 @@ const Profile = () => {
               <div className='flex flex-col gap-2 w-[50%]'>
                 <p className='text-xl font-semibold text-yellow-400'>College Details</p>
                 <p className='text-yellow-500 mt-4'>College: <span className='text-white'>{user.college}</span></p>
-                <p className='text-yellow-500'>Year of Study: <span className='text-white'>{user.year}th</span></p>
+                <p className='text-yellow-500'>Year of Study: <span className='text-white'>{user.year}</span></p>
                 <p className='text-yellow-500'>Course: <span className='text-white'>{user.course}</span></p>
               </div>
             </div>

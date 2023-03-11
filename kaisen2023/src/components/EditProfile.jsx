@@ -3,6 +3,7 @@ import { getAuth } from 'firebase/auth'
 import { updateDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
+import { ImCross } from 'react-icons/im'
 
 
 const UpdateProfile = ({ setChangeDetails, user }) => {
@@ -42,8 +43,10 @@ const UpdateProfile = ({ setChangeDetails, user }) => {
     }
 
     return (
-        <div className='fixed z-[1000] flex justify-center items-center h-[100vh] w-[100vw] bg-gray-700 top-0 bg-opacity-30 backdrop-blur-sm'>
+        <div className='fixed z-[1000] flex justify-center items-center h-[100vh] w-[100vw] bg-gray-700 top-0 right-0 bg-opacity-30 backdrop-blur-sm'>
+            <button onClick={() => setChangeDetails(false)} className='absolute top-5 right-5'><ImCross size={30} /></button>
             <div className='bg-[#705200] border-img  bg-opacity-40 backdrop-blur-sm rounded-xl w-fit bg-center m-auto h-fit flex items-center justify-center flex-col py-8 px-10'>
+
                 <h1 className='text-2xl font-bold'>Edit Profile</h1>
                 <form className='m-auto mt-2 gap-3  flex items-center justify-center flex-col' onSubmit={updateProfile}>
                     <div className='flex flex-col'>
