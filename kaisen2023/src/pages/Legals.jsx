@@ -42,8 +42,8 @@ const Legals = () => {
 
 
             <div className="bg-[#E9CC7E] border-img2  bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
-                <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
-                    <p className='text-2xl font-bold text-yellow-200 px-5'>{
+                <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-10 lg:h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
+                    <p className='text-xl lg:text-2xl font-bold text-yellow-200 px-5'>{
                         data[page].title
                     }</p>
                 </div>

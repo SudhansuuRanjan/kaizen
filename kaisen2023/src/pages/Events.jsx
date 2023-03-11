@@ -86,8 +86,8 @@ const Events = () => {
 
       <div className='w-[100%] flex'>
         <div className="bg-[#E9CC7E] border-img  bg-opacity-10 backdrop-blur-sm rounded-xl m-8 mt-12 w-[100%] bg-center">
-          <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
-            <p className='text-2xl font-bold text-yellow-200 px-5'>Event Type</p>
+          <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-10 lg:h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
+            <p className='text-xl lg:text-2xl font-bold text-yellow-200 px-5'>Event Type</p>
           </div>
 
 

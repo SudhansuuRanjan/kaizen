@@ -48,3 +48,20 @@
   border-style:
     solid;
 }
+
+@media screen and (max-width: 768px) {
+  .border-img2 {
+    border-image-slice:
+      27 27 27 27 fill;
+    border-image-width:
+      12px 12px 12px 12px;
+    border-image-outset:
+      5px 10px 5px 10px;
+    border-image-repeat:
+      stretch repeat;
+    border-image-source:
+      url("https://mdn.github.io/css-examples/tools/border-image-generator/border-image-1.png");
+    border-style:
+      solid;
+  }
+}

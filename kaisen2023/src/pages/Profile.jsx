@@ -60,7 +60,7 @@ const Profile = () => {
   });
 
   return (
-    <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover pt-16 pb-20 flex relative">
+    <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 flex relative">
       {
         updateProfileModal && <UpdateProfile setUpdateProfileModal={setUpdateProfileModal} />
       }
@@ -74,12 +74,12 @@ const Profile = () => {
       }
 
       <div className="bg-[#E9CC7E] border-img2  bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
-        <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
-          <p className='text-2xl font-bold text-yellow-200 px-5'>My Profile</p>
+        <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-10 lg:h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
+          <p className='text-xl lg:text-2xl font-bold text-yellow-200 px-5'>My Profile</p>
         </div>
         {
           user ? <div className="flex flex-col items-center justify-center m-[auto] w-[90%] h-fit py-16">
-            <div className='flex justify-between w-[100%]'>
+            <div className='flex flex-col md:flex-row lg:flex-row justify-between  items-start md:items-center lg:items-center gap-5 w-[100%]'>
 
               <div className='flex gap-5'>
                 <div className='flex flex-col items-center justify-center'>
@@ -111,7 +111,7 @@ const Profile = () => {
             <div className='flex flex-col items-center justify-center w-[100%] mt-5 h-[1px] bg-yellow-600 bg-opacity-25'>
             </div>
 
-            <div className='flex w-[100%] justify-between mt-10'>
+            <div className='flex flex-col md:flex-row lg:flex-row w-[100%] justify-between mt-10 gap-8'>
               <div className='flex flex-col gap-2 w-[50%]'>
                 <p className='text-xl font-semibold text-yellow-400'>Personal Details</p>
                 <p className='text-yellow-500 mt-4'>Gender: <span className='text-white'>{user.gender}</span></p>
