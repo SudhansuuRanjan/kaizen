@@ -28,6 +28,7 @@ const Profile = () => {
   const { uid } = auth.currentUser;
 
   const navigate = useNavigate();
+  const userRef = doc(db, 'users', auth.currentUser.uid);
 
   const onLogout = () => {
     auth.signOut();
@@ -36,15 +37,17 @@ const Profile = () => {
 
   const checkUser = async () => {
     if (!loading) {
-      if (user.gender === "" || user.phone === "" || user.address === "" || user.college === "" || user.year === "" || user.course === "")
+      if (user.gender === "" || user.phone === "" || user.address === "" || user.college === "" || user.year === "" || user.course === "") {
+        document.body.style.overflow = "hidden";
+        console.log(user)
         setUpdateProfileModal(true);
+      }
     }
   }
 
   // get profile details from firestore
   const getProfile = async () => {
     try {
-      const userRef = doc(db, 'users', auth.currentUser.uid);
       const docSnap = await getDoc(userRef);
       const user = docSnap.data();
       setUser(user);
@@ -55,9 +58,21 @@ const Profile = () => {
     await checkUser();
   }
 
+  const editProfile = async (data) => {
+    try {
+      await updateDoc(userRef, data);
+      setChangeDetails(false);
+      toast.success('Profile updated successfully');
+      getProfile();
+    } catch (error) {
+      setChangeDetails(false);
+      toast.error("Could not update profile details!");
+    }
+  }
+
   useEffect(() => {
     getProfile();
-  });
+  }, []);
 
   return (
     <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 flex relative">
@@ -66,7 +81,7 @@ const Profile = () => {
       }
 
       {
-        changeDetails && <EditProfile user={user} setChangeDetails={setChangeDetails} />
+        changeDetails && <EditProfile editProfile={editProfile} user={user} setChangeDetails={setChangeDetails} />
       }
 
       {
@@ -112,7 +127,7 @@ const Profile = () => {
             </div>
 
             <div className='flex flex-col md:flex-row lg:flex-row w-[100%] justify-between mt-10 gap-8'>
-              <div className='flex flex-col gap-2 w-[50%]'>
+              <div className='flex flex-col gap-2 lg:w-[50%] md:w-[50%]'>
                 <p className='text-xl font-semibold text-yellow-400'>Personal Details</p>
                 <p className='text-yellow-500 mt-4'>Gender: <span className='text-white'>{user.gender}</span></p>
                 <p className='text-yellow-500'>Contact No.: <span className='text-white'>{user.phone}</span></p>
@@ -120,7 +135,7 @@ const Profile = () => {
                 <p className='text-yellow-500'>Address: <span className='text-white'>{user.address}</span></p>
               </div>
 
-              <div className='flex flex-col gap-2 w-[50%]'>
+              <div className='flex flex-col gap-2 lg:w-[50%] md:w-[50%]'>
                 <p className='text-xl font-semibold text-yellow-400'>College Details</p>
                 <p className='text-yellow-500 mt-4'>College: <span className='text-white'>{user.college}</span></p>
                 <p className='text-yellow-500'>Year of Study: <span className='text-white'>{user.year}</span></p>
