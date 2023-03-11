@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CartItem from '../components/CartItem'
 import { db } from '../firebase.config'
-import { collection, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
 
@@ -17,6 +17,22 @@ const Cart = () => {
     const docSnap = await getDoc(userRef);
     setCartItems(docSnap.data().cart);
     setLoading(false);
+  }
+
+  // delete event from cart
+  const deleteEvent = async (id) => {
+    try {
+      const userRef = doc(db, 'users', auth.currentUser.uid);
+      const cart = cartItems;
+      const newCart = cart.filter((item) => item.id !== id);
+      await updateDoc(userRef, {
+        cart: newCart
+      });
+      setCartItems(newCart);
+      toast.success("Event removed from cart!");
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
   useEffect(() => {
@@ -43,16 +59,16 @@ const Cart = () => {
               <div className='flex flex-col items-center flex-wrap justify-evenly gap-5 mt-16 mb-16'>
                 {
                   cartItems.map((item, id) => (
-                    <CartItem key={id} data={item} />
+                    <CartItem key={id} data={item} cartItems={cartItems} deleteEvent={deleteEvent} />
                   ))
                 }
               </div>
               <div className='flex flex-col items-center justify-between w-[100%] mt-10 mb-16'>
                 <div className='flex items-center justify-between w-[90%] px-2'>
-                  <span className='text-2xl text-yellow-500'>Total : <span className='font-bold'> ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span></span>
+                  <span className='text-xl md:text-2xl lg:text-2xl text-yellow-500'>Total : <span className='font-bold'> ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span></span>
                   <button className='relative flex items-center justify-center'>
-                    <img src="images/btn1.png" alt="btn" className='h-[6rem] w-[17rem]' />
-                    <p className='absolute text-yellow-400 font-semibold text-xl font-mono'>Proceed to Pay</p>
+                    <img src="images/btn1.png" alt="btn" className='h-[5.5rem] w-[15rem]' />
+                    <p className='absolute text-yellow-400 font-semibold text-lg font-mono'>Proceed to Pay</p>
                   </button>
                 </div>
               </div>

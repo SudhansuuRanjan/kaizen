@@ -8,7 +8,7 @@ const PrivateRoute = () => {
 
     if (checkingStatus) {
         return <div className="pt-16 flex justify-center items-center flex-col">
-            <Loader/>
+            <Loader />
         </div>
     }
 

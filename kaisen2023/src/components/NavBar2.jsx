@@ -31,7 +31,7 @@ const NavBar2 = () => {
 
     useEffect(() => {
         getUser();
-    })
+    },[])
 
     return (
         <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-yellow-400 dark:bg-gray-800 dark:bg-opacity-5 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-gray-200 dark:border-[#2F304E]">
@@ -121,6 +121,19 @@ const NavBar2 = () => {
                                     className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
                                 >
                                     Profile
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/cart">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Cart
                                 </button>
                             </Link>
                         </li>

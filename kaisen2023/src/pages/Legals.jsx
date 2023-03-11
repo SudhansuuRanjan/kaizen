@@ -41,14 +41,14 @@ const Legals = () => {
         <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover pt-16 pb-20 flex relative">
 
 
-            <div className="bg-[#E9CC7E] border-img2  bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
+            <div className="bg-[#E9CC7E] border-img2  bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-12 md:mt-14 lg:mt-16 h-fit ">
                 <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-10 lg:h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
                     <p className='text-xl lg:text-2xl font-bold text-yellow-200 px-5'>{
                         data[page].title
                     }</p>
                 </div>
 
-                <div className="flex justify-center items-center pt-16 gap-3 flex-wrap">
+                <div className="flex justify-center items-center pt-16 gap-3 flex-wrap px-2">
                     <button onClick={() => setPage(1)} className={
                         page === 1 ? "bg-yellow-200 bg-opacity-70 backdrop-blur-sm text-[#400000] px-4 py-1.5 rounded-lg font-bold text-sm" : "bg-[#400000] bg-opacity-70 backdrop-blur-sm text-yellow-200 px-4 py-1.5 rounded-lg font-bold text-sm"
                     }>Terms & Conditions</button>
@@ -63,7 +63,7 @@ const Legals = () => {
                     }>Privacy Policy</button>
                 </div>
 
-                <div className='px-10 text-justify first-letter:text-2xl first-letter:pl-10 pt-10 pb-10'>
+                <div className='px-5 md:px-10 lg:px-10 text-justify first-letter:text-2xl first-letter:pl-10 pt-10 pb-10'>
                     <p>
                         {data[page].content}
                     </p>

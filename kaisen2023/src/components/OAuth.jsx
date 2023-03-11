@@ -25,10 +25,18 @@ const OAuth = () => {
                 await setDoc(userRef, {
                     name: user.displayName,
                     email: user.email,
-                    timestamp: serverTimestamp()
+                    timestamp: serverTimestamp(),
+                    gender: "",
+                    phone: "",
+                    address: "",
+                    college: "",
+                    year: "",
+                    course: "",
+                    cart: [],
+                    purchasedEvents: [],
                 })
             }
-            navigate('/events');
+            navigate('/profile');
             toast.success('Logged In Successfully!');
         } catch (error) {
             // toast.error('Bad User Credentials')

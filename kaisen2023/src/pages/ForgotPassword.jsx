@@ -43,7 +43,7 @@ const ForgotPassword = () => {
 
 
   return (
-    <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover flex flex-col items-center justify-center gap-16 pt-12">
+    <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover flex flex-col items-center justify-center gap-10 pt-12 lg:pt-8 md:pt-8">
        <img src="/images/kaizen.png" alt="logo" className='h-16' />
       <div className='bg-[#E9CC7E] border-img bg-opacity-10 backdrop-blur-sm rounded-xl w-fit bg-center m-auto h-fit flex items-center justify-center flex-col py-10 px-5 md:px-7 lg:px-10 mt-0'>
         <h1 className='text-3xl lg:text-4xl font-bold'>Forgot Password</h1>
@@ -59,13 +59,13 @@ const ForgotPassword = () => {
 
 
         </form>
-        <p className='my-5 text-gray-500 text-lg'>or</p>
+        <p className='my-5 md:my-3 lg:my-2 text-yellow-700 text-lg'>or</p>
         <Link to="/signin">
           <button className='bg-pink-700 py-2 px-4  rounded-md bitems-center justify-between w-[13rem] shadow'>
             <p>SignIn</p>
           </button>
         </Link>
-        <p className='mt-16'>Don't have an account? <Link to="/signup" className='text-yellow-500'>SignUp</Link></p>
+        <p className='mt-16 md:mt-5 lg:mt-5'>Don't have an account? <Link to="/signup" className='text-yellow-500'>SignUp</Link></p>
       </div>
 
     </div>
