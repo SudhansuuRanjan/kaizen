@@ -5,6 +5,7 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
+import shortid from 'shortid';
 
 
 const RegisterPopup = ({ event, setPopup }) => {
@@ -62,6 +63,7 @@ const RegisterPopup = ({ event, setPopup }) => {
             image: event.image,
             members: [...team],
             details: event.rulebook,
+            id: shortid.generate()
         }
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);

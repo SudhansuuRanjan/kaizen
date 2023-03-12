@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
@@ -19,6 +20,31 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 
 
 function App() {
+
+  // fonction to load razorpay script in the head
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = src;
+
+      script.onload = () => {
+        resolve(true);
+      }
+
+      script.onerror = () => {
+        resolve(false);
+      }
+
+      document.body.appendChild(script);
+    })
+  }
+
+
+  // load razorpay script
+  useEffect(() => {
+    loadScript('https://checkout.razorpay.com/v1/checkout.js')
+  }, [])
+
   return (
     <ParallaxProvider>
       <Router>
@@ -32,7 +58,6 @@ function App() {
               <Footer />
             </>
           } />
-
 
 
           <Route path='/events' element={

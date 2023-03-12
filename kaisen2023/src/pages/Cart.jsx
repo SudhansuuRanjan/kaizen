@@ -4,6 +4,7 @@ import { db } from '../firebase.config'
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import PaymentGateway from '../utils/PaymentGateway';
 
 const Cart = () => {
   const auth = getAuth();
@@ -66,7 +67,7 @@ const Cart = () => {
               <div className='flex flex-col items-center justify-between w-[100%] mt-10 mb-16'>
                 <div className='flex items-center justify-between w-[90%] px-2'>
                   <span className='text-xl md:text-2xl lg:text-2xl text-yellow-500'>Total : <span className='font-bold'> ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span></span>
-                  <button className='relative flex items-center justify-center'>
+                  <button onClick={() => PaymentGateway(cartItems.reduce((acc, item) => acc + Number(item.price), 0))} className='relative flex items-center justify-center'>
                     <img src="images/btn1.png" alt="btn" className='h-[5.5rem] w-[15rem]' />
                     <p className='absolute text-yellow-400 font-semibold text-lg font-mono'>Proceed to Pay</p>
                   </button>

@@ -10,11 +10,11 @@ const NavBar = () => {
   const [focus, setFocus] = useState(0);
 
   return (
-    <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-yellow-400 dark:bg-gray-800 dark:bg-opacity-5 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-gray-200 dark:border-[#2F304E]">
+    <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-gray-800 w-[100vw] items-center justify-center text-gray-800 text-white border-b-[1px] border-gray-500">
       <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-3">
         <div className="flex items-center">
           <Link to="/">
-            <img src="/images/kaizen.png" alt="logo" className="h-10" />
+            <img src="/images/kaizen.png" alt="logo"  className="h-10" />
           </Link>
         </div>
         <div className="flex items-center">
