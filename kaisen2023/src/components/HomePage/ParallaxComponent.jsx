@@ -4,18 +4,9 @@ import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 const ParallaxComponent = () => {
   const { height, width } = useWindowDimensions();
-
-  // if window size is less than 768px then return null
-  if (width < 768) {
-    console.log('width is less than 768px')
-  } else {
-    console.log('width is greater than 768px')
-  }
-
-
-
+  
   return (
-    <>
+    <div className='bg-gradient-to-b from-pink-500 to-orange-300'>
       <ParallaxBanner
         layers={[
           { image: width > 768 ? '/layer-1.png' : '/layer1-1.png', speed: -20 },
@@ -37,7 +28,7 @@ const ParallaxComponent = () => {
       />
       <div className='h-24 w-[100%] bg-gradient-to-b from-[#062959] to-[#0b0c14]'>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <ParallaxComponent />
-      {/* <EventSwiper/> */}
+      <EventSwiper/>
     </div>
   )
 }
