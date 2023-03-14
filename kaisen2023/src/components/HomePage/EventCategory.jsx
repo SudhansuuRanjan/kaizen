@@ -40,7 +40,7 @@ const EventCategory = () => {
     return (
         <div className="bg-[url('/images/girl-dancing.png')] bg-repeat-y  min-h-fit bg-center bg-cover flex relative justify-center items-center">
             <div className='flex overflow-hidden justify-center items-center my-52'>
-                <div className="flex max-w-5xl items-center justify-center m-auto">
+                <div className="flex max-w-6xl items-center justify-center m-auto">
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         onBeforeInit={(swiper) => {
@@ -61,9 +61,9 @@ const EventCategory = () => {
                         {
                             categories.map((cat, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className='h-[27rem] flex skew-x-3 transform relative hover:scale-105 delay-100 ease-in-out cursor-grab'>
+                                    <div className='h-[27rem] flex skew-x-3 transform relative hover:scale-105 delay-100 transition-transform  ease-in cursor-grab'>
                                         <img src={cat.image} alt={cat.name} className={
-                                            active === index ? "rounded-lg brightness-100 shadow-2xl shadow-black hover:brightness-110":"brightness-50 shadow-2xl shadow-black"
+                                            active === index ? "rounded-2xl brightness-100  hover:brightness-110":"brightness-50 rounded-2xl"
                                         } />
                                         <div className='absolute w-[100%] flex flex-col justify-between items h-[100%]'>
                                             <div className='flex justify-between'>
