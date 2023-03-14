@@ -1,5 +1,8 @@
+import EventCategory from '../components/HomePage/EventCategory'
 import EventSwiper from '../components/HomePage/EventSwiper'
+import Footer from '../components/HomePage/Footer'
 import ParallaxComponent from '../components/HomePage/ParallaxComponent'
+import Timer from '../components/HomePage/Timer'
 
 
 const Home = () => {
@@ -7,7 +10,10 @@ const Home = () => {
   return (
     <div>
       <ParallaxComponent />
-      <EventSwiper/>
+      <Timer/>
+      <EventCategory/>
+      {/* <EventSwiper/> */}
+      {/* <Footer/> */}
     </div>
   )
 }

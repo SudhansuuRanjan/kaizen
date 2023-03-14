@@ -88,3 +88,10 @@
 .swiper_container {
   width: 60rem;
 }
+
+
+.footer-social:hover .trans-icon{
+  color:blue;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
