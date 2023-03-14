@@ -63,12 +63,12 @@ const EventCategory = () => {
                                 <SwiperSlide key={index}>
                                     <div className='h-[27rem] flex skew-x-3 transform relative hover:scale-105 delay-100 transition-transform  ease-in cursor-grab'>
                                         <img src={cat.image} alt={cat.name} className={
-                                            active === index ? "rounded-2xl brightness-100  hover:brightness-110":"brightness-50 rounded-2xl"
+                                            active === index ? "rounded-2xl brightness-100  hover:brightness-110" : "brightness-50 rounded-2xl"
                                         } />
                                         <div className='absolute w-[100%] flex flex-col justify-between items h-[100%]'>
                                             <div className='flex justify-between'>
                                                 <h3 className='p-3 ml-2 text-3xl font-semibold'>0{index + 1}</h3>
-                                                <BsArrowUpRight size={30} className="m-2"/>
+                                                <BsArrowUpRight size={30} className="m-2" />
                                             </div>
                                             <h3 className='text-4xl m-3'>
                                                 {cat.name}
@@ -84,7 +84,7 @@ const EventCategory = () => {
             </div>
 
             <div className='flex justify-between items-center  absolute top-50 w-[100%] lg:px-16
-            px-6 md:px-10 z-[212133]'>
+            px-6 md:px-10 z-[2]'>
                 <button onClick={() => swiperRef.current?.slidePrev()} className='text-3xl text-white bg-gray-800 bg-opacity-50 items-center justify-center flex rounded-full p-4 shadow shadow-gray-800'>
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </button>

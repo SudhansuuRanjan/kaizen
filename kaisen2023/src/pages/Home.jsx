@@ -1,3 +1,4 @@
+import ArtistLineup from '../components/HomePage/ArtistLineup'
 import EventCategory from '../components/HomePage/EventCategory'
 import EventSwiper from '../components/HomePage/EventSwiper'
 import Footer from '../components/HomePage/Footer'
@@ -14,6 +15,7 @@ const Home = () => {
       <EventCategory/>
       {/* <EventSwiper/> */}
       {/* <Footer/> */}
+      <ArtistLineup/>
     </div>
   )
 }

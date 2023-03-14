@@ -17,7 +17,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.card {
+/* .card {
   @apply w-72 relative cursor-pointer border-b-4 rounded-md bg-gradient-to-t from-white/20 h-44 text-center px-3 py-7 self-end to-red-600/40;
 }
 
@@ -43,4 +43,4 @@
 
 .card-active .logo {
   @apply bg-red-500 text-red-200;
-}
+} */
