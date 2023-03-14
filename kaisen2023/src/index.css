@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Helvetica, Inter, system-ui, Avenir, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Inter, system-ui, Avenir, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.87);

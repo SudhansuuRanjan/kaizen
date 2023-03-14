@@ -1,6 +1,5 @@
 import ArtistLineup from '../components/HomePage/ArtistLineup'
 import EventCategory from '../components/HomePage/EventCategory'
-import EventSwiper from '../components/HomePage/EventSwiper'
 import Footer from '../components/HomePage/Footer'
 import ParallaxComponent from '../components/HomePage/ParallaxComponent'
 import Timer from '../components/HomePage/Timer'
