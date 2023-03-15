@@ -62,7 +62,7 @@ const EventCategory = () => {
                         {
                             categories.map((cat, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className='h-[27rem] flex skew-x-3 transform relative hover:scale-105 delay-100 transition-transform  ease-in cursor-grab'>
+                                    <div className='lg:h-[27rem] md:h-[27rem] h-[25rem] flex skew-x-3 hover:skew-y-3 transform relative hover:scale-[102%] delay-100 transition-transform  ease-in cursor-grab'>
                                         <img src={cat.image} alt={cat.name} className={
                                             active === index ? "rounded-2xl brightness-100  hover:brightness-110" : "brightness-50 rounded-2xl"
                                         } />
