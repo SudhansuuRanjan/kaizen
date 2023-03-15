@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className='relative my-32'>
         <div className='flex lg:flex-row md:flex-row flex-col justify-between items-center pt-20 absolute w-[100%] top-0 z-0 md:gap-0 lg:gap-0 gap-20'>
-            <img src="wheel.png" alt="wheel" data-aos="fade-right" className='lg:h-[17rem] md:h-[17rem] h-[16rem] brightness-50'/>
+            <img src="wheel.png" alt="wheel" className='lg:h-[17rem] md:h-[17rem] h-[16rem] brightness-50 animate-spin'/>
             <img src="compass.png" alt="cpmpass" data-aos="fade-left" className='lg:h-[17rem] md:h-[17rem] h-[16rem] brightness-50'/>
         </div>
         <div className='bg-red-800 bg-opacity-20 backdrop-blur-sm rounded-[2rem] lg:w-[70%] md:w-[80%] w-[90%] m-auto z-[1999999] lg:p-10 md:p-10 p-5 lg:py-20 md:py-20 py-10'>
