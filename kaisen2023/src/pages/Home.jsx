@@ -1,6 +1,6 @@
 import ArtistLineup from '../components/HomePage/ArtistLineup'
 import EventCategory from '../components/HomePage/EventCategory'
-import Footer from '../components/HomePage/Footer'
+import FAQs from '../components/HomePage/FAQs'
 import ParallaxComponent from '../components/HomePage/ParallaxComponent'
 import Timer from '../components/HomePage/Timer'
 
@@ -15,6 +15,7 @@ const Home = () => {
       {/* <EventSwiper/> */}
       {/* <Footer/> */}
       <ArtistLineup/>
+      <FAQs/>
     </div>
   )
 }
