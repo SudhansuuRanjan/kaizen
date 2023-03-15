@@ -1,3 +1,4 @@
+import About from '../components/HomePage/About'
 import ArtistLineup from '../components/HomePage/ArtistLineup'
 import EventCategory from '../components/HomePage/EventCategory'
 import FAQs from '../components/HomePage/FAQs'
@@ -15,6 +16,7 @@ const Home = () => {
       {/* <EventSwiper/> */}
       {/* <Footer/> */}
       <ArtistLineup/>
+      <About/>
       <FAQs/>
     </div>
   )
