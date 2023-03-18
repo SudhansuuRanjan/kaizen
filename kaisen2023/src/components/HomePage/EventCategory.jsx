@@ -38,7 +38,7 @@ const EventCategory = () => {
     ]
 
     return (
-        <div className="bg-[url('/images/girl-dancing.png')] bg-repeat-y  min-h-fit bg-center bg-cover flex flex-col relative justify-center items-center">
+        <div className="bg-[url('/images/girl-dancing.png')] bg-no-repeat min-h-fit bg-center bg-cover flex flex-col relative justify-center items-center">
             <h3 className='text-center font-bold text-4xl py-20'>MAJOR ATTRACTIONS</h3>
             <div className='flex overflow-hidden justify-center items-center mb-52'>
                 <div className="flex max-w-6xl items-center justify-center m-auto">
