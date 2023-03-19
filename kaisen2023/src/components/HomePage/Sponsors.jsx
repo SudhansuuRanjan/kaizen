@@ -26,30 +26,6 @@ const Sponsors = () => {
                 </div>
             </div>
 
-            <div >
-                <h5 className='text-center font-bold text-3xl text-yellow-500 py-5' data-aos="fade-up" >Gold Sponsors</h5>
-                <div className='flex flex-wrap items-center justify-center lg:gap-8 md:gap-5 gap-3 lg:w-[80%] w-[100%] m-auto py-[3rem]'>
-                    {
-                        sponsors.map((sponsor, index) => (
-                            <div key={index} data-aos="fade-up" className='h-28 w-52 rounded-xl bg-gray-800 bg-opacity-70 backdrop-blur-sm lg:scale-100 md:scale-[70%] scale-[50%]'></div>
-                        ))
-                    }
-                </div>
-            </div>
-
-            <div >
-                <h5 className='text-center font-bold text-3xl text-gray-400 py-5' data-aos="fade-up" >Silver Sponsors</h5>
-                <div className='flex flex-wrap items-center justify-center lg:gap-8 md:gap-5 gap-3 lg:w-[80%] w-[100%] m-auto py-[3rem]'>
-                    {
-                        sponsors.map((sponsor, index) => (
-                            <div key={index} data-aos="fade-up" className='h-28 w-52 rounded-xl bg-gray-800 bg-opacity-70 backdrop-blur-sm lg:scale-100 md:scale-[70%] scale-[50%]'></div>
-                        ))
-                    }
-                </div>
-            </div>
-
-
-
         </div>
     )
 }

@@ -55,11 +55,12 @@ a {
 
     span {
       display: block;
-      height: 3.5rem;
-      padding: 0.5rem;
+      height: 3rem;
+      padding: 0.2rem;
       position: relative;
       transition: transform calc(var(--td) * 3) var(--te);
-      width: 3.5rem;
+      width: 3rem;
+      margin-top: -0.5rem;
 
       &::before,
       &::after {

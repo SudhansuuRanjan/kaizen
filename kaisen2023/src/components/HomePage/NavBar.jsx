@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import './NavBar.scss'
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
     const [active, setActive] = useState(false);
+    const [colorChange, setColorchange] = useState(false);
 
     const handleClick = () => {
         // set overflow to hidden when the nav is open
@@ -16,9 +18,26 @@ const NavBar = () => {
         }
     }
 
+    const changeNavbarColor = () => {
+        if (window.scrollY >= 450) {
+            setColorchange(true);
+        } else {
+            setColorchange(false);
+        }
+    };
+    window.addEventListener("scroll", changeNavbarColor);
+
     return (
         <>
-            <div className='fixed z-20'>
+            <div className={`fixed z-10 w-[100%] ${colorChange && "border-b bg-gray-900 bg-opacity-70 backdrop-blur-sm border-gray-700 shadow-md"}`}>
+                <div className='p-3.5'>
+                    <Link to="/">
+                        <img src="/images/kaizen.png" alt="logo" className="h-10" />
+                    </Link>
+                </div>
+            </div>
+
+            <div className='z-[25] fixed'>
                 <input type="checkbox" id="main-navigation-toggle" class="btn btn--close" onClick={handleClick} title="Toggle main navigation" />
                 <label for="main-navigation-toggle">
                     <span></span>
