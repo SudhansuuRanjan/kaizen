@@ -5,6 +5,7 @@ import FAQs from '../components/HomePage/FAQs'
 import Highlights from '../components/HomePage/Highlights'
 import ParallaxComponent from '../components/HomePage/ParallaxComponent'
 import Timer from '../components/HomePage/Timer'
+import Sponsors from '../components/HomePage/Sponsors'
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
       <EventCategory/>
       <ArtistLineup/>
       <About/>
+      <Sponsors/>
       <FAQs/>
     </div>
   )
