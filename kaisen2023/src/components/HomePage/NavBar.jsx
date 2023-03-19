@@ -7,7 +7,7 @@ const NavBar = () => {
 
     const handleClick = () => {
         // set overflow to hidden when the nav is open
-        if (document.getElementById('main-navigation-toggle').checked) {
+        if (active == false) {
             document.body.style.overflow = 'hidden'
             setActive(true);
         } else {
