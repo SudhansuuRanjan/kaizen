@@ -56,7 +56,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <NavBar />
+              {/* <NavBar /> */}
               <Home />
               <Footer />
             </>

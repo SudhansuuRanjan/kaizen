@@ -6,7 +6,7 @@ const ParallaxComponent = () => {
   const { height, width } = useWindowDimensions();
   
   return (
-    <div className='bg-gradient-to-b from-pink-500 to-orange-300'>
+    <div className='bg-gradient-to-b from-pink-500 to-orange-300 z-0'>
       <ParallaxBanner
         layers={[
           { image: width > 768 ? '/layer-1.png' : '/layer1-1.png', speed: -20 },
