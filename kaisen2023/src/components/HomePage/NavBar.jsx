@@ -17,13 +17,15 @@ const NavBar = () => {
     }
 
     return (
-        <div className='fixed z-10 top-0 h-[100%] w-[100%]'>
-            <input type="checkbox" id="main-navigation-toggle" class="btn btn--close" onClick={handleClick} title="Toggle main navigation" />
-            <label for="main-navigation-toggle">
-                <span></span>
-            </label>
+        <>
+            <div className='fixed z-20'>
+                <input type="checkbox" id="main-navigation-toggle" class="btn btn--close" onClick={handleClick} title="Toggle main navigation" />
+                <label for="main-navigation-toggle">
+                    <span></span>
+                </label>
+            </div>
 
-            <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out absolute translate-x-[0%] flex justify-center items-center ${!active && "translate-x-[-101%]"}`}>
+            <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 translate-x-[0%] flex justify-center items-center ${!active && "translate-x-[-101%]"}`}>
                 <ul class="menu">
                     <li class="menu__item">
                         <a class="menu__link" href="#0">Home</a>
@@ -64,7 +66,7 @@ const NavBar = () => {
                     </li>
                 </ul>
             </nav>
-        </div>
+        </>
     )
 }
 
