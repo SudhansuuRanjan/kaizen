@@ -3,7 +3,7 @@ import './NavBar.scss'
 
 const NavBar = () => {
 
-    const [active, setActive] = useState(null);
+    const [active, setActive] = useState(false);
 
     const handleClick = () => {
         // set overflow to hidden when the nav is open
@@ -25,7 +25,7 @@ const NavBar = () => {
                 </label>
             </div>
 
-            <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 translate-x-[0%] flex justify-center items-center ${!active && "translate-x-[-101%]"}`}>
+            <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 translate-x-[0%] flex justify-center items-center ${!active && "translate-x-[-100%]"}`}>
                 <ul class="menu">
                     <li class="menu__item">
                         <a class="menu__link" href="#0">Home</a>
