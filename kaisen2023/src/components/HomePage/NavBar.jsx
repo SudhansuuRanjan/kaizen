@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import './NavBar.scss'
+import "./NavBar.css"
+import { HiBars2, HiXMark } from 'react-icons/hi2'
 
 const NavBar = () => {
 
     const [active, setActive] = useState(false);
 
     const handleClick = () => {
-        // set overflow to hidden when the nav is open
         if (active == false) {
             document.body.style.overflow = 'hidden'
             setActive(true);
@@ -18,54 +18,17 @@ const NavBar = () => {
 
     return (
         <>
-            <div className='fixed z-20'>
-                <input type="checkbox" id="main-navigation-toggle" class="btn btn--close" onClick={handleClick} title="Toggle main navigation" />
-                <label for="main-navigation-toggle">
-                    <span></span>
-                </label>
+            <div className='z-[100] fixed top-5 right-5 flex w-fit h'>
+                <button className={`text-lg text-gray-600 transform font-bold transition-all delay-100 ease-in-out ${active && 'rotate-180'} `} onClick={handleClick}>
+                    {
+                        active ? <HiXMark size={42} /> : <HiBars2 size={42} />
+                    }
+                </button>
             </div>
 
-            <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 translate-x-[0%] flex justify-center items-center ${!active && "translate-x-[-100%]"}`}>
-                <ul class="menu">
-                    <li class="menu__item">
-                        <a class="menu__link" href="#0">Home</a>
-                    </li>
-                    <li class="menu__item">
-                        <a class="menu__link" href="#0">About</a>
-                    </li>
-                    <li class="menu__item">
-                        <a class="menu__link" href="#0">Clients</a>
-                        <ul class="submenu">
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Burger King</a>
-                            </li>
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Southwest Airlines</a>
-                            </li>
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Levi Strauss</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu__item">
-                        <a class="menu__link" href="#0">Services</a>
-                        <ul class="submenu">
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Print Design</a>
-                            </li>
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Web Design</a>
-                            </li>
-                            <li class="menu__item">
-                                <a class="menu__link" href="#0">Mobile App Development</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu__item">
-                        <a class="menu__link" href="#0">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+            <div className={`h-[100%] w-[100%] fixed bg-gray-900 z-10 transform transition-all delay-100 ease-in-out translate-x-[0%] ${!active && 'translate-x-[-110%]'}`}>
+                <h1>efjvikwvlwifw43f</h1>
+            </div>
         </>
     )
 }
