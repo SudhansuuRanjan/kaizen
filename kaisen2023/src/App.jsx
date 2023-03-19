@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Events from './pages/Events'
 import Profile from './pages/Profile'
@@ -19,6 +18,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
 import AOS from 'aos';
 import "aos/dist/aos.css";
+import Pronite from './pages/Proshow/Pronite'
+import NavBar from './components/HomePage/NavBar'
 
 
 function App() {
@@ -58,6 +59,14 @@ function App() {
             <>
               {/* <NavBar /> */}
               <Home />
+              <Footer />
+            </>
+          } />
+
+          <Route path='/pronite' element={
+            <>
+              <NavBar/>
+              <Pronite />
               <Footer />
             </>
           } />

@@ -19,7 +19,7 @@ const NavBar = () => {
     }
 
     const changeNavbarColor = () => {
-        if (window.scrollY >= 450) {
+        if (window.scrollY >= 400) {
             setColorchange(true);
         } else {
             setColorchange(false);
@@ -29,10 +29,10 @@ const NavBar = () => {
 
     return (
         <>
-            <div className={`fixed z-10 w-[100%] ${colorChange && "border-b bg-gray-900 bg-opacity-70 backdrop-blur-sm border-gray-700 shadow-md"}`}>
-                <div className='p-3.5'>
+            <div className={`fixed z-10 w-[100%] ${colorChange && "border-b bg-gray-700 transition-all delay-100 ease-in-out bg-opacity-20 backdrop-blur-md border-gray-700 shadow-md"}`}>
+                <div className='p-4'>
                     <Link to="/">
-                        <img src="/images/kaizen.png" alt="logo" className="h-10" />
+                        <img src="/images/kaizen.png" alt="logo" className="h-12" />
                     </Link>
                 </div>
             </div>
@@ -47,14 +47,14 @@ const NavBar = () => {
             <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 flex justify-center items-center ${!active && "translate-x-[-100%]"}`}>
                 <ul class="menu">
                     <li class="menu__item">
-                        <a class="menu__link" href="#0">Home</a>
+                        <Link class="menu__link" to="/">Home</Link>
                     </li>
                     <li class="menu__item">
-                        <a class="menu__link" href="#0">About</a>
+                        <Link class="menu__link" to="/events">Events</Link>
                     </li>
                     <li class="menu__item">
-                        <a class="menu__link" href="#0">Clients</a>
-                        <ul class="submenu">
+                        <Link class="menu__link" to="/pronite">Pronite</Link>
+                        {/* <ul class="submenu">
                             <li class="menu__item">
                                 <a class="menu__link" href="#0">Burger King</a>
                             </li>
@@ -64,11 +64,11 @@ const NavBar = () => {
                             <li class="menu__item">
                                 <a class="menu__link" href="#0">Levi Strauss</a>
                             </li>
-                        </ul>
+                        </ul> */}
                     </li>
                     <li class="menu__item">
                         <a class="menu__link" href="#0">Services</a>
-                        <ul class="submenu">
+                        {/* <ul class="submenu">
                             <li class="menu__item">
                                 <a class="menu__link" href="#0">Print Design</a>
                             </li>
@@ -78,7 +78,7 @@ const NavBar = () => {
                             <li class="menu__item">
                                 <a class="menu__link" href="#0">Mobile App Development</a>
                             </li>
-                        </ul>
+                        </ul> */}
                     </li>
                     <li class="menu__item">
                         <a class="menu__link" href="#0">Contact</a>

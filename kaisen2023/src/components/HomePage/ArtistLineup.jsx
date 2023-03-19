@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ArtistLineup = () => {
     return (
@@ -39,6 +40,14 @@ const ArtistLineup = () => {
                     <img src="https://ggayane.github.io/css-experiments/cards/force_mage-character.webp" className="character" />
                 </div>
             </a> */}
+            </div>
+
+            <div className='flex items-center justify-center pb-20'>
+                <Link to="/pronite">
+                    <button className='m-auto transition-all delay-75 ease-in-out transform bg-gray-600 hover:bg-red-500 hover:shadow-2xl hover:scale-105 shadow-lg text-white py-3.5 px-16 rounded-2xl'>
+                        Explore
+                    </button>
+                </Link>
             </div>
         </div>
     )
