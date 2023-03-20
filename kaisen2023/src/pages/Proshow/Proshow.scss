@@ -130,4 +130,26 @@
         color: #ebe6d0;
         width: 100%;
     }
+
+    .pronite-head-text {
+        font-size: 4.5rem;
+        font-weight: 600;
+        text-align: center;
+        color: #ebe6d0;
+        z-index: 8;
+        line-height: 4.5rem;
+    }
+
+}
+
+
+@media screen and (max-width:480px) {
+    .pronite-head-text {
+        font-size: 3.5rem;
+        font-weight: 600;
+        text-align: center;
+        color: #ebe6d0;
+        z-index: 8;
+        line-height: 3rem;
+    }
 }

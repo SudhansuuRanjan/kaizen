@@ -75,7 +75,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 flex relative">
+    <div className="bg-black bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 flex relative">
       {
         updateProfileModal && <UpdateProfile setUpdateProfileModal={setUpdateProfileModal} />
       }
@@ -88,10 +88,7 @@ const Profile = () => {
         showQr && <ShowQr value={"http://127.0.0.1:5173/user/" + uid.toUpperCase().substring(0, 6)} setShowQr={setShowQr}></ShowQr>
       }
 
-      <div className="bg-[#E9CC7E] border-img2  bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
-        <div className="flex relative items-center justify-center m-[auto] my-[-1.5rem] border-img1 w-[50%] h-10 lg:h-12 bg-[#400000] bg-opacity-70 backdrop-blur-sm">
-          <p className='text-xl lg:text-2xl font-bold text-yellow-200 px-5'>My Profile</p>
-        </div>
+      <div className="bg-[#000000] bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
         {
           user ? <div className="flex flex-col items-center justify-center m-[auto] w-[90%] h-fit py-16">
             <div className='flex flex-col md:flex-row lg:flex-row justify-between  items-start md:items-center lg:items-center gap-5 w-[100%]'>
