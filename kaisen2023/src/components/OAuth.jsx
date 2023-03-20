@@ -46,8 +46,8 @@ const OAuth = () => {
 
     return (
         <>
-            <button onClick={handleOAuth} className='bg-white py-2 px-4 flex rounded-md bitems-center justify-between w-[13rem] shadow text-gray-800'>
-                <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google" className='h-6 w-6' /> <p>Sign{location.pathname === '/signup' ? 'Up' : 'In'} with Google</p>
+            <button onClick={handleOAuth} className='bg-white py-2 px-3 flex rounded-md bitems-center justify-between w-[13rem] shadow text-gray-800'>
+                <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="google" className='h-6 w-6' /> <p className='text-sm font-medium'>Sign{location.pathname === '/signup' ? 'Up' : 'In'} with Google</p>
             </button>
         </>
     )

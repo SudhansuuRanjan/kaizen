@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 import { FaSave } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
 
 const CartItem = ({ data, cartItems, deleteEvent }) => {
 
@@ -65,11 +66,11 @@ const CartItem = ({ data, cartItems, deleteEvent }) => {
         <div className='cart-item-container shadow-xl'>
             <div className="card-up">
                 <div className='flex items-center'>
-                    <div className='event-icon-container'>
+                    <Link to={`/events/${data.eventId}`} className='event-icon-container'>
                         <img src={data.image} alt="event" />
-                    </div>
+                    </Link>
                     <div className='event-cart-event-name-cont'>
-                        <h1 className='event-name'>{data.name}</h1>
+                        <Link to={`/events/${data.eventId}`} className='event-name'>{data.name}</Link>
                     </div>
                 </div>
                 <div className='flex items-center justify-between w-[100%] lg:w-[auto] md:w-[auto]'>

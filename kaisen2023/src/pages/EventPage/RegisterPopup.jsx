@@ -9,7 +9,7 @@ import shortid from 'shortid';
 
 
 const RegisterPopup = ({ event, setPopup }) => {
-   const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         name: '',
         email: '',
     });
@@ -63,7 +63,9 @@ const RegisterPopup = ({ event, setPopup }) => {
             image: event.image,
             members: [...team],
             details: event.rulebook,
-            id: shortid.generate()
+            id: shortid.generate(),
+            eventId: event.id,
+            purchased: false,
         }
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);

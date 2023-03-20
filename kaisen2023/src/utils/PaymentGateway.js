@@ -1,6 +1,8 @@
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase.config";
 
 export default async function PaymentGateway(amount) {
   const auth = getAuth();
@@ -25,13 +27,14 @@ export default async function PaymentGateway(amount) {
     description: "Kaisen 2023 Event Transaction",
     image: "https://kaizen-api.vercel.app/api/kaizen.png",
     order_id: data.data.id,
-    handler: function (response) {
+    handler: async function (response) {
+      await updatePurchase();
       toast.success("Payment Successful");
       console.log(response);
     },
     prefill: {
-      name: "Sudhanshu Ranjan",
-      email: "sudhanshuranjan2k18@gmail.com",
+      name: displayName,
+      email: email,
       contact: "+911234567890",
     },
   };
@@ -52,3 +55,28 @@ export default async function PaymentGateway(amount) {
     console.log(response.error);
   });
 }
+
+const updatePurchase = async () => {
+  const auth = getAuth();
+  console.log("updating purchase");
+  const userRef = doc(db, "users", auth.currentUser.uid);
+  const docSnap = await getDoc(userRef);
+  const cart = docSnap.data().cart;
+
+  // put all the cart items in purchased items in firebase
+
+  const purchasedItems = cart.map((item) => {
+    return {
+      ...item,
+      purchased: true,
+    };
+  });
+
+  console.log(purchasedItems);
+
+  // update the purchased items in firebase
+
+  await updateDoc(userRef, {
+    cart: purchasedItems,
+  });
+};

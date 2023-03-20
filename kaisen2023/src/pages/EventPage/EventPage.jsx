@@ -48,7 +48,7 @@ const EventPage = () => {
         const eventsRef = collection(db, 'events');
         const eventsSnap = await getDocs(eventsRef);
         setEvents(eventsSnap.docs.map(doc => doc.data()));
-        console.log(eventsSnap.docs.map(doc => doc.data()))
+        // console.log(eventsSnap.docs.map(doc => doc.data()))
         setLoading(false);
     }
 

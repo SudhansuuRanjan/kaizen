@@ -17,7 +17,7 @@ const NavBar2 = () => {
 
     // get user cart length from firebase
     const getUser = async () => {
-        if(auth.currentUser === null) return;
+        if (auth.currentUser === null) return;
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);
             const docSnap = await getDoc(userRef);
@@ -31,14 +31,14 @@ const NavBar2 = () => {
 
     useEffect(() => {
         getUser();
-    },[])
+    }, [])
 
     return (
         <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-yellow-400 dark:bg-gray-800 dark:bg-opacity-5 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-gray-200 dark:border-[#2F304E]">
             <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-3">
                 <div className="flex items-center">
                     <Link to="/">
-                        <img src="/images/kaizen.png" alt="logo" className="h-10"/>
+                        <img src="/images/kaizen.png" alt="logo" className="h-10" />
                     </Link>
                 </div>
                 <div className="flex items-center">
@@ -65,6 +65,16 @@ const NavBar2 = () => {
                         </li>
                         <li
                             className={
+                                focus === 1
+                                    ? "hover:underline mx-3 border-yellow-300  border-[3px]  bg-yellow-50 dark:bg-[#7b2c5d] px-2 py-1"
+                                    : "hover:underline px-2 py-1 mx-3 border-[3px] border-none dark:border-gray-800"
+                            }
+
+                        >
+                            <Link to="/pronite">Pronite</Link>
+                        </li>
+                        <li
+                            className={
                                 focus === 2
                                     ? "hover:underline mx-3 border-yellow-300  border-[3px]  bg-yellow-50 dark:bg-[#7b2c5d] px-2 py-1"
                                     : "hover:underline px-2 py-1 mx-3 border-[3px] border-none dark:border-gray-800"
@@ -72,7 +82,7 @@ const NavBar2 = () => {
 
                         >
                             <Link to="/cart">
-                                <CartIcon cartLength = { user ? user.cart.length : 0}/>
+                                <CartIcon cartLength={user ? user.cart.length : 0} />
                             </Link>
                         </li>
 
@@ -96,8 +106,21 @@ const NavBar2 = () => {
                 </div>
             </div>
             {menu && (
-                <div className="md:hidden fixed mt-[12rem] right-0 bg-white rounded-md w-[12rem] py-2 mr-5 shadow-md text-gray-800 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 border">
+                <div className="md:hidden fixed top-[4rem] right-0 bg-white rounded-md w-[12rem] py-2 mr-5 shadow-md text-gray-800 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 border">
                     <ul>
+                        <li>
+                            <Link to="/">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+                                        // setFocus(0);
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Home
+                                </button>
+                            </Link>
+                        </li>
                         <li>
                             <Link to="/events">
                                 <button
@@ -134,6 +157,19 @@ const NavBar2 = () => {
                                     className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
                                 >
                                     Cart
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/pronite">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Pronite
                                 </button>
                             </Link>
                         </li>

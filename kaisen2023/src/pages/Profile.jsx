@@ -9,6 +9,7 @@ import UpdateProfile from '../components/UpdateProfile'
 import EditProfile from '../components/EditProfile'
 import QRCode from "react-qr-code";
 
+
 const Profile = () => {
 
   document.title = "Profile | Kaisen 2023"
@@ -23,6 +24,7 @@ const Profile = () => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [showQr, setShowQr] = useState(false);
+  const [purchasedEvents, setPurchasedEvents] = useState([]);
 
   const { name, email } = formData;
   const { uid } = auth.currentUser;
@@ -39,7 +41,7 @@ const Profile = () => {
     if (!loading) {
       if (user.gender === "" || user.phone === "" || user.address === "" || user.college === "" || user.year === "" || user.course === "") {
         document.body.style.overflow = "hidden";
-        console.log(user)
+        // console.log(user.cart)
         setUpdateProfileModal(true);
       }
     }
@@ -50,7 +52,11 @@ const Profile = () => {
     try {
       const docSnap = await getDoc(userRef);
       const user = docSnap.data();
+      // console.log(user.cart);
       setUser(user);
+      // filter purhased event from cart
+      const purchasedEvents = user.cart.filter((item) => item.purchased);
+      setPurchasedEvents(purchasedEvents);
     } catch (error) {
       toast.error("Could not get profile details!");
     }
@@ -75,7 +81,8 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="bg-black bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 flex relative">
+    <div className="bg-black bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 relative flex flex-col justify-center items-center">
+
       {
         updateProfileModal && <UpdateProfile setUpdateProfileModal={setUpdateProfileModal} />
       }
@@ -88,7 +95,7 @@ const Profile = () => {
         showQr && <ShowQr value={"http://127.0.0.1:5173/user/" + uid.toUpperCase().substring(0, 6)} setShowQr={setShowQr}></ShowQr>
       }
 
-      <div className="bg-[#000000] bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-16 h-fit ">
+      <div className="bg-[#000000] bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-5 h-fit ">
         {
           user ? <div className="flex flex-col items-center justify-center m-[auto] w-[90%] h-fit py-16">
             <div className='flex flex-col md:flex-row lg:flex-row justify-between  items-start md:items-center lg:items-center gap-5 w-[100%]'>
@@ -111,10 +118,10 @@ const Profile = () => {
 
 
               <div className='flex items-center justify-center gap-2'>
-                <button onClick={() => setChangeDetails(true)} className='bg-yellow-700 py-1 px-5 rounded-full border border-yellow-300'>
+                <button onClick={() => setChangeDetails(true)} className='text-green-500 font-medium py-1 px-5 rounded-full border border-green-500 hover:text-black hover:bg-green-500 hover:border-black'>
                   Edit Profile
                 </button>
-                <button className='bg-red-500 hover:bg-red-600 py-1 px-5 rounded-full border-red-300 border' onClick={onLogout}>
+                <button className='hover:bg-red-500 hover:text-black font-medium py-1 px-5 rounded-full border-red-500 border text-red-500' onClick={onLogout}>
                   Logout
                 </button>
               </div>
@@ -149,7 +156,7 @@ const Profile = () => {
               <div>
                 <div className='flex flex-col gap-4 w-[100%] mt-5'>
                   {
-                    user.cart.map((item, index) => (
+                    purchasedEvents.map((item, index) => (
                       <PurchasedEventItem key={index} data={item} />
                     ))
                   }

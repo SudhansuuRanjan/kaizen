@@ -3,9 +3,12 @@ import { collection, getDocs } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import RegisterPopup from './RegisterPopup';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const EventDetails = () => {
   const auth = getAuth();
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [popup, setPopup] = useState(false);
   const [Loading, setLoading] = useState(true);
@@ -22,7 +25,7 @@ const EventDetails = () => {
     const event = eventsSnap.docs.map(doc => doc.data()).filter((item) => item.id === id);
     setData(event[0]);
     setLoading(false);
-    console.log(event[0])
+    // console.log(event[0])
   }
 
   useEffect(() => {
@@ -32,7 +35,6 @@ const EventDetails = () => {
   // handle register button
   const checkAuth = () => {
     if (auth.currentUser === null) {
-      setModal(false);
       toast.error("Please login to continue!");
       navigate('/signin');
     } else {

@@ -44,8 +44,8 @@ const ForgotPassword = () => {
 
   return (
     <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover flex flex-col items-center justify-center gap-10 pt-12 lg:pt-8 md:pt-8">
-       <img src="/images/kaizen.png" alt="logo" className='h-16' />
-      <div className='bg-[#E9CC7E] border-img bg-opacity-10 backdrop-blur-sm rounded-xl w-fit bg-center m-auto h-fit flex items-center justify-center flex-col py-10 px-5 md:px-7 lg:px-10 mt-0'>
+      <img src="/images/kaizen.png" alt="logo" className='h-16' />
+      <div className='bg-black bg-opacity-20 backdrop-blur-md rounded-2xl w-fit bg-center m-auto h-fit flex items-center justify-center flex-col py-10 px-5 md:px-7 lg:px-10 mt-0'>
         <h1 className='text-3xl lg:text-4xl font-bold'>Forgot Password</h1>
         <form className='m-auto  flex items-center justify-center flex-col' onSubmit={handleSubmit}>
           <div className='m-2 mt-10'>
