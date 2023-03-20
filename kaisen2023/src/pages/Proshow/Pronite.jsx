@@ -92,6 +92,12 @@ const Pronite = () => {
 
 
       </div>
+
+      <div className='flex items-center justify-center gap-3 p-[5rem]'>
+        <div className='h-3 w-3 bg-[#ebe6d0] rotate-45' />
+        <div className='h-3 w-3 bg-[#ebe6d0] rotate-45' />
+        <div className='h-3 w-3 bg-[#ebe6d0] rotate-45' />
+      </div>
     </div>
   )
 }

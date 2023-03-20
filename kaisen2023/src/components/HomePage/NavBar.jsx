@@ -47,13 +47,13 @@ const NavBar = () => {
             <nav id="main-navigation" class={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 flex justify-center items-center ${!active && "translate-x-[-100%]"}`}>
                 <ul class="menu">
                     <li class="menu__item">
-                        <Link class="menu__link" to="/">Home</Link>
+                        <Link onClick={()=> document.body.style.overflow = 'unset'} class="menu__link" to="/">Home</Link>
                     </li>
                     <li class="menu__item">
-                        <Link class="menu__link" to="/events">Events</Link>
+                        <Link onClick={()=> document.body.style.overflow = 'unset'} class="menu__link" to="/events">Events</Link>
                     </li>
                     <li class="menu__item">
-                        <Link class="menu__link" to="/pronite">Pronite</Link>
+                        <Link onClick={()=> document.body.style.overflow = 'unset'} class="menu__link" to="/pronite">Pronite</Link>
                         {/* <ul class="submenu">
                             <li class="menu__item">
                                 <a class="menu__link" href="#0">Burger King</a>

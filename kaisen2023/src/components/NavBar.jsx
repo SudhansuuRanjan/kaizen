@@ -10,7 +10,7 @@ const NavBar = () => {
   const [focus, setFocus] = useState(0);
 
   return (
-    <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-gray-800 w-[100vw] items-center justify-center text-gray-800 text-white border-b-[1px] border-gray-500">
+    <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-gray-800 w-[100vw] items-center justify-center text-white border-b-[1px] border-gray-500">
       <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-3">
         <div className="flex items-center">
           <Link to="/">

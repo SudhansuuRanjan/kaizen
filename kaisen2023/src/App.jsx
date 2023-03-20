@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Events from './pages/Events'
+import EventPage from './pages/EventPage/EventPage'
+import EventDetails from './pages/EventPage/EventDetails'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ForgotPassword from './pages/ForgotPassword'
 import Layout from './components/Layout'
-import Cart from './pages/Cart'
 import Footer from './components/Footer'
 import Legals from './pages/Legals'
 import ScrollToTop from './hooks/useScrollToTop'
@@ -20,6 +20,7 @@ import AOS from 'aos';
 import "aos/dist/aos.css";
 import Pronite from './pages/Proshow/Pronite'
 import NavBar from './components/HomePage/NavBar'
+import CartPage from './pages/Cart/CartPage'
 
 
 function App() {
@@ -65,7 +66,7 @@ function App() {
 
           <Route path='/pronite' element={
             <>
-              <NavBar/>
+              <NavBar />
               <Pronite />
               <Footer />
             </>
@@ -74,7 +75,13 @@ function App() {
 
           <Route path='/events' element={
             <Layout>
-              <Events />
+              <EventPage />
+            </Layout>
+          } />
+
+          <Route path='/events/:eventSlug' element={
+            <Layout>
+              <EventDetails />
             </Layout>
           } />
 
@@ -88,7 +95,7 @@ function App() {
           <Route path='/cart' element={<PrivateRoute />}>
             <Route path='/cart' element={
               <Layout>
-                <Cart />
+                <CartPage />
               </Layout>
             } />
           </Route>
