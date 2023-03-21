@@ -1,8 +1,7 @@
 import React from 'react'
 import { FaBuilding } from 'react-icons/fa'
 import { AiFillEye } from 'react-icons/ai'
-import {MdOutlineEvent } from 'react-icons/md'
-import { GiSandsOfTime } from 'react-icons/gi'
+import { MdOutlineEvent } from 'react-icons/md'
 import { RiFootprintFill } from 'react-icons/ri'
 import CountUp from 'react-countup';
 

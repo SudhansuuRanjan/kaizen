@@ -7,6 +7,7 @@ import ParallaxComponent from '../components/HomePage/ParallaxComponent'
 import Timer from '../components/HomePage/Timer'
 import Sponsors from '../components/HomePage/Sponsors'
 import NavBar from '../components/HomePage/NavBar'
+import ChiefPatron from '../components/HomePage/ChiefPatron'
 
 
 const Home = () => {
@@ -19,9 +20,10 @@ const Home = () => {
       <EventCategory />
       <ArtistLineup />
       <About />
+      <Highlights />
+      <ChiefPatron/>
       <Sponsors />
       <FAQs />
-      <Highlights />
     </div>
   )
 }
