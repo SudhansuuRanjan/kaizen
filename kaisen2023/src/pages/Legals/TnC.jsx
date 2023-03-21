@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Tnc = () => {
+const TnC = () => {
     return (
         <>
             <div className='pb-10'>
@@ -135,4 +135,4 @@ const Tnc = () => {
     )
 }
 
-export default Tnc
+export default TnC

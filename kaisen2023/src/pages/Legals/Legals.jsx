@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import TnC from './Tnc'
+import TnC from './TnC'
 import './Legals.scss'
 import PrivacyPolicy from './PrivacyPolicy'
 import CnC from './CnC'
