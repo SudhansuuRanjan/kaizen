@@ -15,7 +15,7 @@ const Footer = () => {
             <img src="/images/kaizen-logo1.jpg" alt="logo" className='h-20' />
           </Link>
 
-          <p className='max-w-[17rem] py-3 text-base'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          <p className='max-w-[17rem] py-3 text-base'>Kaizen, is AIIMS Patna's annual socio-cultural fest. </p>
           <div className='flex gap-3 py-2 '>
             <a href="https://facebook.com" className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
               <FaFacebook size={30} />
@@ -43,8 +43,8 @@ const Footer = () => {
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-3 md:order-3 lg:order-3 text-base'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Contact Us</h1></div>
           <p className='max-w-[16rem] pt-4 text'>AIIMS Patna, Phulwarisharif, Patna, Bihar-801507, India</p>
-          <p className='pt-2'>Ph : <a href="tel:+911256131543" className='text-red-700 ml-2 font-semibold'>+91 12561 31543</a></p>
-          <p className='pt-2'>Mail : <a href="mailto:nasg@nitp.ac.in" className='text-red-700 ml-2 font-semibold'>trustme@nitp.ac.in</a></p>
+          <p className='pt-2'>Ph : <a href="tel:+918207372732" className='text-red-700 ml-2 font-semibold'>+91 82073 72732</a></p>
+          <p className='pt-2'>Mail : <a href="mailto:nasg@nitp.ac.in" className='text-red-700 ml-2 font-semibold'>kaizen@aiimspatna.org</a></p>
         </div>
 
       </div>

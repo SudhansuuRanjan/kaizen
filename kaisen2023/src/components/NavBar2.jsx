@@ -15,11 +15,12 @@ const NavBar2 = () => {
     const [user, setUser] = useState(null);
     const auth = getAuth();
 
+    const userRef = doc(db, 'users', auth.currentUser.uid);
+
     // get user cart length from firebase
     const getUser = async () => {
         if (auth.currentUser === null) return;
         try {
-            const userRef = doc(db, 'users', auth.currentUser.uid);
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
             // console.log(user.cart);

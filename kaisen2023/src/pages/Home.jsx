@@ -16,12 +16,12 @@ const Home = () => {
       <NavBar/>
       <ParallaxComponent />
       <Timer />
-      <Highlights />
       <EventCategory />
       <ArtistLineup />
       <About />
       <Sponsors />
       <FAQs />
+      <Highlights />
     </div>
   )
 }

@@ -50,8 +50,8 @@ const Footer = () => {
                 <div className='flex text-sm text-gray-500 justify-between font-semibold'>
                     <div className='border-l-[3.5px] border-gray-800 p-5 py-12 w-1/3'>
                         <ul className='flex flex-col gap-5'>
-                            <li className='hover:text-red-600'><Link to="/legals/privacy-policy">Privacy   Policy</Link></li>
-                            <li className='hover:text-red-600'><Link to="/legals/terms-of-service">Terms</Link></li>
+                            <li className='hover:text-red-600'><Link to="/legals/privacy-policy">Privacy Policy</Link></li>
+                            <li className='hover:text-red-600'><Link to="/legals/terms-of-service">Terms & Conditions</Link></li>
                             <li className=' hover:text-red-600'><Link to="/legals/code-of-conduct">Code of Conduct</Link></li>
                             <li className=' hover:text-red-600'><Link to="/legals/refund-policy">Refund Policy</Link></li>
                         </ul>

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const ArtistLineup = () => {
     return (
-        <div className="bg-[url('/images/painting.png')] bg-repeat-y  min-h-fit bg-center bg-cover ">
-            <h3 className='text-center font-bold text-4xl pt-16'>ASSOCIATED CELEBRITIES</h3>
+        <div className="bg-[url('/images/EDM.png')] after:bg-gradient-to-b after:from-white after:to-black bg-repeat-y  min-h-fit bg-center bg-cover ">
+            <h3 className='text-center font-bold text-4xl pt-16'>PRONITES</h3>
             <div className="flex relative justify-center items-center py-20 flex-wrap lg:gap-10 md:gap-10 gap-16">
 
                 <div className="card lg:scale-100 md:scale-100 scale-105">
                     <div className="wrapper">
-                        <img src="https://images.squarespace-cdn.com/content/v1/5944f4962e69cf526589c939/1536753972962-U827SLCM64KSO92NQ9WK/Shahrukh+Khan+White+tee+%2821st+August+2018%2978853.jpg?format=1500w" className="cover-image" />
+                        <img src="images/unknown.png" className="cover-image" />
                     </div>
                     <img src="https://ggayane.github.io/css-experiments/cards/force_mage-title.png" className="title" />
                     <img src="srk-f.png" className="character" />

@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
+import { useNavigate } from "react-router-dom";
 
 export default async function PaymentGateway(amount) {
   const auth = getAuth();
@@ -72,11 +73,14 @@ const updatePurchase = async () => {
     };
   });
 
-  console.log(purchasedItems);
-
+  // console.log(purchasedItems);
   // update the purchased items in firebase
 
   await updateDoc(userRef, {
     cart: purchasedItems,
   });
+
+  // navigate to purchased items page
+  const navigate = useNavigate();
+  navigate("/profile");
 };

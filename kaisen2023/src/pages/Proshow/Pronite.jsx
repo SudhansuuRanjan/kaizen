@@ -12,7 +12,7 @@ const Pronite = () => {
 
         <div className="pronite-card-container">
           <div className=''>
-            <img alt="MOHAN SISTERS" src="https://ragam.co.in/images/Jubin%20proshow.png" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+            <img alt="MOHAN SISTERS" src="images/unknown.png" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
           <div className='pronite_profile_details'>
             <h2 className='pronite-name'>Neeti Mohan</h2>
@@ -59,13 +59,13 @@ const Pronite = () => {
             </div>
           </div>
           <div className=''>
-            <img alt="MOHAN SISTERS" src="https://ragam.co.in/images/Jubin%20proshow.png" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+            <img alt="MOHAN SISTERS" src="images/unknown.png" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
         </div>
 
         <div className="pronite-card-container">
           <div className=''>
-            <img alt="MOHAN SISTERS" src="https://ragam.co.in/images/Jubin%20proshow.png" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy"  />
+            <img alt="MOHAN SISTERS" src="images/unknown.png" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy"  />
           </div>
           <div className='pronite_profile_details'>
             <h2 className='pronite-name'>Neeti Mohan</h2>

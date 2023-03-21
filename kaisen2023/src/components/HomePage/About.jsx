@@ -10,7 +10,7 @@ const About = () => {
             <div className='bg-black bg-opacity-50 backdrop-blur-sm rounded-[2rem] lg:w-[70%] md:w-[80%] w-[90%] m-auto z-[1999999] lg:p-10 md:p-10 p-5 lg:py-20 md:py-20 py-10 border border-gray-500'>
                 <h3 className='text-center font-bold text-4xl pb-7'>ABOUT US</h3>
                 <p className='lg:text-2xl md:text-2xl text-xl leading-9 text-center'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis officia, velit nesciunt necessitatibus esse enim corrupti exercitationem magnam perferendis, non inventore in assumenda odio deserunt corporis sed illo. Tenetur recusandae perspiciatis commodi velit magnam praesentium pariatur iste est quas incidunt et, iusto consequatur debitis! Ullam consectetur atque exercitationem ut. Quidem.
+                    Kaizen, is AIIMS Patna's annual socio-cultural fest. Through our various editions we have given students from across India a platform through which they can showcase their talents' in literary, sports, cultural and arts. This year with great resolve we'll be organizing one of the biggest concerts featuring a top national Bollywood singer and will also be hosting one of the nation's top stand up comedians'. Not just that, over the course of 5 days attendees will also be able to revel in our EDM night and much-awaited band night. Kaizen, a Japanese word, means "change for the better". Our motto, exemplified by our resolve to do everything bigger and better will finally materialize itself as one of India's largest and most celebrated Med-fests'.
                 </p>
             </div>
         </div>

@@ -12,34 +12,38 @@ const EventCategory = () => {
 
     const categories = [
         {
-            name: 'Dance',
-            image: "/images/painting.png",
+            name: 'Cultural',
+            image: "/images/cultural.png",
         },
         {
-            name: 'Music',
-            image: "/images/painting.png",
+            name: 'Sports',
+            image: "/images/sports.png",
         },
         {
             name: 'Art',
             image: "/images/painting.png",
         },
         {
-            name: 'Literature',
-            image: "/images/painting.png",
+            name: 'Literary',
+            image: "/images/literary.png",
         },
         {
-            name: 'Drama',
-            image: "/images/painting.png",
+            name: 'Fashion',
+            image: "/images/fashion.png",
         },
         {
-            name: 'Photography',
-            image: "/images/painting.png",
+            name: 'Workshop',
+            image: "/images/workshop.png",
+        },
+        {
+            name: 'Academics',
+            image: "/images/academics.png",
         },
     ]
 
     return (
         <div className="bg-[url('/images/girl-dancing.png')] bg-no-repeat min-h-fit bg-center bg-cover flex flex-col relative justify-center items-center">
-            <h3 className='text-center font-bold text-4xl py-20'>MAJOR ATTRACTIONS</h3>
+            <h3 className='text-center font-bold text-4xl py-20'>MAJOR EVENTS</h3>
             <div className='flex overflow-hidden justify-center items-center mb-52'>
                 <div className="flex max-w-6xl items-center justify-center m-auto">
                     <Swiper
@@ -62,7 +66,7 @@ const EventCategory = () => {
                         {
                             categories.map((cat, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className={`lg:h-[27rem] md:h-[27rem] h-[25rem] flex ${active === index ? 'scale-[100%]' : 'scale-[80%]'} transform relative ${active === index ? 'hover:scale-[102%]' : "hover:scale-[85%]"} delay-100 transition-all  ease-in-out cursor-grab`}>
+                                    <div className={`lg:h-[27rem] md:h-[27rem] h-[25rem] flex ${active === index ? 'scale-[100%]' : 'scale-[80%]'} transform relative delay-75 ease-in ${active === index ? 'hover:scale-[102%]' : "hover:scale-[85%]"} delay-100 transition-all  ease-in-out cursor-grab`}>
                                         <img src={cat.image} alt={cat.name} className={
                                             active === index ? "rounded-2xl brightness-100  hover:brightness-110" : "brightness-50 rounded-2xl"
                                         } />
