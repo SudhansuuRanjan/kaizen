@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Tnc from './Tnc'
+import TnC from './Tnc'
 import './Legals.scss'
 import PrivacyPolicy from './PrivacyPolicy'
 import CnC from './CnC'
@@ -66,7 +66,7 @@ const Legals = () => {
 
                     <div className='px-5 md:px-10 text-lg font-extralight lg:px-10 text-justify pt-20 pb-10'>
                         {
-                            page === 0 ? <Tnc /> : null
+                            page === 0 ? <TnC /> : null
                         }
                         {
                             page === 1 ? <PrivacyPolicy/> : null
