@@ -15,18 +15,18 @@ const Pronite = () => {
             <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
           <div className='pronite_profile_details'>
-            <h2 className='pronite-name'>Neeti Mohan</h2>
+            <h2 className='pronite-name'>Revealing Soon!</h2>
             <div className='proshow-content'>
               <p>
-                Get ready to witness yourself a night of Ultimate extravaganza of Music & Dance at this season's most stunning fest Ragam as we present you Mohan Sisters. The soulful sisters who can captivate your senses with music and dance. Let's groove to the beats of Neeti Mohan with electric moves from the winners of Dance India Dance reality show and Zara Nachke Dikha - Mukti and Shakti Mohan
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus impedit quae dignissimos. Iure, quod delectus quae praesentium blanditiis illum deserunt! Veniam a tempore nesciunt assumenda saepe natus neque id aut consequatur fuga. Dolores, dolore ad. Aut temporibus odio dolore quam laborum modi quas. Illum eos, quis adipisci nostrum nulla magnam?
               </p>
             </div>
             <div className='flex items-center justify-between mt-6'>
               <div className='flex items-center gap-6'>
                 <img src="https://ragam.co.in/images/assets/calender.svg" alt="asdf" loading='lazy' className='h-8 w-8' />
                 <div>
-                  <h3 className='pronite-date'>10/03/2023</h3>
-                  <h2 className='pronite-day'>Friday</h2>
+                  <h3 className='pronite-date'>-/05/23</h3>
+                  <h2 className='pronite-day'>......</h2>
                 </div>
               </div>
               <div className=''>
@@ -39,18 +39,18 @@ const Pronite = () => {
 
         <div className="pronite-card-container">
           <div className='pronite_profile_details'>
-            <h2 className='pronite-name'>Neeti Mohan</h2>
+            <h2 className='pronite-name'>Revealing Soon!</h2>
             <div className='proshow-content'>
               <p>
-                Get ready to witness yourself a night of Ultimate extravaganza of Music & Dance at this season's most stunning fest Ragam as we present you Mohan Sisters. The soulful sisters who can captivate your senses with music and dance. Let's groove to the beats of Neeti Mohan with electric moves from the winners of Dance India Dance reality show and Zara Nachke Dikha - Mukti and Shakti Mohan
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus impedit quae dignissimos. Iure, quod delectus quae praesentium blanditiis illum deserunt! Veniam a tempore nesciunt assumenda saepe natus neque id aut consequatur fuga. Dolores, dolore ad. Aut temporibus odio dolore quam laborum modi quas. Illum eos, quis adipisci nostrum nulla magnam?
               </p>
             </div>
             <div className='flex items-center justify-between mt-6'>
               <div className='flex items-center gap-6'>
                 <img src="https://ragam.co.in/images/assets/calender.svg" alt="asdf" loading='lazy' className='h-8 w-8' />
                 <div>
-                  <h3 className='pronite-date'>10/03/2023</h3>
-                  <h2 className='pronite-day'>Friday</h2>
+                  <h3 className='pronite-date'>-/05/23</h3>
+                  <h2 className='pronite-day'>......</h2>
                 </div>
               </div>
               <div className=''>
@@ -68,18 +68,71 @@ const Pronite = () => {
             <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy"  />
           </div>
           <div className='pronite_profile_details'>
-            <h2 className='pronite-name'>Neeti Mohan</h2>
+            <h2 className='pronite-name'>Revealing Soon!</h2>
             <div className='proshow-content'>
               <p>
-                Get ready to witness yourself a night of Ultimate extravaganza of Music & Dance at this season's most stunning fest Ragam as we present you Mohan Sisters. The soulful sisters who can captivate your senses with music and dance. Let's groove to the beats of Neeti Mohan with electric moves from the winners of Dance India Dance reality show and Zara Nachke Dikha - Mukti and Shakti Mohan
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus impedit quae dignissimos. Iure, quod delectus quae praesentium blanditiis illum deserunt! Veniam a tempore nesciunt assumenda saepe natus neque id aut consequatur fuga. Dolores, dolore ad. Aut temporibus odio dolore quam laborum modi quas. Illum eos, quis adipisci nostrum nulla magnam?
               </p>
             </div>
             <div className='flex items-center justify-between mt-6'>
               <div className='flex items-center gap-6'>
                 <img src="https://ragam.co.in/images/assets/calender.svg" alt="asdf" loading='lazy' className='h-8 w-8' />
                 <div>
-                  <h3 className='pronite-date'>10/03/2023</h3>
-                  <h2 className='pronite-day'>Friday</h2>
+                  <h3 className='pronite-date'>-/05/23</h3>
+                  <h2 className='pronite-day'>......</h2>
+                </div>
+              </div>
+              <div className=''>
+                <img src="https://ragam.co.in/images/assets/arrow%20right%20down.svg" alt="w3r" loading='lazy' className='h-16 w-16' />
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <div className="pronite-card-container">
+          <div className='pronite_profile_details'>
+            <h2 className='pronite-name'>Revealing Soon!</h2>
+            <div className='proshow-content'>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus impedit quae dignissimos. Iure, quod delectus quae praesentium blanditiis illum deserunt! Veniam a tempore nesciunt assumenda saepe natus neque id aut consequatur fuga. Dolores, dolore ad. Aut temporibus odio dolore quam laborum modi quas. Illum eos, quis adipisci nostrum nulla magnam?
+              </p>
+            </div>
+            <div className='flex items-center justify-between mt-6'>
+              <div className='flex items-center gap-6'>
+                <img src="https://ragam.co.in/images/assets/calender.svg" alt="asdf" loading='lazy' className='h-8 w-8' />
+                <div>
+                  <h3 className='pronite-date'>-/05/23</h3>
+                  <h2 className='pronite-day'>......</h2>
+                </div>
+              </div>
+              <div className=''>
+                <img src="https://ragam.co.in/images/assets/arrow%20right%20down.svg" alt="w3r" loading='lazy' className='h-16 w-16' />
+              </div>
+            </div>
+          </div>
+          <div className=''>
+            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1"  loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+          </div>
+        </div>
+
+
+        <div className="pronite-card-container">
+          <div className=''>
+            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy"  />
+          </div>
+          <div className='pronite_profile_details'>
+            <h2 className='pronite-name'>Revealing Soon!</h2>
+            <div className='proshow-content'>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus impedit quae dignissimos. Iure, quod delectus quae praesentium blanditiis illum deserunt! Veniam a tempore nesciunt assumenda saepe natus neque id aut consequatur fuga. Dolores, dolore ad. Aut temporibus odio dolore quam laborum modi quas. Illum eos, quis adipisci nostrum nulla magnam?
+              </p>
+            </div>
+            <div className='flex items-center justify-between mt-6'>
+              <div className='flex items-center gap-6'>
+                <img src="https://ragam.co.in/images/assets/calender.svg" alt="asdf" loading='lazy' className='h-8 w-8' />
+                <div>
+                  <h3 className='pronite-date'>-/05/23</h3>
+                  <h2 className='pronite-day'>......</h2>
                 </div>
               </div>
               <div className=''>

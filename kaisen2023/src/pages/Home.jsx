@@ -11,7 +11,7 @@ import ChiefPatron from '../components/HomePage/ChiefPatron'
 
 
 const Home = () => {
-  document.title = 'Kaisen 2023'
+  document.title = 'Kaizen 2023'
   return (
     <div className="w-[100%] overflow-hidden">
       <NavBar/>

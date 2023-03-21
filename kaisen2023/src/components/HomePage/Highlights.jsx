@@ -9,7 +9,7 @@ const Highlights = () => {
     return (
         <div className='bg-[url("https://ragam.co.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fghoomar.6656243d.jpeg&w=1080&q=75")] bg-no-repeat bg-cover flex items-center justify-center flex-col py-10'>
             <div className='text-center pt-10 pb-10'>
-                <h3 className='text-red-600 text-4xl font-bold'>KAISEN</h3>
+                <h3 className='text-red-600 text-4xl font-bold'>KAIZEN</h3>
                 <p className='text-4xl font-bold'>Highlights</p>
             </div>
             <div className='grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-5 items-center justify-between lg:h-[20rem] md:h-[20rem] h-fit m-auto lg:w-[55rem] md:w-[90%] w-[80%]'>
