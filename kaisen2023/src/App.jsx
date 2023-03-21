@@ -21,7 +21,7 @@ import "aos/dist/aos.css";
 import Pronite from './pages/Proshow/Pronite'
 import NavBar from './components/HomePage/NavBar'
 import CartPage from './pages/Cart/CartPage'
-
+import Error from './pages/Error'
 
 function App() {
 
@@ -112,6 +112,11 @@ function App() {
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
+          <Route path='*' element={<>
+            <NavBar />
+            <Error />
+            <Footer />
+          </>} />
         </Routes>
       </Router>
     </ParallaxProvider>
