@@ -10,7 +10,7 @@ import SignUp from './pages/SignUp'
 import ForgotPassword from './pages/ForgotPassword'
 import Layout from './components/Layout'
 import Footer from './components/Footer'
-import Legals from './pages/Legals'
+import Legals from './pages/Legals/Legals'
 import ScrollToTop from './hooks/useScrollToTop'
 import PrivateRoute from './components/PrivateRoute'
 import { ToastContainer, toast } from 'react-toastify';

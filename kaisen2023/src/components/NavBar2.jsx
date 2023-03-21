@@ -82,7 +82,7 @@ const NavBar2 = () => {
 
                         >
                             <Link to="/cart">
-                                <CartIcon cartLength={user ? user.cart.length : 0} />
+                                <CartIcon cartLength={user ? user.cart.filter((item) => !item.purchased).length : 0} />
                             </Link>
                         </li>
 

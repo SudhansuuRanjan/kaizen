@@ -13,7 +13,7 @@ const PurchasedEventItem = ({ data }) => {
                         <Link to={`/events/${data.eventId}`} className='font-semibold md:text-2xl lg:text-2xl text-xl text-gray-400'>{data.name}</Link>
                     </div>
                     <div className='flex-0 px-5 lg:px-10 md:px-10'>
-                        <p className='text-center font-semibold  text-red-500'>{data.participants} members</p>
+                        <p className='text-center font-semibold  text-red-500'>{data.members.length} members</p>
                     </div>
                     <div className='w-[4.5rem] ml-2 flex-0 '>
                         <p className='text-center font-semibold text-yellow-500'>₹ {data.price}</p>
