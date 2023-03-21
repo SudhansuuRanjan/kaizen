@@ -44,7 +44,7 @@ const Footer = () => {
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Contact Us</h1></div>
           <p className='max-w-[16rem] pt-4 text'>AIIMS Patna, Phulwarisharif, Patna, Bihar-801507, India</p>
           <p className='pt-2'>Ph : <a href="tel:+918207372732" className='text-red-700 ml-2 font-semibold'>+91 82073 72732</a></p>
-          <p className='pt-2'>Mail : <a href="mailto:nasg@nitp.ac.in" className='text-red-700 ml-2 font-semibold'>kaizen@aiimspatna.org</a></p>
+          <p className='pt-2'>Mail : <a href="mailto:kaizen@aiimspatna.org" className='text-red-700 ml-2 font-semibold'>kaizen@aiimspatna.org</a></p>
         </div>
 
       </div>
