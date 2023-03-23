@@ -81,6 +81,4 @@ const updatePurchase = async () => {
   });
 
   // navigate to purchased items page
-  const navigate = useNavigate();
-  navigate("/profile");
 };

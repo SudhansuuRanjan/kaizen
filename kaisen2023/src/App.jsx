@@ -22,6 +22,7 @@ import Pronite from './pages/Proshow/Pronite'
 import NavBar from './components/HomePage/NavBar'
 import CartPage from './pages/Cart/CartPage'
 import Error from './pages/Error'
+import CAPortal from './pages/CAPortal/CAPortal'
 
 function App() {
 
@@ -68,6 +69,14 @@ function App() {
             <>
               <NavBar />
               <Pronite />
+              <Footer />
+            </>
+          } />
+
+          <Route path='/ca' element={
+            <>
+              <NavBar />
+              <CAPortal />
               <Footer />
             </>
           } />

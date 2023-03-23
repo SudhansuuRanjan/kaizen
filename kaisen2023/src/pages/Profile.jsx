@@ -8,6 +8,15 @@ import PurchasedEventItem from '../components/PurchasedEventItem'
 import UpdateProfile from '../components/UpdateProfile'
 import EditProfile from '../components/EditProfile'
 import QRCode from "react-qr-code";
+import ConfettiExplosion from 'react-confetti-explosion';
+
+const largeProps = {
+  force: 0.8,
+  duration: 6000,
+  particleCount: 300,
+  width: 1600,
+  colors: ['#041E43', '#1471BF', '#5BB4DC', '#FC027B', '#66D805'],
+};
 
 
 const Profile = () => {
@@ -25,6 +34,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [showQr, setShowQr] = useState(false);
   const [purchasedEvents, setPurchasedEvents] = useState([]);
+  const [isLargeExploding, setIsLargeExploding] = useState(false);
 
   const { name, email } = formData;
   const { uid } = auth.currentUser;
@@ -80,6 +90,16 @@ const Profile = () => {
     getProfile();
   }, []);
 
+  useEffect(() => {
+    if (!loading && purchasedEvents.length > 0) {
+      setIsLargeExploding(true);
+
+      setTimeout(() => {
+        setIsLargeExploding(false)
+      }, 5000);
+    }
+  }, [loading])
+
   return (
     <div className="bg-black bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 relative flex flex-col justify-center items-center">
 
@@ -96,6 +116,9 @@ const Profile = () => {
       }
 
       <div className="bg-[#000000] bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-5 h-fit ">
+        {isLargeExploding && <div className='m-auto z-[32136526571] fixed top-0 w-full h-full flex items-center justify-center'>
+          <ConfettiExplosion className='z-100' {...largeProps} />
+        </div>}
         {
           user ? <div className="flex flex-col items-center justify-center m-[auto] w-[90%] h-fit py-16">
             <div className='flex flex-col md:flex-row lg:flex-row justify-between  items-start md:items-center lg:items-center gap-5 w-[100%]'>
@@ -174,7 +197,6 @@ const Profile = () => {
           <div className='h-3 w-3 bg-yellow-200 rotate-45' />
           <div className='h-3 w-3 bg-yellow-200 rotate-45' />
         </div>
-
       </div>
     </div>
   )
