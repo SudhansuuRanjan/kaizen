@@ -189,13 +189,13 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 2rem;
-    width: 60%;
+    width: 55%;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .event-img-container {
-    width: 40%;
+    width: 45%;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -210,8 +210,6 @@
     color: #ebe6d0;
     opacity: 0.6;
     padding-top: 2rem;
-    padding-bottom: 3rem;
-    border-bottom: 2px solid #ebe6d0;
 }
 
 .rulebook-btn {
@@ -241,6 +239,11 @@
     color: #111317;
     background-color: #ebe6d0;
     border: 1px solid #111317;
+}
+
+.border-bottom {
+    padding-bottom: 3rem;
+    border-bottom: 2px solid #ebe6d0;
 }
 
 @media screen and (max-width: 1080px) {

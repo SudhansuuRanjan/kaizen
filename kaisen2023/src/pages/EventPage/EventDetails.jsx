@@ -46,15 +46,16 @@ const EventDetails = () => {
   return (
     <div className='bg-black pb-[5rem] min-h-screen relative'>
       {
-        popup && <RegisterPopup event={data} setPopup={setPopup}/>
+        popup && <RegisterPopup event={data} setPopup={setPopup} />
       }
 
       {
         Loading ? <div className='flex pt-[10rem] w-[100%] items-center justify-center'> <p>Loading...</p></div> : (
           <>
             <div className='event-page-head'>
-              <i>Kaizen 2023 presents</i>
               <h1>{data.name}</h1>
+              <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
+              <p className='py-4'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>{data.sponsorName}</a></i></p>
             </div>
 
             <div className='event-page-event-container'>
@@ -70,6 +71,16 @@ const EventDetails = () => {
                   <p className='details-text'>
                     {data.description}
                   </p>
+                  <div className='flex py-10 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
+                    <div className='flex items-center gap-2 justify-center'>
+                      <h3>Prize Pool:</h3>
+                      <span className='text-yellow-500 font-bold text-2xl'> ₹{data.prize}</span>
+                    </div>
+                    <div className='flex items-center gap-2 justify-center'>
+                      <h3>Registration Fee:</h3>
+                      <span className='text-yellow-500'> ₹{data.price}</span>
+                    </div>
+                  </div>
                 </div>
                 <div className='w-[100%]'>
                   <a href={data.rulebook}><button className='rulebook-btn'>Rulebook</button></a>
