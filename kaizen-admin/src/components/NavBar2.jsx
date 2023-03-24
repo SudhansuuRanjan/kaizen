@@ -63,7 +63,7 @@ const NavBar = () => {
 
 
                     </ul>
-                    <button
+                    {/* <button
                         type="button"
                         onClick={() => {
                             if (theme === "dark") {
@@ -76,7 +76,7 @@ const NavBar = () => {
                     >
                         <MdDarkMode /> <MdLightMode />
                         <span className="sr-only">Icon description</span>
-                    </button>
+                    </button> */}
 
                     <button
                         type="button"

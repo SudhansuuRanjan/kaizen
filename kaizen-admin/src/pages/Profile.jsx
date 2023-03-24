@@ -52,11 +52,9 @@ const Profile = () => {
   }
 
   return (
-    <div className='pt-16 flex'>
-
+    <div className='flex min-h-screen'>
       <div className='m-auto w-[100%]'>
         <div className='max-w-[40rem] m-auto'>
-
           <div className='flex items-center justify-between py-4'>
             <p className='text-xl font-semibold'>
               My Profile

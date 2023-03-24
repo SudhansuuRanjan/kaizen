@@ -4,7 +4,8 @@ import NavBar from './components/NavBar'
 import NavBar2 from './components/NavBar2'
 import Footer2 from './components/Footer2'
 import Home from './pages/Home'
-import Events from './pages/Events'
+import EventPage from './pages/EventPage/EventPage'
+import EventDetails from './pages/EventPage/EventDetails'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
@@ -33,7 +34,15 @@ function App() {
           <Route path='/events' element={
             <>
               <NavBar2 />
-              <Events />
+              <EventPage />
+              <Footer2 />
+            </>
+          } />
+
+          <Route path='/events/:eventSlug' element={
+            <>
+              <NavBar2 />
+              <EventDetails />
               <Footer2 />
             </>
           } />
