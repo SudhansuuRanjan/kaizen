@@ -42,6 +42,17 @@ const EventDetails = () => {
     }
   }
 
+  const contact = [
+    {
+      name: "Deepak Ranjan",
+      contact: "+912313133313"
+    },
+    {
+      name: "Tushar",
+      contact: "+912313133313"
+    }
+  ]
+
 
   return (
     <div className='bg-black pb-[5rem] min-h-screen relative'>
@@ -56,7 +67,7 @@ const EventDetails = () => {
               <h1>{data.name}</h1>
               <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
               {
-                data.sponsor !== "" && <div className='py-6 flex flex-col items-center justify-center'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>
+                data.sponsor !== "" && <div className='py-6 flex flex-col items-center justify-center'><i>Sponsored by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>
                   <img className='h-10 m-auto mt-3' src={data.sponsor} alt="sponsor" />
                 </a></i>
                 </div>
@@ -76,7 +87,7 @@ const EventDetails = () => {
                   <p className='details-text'>
                     {data.description}
                   </p>
-                  <div className='flex py-10 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
+                  <div className='flex pt-6 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium'>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Prize Pool:</h3>
                       <span className='text-yellow-500 font-bold text-2xl'> ₹{data.prize}</span>
@@ -86,10 +97,29 @@ const EventDetails = () => {
                       <span className='text-yellow-500'> ₹{data.price}</span>
                     </div>
                   </div>
+                  <div className='flex py-10 pt-6 lg:flex-row md:flex-row flex-col-reverse justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
+                    <div className='flex flex-col items-start gap-2 justify-center'>
+                      <h3>For any query contact:</h3>
+                      {
+                        contact.map((item, index) => {
+                          return (
+                            <div className='flex items-center text-base justify-center gap-1 ml-2'>
+                              <span className='text-gray-400'>{item.name} - </span>
+                              <a href={`tel:${item.contact}`} className='text-yellow-600'>{item.contact}</a>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                    <div className='flex items-center gap-2 justify-center'>
+                      <h3>Team Size:</h3>
+                      <span className='text-yellow-500'> {data.participants}</span>
+                    </div>
+                  </div>
                 </div>
                 <div className='w-[100%]'>
-                  <a href={data.rulebook}><button className='rulebook-btn'>Rulebook</button></a>
-                  <button onClick={() => checkAuthNActive(data.status)} disabled={data.status !== 'Active'} className='register-btn'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
+                  <a href={data.rulebook} target="_blank" className='w-[100%]'><button className='rulebook-btn'>Rulebook</button></a>
+                  <button onClick={() => checkAuthNActive(data.status)} disabled={data.status !== 'Active'} className='register-btn w-[100%]'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
                 </div>
               </div>
             </div>
