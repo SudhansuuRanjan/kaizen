@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './Event.css'
 import { Link } from 'react-router-dom';
 import { BsArrowUpRight } from 'react-icons/bs';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
+import { toast } from 'react-toastify';
 
 const EventPage = () => {
     const [selectedEvent, setSelectedEvent] = useState(0);
     const [events, setEvents] = useState([]);
+    const [eventSnap, setEventsSnap] = useState(null);
     const [Loading, setLoading] = useState(true);
     const categories = [
         {
@@ -41,20 +43,36 @@ const EventPage = () => {
         }
     ]
 
+
+
     const auth = getAuth();
 
     const getEvents = async () => {
         setLoading(true);
         const eventsRef = collection(db, 'events');
-        const eventsSnap = await getDocs(eventsRef);
-        setEvents(eventsSnap.docs.map(doc => doc.data()));
-        // console.log(eventsSnap.docs.map(doc => doc.data()))
+        try {
+            if (selectedEvent !== 0) {
+                // get events by category from firestore 
+                const eventsSnap = await getDocs(query(eventsRef, where('category', '==', categories[selectedEvent].name)));
+                setEvents(eventsSnap.docs.map(doc => doc.data()));
+                console.log(eventsSnap.docs.map(doc => doc.data()));
+            } else {
+                const eventsSnap = await getDocs(eventsRef);
+                setEvents(eventsSnap.docs.map(doc => doc.data()));
+                console.log(eventsSnap.docs.map(doc => doc.data()));
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+        // get event by category 
+
         setLoading(false);
     }
 
     useEffect(() => {
         getEvents();
-    }, [])
+    }, [selectedEvent]);
 
 
     return (
@@ -88,7 +106,7 @@ const EventPage = () => {
                                             <h4 className='text-green-500'>{event.status}</h4>
                                         </div>
                                     </div>
-                                    <img src={event.image} alt="treasure-hunt" />
+                                    <img src={event.image} alt="treasure-hunt" loading='lazy' />
                                 </div>
                             </Link>
                         ))

@@ -4,7 +4,35 @@ import { collection, addDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { v4 as uuidv4 } from 'uuid';
+import shortid from 'shortid'
+
+const categories = [
+        {
+            name: "Literary",
+            id: 1,
+        },
+        {
+            name: "Cultural",
+            id: 2,
+        },
+        {
+            name: "Arts",
+            id: 3,
+        },
+        {
+            name: "Informals",
+            id: 4,
+        },
+        {
+            name: "Sports",
+            id: 5,
+        },
+        {
+            name: "Academics",
+            id: 6,
+        }
+    ]
+
 
 const Cart = () => {
 
@@ -12,12 +40,12 @@ const Cart = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    status: "active",
+    status: "Active",
     participants: "",
     price: "",
     description: "",
     rulebook: "",
-    category: "Dance",
+    category: "Literary",
     prize: "",
     sponsorName: "",
     tagline: ""
@@ -26,6 +54,15 @@ const Cart = () => {
   const [image, setImage] = useState(null);
   const [sponsorImage, setImageSponsor] = useState(null);
   const [disabled, setDisabled] = useState(false);
+
+
+  const slugify = str =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -62,6 +99,7 @@ const Cart = () => {
     const data = formData;
     data.image = url;
     data.sponsor = urlSponsor;
+    data.id = slugify(formData.name);
     // setFormData((prevState) => ({
     //   ...prevState,
     //   image: url,
@@ -109,7 +147,7 @@ const Cart = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Tagline</label>
-                <input id="tagline" required onChange={handleChange} value={formData.name} type="text" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2" placeholder='Be the Change' />
+                <input id="tagline" required onChange={handleChange} value={formData.tagline} type="text" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2" placeholder='Be the Change' />
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Poster</label>
@@ -136,9 +174,11 @@ const Cart = () => {
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Category</label>
                 <select id="category" required onChange={handleChange} value={formData.category} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
-                  <option value="Academics">Academics</option>
-                  <option value="Dance">Dance</option>
-                  <option value="Drama">Drama</option>
+                  {
+                    categories.map((cat,idx)=>(
+                      <option key={idx} value={cat.name}>{cat.name}</option>
+                    ))
+                  }
                 </select>
               </div>
               <div className="flex flex-col items-center justify-center gap-5">

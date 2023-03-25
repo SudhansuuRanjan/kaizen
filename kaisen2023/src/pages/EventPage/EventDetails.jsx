@@ -33,11 +33,12 @@ const EventDetails = () => {
   }, [])
 
   // handle register button
-  const checkAuth = () => {
+  const checkAuthNActive = (status) => {
     if (auth.currentUser === null) {
       toast.error("Please login to continue!");
       navigate('/signin');
     } else {
+      if (status !== 'active') return;
       setPopup(true);
     }
   }
@@ -55,12 +56,16 @@ const EventDetails = () => {
             <div className='event-page-head'>
               <h1>{data.name}</h1>
               <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
-              <p className='py-4'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>{data.sponsorName}</a></i></p>
+              {
+                data.sponsor !== "" && <p className='py-6'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>
+                  <img className='h-10 mt-3' src={data.sponsor} alt="sponsor" />
+                </a></i></p>
+              }
             </div>
 
             <div className='event-page-event-container'>
               <div className='event-img-container'>
-                <img src={data.image} alt="envent" />
+                <img src={data.image} alt="envent" loading='lazy' />
               </div>
               <div className='event-details-container'>
                 <div>
@@ -84,7 +89,7 @@ const EventDetails = () => {
                 </div>
                 <div className='w-[100%]'>
                   <a href={data.rulebook}><button className='rulebook-btn'>Rulebook</button></a>
-                  <button onClick={checkAuth} className='register-btn'>Register Now</button>
+                  <button onClick={() => checkAuthNActive(data.status)} className='register-btn'>{data.status === 'active' ? 'Register Now' : data.status}</button>
                 </div>
               </div>
             </div>

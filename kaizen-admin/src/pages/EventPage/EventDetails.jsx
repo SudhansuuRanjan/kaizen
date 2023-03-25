@@ -60,18 +60,20 @@ const EventDetails = () => {
 
             <div className='event-page-event-container'>
               <div className='event-img-container'>
-                <img src={data.image} alt="envent" />
+                <img src={data.image} alt="enent" loading='lazy' />
               </div>
               <div className='event-details-container'>
-                <div>
-                  <div className='flex gap-5 items-center'>
-                    <img src="https://ragam.co.in/images/assets/circle%20selected.svg" alt="wsw" />
-                    <h3 className='font-bold text-2xl'>About the event</h3>
+                <div className='flex flex-col'>
+                  <div className='flex-1 bg-white'>
+                    <div className='flex gap-5 items-center'>
+                      <img src="https://ragam.co.in/images/assets/circle%20selected.svg" alt="wsw" />
+                      <h3 className='font-bold text-2xl'>About the event</h3>
+                    </div>
+                    <p className='details-text'>
+                      {data.description}
+                    </p>
                   </div>
-                  <p className='details-text'>
-                    {data.description}
-                  </p>
-                  <div className='flex py-10 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
+                  <div className='flex flex-0 py-10 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Prize Pool:</h3>
                       <span className='text-yellow-500 font-bold text-2xl'> ₹{data.prize}</span>
