@@ -101,7 +101,6 @@ const Cart = () => {
     e.preventDefault();
     setDisabled(true);
     const url = await storeImage(image);
-    const urlSponsor = await storeImage(sponsorImage);
     const data = formData;
     data.image = url;
     if (sponsorImage) {
@@ -237,8 +236,8 @@ const Cart = () => {
               <div className="flex flex-col items-center justify-center gap-5 ">
                 <div className='w-[100%] flex flex-col items-center gap-2'>
                   <label className="text-xl font-bold text-yellow-200">Event Contact</label>
-                  <input placeholder='Name' id="name" required onChange={handleContactChange} value={contactData.name} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
-                  <input placeholder='+917352304847' id="contact" required onChange={handleContactChange} value={contactData.contact} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                  <input placeholder='Name' id="name" onChange={handleContactChange} value={contactData.name} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                  <input placeholder='+917352304847' id="contact" onChange={handleContactChange} value={contactData.contact} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
                   <button onClick={createContact} className="w-[50%] h-10 bg-yellow-300 rounded-md m-auto text-yellow-900">
                     Add Contact
                   </button>

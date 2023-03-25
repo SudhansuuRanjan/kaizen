@@ -83,7 +83,7 @@ const EventDetails = () => {
                       {
                         data.contacts.map((item, index) => {
                           return (
-                            <div className='flex items-center text-base justify-center gap-1'>
+                            <div key={index} className='flex items-center text-base justify-center gap-1'>
                               <span className='details-text m-0 p-0'>{item.name} - </span>
                               <a className='details-text m-0 p-0'>{item.contact}</a>
                             </div>
