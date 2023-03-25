@@ -95,7 +95,7 @@ const EventDetails = () => {
                           return (
                             <div className='flex items-center text-base justify-center gap-1'>
                               <span className='details-text m-0 p-0'>{item.name} - </span>
-                              <a className='details-text m-0 p-0' href={`tel:${item.contact}`} >{item.contact}</a>
+                              <a className='details-text m-0 p-0'>{item.contact}</a>
                             </div>
                           )
                         })
