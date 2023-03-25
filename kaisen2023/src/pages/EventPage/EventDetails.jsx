@@ -37,7 +37,6 @@ const EventDetails = () => {
       toast.error("Please login to continue!");
       navigate('/signin');
     } else {
-      if (status !== 'Active') return;
       setPopup(true);
     }
   }
@@ -89,7 +88,7 @@ const EventDetails = () => {
                 </div>
                 <div className='w-[100%]'>
                   <a href={data.rulebook}><button className='rulebook-btn'>Rulebook</button></a>
-                  <button onClick={() => checkAuthNActive(data.status)} disabled={data.status !== 'Active'} className='register-btn'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
+                  <button onClick={() => checkAuthNActive(data.status)}  className='register-btn'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
                 </div>
               </div>
             </div>
