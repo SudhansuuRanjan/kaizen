@@ -87,15 +87,15 @@ const EventDetails = () => {
                   <p className='details-text'>
                     {data.description}
                   </p>
-                  <div className='flex pt-6 pt-6 lg:flex-row md:flex-row flex-col-reverse justify-between items-start gap-4 text-xl w-[100%] font-medium'>
+                  <div className='flex pt-2 flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium'>
                     <div className='flex flex-col items-start gap-2 justify-center'>
-                      <h3>For any query contact:</h3>
+                      <h3 className='details-text m-0 p-0'>For any query contact:</h3>
                       {
                         contact.map((item, index) => {
                           return (
-                            <div className='flex items-center text-base justify-center gap-1 ml-2'>
+                            <div className='flex items-center text-base justify-center gap-1'>
                               <span className='details-text m-0 p-0'>{item.name} - </span>
-                              <a href={`tel:${item.contact}`} className='text-yellow-600'>{item.contact}</a>
+                              <a className='details-text m-0 p-0' href={`tel:${item.contact}`} >{item.contact}</a>
                             </div>
                           )
                         })
