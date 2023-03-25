@@ -37,7 +37,7 @@ const EventDetails = () => {
       toast.error("Please login to continue!");
       navigate('/signin');
     } else {
-      if (status !== 'active') return;
+      if (status !== 'Active') return;
       setPopup(true);
     }
   }

@@ -63,7 +63,7 @@ const EventPage = () => {
             }
 
         } catch (err) {
-            console.error(err);
+            toast.error("Something went wrong!");
         }
         // get event by category 
 
