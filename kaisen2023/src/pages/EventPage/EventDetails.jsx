@@ -56,9 +56,10 @@ const EventDetails = () => {
               <h1>{data.name}</h1>
               <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
               {
-                data.sponsor !== "" && <p className='py-6'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>
-                  <img className='h-10 mt-3' src={data.sponsor} alt="sponsor" />
-                </a></i></p>
+                data.sponsor !== "" && <div className='py-6 flex flex-col items-center justify-center'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>
+                  <img className='h-10 m-auto mt-3' src={data.sponsor} alt="sponsor" />
+                </a></i>
+                </div>
               }
             </div>
 
@@ -88,7 +89,7 @@ const EventDetails = () => {
                 </div>
                 <div className='w-[100%]'>
                   <a href={data.rulebook}><button className='rulebook-btn'>Rulebook</button></a>
-                  <button onClick={() => checkAuthNActive(data.status)} className='register-btn'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
+                  <button onClick={() => checkAuthNActive(data.status)} disabled={data.status !== 'Active'} className='register-btn'>{data.status === 'Active' ? 'Register Now' : data.status}</button>
                 </div>
               </div>
             </div>

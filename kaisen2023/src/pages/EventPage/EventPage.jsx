@@ -55,11 +55,11 @@ const EventPage = () => {
                 // get events by category from firestore 
                 const eventsSnap = await getDocs(query(eventsRef, where('category', '==', categories[selectedEvent].name)));
                 setEvents(eventsSnap.docs.map(doc => doc.data()));
-                console.log(eventsSnap.docs.map(doc => doc.data()));
+                // console.log(eventsSnap.docs.map(doc => doc.data()));
             } else {
                 const eventsSnap = await getDocs(eventsRef);
                 setEvents(eventsSnap.docs.map(doc => doc.data()));
-                console.log(eventsSnap.docs.map(doc => doc.data()));
+                // console.log(eventsSnap.docs.map(doc => doc.data()));
             }
 
         } catch (err) {

@@ -80,12 +80,12 @@ const EditEvent = () => {
 
     const handleImage = (e) => {
         setImage(e.target.files[0]);
-        console.log(e.target.files[0])
+        // console.log(e.target.files[0])
     }
 
     const handleImageSponsor = (e) => {
         setImageSponsor(e.target.files[0]);
-        console.log(e.target.files[0])
+        // console.log(e.target.files[0])
     }
 
     const storeImage = async (image) => {
