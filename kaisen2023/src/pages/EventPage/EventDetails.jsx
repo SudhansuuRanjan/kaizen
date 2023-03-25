@@ -42,16 +42,6 @@ const EventDetails = () => {
     }
   }
 
-  const contact = [
-    {
-      name: "Deepak Ranjan",
-      contact: "+912313133313"
-    },
-    {
-      name: "Tushar",
-      contact: "+912313133313"
-    }
-  ]
 
 
   return (
@@ -91,7 +81,7 @@ const EventDetails = () => {
                     <div className='flex flex-col items-start gap-2 justify-center'>
                       <h3 className='details-text m-0 p-0'>For any query contact:</h3>
                       {
-                        contact.map((item, index) => {
+                        data.contacts.map((item, index) => {
                           return (
                             <div className='flex items-center text-base justify-center gap-1'>
                               <span className='details-text m-0 p-0'>{item.name} - </span>

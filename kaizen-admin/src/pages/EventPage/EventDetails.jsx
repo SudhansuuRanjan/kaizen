@@ -53,7 +53,9 @@ const EventDetails = () => {
             <div className='event-page-head'>
               <h1>{data.name}</h1>
               <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
-              <p className='py-4'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>{data.sponsorName}</a></i></p>
+              {
+                sponsor !== "" && <p className='py-4'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>{data.sponsorName}</a></i></p>
+              }
             </div>
 
             <div className='event-page-event-container'>

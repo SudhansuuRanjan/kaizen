@@ -50,8 +50,14 @@ const EditEvent = () => {
         category: "Literary",
         prize: "",
         sponsorName: "",
-        tagline: ""
+        tagline: "",
+        contacts: [],
     });
+
+    const [contactData, setContactData] = useState({
+    name: "",
+    contact: ""
+  });
 
     const [image, setImage] = useState(null);
     const [sponsorImage, setImageSponsor] = useState(null);
@@ -101,17 +107,16 @@ const EditEvent = () => {
     const uploadData = async (e) => {
         e.preventDefault();
         setDisabled(true);
-        const url = await storeImage(image);
-        const urlSponsor = await storeImage(sponsorImage);
         const data = formData;
-        data.image = url;
-        data.sponsor = urlSponsor;
+        if (image) {
+            const url = await storeImage(image);
+            data.image = url;
+        }
+        if (sponsorImage) {
+            const urlSponsor = await storeImage(sponsorImage);
+            data.sponsor = urlSponsor;
+        }
         data.id = slugify(formData.name);
-        // setFormData((prevState) => ({
-        //   ...prevState,
-        //   image: url,
-        //   sponsor: urlSponsor,
-        // }));
         try {
             // update event doc in firestore
             await updateDoc(doc(db, "events", id), data);
@@ -126,7 +131,8 @@ const EditEvent = () => {
                 category: "Dance",
                 prize: "",
                 sponsorName: "",
-                tagline: ""
+                tagline: "",
+                contacts: [],
             })
             setImage(null);
             setImageSponsor(null);
@@ -147,6 +153,32 @@ const EditEvent = () => {
         const docSnap = await getDoc(doc(eventsRef, id));
         setFormData(docSnap.data());
         setLoading(false);
+    }
+
+    const handleContactChange = (e) => {
+        setContactData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value
+        }));
+    }
+
+    const createContact = (e) => {
+        e.preventDefault();
+        setFormData((prevState) => ({
+            ...prevState,
+            contacts: [...prevState.contacts, contactData]
+        }));
+        setContactData({
+            name: "",
+            contact: ""
+        });
+    }
+
+    const deleteContact = (index) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            contacts: prevState.contacts.filter((contact, i) => i !== index)
+        }));
     }
 
     useEffect(() => {
@@ -175,8 +207,8 @@ const EditEvent = () => {
                             </div>
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Event Poster</label>
-                                {image ? <img src={URL.createObjectURL(image)} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " /> : <img src={formData.image} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " /> }
-                                <input id="image" required onChange={handleImage} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                                {image ? <img src={URL.createObjectURL(image)} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " /> : <img src={formData.image} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />}
+                                <input id="image" onChange={handleImage} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
                             </div>
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Event Sponsor Name</label>
@@ -185,7 +217,7 @@ const EditEvent = () => {
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Sponsor Logo</label>
                                 {sponsorImage ? <img src={URL.createObjectURL(sponsorImage)} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " /> : <img src={formData.sponsor} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />}
-                                <input id="image" required onChange={handleImageSponsor} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                                <input id="image" onChange={handleImageSponsor} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
                             </div>
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Event Status</label>
@@ -225,6 +257,29 @@ const EditEvent = () => {
                                 <label className="text-xl font-bold text-yellow-200">Event Prizes</label>
                                 <input placeholder='20K' id="prize" required onChange={handleChange} value={formData.prize} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
                             </div>
+                            <div className="flex flex-col items-center justify-center gap-5 ">
+                                <div className='w-[100%] flex flex-col items-center gap-2'>
+                                    <label className="text-xl font-bold text-yellow-200">Event Contact</label>
+                                    <input placeholder='Name' id="name" onChange={handleContactChange} value={contactData.name} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                                    <input placeholder='+917352304847' id="contact"  onChange={handleContactChange} value={contactData.contact} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                                    <button onClick={createContact} className="w-[50%] h-10 bg-yellow-300 rounded-md m-auto text-yellow-900">
+                                        Add Contact
+                                    </button>
+                                </div>
+                            </div>
+                            {
+                                formData.contacts.map((contact, id) => (
+                                    <div key={id} className="flex flex-col items-center justify-center gap-1">
+                                        <div className="w-[50%] h-10 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
+                                            Name: {contact.name}
+                                        </div>
+                                        <div className="w-[50%] h-10 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
+                                            Contact: {contact.contact}
+                                        </div>
+                                        <button className="bg-pink-500 w-[10rem] py-2 rounded-xl" onClick={() => deleteContact(id)}>Delete</button>
+                                    </div>
+                                ))
+                            }
                             <button type='submit' disabled={disabled} className="w-[50%] h-12 bg-yellow-200 rounded-md m-auto text-yellow-900 mt-5">{
                                 disabled ? 'Uploading Event' : 'Submit'
                             }</button>

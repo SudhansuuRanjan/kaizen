@@ -7,31 +7,31 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { v4 as uuidv4 } from 'uuid';
 
 const categories = [
-        {
-            name: "Literary",
-            id: 1,
-        },
-        {
-            name: "Cultural",
-            id: 2,
-        },
-        {
-            name: "Arts",
-            id: 3,
-        },
-        {
-            name: "Informals",
-            id: 4,
-        },
-        {
-            name: "Sports",
-            id: 5,
-        },
-        {
-            name: "Academics",
-            id: 6,
-        }
-    ]
+  {
+    name: "Literary",
+    id: 1,
+  },
+  {
+    name: "Cultural",
+    id: 2,
+  },
+  {
+    name: "Arts",
+    id: 3,
+  },
+  {
+    name: "Informals",
+    id: 4,
+  },
+  {
+    name: "Sports",
+    id: 5,
+  },
+  {
+    name: "Academics",
+    id: 6,
+  }
+]
 
 
 const Cart = () => {
@@ -48,7 +48,13 @@ const Cart = () => {
     category: "Literary",
     prize: "",
     sponsorName: "",
-    tagline: ""
+    tagline: "",
+    contacts: [],
+  });
+
+  const [contactData, setContactData] = useState({
+    name: "",
+    contact: ""
   });
 
   const [image, setImage] = useState(null);
@@ -98,7 +104,12 @@ const Cart = () => {
     const urlSponsor = await storeImage(sponsorImage);
     const data = formData;
     data.image = url;
-    data.sponsor = urlSponsor;
+    if (sponsorImage) {
+      const urlSponsor = await storeImage(sponsorImage);
+      data.sponsor = urlSponsor;
+    } else {
+      data.sponsor = "";
+    }
     data.id = slugify(formData.name);
     try {
       await addDoc(collection(db, "events"), data);
@@ -113,7 +124,8 @@ const Cart = () => {
         category: "Dance",
         prize: "",
         sponsorName: "",
-        tagline: ""
+        tagline: "",
+        contacts: [],
       })
       setImage(null);
       setImageSponsor(null);
@@ -123,6 +135,32 @@ const Cart = () => {
       // console.log(formData);
     }
     setDisabled(false);
+  }
+
+  const handleContactChange = (e) => {
+    setContactData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value
+    }));
+  }
+
+  const createContact = (e) => {
+    e.preventDefault();
+    setFormData((prevState) => ({
+      ...prevState,
+      contacts: [...prevState.contacts, contactData]
+    }));
+    setContactData({
+      name: "",
+      contact: ""
+    });
+  }
+
+  const deleteContact = (index) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      contacts: prevState.contacts.filter((contact, i) => i !== index)
+    }));
   }
 
   return (
@@ -151,12 +189,12 @@ const Cart = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Sponsor Name</label>
-                <input placeholder='Unacademy' id="sponsorName" required onChange={handleChange} value={formData.sponsorName} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                <input placeholder='Unacademy' id="sponsorName" onChange={handleChange} value={formData.sponsorName} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Sponsor Logo</label>
                 {sponsorImage && <img src={URL.createObjectURL(sponsorImage)} alt="event" className="w-[50%] h-32 border-dashed border border-yellow-400 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />}
-                <input id="image" required onChange={handleImageSponsor} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                <input id="image" onChange={handleImageSponsor} type="file" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Status</label>
@@ -170,7 +208,7 @@ const Cart = () => {
                 <label className="text-xl font-bold text-yellow-200">Event Category</label>
                 <select id="category" required onChange={handleChange} value={formData.category} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
                   {
-                    categories.map((cat,idx)=>(
+                    categories.map((cat, idx) => (
                       <option key={idx} value={cat.name}>{cat.name}</option>
                     ))
                   }
@@ -196,6 +234,29 @@ const Cart = () => {
                 <label className="text-xl font-bold text-yellow-200">Event Prizes</label>
                 <input placeholder='20K' id="prize" required onChange={handleChange} value={formData.prize} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
               </div>
+              <div className="flex flex-col items-center justify-center gap-5 ">
+                <div className='w-[100%] flex flex-col items-center gap-2'>
+                  <label className="text-xl font-bold text-yellow-200">Event Contact</label>
+                  <input placeholder='Name' id="name" required onChange={handleContactChange} value={contactData.name} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                  <input placeholder='+917352304847' id="contact" required onChange={handleContactChange} value={contactData.contact} className="w-[50%] h-10 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                  <button onClick={createContact} className="w-[50%] h-10 bg-yellow-300 rounded-md m-auto text-yellow-900">
+                    Add Contact
+                  </button>
+                </div>
+              </div>
+              {
+                formData.contacts.map((contact, id) => (
+                  <div key={id} className="flex flex-col items-center justify-center gap-1">
+                    <div className="w-[50%] h-10 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
+                      Name: {contact.name}
+                    </div>
+                    <div className="w-[50%] h-10 rounded-md bg-yellow-800 bg-opacity-30 px-2 ">
+                      Contact: {contact.contact}
+                    </div>
+                    <button className="bg-pink-500 w-[10rem] py-2 rounded-xl" onClick={() => deleteContact(id)}>Delete</button>
+                  </div>
+                ))
+              }
               <button type='submit' disabled={disabled} className="w-[50%] h-12 bg-yellow-200 rounded-md m-auto text-yellow-900 mt-5">{
                 disabled ? 'Uploading Event' : 'Submit'
               }</button>
