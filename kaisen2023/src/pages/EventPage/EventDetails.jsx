@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import RegisterPopup from './RegisterPopup';
@@ -21,11 +21,10 @@ const EventDetails = () => {
   const getEvent = async () => {
     setLoading(true);
     const eventsRef = collection(db, 'events');
-    const eventsSnap = await getDocs(eventsRef);
-    const event = eventsSnap.docs.map(doc => doc.data()).filter((item) => item.id === id);
-    setData(event[0]);
+    const eventsSnap = await getDocs(query(eventsRef, where('id', '==', id)));
+    const events = eventsSnap.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
+    setData(events[0]);
     setLoading(false);
-    // console.log(event[0])
   }
 
   useEffect(() => {

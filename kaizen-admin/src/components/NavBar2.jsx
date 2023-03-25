@@ -56,7 +56,7 @@ const NavBar = () => {
                             }
 
                         >
-                            <Link to="/cart">
+                            <Link to="/new-event">
                                 <CartIcon />
                             </Link>
                         </li>

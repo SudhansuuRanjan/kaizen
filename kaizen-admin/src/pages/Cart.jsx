@@ -4,7 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import shortid from 'shortid'
+import { v4 as uuidv4 } from 'uuid';
 
 const categories = [
         {
@@ -100,11 +100,6 @@ const Cart = () => {
     data.image = url;
     data.sponsor = urlSponsor;
     data.id = slugify(formData.name);
-    // setFormData((prevState) => ({
-    //   ...prevState,
-    //   image: url,
-    //   sponsor: urlSponsor,
-    // }));
     try {
       await addDoc(collection(db, "events"), data);
       toast.success("Event added successfully");

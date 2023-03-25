@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import RegisterPopup from './RegisterPopup';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const EventDetails = () => {
@@ -21,11 +20,10 @@ const EventDetails = () => {
   const getEvent = async () => {
     setLoading(true);
     const eventsRef = collection(db, 'events');
-    const eventsSnap = await getDocs(eventsRef);
-    const event = eventsSnap.docs.map(doc => doc.data()).filter((item) => item.id === id);
-    setData(event[0]);
+    const eventsSnap = await getDocs(query(eventsRef, where('id', '==', id)));
+    const events = eventsSnap.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
+    setData(events[0]);
     setLoading(false);
-    // console.log(event[0])
   }
 
   useEffect(() => {
@@ -64,7 +62,7 @@ const EventDetails = () => {
               </div>
               <div className='event-details-container'>
                 <div className='flex flex-col'>
-                  <div className='flex-1 bg-white'>
+                  <div className='flex-1 '>
                     <div className='flex gap-5 items-center'>
                       <img src="https://ragam.co.in/images/assets/circle%20selected.svg" alt="wsw" />
                       <h3 className='font-bold text-2xl'>About the event</h3>

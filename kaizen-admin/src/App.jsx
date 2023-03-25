@@ -13,6 +13,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import Cart from './pages/Cart'
 import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
+import EditEvent from './pages/EventPage/EditEvent'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
@@ -47,9 +48,19 @@ function App() {
             </>
           } />
 
+          <Route path='/edit-event/:eventSlug' element={<PrivateRoute />}>
+            <Route path='/edit-event/:eventSlug' element={
+              <>
+                <NavBar2 />
+                <EditEvent />
+                <Footer2 />
+              </>
+            } />
+          </Route>
 
-          <Route path='/cart' element={<PrivateRoute />}>
-            <Route path='/cart' element={
+
+          <Route path='/new-event' element={<PrivateRoute />}>
+            <Route path='/new-event' element={
               <>
                 <NavBar2 />
                 <Cart />
