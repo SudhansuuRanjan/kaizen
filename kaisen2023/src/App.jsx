@@ -23,6 +23,7 @@ import NavBar from './components/HomePage/NavBar'
 import CartPage from './pages/Cart/CartPage'
 import Error from './pages/Error'
 import CAPortal from './pages/CAPortal/CAPortal'
+import CompleteProfile from './pages/CompleteProfile'
 
 function App() {
 
@@ -114,6 +115,12 @@ function App() {
               <Layout>
                 <Profile />
               </Layout>
+            } />
+          </Route>
+
+          <Route path='/complete-profile' element={<PrivateRoute />}>
+            <Route path='/complete-profile' element={
+              <CompleteProfile />
             } />
           </Route>
 

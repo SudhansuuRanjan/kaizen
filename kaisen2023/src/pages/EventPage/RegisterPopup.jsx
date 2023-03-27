@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { RxCrossCircled } from 'react-icons/rx'
 import { useNavigate } from 'react-router-dom'
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
@@ -43,8 +42,13 @@ const RegisterPopup = ({ event, setPopup }) => {
             const user = docSnap.data();
             const cart = user.cart;
             const eventInCart = cart.find((item) => item.name === event.name);
-            if (eventInCart) {
-                toast.error("Event already in cart, for updating members or deleting event, go to cart.");
+            const eventAlreadyPurchased = cart.find((item) => item.purchased === true);
+            if (eventAlreadyPurchased) {
+                toast.warn("You're already registered for the event.");
+                setPopup(false);
+                return;
+            } else if (eventInCart) {
+                toast.warn("Event already in cart, for updating members or deleting event, go to cart.");
                 setPopup(false);
                 return;
             } else {
@@ -56,7 +60,7 @@ const RegisterPopup = ({ event, setPopup }) => {
     }
 
     const addEventToCart = async () => {
-        if(event.minMem > team.length+1) return toast.error(`Minimum number of members required is ${event.minMem}`);
+        if (event.minMem > team.length + 1) return toast.error(`Minimum number of members required is ${event.minMem}`);
         const newEvent = {
             name: event.name,
             participants: event.participants,
@@ -128,8 +132,6 @@ const RegisterPopup = ({ event, setPopup }) => {
                         </button>
 
                     </div>
-
-
                 </div>
             </div>
 

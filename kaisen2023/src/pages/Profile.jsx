@@ -5,7 +5,6 @@ import { updateDoc, doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import PurchasedEventItem from '../components/PurchasedEventItem'
-import UpdateProfile from '../components/UpdateProfile'
 import EditProfile from '../components/EditProfile'
 import QRCode from "react-qr-code";
 import ConfettiExplosion from 'react-confetti-explosion';
@@ -25,7 +24,6 @@ const Profile = () => {
 
   const auth = getAuth();
   const [changeDetails, setChangeDetails] = useState(false);
-  const [updateProfileModal, setUpdateProfileModal] = useState(false);
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
@@ -47,16 +45,6 @@ const Profile = () => {
     navigate('/');
   }
 
-  const checkUser = async () => {
-    if (!loading) {
-      if (user.gender === "" || user.phone === "" || user.address === "" || user.college === "" || user.year === "" || user.course === "") {
-        document.body.style.overflow = "hidden";
-        // console.log(user.cart)
-        setUpdateProfileModal(true);
-      }
-    }
-  }
-
   // get profile details from firestore
   const getProfile = async () => {
     try {
@@ -71,7 +59,6 @@ const Profile = () => {
       toast.error("Could not get profile details!");
     }
     setLoading(false);
-    await checkUser();
   }
 
   const editProfile = async (data) => {
@@ -102,11 +89,6 @@ const Profile = () => {
 
   return (
     <div className="bg-black bg-repeat-y  min-h-screen bg-center bg-cover pt-10 md:pt-12 lg:pt-16 pb-20 relative flex flex-col justify-center items-center">
-
-      {
-        updateProfileModal && <UpdateProfile setUpdateProfileModal={setUpdateProfileModal} />
-      }
-
       {
         changeDetails && <EditProfile editProfile={editProfile} user={user} setChangeDetails={setChangeDetails} />
       }

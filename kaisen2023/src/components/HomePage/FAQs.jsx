@@ -5,25 +5,25 @@ const FAQs = () => {
 
     const faqs = [
         {
-            question: 'What is the theme of the event?',
-            answer: 'The theme of the event is "The Future of Art". Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus sequi corporis hic similique, eos optio voluptatum voluptates voluptatem tenetur perspiciatis?',
+            question: 'What is the theme of Kaizen 2023?',
+            answer: "Close your eyes and imagine, the sound of waves hitting your ears as you look out to the vast blue sea. The sun in the sky shimmering like a Golden coin you'll find glittering in treasures. \nThe music of Sea chanties and shooting cannons filling the air with fun and frolic. So our theme for Kaizen this year is: ASTER: a sail through errantry! Let this wave immerse you and all of your fellow mateys into the waters of adventure and performance. Just like the mighty pirates, let us rob you off all the boredom, and slice your blues with our glistening swords. So, put on the eyepatch, sail through the ocean of creativity and step off on to the island of Kaizen!",
             color: "yellow",
         },
         {
-            question: 'What is the theme of the event?',
-            answer: 'The theme of the event is "The Future of Art". Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus sequi corporis hic similique, eos optio voluptatum voluptates voluptatem tenetur perspiciatis?',
+            question: 'How do I register?',
+            answer: "You can register by going to the events page from our drop-down. Go through all the events or select the category you're interested in. Finally, select an event matching your interests and talent and click on the register button within that event's page.",
             color: "red",
         },
         {
-            question: 'What is the theme of the event lorem is the?',
-            answer: 'The theme of the event is "The Future of Art". Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus sequi corporis hic similique, eos optio voluptatum voluptates voluptatem tenetur perspiciatis?',
+            question: 'Will accommodation facility be provided?',
+            answer: "Yes! Keep a look out on our Instragram, Facebook pages and website for the link for accommodation registration. Once out, be sure to fill it as fast as possible because we'll be having limited accommodation.",
             color: "blue",
         },
         {
-            question: 'What is the theme of the event?',
-            answer: 'The theme of the event is "The Future of Art". Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus sequi corporis hic similique, eos optio voluptatum voluptates voluptatem tenetur perspiciatis?',
-            color: "red",
-        },
+            question:"What are the prizes for various competitions?",
+            answer:"We have a very exciting prize pool this year with cash prizes and various gift hampers. Get sailing with us to know more.",
+            color:"yellow"
+        }
     ]
 
     return (

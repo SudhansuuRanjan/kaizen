@@ -46,7 +46,7 @@ const SignUp = () => {
       await setDoc(doc(db, "users", user.uid), formDataCopy);
 
       toast.success('Signed Up Successfully!')
-      navigate('/profile');
+      navigate('/complete-profile');
     } catch (error) {
       toast.error('Bad User Credentials')
     }

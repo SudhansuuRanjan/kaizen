@@ -36,7 +36,7 @@ const OAuth = () => {
                     purchasedEvents: [],
                 })
             }
-            navigate('/profile');
+            navigate('/complete-profile');
             toast.success('Logged In Successfully!');
         } catch (error) {
             // toast.error('Bad User Credentials')
