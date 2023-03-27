@@ -31,7 +31,8 @@ export default async function PaymentGateway(amount) {
     handler: async function (response) {
       await updatePurchase();
       toast.success("Payment Successful");
-      console.log(response);
+      // console.log(response);
+      return true;
     },
     prefill: {
       name: displayName,
@@ -55,6 +56,8 @@ export default async function PaymentGateway(amount) {
     toast.error("Payment Failed");
     console.log(response.error);
   });
+  
+  return false;
 }
 
 const updatePurchase = async () => {

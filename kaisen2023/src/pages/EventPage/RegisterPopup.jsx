@@ -56,6 +56,7 @@ const RegisterPopup = ({ event, setPopup }) => {
     }
 
     const addEventToCart = async () => {
+        if(event.minMem > team.length+1) return toast.error(`Minimum number of members required is ${event.minMem}`);
         const newEvent = {
             name: event.name,
             participants: event.participants,
@@ -66,6 +67,7 @@ const RegisterPopup = ({ event, setPopup }) => {
             id: shortid.generate(),
             eventId: event.id,
             purchased: false,
+            minMem: event.minMem,
         }
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);
