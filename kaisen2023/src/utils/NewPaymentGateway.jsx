@@ -11,7 +11,7 @@ const NewPaymentGateway = () => {
     const [transUserPassword, setTransUserPassword] = useState("RIADA_SP336");
     const [authkey, setAuthkey] = useState("kaY9AIhuJZNvKGp2");
     const [authiv, setAuthiv] = useState("YN2v8qQcU3rGfA1y");
-    const [callbackUrl, setCallbackUrl] = useState("/profile");
+    const [callbackUrl, setCallbackUrl] = useState("https://www.kaizenaiimspatna.com/profile");
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -94,7 +94,7 @@ isOpen={isOpen} label={"testing"} />
                 {
                     (clientCode && callbackUrl && transUserPassword && transUserName && authkey
                         && authiv) && isOpen &&
-                    <PaymentInitModal clientCode={clientCode}
+                    <PaymentInitModal amount='2000' clientCode={clientCode}
                         transUserPassword={transUserPassword} transUserName={transUserName}
                         callbackUrl={callbackUrl} isOpen={isOpen} authkey={authkey} authiv={authiv}
                         label={"testing"} />

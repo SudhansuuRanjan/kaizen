@@ -51,7 +51,7 @@ const EventDetails = () => {
         Loading ? <div className='flex pt-[10rem] w-[100%] items-center justify-center'> <p>Loading...</p></div> : (
           <>
             <div className='event-page-head'>
-              <h1>{data.name}</h1>
+              <h1>{data.name.trim('')}</h1>
               <p className='lg:text-4xl text-3xl font-medium py-2'>{data.tagline}</p>
               {
                 data.sponsor !== "" && <p className='py-4'><i >Presented by <a href={data.sponsor} className='text-yellow-500 text-lg font-medium'>{data.sponsorName}</a></i></p>
