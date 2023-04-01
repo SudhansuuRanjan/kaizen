@@ -42,7 +42,8 @@ const RegisterPopup = ({ event, setPopup }) => {
             const user = docSnap.data();
             const cart = user.cart;
             const eventInCart = cart.find((item) => item.name === event.name);
-            const eventAlreadyPurchased = cart.find((item) => item.purchased === true);
+            const eventAlreadyPurchased = cart.find((item) => item.purchased === true && item.eventId === event.id);
+            // console.log(eventAlreadyPurchased,event.id);
             if (eventAlreadyPurchased) {
                 toast.warn("You're already registered for the event.");
                 setPopup(false);

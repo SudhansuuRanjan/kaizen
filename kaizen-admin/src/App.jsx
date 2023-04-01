@@ -32,21 +32,26 @@ function App() {
               <Footer />
             </>
           } />
-          <Route path='/events' element={
-            <>
-              <NavBar2 />
-              <EventPage />
-              <Footer2 />
-            </>
-          } />
 
-          <Route path='/events/:eventSlug' element={
-            <>
-              <NavBar2 />
-              <EventDetails />
-              <Footer2 />
-            </>
-          } />
+          <Route path='/events' element={<PrivateRoute />}>
+            <Route path='/events' element={
+              <>
+                <NavBar2 />
+                <EventPage />
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/events/:eventSlug' element={<PrivateRoute />}>
+            <Route path='/events/:eventSlug' element={
+              <>
+                <NavBar2 />
+                <EventDetails />
+                <Footer2 />
+              </>
+            } />
+          </Route>
 
           <Route path='/edit-event/:eventSlug' element={<PrivateRoute />}>
             <Route path='/edit-event/:eventSlug' element={

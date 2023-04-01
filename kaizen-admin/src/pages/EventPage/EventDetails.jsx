@@ -63,17 +63,35 @@ const EventDetails = () => {
                 <img src={data.image} alt="enent" loading='lazy' />
               </div>
               <div className='event-details-container'>
-                <div className='flex flex-col'>
-                  <div className='flex-1 '>
-                    <div className='flex gap-5 items-center'>
-                      <img src="https://ragam.co.in/images/assets/circle%20selected.svg" alt="wsw" />
-                      <h3 className='font-bold text-2xl'>About the event</h3>
-                    </div>
-                    <p className='details-text'>
-                      {data.description}
-                    </p>
+                <div>
+                  <div className='flex gap-5 items-center'>
+                    <img src="https://ragam.co.in/images/assets/circle%20selected.svg" alt="wsw" />
+                    <h3 className='font-bold text-2xl'>About the event</h3>
                   </div>
-                  <div className='flex flex-0 py-10 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
+                  <p className='details-text'>
+                    {data.description}
+                  </p>
+                  <div className='flex pt-2 flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium'>
+                    <div className='flex flex-col items-start gap-2 justify-center'>
+                      <h3 className='details-text m-0 p-0'>For any query contact:</h3>
+                      {
+                        data.contacts.map((item, index) => {
+                          return (
+                            <div key={index} className='flex items-center text-base justify-center gap-1'>
+                              <span className='details-text m-0 p-0'>{item.name} - </span>
+                              <a className='details-text m-0 p-0'>{item.contact}</a>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                    <div className='flex items-center gap-2 justify-center'>
+                      <h3>Team Size:</h3>
+                      <span className='text-yellow-500'>{data.participants == '1' ? 'Solo' :
+                        data.minMem + '-' + data.participants} </span>
+                    </div>
+                  </div>
+                  <div className='flex py-10 pt-6 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Prize Pool:</h3>
                       <span className='text-yellow-500 font-bold text-2xl'> ₹{data.prize}</span>

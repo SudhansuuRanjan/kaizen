@@ -216,11 +216,11 @@ const Cart = () => {
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Price</label>
-                <input placeholder='200' id="price" required onChange={handleChange} value={formData.price} type="number" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                <input min={0} placeholder='200' id="price" required onChange={handleChange} value={formData.price} type="number" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Minimum Members</label>
-                <input placeholder='200' id="minMem" required onChange={handleChange} value={formData.minMem} type="number" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                <input min={0} placeholder='200' id="minMem" required onChange={handleChange} value={formData.minMem} type="number" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
               </div>
               <div className="flex flex-col items-center justify-center gap-5">
                 <label className="text-xl font-bold text-yellow-200">Event Participants</label>

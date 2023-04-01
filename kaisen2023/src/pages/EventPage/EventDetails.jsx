@@ -93,7 +93,8 @@ const EventDetails = () => {
                     </div>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Team Size:</h3>
-                      <span className='text-yellow-500'> {data.participants}</span>
+                      <span className='text-yellow-500'>{data.participants == '1' ? 'Solo' :
+                        data.minMem + '-' + data.participants} </span>
                     </div>
                   </div>
                   <div className='flex py-10 pt-6 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
