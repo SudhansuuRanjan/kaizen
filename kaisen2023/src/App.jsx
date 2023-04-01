@@ -24,6 +24,7 @@ import CartPage from './pages/Cart/CartPage'
 import Error from './pages/Error'
 import CAPortal from './pages/CAPortal/CAPortal'
 import CompleteProfile from './pages/CompleteProfile'
+import NewPaymentGateway from './utils/NewPaymentGateway'
 
 function App() {
 
@@ -121,6 +122,12 @@ function App() {
           <Route path='/complete-profile' element={<PrivateRoute />}>
             <Route path='/complete-profile' element={
               <CompleteProfile />
+            } />
+          </Route>
+
+          <Route path='/checkout' element={<PrivateRoute />}>
+            <Route path='/checkout' element={
+              <NewPaymentGateway />
             } />
           </Route>
 

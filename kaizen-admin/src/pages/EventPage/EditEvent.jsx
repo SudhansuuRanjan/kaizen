@@ -52,6 +52,7 @@ const EditEvent = () => {
         sponsorName: "",
         tagline: "",
         contacts: [],
+        minMem: "",
     });
 
     const [contactData, setContactData] = useState({
@@ -133,6 +134,7 @@ const EditEvent = () => {
                 sponsorName: "",
                 tagline: "",
                 contacts: [],
+                minMem: "",
             })
             setImage(null);
             setImageSponsor(null);
@@ -240,6 +242,10 @@ const EditEvent = () => {
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Event Price</label>
                                 <input placeholder='200' id="price" required onChange={handleChange} value={formData.price} type="number" className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
+                            </div>
+                            <div className="flex flex-col items-center justify-center gap-5">
+                                <label className="text-xl font-bold text-yellow-200">Min Participants</label>
+                                <input placeholder='4' id="minMem" required onChange={handleChange} value={formData.minMem} type="number" min={0} className="w-[50%] h-12 border-2 border-yellow-200 rounded-md bg-yellow-800 bg-opacity-30 px-2 " />
                             </div>
                             <div className="flex flex-col items-center justify-center gap-5">
                                 <label className="text-xl font-bold text-yellow-200">Event Participants</label>
