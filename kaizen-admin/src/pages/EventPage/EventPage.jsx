@@ -8,14 +8,12 @@ import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 import { FaEdit } from 'react-icons/fa'
 import { AiFillDelete } from 'react-icons/ai'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const EventPage = () => {
     const [selectedEvent, setSelectedEvent] = useState(0);
     const [events, setEvents] = useState([]);
-    const [eventSnap, setEventsSnap] = useState(null);
     const [Loading, setLoading] = useState(true);
-    const [refresh, setRefresh] = useState(false);
     const categories = [
         {
             name: "All",
@@ -78,7 +76,7 @@ const EventPage = () => {
 
     useEffect(() => {
         getEvents();
-    }, [selectedEvent, refresh]);
+    }, [selectedEvent]);
 
 
     // delete event from firestore
@@ -90,7 +88,6 @@ const EventPage = () => {
         // delete event from firestore
         try {
             await deleteDoc(doc(db, 'events', id));
-            setRefresh(!refresh);
             toast.success('Event deleted successfully');
         } catch (err) {
             toast.error('Error deleting event');

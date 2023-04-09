@@ -16,6 +16,8 @@ const Profile = () => {
 
   const { name, email } = formData;
 
+  // console.log(auth.currentUser)
+
   const navigate = useNavigate();
 
   const onLogout = () => {

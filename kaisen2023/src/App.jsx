@@ -13,7 +13,7 @@ import Footer from './components/Footer'
 import Legals from './pages/Legals/Legals'
 import ScrollToTop from './hooks/useScrollToTop'
 import PrivateRoute from './components/PrivateRoute'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
 import AOS from 'aos';
@@ -24,7 +24,7 @@ import CartPage from './pages/Cart/CartPage'
 import Error from './pages/Error'
 import CAPortal from './pages/CAPortal/CAPortal'
 import CompleteProfile from './pages/CompleteProfile'
-import NewPaymentGateway from './utils/NewPaymentGateway'
+import Payment from './pages/Payment/Payment'
 
 function App() {
 
@@ -127,7 +127,9 @@ function App() {
 
           <Route path='/checkout' element={<PrivateRoute />}>
             <Route path='/checkout' element={
-              <NewPaymentGateway />
+              <Layout>
+                <Payment />
+              </Layout>
             } />
           </Route>
 

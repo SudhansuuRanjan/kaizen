@@ -1,8 +1,28 @@
 import React from 'react'
 import './CAStyles.scss'
 import Footer from '../../components/HomePage/Footer'
+import FAQIems from '../../components/HomePage/FAQIems'
 
 const CAPortal = () => {
+
+    const faqs = [
+        {
+            question: 'How to I become a campus ambassador ?',
+            answer: "In order to become a campus ambassador you need to visit  kaizenaiimspatna.com/ca and register yourself by providing the required details.",
+            color: "yellow",
+        },
+        {
+            question: 'Who can become a campus ambassador ?',
+            answer: "You only need to be a college student in order to become a part of the campus ambassador program. All you need is a valid college ID and you are good to go.",
+            color: "red",
+        },
+        {
+            question: 'How can CA  get assistance from team KAIZEN when required?',
+            answer: 'You can contact team KAIZEN by "contact us" section available on the CA website. Our team will get back to  you through the email address or phone number provided by you.',
+            color: "blue",
+        }
+    ]
+
     return (
         <>
             <div className='ca-container'>
@@ -56,21 +76,27 @@ const CAPortal = () => {
 
                 <div>
                     <h2 className='text-6xl leading-[5rem] font-bold'>What is <br /><span className='text-underline'>Campus Ambassador</span><br /> Program?</h2>
-                    <p className='py-16 leading-8 font-light opacity-70 text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quaerat minima perferendis ullam blanditiis asperiores quibusdam cumque vero. Quod repudiandae veritatis facere labore ipsum quaerat magni laudantium quisquam similique voluptate corporis odio provident hic numquam, repellendus neque cumque reiciendis error accusantium nesciunt. Sapiente saepe deleniti minus temporibus delectus optio animi id esse sint. Aspernatur excepturi consequuntur sed debitis repudiandae. Accusamus amet recusandae ratione id provident deserunt sunt pariatur perspiciatis eveniet esse numquam odit quia ipsum autem voluptatem animi eos expedita nulla accusantium distinctio obcaecati, est odio magni! Autem, eius deleniti consequuntur hic saepe culpa vel natus exercitationem, obcaecati, repellendus vitae.
+                    <p className='py-16 leading-8 font-light opacity-70 text-lg'>As a part of the campus ambassador programme, KAIZEN offers students the chance to represent and promote the organization at their colleges and universities. Their responsibilities comprise developing our pressure and promoting KAIZEN events among students & educators by serving as a link between their college and us.
                     </p>
                 </div>
 
                 <div>
                     <h2 className='text-6xl font-bold pb-10'>Why <span className='text-underline'>CA</span>?</h2>
                     <ul className='list-type'>
-                        <li><p className='py-5 leading-8 font-light opacity-70 text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quaerat minima perferendis ullam blanditiis asperiores quibusdam cumque vero. Quod repudiandae veritatis facere labore ipsum quaerateveniet esse numquam odit quia ipsum autem voluptatem animi eos expedita nulla accusantium distinctio obcaecati, est odio magni! Autem, eius deleniti consequuntur hic saepe culpa vel natus exercitationem, obcaecati, repellendus vitae.</p></li>
-                        <li><p className='py-5 leading-8 font-light opacity-70 text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quaerat minima perferendis ullam blanditiis asperiores quibusdam cumque vero. Quod repudiandae veritatis facere labore ipsum quaerat magni laudantium quisquam similique voluptate corporis odio provident hic numquam, repellendus neque cumque reiciendis error arepellendus vitae.</p></li>
+                        <li><p className='py-5 leading-8 font-light opacity-70 text-lg'>The most significant opportunity to represent your college in one of the biggest med-fest in Eastern India, improving your leadership qualities.</p></li>
+                        <li><p className='py-5 leading-8 font-light opacity-70 text-lg'>Build and expand your network with other colleges and their Campus Ambassador.</p></li>
+                        <li>
+                            <p className='py-5 leading-8 font-light opacity-70 text-lg'>Get a chance to be a part of the KAIZEN team and get a chance to work with the best minds of the country.</p>
+                        </li>
+                        <li>
+                            <p className='py-5 leading-8 font-light opacity-70 text-lg'>Build and develop your leadership skills.</p>
+                        </li>
                     </ul>
                 </div>
 
             </div>
 
-            <div className='bg-gray-900'>
+            <div className='bg-gray-900 pb-[5rem]'>
                 <div>
                     <h1 className='text-4xl font-bold text-center py-16'>Incentives</h1>
                     <div className='grid grid-cols-3 m-auto max-w-[75rem] gap-[3rem]'>
@@ -85,21 +111,21 @@ const CAPortal = () => {
                             <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
                                 <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
                             </div>
-                            <h2>Event Passes</h2>
+                            <h2>Prizes/Goodies</h2>
                         </div>
 
                         <div className='flex items-center justify-center flex-col' >
                             <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
                                 <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
                             </div>
-                            <h2>Event Passes</h2>
+                            <h2>Merchandise</h2>
                         </div>
 
                         <div className='flex items-center justify-center flex-col'>
                             <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
                                 <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
                             </div>
-                            <h2>Event Passes</h2>
+                            <h2>Workshop</h2>
                         </div>
 
 
@@ -107,7 +133,7 @@ const CAPortal = () => {
                             <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
                                 <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
                             </div>
-                            <h2>Event Passes</h2>
+                            <h2>Certificates</h2>
                         </div>
 
                         <div className='flex items-center justify-center flex-col'>
@@ -119,6 +145,26 @@ const CAPortal = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="relative bg-no-repeat min-h-fit bg-center bg-cover w-[100%] bg-[url('https://ragam.co.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftheyyam%202.98e82130.png&w=1080&q=75')]">
+            <div className='flex lg:flex-row md:flex-row flex-col justify-between lg:items-start md:items-start items-center absolute w-[100%] lg:top-[20%] md:top-[20%] top-[10%] z-0 h-[32rem]'>
+                {/* <img src="coin.png" alt="wheel" data-aos="fade-up-right" className='lg:h-[17rem] md:h-[15rem] h-[15rem] brightness-75' />
+                <img src="hat.png" alt="hat" data-aos="zoom-in-up" className='lg:h-[22rem] md:h-[20rem] h-[15rem] self-end brightness-75' />
+                <img src="map.png" alt="cpmpass" data-aos="fade-up-left" className='lg:h-[17rem] md:h-[15rem] h-[15rem] brightness-75' /> */}
+            </div>
+
+            <div className='flex flex-col bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto z-[1999999]'>
+                <h3 className='text-center font-bold text-4xl pt-20 text-yellow-500 decoration-red-500 underline underline-offset[1px]'>FAQs</h3>
+                <div className='flex flex-col items-center justify-center py-24 gap-6'>
+                    {
+                        faqs.map((faq, index) => (
+                            <FAQIems key={index} faq={faq} />
+                        ))
+                    }
+                </div>
+            </div>
+
+        </div>
         </>
     )
 }

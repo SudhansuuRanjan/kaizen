@@ -17,6 +17,8 @@ import EditEvent from './pages/EventPage/EditEvent'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
+import Participant from './pages/participant/Participant'
+import Verify from './pages/verify/Verify'
 
 
 function App() {
@@ -83,6 +85,19 @@ function App() {
               </>
             } />
           </Route>
+
+          <Route path='/participant/:id' element={<PrivateRoute />}>
+            <Route path='/participant/:id' element={
+              <>
+                <NavBar2 />
+                <Participant />
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/verify' element={<Verify />}/>
+
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
