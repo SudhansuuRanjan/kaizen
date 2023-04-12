@@ -5,14 +5,14 @@ const Pronite = () => {
   return (
     <div className='pronite-container'>
       <div className='pronite-banner'>
-        <h2 className='pronite-head-text'>PROSHOW<br />2023</h2>
+        <h2 className='pronite-head-text'>PRONITE<br />2023</h2>
       </div>
       <div className='pronite-cards'>
 
 
         <div className="pronite-card-container">
           <div className=''>
-            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+            <img alt="MOHAN SISTERS" src="images/celebrity.webp" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
           <div className='pronite_profile_details'>
             <h2 className='pronite-name'>Star Night</h2>
@@ -59,13 +59,13 @@ const Pronite = () => {
             </div>
           </div>
           <div className=''>
-            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+            <img alt="MOHAN SISTERS" src="images/fashion show.webp" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
         </div>
 
         <div className="pronite-card-container">
           <div className=''>
-            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy" />
+            <img alt="MOHAN SISTERS" src="images/band night.webp" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy" />
           </div>
           <div className='pronite_profile_details'>
             <h2 className='pronite-name'>Band Night</h2>
@@ -111,14 +111,14 @@ const Pronite = () => {
             </div>
           </div>
           <div className=''>
-            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
+            <img alt="MOHAN SISTERS" src="images/EDM.webp" height={560} width={560} decoding="async" data-nimg="1" loading="lazy" className='w-[560px] h-[100%] aspect-square' />
           </div>
         </div>
 
 
         <div className="pronite-card-container">
           <div className=''>
-            <img alt="MOHAN SISTERS" src="images/Unknown.jpg" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy" />
+            <img alt="MOHAN SISTERS" src="images/standup.webp" height={560} width={560} decoding="async" data-nimg="1" className="ProshowPage_img__TkM26 w-[560px] h-[100%] aspect-square" loading="lazy" />
           </div>
           <div className='pronite_profile_details'>
             <h2 className='pronite-name'>Comedy Night</h2>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa'
 import { IoLogoWhatsapp } from 'react-icons/io'
 const Footer = () => {
   const date = new Date;
@@ -17,16 +17,18 @@ const Footer = () => {
 
           <p className='max-w-[17rem] py-3 text-base'>Kaizen, is AIIMS Patna's annual socio-cultural fest. </p>
           <div className='flex gap-3 py-2 '>
-            <a href="https://facebook.com" className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
+            <a target='_blank' href="https://www.facebook.com/aiimspatnafest?mibextid=ZbWKwL" className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
               <FaFacebook size={30} />
             </a>
-            <a href="https://web.whatsapp.com" className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
+            <a target='_blank' href="https://web.whatsapp.com" className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
               <IoLogoWhatsapp size={30} />
             </a>
-            <a href="https://instagram.com" className='transition ease-in delay-50 text-pink-500 hover:text-pink-600 hover:scale-[110%]'>
+            <a target='_blank' href="https://www.youtube.com/@kaizen.aiimspatna" className='transition ease-in delay-50 text-red-500 hover:text-red-600 hover:scale-[110%]'>
+              <FaYoutube size={30} />
+            </a>
+            <a target='_blank' href="http://www.instagram.com/kaizen.aiimspatna" className='transition ease-in delay-50 text-pink-500 hover:text-pink-600 hover:scale-[110%]'>
               <FaInstagram size={30} />
             </a>
-
           </div>
         </div>
 

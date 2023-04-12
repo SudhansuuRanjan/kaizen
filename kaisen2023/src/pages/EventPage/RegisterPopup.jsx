@@ -71,7 +71,7 @@ const RegisterPopup = ({ event, setPopup }) => {
             details: event.rulebook,
             id: shortid.generate(),
             eventId: event.id,
-            purchased: false,
+            purchased: Number(event.price) === 0 ? true : false,
             minMem: event.minMem,
         }
         try {
@@ -83,9 +83,14 @@ const RegisterPopup = ({ event, setPopup }) => {
             await updateDoc(userRef, {
                 cart: newCart
             });
-            toast.success("Event added to cart");
             document.body.style.overflow = 'auto';
-            navigate('/cart');
+            if (Number(event.price) === 0 ? true : false) {
+                toast.success("Registration Successful!");
+                navigate('/profile')
+            } else {
+                toast.success("Event added to cart");
+                navigate('/cart');
+            }
         } catch (error) {
             toast.error("Could not add event to cart");
         }
@@ -97,7 +102,7 @@ const RegisterPopup = ({ event, setPopup }) => {
                 <h1 className='text-3xl font-bold text-center mt-5 lg:mt-0 md:mt-0'>Register for {event.name}</h1>
                 <div className='flex flex-col gap-2 mt-6'>
                     <div className='text-sm text-red-500 mb-2'>
-                        <li>This is a team event, add your team members and then proceed to register, you can update your team list in Event Cart.</li>
+                        {event.participants > 1 && event.participants - 1 > team.length && <li>This is a team event, add your team members and then proceed to register, you can update your team list in Event Cart.</li>}
                         <li>On registration the events are added to your cart, then you need to go to cart and pay for the events you want to register.</li>
                     </div>
 

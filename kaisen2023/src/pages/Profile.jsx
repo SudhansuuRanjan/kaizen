@@ -108,16 +108,16 @@ const Profile = () => {
               <div className='flex gap-5'>
                 <div className='flex flex-col items-center justify-center'>
                   <div className='overflow-hidden rounded-full h-[5rem] w-[5rem] flex items-center justify-between'>
-                    <img src="https://cdn2.f-cdn.com/files/download/40990929/88eaef.jpg" alt="profile" className='w-[5rem] h-auto' />
+                    <img src="pirate.webp" alt="profile" className='w-[5rem] h-auto' />
                   </div>
-                  <button className='text-sm bg-yellow-200 hover:bg-yellow-700 hover:text-yellow-200 text-yellow-800 px-3 rounded-full py-0.5 mt-2 font-medium' onClick={() => {
+                  {/* <button className='text-sm bg-yellow-200 hover:bg-yellow-700 hover:text-yellow-200 text-yellow-800 px-3 rounded-full py-0.5 mt-2 font-medium' onClick={() => {
                     setShowQr(true);
                     document.body.style.overflow = "hidden";
-                  }}>Show QR</button>
+                  }}>Show QR</button> */}
                 </div>
                 <div className='flex flex-col items-start'>
                   <p className='text-xl font-semibold text-center mt-4'>{name}</p>
-                  <p className='text-sm text-center text-gray-400'>UID : {uid.toUpperCase().substring(0, 6)}</p>
+                  <p className='text-sm text-center text-gray-400'>KAIZEN ID : {uid.toUpperCase().substring(0, 6)}</p>
                 </div>
               </div>
 

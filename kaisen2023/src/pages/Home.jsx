@@ -5,7 +5,7 @@ import FAQs from '../components/HomePage/FAQs'
 import Highlights from '../components/HomePage/Highlights'
 import ParallaxComponent from '../components/HomePage/ParallaxComponent'
 import Timer from '../components/HomePage/Timer'
-import Sponsors from '../components/HomePage/Sponsors'
+// import Sponsors from '../components/HomePage/Sponsors'
 import NavBar from '../components/HomePage/NavBar'
 import ChiefPatron from '../components/HomePage/ChiefPatron'
 
@@ -22,7 +22,7 @@ const Home = () => {
       <About />
       <Highlights />
       <ChiefPatron/>
-      <Sponsors />
+      {/* <Sponsors /> */}
       <FAQs />
     </div>
   )

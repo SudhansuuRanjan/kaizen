@@ -35,8 +35,8 @@ const Payment = () => {
     const getQueryParams = async () => {
         let params = getJsonFromUrl();
         setUrlParams(params);
-        if (params.status === 'SUCCESS') {
-            toast.success('Payment Successful!');
+        if (params.status === 'SUCCESS' && amount !== 0 && amount === parseInt(params.amount)) {
+            toast.success('Payment Successful!' + amount);
             await updatePurchase();
             navigate('/profile');
         } else if (params.status === 'FAILED') {
