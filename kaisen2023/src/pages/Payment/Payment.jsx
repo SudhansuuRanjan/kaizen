@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase.config'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import shortid from 'shortid'
 import { PaymentInitModal } from 'pg-test-project';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
 
 const Payment = () => {
 
     const auth = getAuth();
+    const navigate = useNavigate();
     const userRef = doc(db, 'users', auth.currentUser.uid);
-    const [profile, setProfile] = useState();
-    const [cartItems, setCartItems] = useState([]);
+    const [amount, setAmount] = useState(0);
     const [urlParams, setUrlParams] = useState({});
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
@@ -21,7 +22,7 @@ const Payment = () => {
         transUserPassword: 'RIADA_SP336',
         authkey: 'kaY9AIhuJZNvKGp2',
         authiv: 'YN2v8qQcU3rGfA1y',
-        callbackUrl: window.location.href,
+        callbackUrl: 'http://localhost:5173/checkout',
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         phone: '',
@@ -31,47 +32,42 @@ const Payment = () => {
     })
 
     // get url query params
-    const getQueryParams = (url) => {
-        let params = getJsonFromUrl(url);
+    const getQueryParams = async () => {
+        let params = getJsonFromUrl();
         setUrlParams(params);
-        if(params.status === 'SUCCESSFUL') {
+        if (params.status === 'SUCCESS') {
             toast.success('Payment Successful!');
-        } else if(params.status === 'FAILED') {
+            await updatePurchase();
+            navigate('/profile');
+        } else if (params.status === 'FAILED') {
             toast.error('Payment Failed!');
+            navigate('/cart')
         }
         // console.log(params);
     }
 
-    function getJsonFromUrl(query) {
-        var result = {};
-        query.split("&").forEach(function (part) {
-            if (!part) return;
-            part = part.split("+").join(" "); // + to space, regexp-free version
-            var eq = part.indexOf("=");
-            var key = eq > -1 ? part.substr(0, eq) : part;
-            var val = eq > -1 ? decodeURIComponent(part.substr(eq + 1)) : "";
-            var from = key.indexOf("[");
-            if (from == -1) result[decodeURIComponent(key)] = val;
-            else {
-                var to = key.indexOf("]", from);
-                var index = decodeURIComponent(key.substring(from + 1, to));
-                key = decodeURIComponent(key.substring(0, from));
-                if (!result[key]) result[key] = [];
-                if (!index) result[key].push(val);
-                else result[key][index] = val;
-            }
-        });
-        return result;
+    function getJsonFromUrl() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const paramsObject = {};
+        for (const [key, value] of queryParams.entries()) {
+            paramsObject[key] = value;
+        }
+        setUrlParams(paramsObject);
+        // console.log(paramsObject)
+        return paramsObject;
     }
 
     const getProfile = async () => {
         try {
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
-            const { name, email, phone, address, cart } = user;
+            const { name, email, phone, address } = user;
             const notPurchased = docSnap.data().cart.filter((item) => !item.purchased);
-            setCartItems(notPurchased);
             const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
+            setAmount(amount);
+            if (amount === 0) {
+                navigate('/events');
+            }
             setPaymentCredentials({
                 ...paymentCredentials,
                 name,
@@ -80,9 +76,8 @@ const Payment = () => {
                 address,
                 amount: Number(amount),
             })
-            setProfile(user);
         } catch (error) {
-            console.log(error);
+            toast.error(error.message);
         }
     }
 
@@ -102,8 +97,27 @@ const Payment = () => {
         })
     }
 
+    const updatePurchase = async () => {
+        console.log("updating purchase");
+        const docSnap = await getDoc(userRef);
+        const cart = docSnap.data().cart;
+
+        const purchasedItems = cart.map((item) => {
+            return {
+                ...item,
+                purchased: true,
+            };
+        });
+
+        await updateDoc(userRef, {
+            cart: purchasedItems,
+        });
+
+        // navigate to purchased items page
+    };
+
     useEffect(() => {
-        getQueryParams(window.location.href);
+        getQueryParams();
         getProfile();
     }, []);
 
@@ -119,9 +133,7 @@ const Payment = () => {
                     <h1>Payment Message: {urlParams.sabpaisaMessage
                     }</h1>
                     <h1>
-                        Payee Name: {
-                            urlParams['http://localhost:5173/checkout?payerName']
-                        }
+                        Payee Name: {urlParams.payerName}
                     </h1>
                     <h1>
                         Amount Paid: ₹ {
