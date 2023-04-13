@@ -18,7 +18,7 @@ const ChiefPatron = () => {
                         <p className='text-blue-300'>Executive Director</p>
                     </div>
                 </div>
-                <p className='lg:text-xl text-lg leading-7  lg:leading-8 text-justify'>
+                <p className='text-lg leading-7  lg:leading-8 text-justify'>
                     I firmly believe that learning cannot be limited to the confines of a classroom. AIIMS Patna is reviving its annual fest Kaizen 23, which provides students with the opportunity to showcase their talents and promote trust, teamwork, and sportsmanship.
                     <br />
 
