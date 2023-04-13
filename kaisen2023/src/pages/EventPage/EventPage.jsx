@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 const EventPage = () => {
     const [selectedEvent, setSelectedEvent] = useState(0);
     const [events, setEvents] = useState([]);
-    const [eventSnap, setEventsSnap] = useState(null);
     const [Loading, setLoading] = useState(true);
     const categories = [
         {
@@ -90,7 +89,6 @@ const EventPage = () => {
             </div>
 
             <div className='event-card-container'>
-
                 {
                     Loading ? <div> Loading...</div> :
                         events.map((event, index) => (
@@ -114,7 +112,6 @@ const EventPage = () => {
 
 
             </div>
-
         </main>
     )
 }

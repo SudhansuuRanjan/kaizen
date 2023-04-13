@@ -16,19 +16,20 @@ const Payment = () => {
     const [urlParams, setUrlParams] = useState({});
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
-        clientCode: 'TM001',
-        transUserName: 'rajiv.moti_336',
+        clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
+        transUserName: import.meta.env.VITE_PAYMENT_USERNAME,
         txtnId: shortid.generate(),
-        transUserPassword: 'RIADA_SP336',
-        authkey: 'kaY9AIhuJZNvKGp2',
-        authiv: 'YN2v8qQcU3rGfA1y',
-        callbackUrl: 'http://localhost:5173/checkout',
+        transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
+        authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
+        authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
+        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout',
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         phone: '',
         address: '',
         amount: 0,
-        udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: ""
+        udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
+        env:'prod'
     })
 
     // get url query params
@@ -188,6 +189,7 @@ const Payment = () => {
                 authkey={paymentCredentials.authkey}
                 authiv={paymentCredentials.authiv}
                 label={"testing"}
+                env={paymentCredentials.env}
             />
         </main>
     )
