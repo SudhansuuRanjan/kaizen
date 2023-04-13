@@ -91,7 +91,6 @@ const Payment = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(paymentCredentials);
         setPaymentCredentials({
             ...paymentCredentials,
             isOpen: true,
