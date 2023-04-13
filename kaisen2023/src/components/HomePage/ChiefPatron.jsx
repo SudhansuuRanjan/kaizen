@@ -19,11 +19,14 @@ const ChiefPatron = () => {
                     </div>
                 </div>
                 <p className='lg:text-xl text-lg leading-7  lg:leading-8 text-justify'>
-                    I firmly believe that learning cannot be limited to the confines of a classroom. Students truly learn through practical hands-on experiences. Fests like Kaizen provide with the perfect platform to learn, gain knowledge and grow. Through participation in sports, cultural, art, and literary events, students get the chance to develop their overall personality. I want my students to become all-rounders, so it is imperative for them to maintain a delicate balance between academics and extracurricular activities. The enthusiasm and festive spirit created by these events act as a catalyst in overcoming exam pressure and the mental burden of students.
+                    I firmly believe that learning cannot be limited to the confines of a classroom. AIIMS Patna is reviving its annual fest Kaizen 23, which provides students with the opportunity to showcase their talents and promote trust, teamwork, and sportsmanship.
+                    <br />
 
-                    This year AIIMS Patna is set to celebrate its annual fest Kaizen 23. It is the biggest event of its kind and I am delighted to announce that we are reviving it after a 4-year hiatus. Kaizen is the annual event of AIIMS Patna which provides students with the opportunity to showcase their talents. Kaizen focuses on promoting trust, teamwork, and sportsmanship among students. It embraces diversity and brings us closer together.
+                    Kaizen 23 is the biggest event of its kind and provides students with the opportunity to showcase their talents and promote trust, teamwork, and sportsmanship.
+                    <br />
 
                     I congratulate and wish all the students the very best for Kaizen 2023. Let the various events and activities bring glory to us and enrich our lives with value that can sustain over a long period of time.
+                    <br />
 
                     Best wishes,
                     Prof (Dr) Gopal Krushna Pal
