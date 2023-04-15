@@ -54,16 +54,16 @@ const CompleteProfile = () => {
     const getProfile = async () => {
         const docSnap = await getDoc(docRef);
         const { gender, phone, address, college, year, course, city } = docSnap.data();
-        if (gender && phone && address && college && year && course  && city) {
+        if (gender && phone && address && college && year && course && city) {
             navigate('/events');
         }
-        setFormData({
-            gender, phone, address, college, year, course, caCode, city
-        })
+        // setFormData({
+        //     gender, phone, address, college, year, course, caCode: "", city
+        // })
     }
 
     useEffect(() => {
-       getProfile();
+        getProfile();
     }, [])
 
     return (
