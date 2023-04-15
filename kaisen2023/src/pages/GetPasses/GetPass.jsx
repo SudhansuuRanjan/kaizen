@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { db } from '../../firebase.config'
-import { collection, doc, getDoc, updateDoc, addDoc } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 
 const GetPass = () => {
 
     const [formData, setFormData] = useState({
         email: '',
         subject: '',
-        body: '',
+        text: '',
         html: ''
     })
 
@@ -21,27 +21,42 @@ const GetPass = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const mailRef = collection(db, "mail");
+        let data = {
+            to: [formData.email],
+            message: {
+                subject: formData.subject,
+                text: formData.text,
+                html: formData.html
+            }
+        }
+        addDoc(mailRef, data);
+        setFormData({
+            email: '',
+            subject: '',
+            text: '',
+            html: ''
+        })
     }
 
     return (
-        <div>
+        <div className='pt-16'>
             <h1>Get Pass</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='flex gap-5 flex-col'>
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input value={formData.email} type="text" id="email" placeholder="Email" onChange={handleChange} />
+                    <input className='text-gray-700' value={formData.email} type="text" id="email" placeholder="Email" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="subject">Subject</label>
-                    <input value={formData.subject} type="text" id="subject" placeholder="Subject" onChange={handleChange} />
+                    <input className='text-gray-700' value={formData.subject} type="text" id="subject" placeholder="Subject" onChange={handleChange} />
                 </div>
                 <div>
-                    <label htmlFor="body">Body</label>
-                    <input value={formData.body} type="text" id="body" placeholder="Body" onChange={handleChange} />
+                    <label htmlFor="text">Text</label>
+                    <input className='text-gray-700' value={formData.text} type="text" id="text" placeholder="Text" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="html">HTML</label>
-                    <input value={formData.html} type="text" id="html" placeholder="HTML" onChange={handleChange} />
+                    <input className='text-gray-700' value={formData.html} type="text" id="html" placeholder="HTML" onChange={handleChange} />
                 </div>
                 <button type="submit">Submit</button>
             </form>

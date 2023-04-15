@@ -25,6 +25,7 @@ import Error from './pages/Error'
 import CAPortal from './pages/CAPortal/CAPortal'
 import CompleteProfile from './pages/CompleteProfile'
 import Payment from './pages/Payment/Payment'
+import GetPass from './pages/GetPasses/GetPass'
 
 function App() {
 
@@ -118,6 +119,12 @@ function App() {
               </Layout>
             } />
           </Route>
+
+          <Route path='/getpass' element={
+              <Layout>
+                <GetPass />
+              </Layout>
+            } />
 
           <Route path='/complete-profile' element={<PrivateRoute />}>
             <Route path='/complete-profile' element={
