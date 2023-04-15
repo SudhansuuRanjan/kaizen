@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
-import { updateDoc, doc } from 'firebase/firestore'
+import { updateDoc, doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import Select from 'react-select'
 import Creatable from 'react-select/creatable';
 import { genderOptions, collegeOptions, yearOptions, courseOptions } from '../utils/FormOptions'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const CompleteProfile = () => {
@@ -23,6 +23,7 @@ const CompleteProfile = () => {
         caCode: "",
         city: '',
     });
+    const docRef = doc(db, "users", auth.currentUser.uid);
 
     const [updating, setUpdating] = useState(false);
     const { displayName, email } = auth.currentUser;
@@ -35,7 +36,7 @@ const CompleteProfile = () => {
         e.preventDefault();
         setUpdating(true);
         try {
-            await updateDoc(doc(db, "users", auth.currentUser.uid), formData);
+            await updateDoc(docRef, formData);
             toast.success("Profile Updated Successfully");
             navigate('/events');
             setUpdating(false);
@@ -48,6 +49,22 @@ const CompleteProfile = () => {
     const onChange = (field, value) => {
         setFormData({ ...formData, [field]: value });
     }
+
+    // get profile from firestore
+    const getProfile = async () => {
+        const docSnap = await getDoc(docRef);
+        const { gender, phone, address, college, year, course, caCode, city } = docSnap.data();
+        if (gender && phone && address && college && year && course  && city) {
+            navigate('/events');
+        }
+        setFormData({
+            gender, phone, address, college, year, course, caCode, city
+        })
+    }
+
+    useEffect(() => {
+       getProfile();
+    }, [])
 
     return (
         <div className="bg-[url('/images/list-bg.png')] bg-repeat-y  min-h-screen bg-center bg-cover flex flex-col items-center justify-center gap-10 pt-10 lg:pt-4 md:pt-4">
@@ -66,7 +83,7 @@ const CompleteProfile = () => {
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="name" className='text-yellow-500 font-medium text-lg pb-1'>CA Referral Code (If any)</label>
-                            <input id="caCode" type="text" placeholder="AXD8DEDG43" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.caCode} />
+                            <input type="text" placeholder="AXD8DEDG43" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.caCode} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="name" className='text-yellow-500 font-medium text-lg pb-1'>Gender</label>
@@ -78,7 +95,7 @@ const CompleteProfile = () => {
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="gender" className='text-yellow-500 font-medium text-lg pb-1'>Year</label>
-                            <Creatable required onChange={(e) => onChange("year", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={yearOptions} />
+                            <Creatable value={formData.caCode} required onChange={(e) => onChange("year", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={yearOptions} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="year" className='text-yellow-500 font-medium text-lg pb-1'>Course</label>
@@ -98,7 +115,7 @@ const CompleteProfile = () => {
                                 className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.phone} />
                         </div>
                     </div>
-                    <button type='submit' className='bg-yellow-500 text-black font-medium text-lg py-2 px-4 rounded-lg mt-5 hover:bg-yellow-400 w-[100%]' disabled={updating}>{updating ? 'Updating':'Update'}</button>
+                    <button type='submit' className='bg-yellow-500 text-black font-medium text-lg py-2 px-4 rounded-lg mt-5 hover:bg-yellow-400 w-[100%]' disabled={updating}>{updating ? 'Updating' : 'Update'}</button>
                 </form>
             </div>
         </div>

@@ -11,7 +11,7 @@ const FAQs = () => {
         },
         {
             question: 'How do I register?',
-            answer: "You can register by going to the events page from our drop-down. Go through all the events or select the category you're interested in. Finally, select an event matching your interests and talent and click on the register button within that event's page.",
+            answer: "You can register by going to the events page from menu. Go through all the events or select the category you're interested in. Finally, select an event matching your interests and talent and click on the register button within that event's page.Add team members in events of team participation.The event is now moved to your event cart. Go to event cart and pay the registration amount.The event will be added to (your events) section of your profile page.",
             color: "red",
         },
         {
@@ -20,9 +20,9 @@ const FAQs = () => {
             color: "blue",
         },
         {
-            question:"What are the prizes for various competitions?",
-            answer:"We have a very exciting prize pool this year with cash prizes and various gift hampers. Get sailing with us to know more.",
-            color:"yellow"
+            question: "What are the prizes for various competitions?",
+            answer: "We have a very exciting prize pool this year with cash prizes and various gift hampers. Get sailing with us to know more.",
+            color: "yellow"
         }
     ]
 

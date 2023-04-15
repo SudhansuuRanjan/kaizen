@@ -18,7 +18,7 @@ const ChiefPatron = () => {
                         <p className='text-blue-300'>Executive Director</p>
                     </div>
                 </div>
-                <p className='text-lg leading-7  lg:leading-8 text-justify'>
+                <p className='text-lg leading-7  lg:leading-8 text-justify text-gray-300' >
                     I firmly believe that learning cannot be limited to the confines of a classroom. AIIMS Patna is reviving its annual fest Kaizen 23, which provides students with the opportunity to showcase their talents and promote trust, teamwork, and sportsmanship.
                     <br />
 
@@ -28,8 +28,10 @@ const ChiefPatron = () => {
                     I congratulate and wish all the students the very best for Kaizen 2023. Let the various events and activities bring glory to us and enrich our lives with value that can sustain over a long period of time.
                     <br />
 
-                    Best wishes,
-                    Prof (Dr) Gopal Krushna Pal
+                    <span className='text-gray-100 font-medium text-base leading-5  lg:leading-6'>
+                        Best wishes,<br />
+                        Prof (Dr) Gopal Krushna Pal
+                    </span>
                 </p>
             </div>
         </div>

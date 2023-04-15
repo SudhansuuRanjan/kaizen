@@ -45,4 +45,4 @@ const ParallaxComponent = () => {
   )
 }
 
-export default ParallaxComponent
+export default ParallaxComponent;

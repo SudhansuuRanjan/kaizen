@@ -5,7 +5,7 @@ import './CustomBtns.scss'
 const CustomBtn1 = () => {
     return (
         <Link to="/">
-            <button class="custom-btn btn-11">Get Passes<div class="dot"></div></button>
+            <button className="custom-btn btn-11">Get Passes<div className="dot"></div></button>
         </Link>
     )
 }
@@ -13,7 +13,7 @@ const CustomBtn1 = () => {
 const CustomBtn2 = () => {
     return (
         <Link to="/events">
-            <button class="custom-btn btn-14">Register for Competitions<div class="dot"></div></button>
+            <button className="custom-btn btn-14">Register for Competitions<div className="dot"></div></button>
         </Link>
     )
 }

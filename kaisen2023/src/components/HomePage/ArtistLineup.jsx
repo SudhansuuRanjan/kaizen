@@ -17,7 +17,7 @@ const ArtistLineup = () => {
 
                 <div className="card lg:scale-100 md:scale-100 scale-105">
                     <div className="wrapper">
-                        <img src="https://ggayane.github.io/css-experiments/cards/dark_rider-cover.jpg" className="cover-image" />
+                        <img src="standup.jpg" className="cover-image" />
                     </div>
                     <img src="images/reveal.svg" className="title" />
                     <img src="images/unknown.png" className="character" />

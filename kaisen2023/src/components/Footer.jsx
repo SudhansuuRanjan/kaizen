@@ -20,9 +20,9 @@ const Footer = () => {
             <a target='_blank' href="https://www.facebook.com/aiimspatnafest?mibextid=ZbWKwL" className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
               <FaFacebook size={30} />
             </a>
-            <a target='_blank' href="https://web.whatsapp.com" className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
+            {/* <a target='_blank' href="https://web.whatsapp.com" className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
               <IoLogoWhatsapp size={30} />
-            </a>
+            </a> */}
             <a target='_blank' href="https://www.youtube.com/@kaizen.aiimspatna" className='transition ease-in delay-50 text-red-500 hover:text-red-600 hover:scale-[110%]'>
               <FaYoutube size={30} />
             </a>
@@ -56,9 +56,9 @@ const Footer = () => {
         <p>
           © {year} Kaizen. All Rights Reserved.
         </p>
-        <p>
-          Designed & Developed by <a className="text-base font-medium text-red-500" href="#">Sudhanshu Ranjan</a>.
-        </p>
+        <div className='flex lg:flex-row md:flex-row flex-col text-center lg:gap-1 mD:gap-1'>
+          <p>Designed & Developed by</p> <a className="text-base font-medium text-red-500" href="https://www.sudhanshuranjan.live"> Sudhanshu Ranjan</a>.
+        </div>
       </div>
     </div>
   )

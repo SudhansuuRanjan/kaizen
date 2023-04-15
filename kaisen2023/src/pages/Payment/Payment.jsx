@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase.config'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, updateDoc, writeBatch, addDoc, setDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import shortid from 'shortid'
 import { PaymentInitModal } from 'pg-test-project';
@@ -12,6 +12,7 @@ const Payment = () => {
     const auth = getAuth();
     const navigate = useNavigate();
     const userRef = doc(db, 'users', auth.currentUser.uid);
+    const [user, setUser] = useState([]);
     const [amount, setAmount] = useState(0);
     const [urlParams, setUrlParams] = useState({});
     const [paymentCredentials, setPaymentCredentials] = useState({
@@ -29,7 +30,7 @@ const Payment = () => {
         address: '',
         amount: 0,
         udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
-        env:'prod'
+        env: 'prod'
     })
 
     // get url query params
@@ -62,6 +63,7 @@ const Payment = () => {
         try {
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
+            setUser(user);
             const { name, email, phone, address } = user;
             const notPurchased = docSnap.data().cart.filter((item) => !item.purchased);
             const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
@@ -98,22 +100,33 @@ const Payment = () => {
     }
 
     const updatePurchase = async () => {
-        console.log("updating purchase");
-        const docSnap = await getDoc(userRef);
-        const cart = docSnap.data().cart;
+        try {
+            const cart = user.cart;
+            const notPurchasedItems = cart.filter((item) => !item.purchased);
 
-        const purchasedItems = cart.map((item) => {
-            return {
-                ...item,
-                purchased: true,
-            };
-        });
+            notPurchasedItems.forEach(async (item) => {
+                const regRef = collection(db, "registrations");
+                const data = {
+                    ...item,
+                    uid: auth.currentUser.uid,
+                    email: auth.currentUser.email,
+                    name: auth.currentUser.displayName,
+                    purchasedAt: new Date(),
+                }
+                await addDoc(regRef, data);
+            });
 
-        await updateDoc(userRef, {
-            cart: purchasedItems,
-        });
+            const purchasedItems = cart.map((item) => {
+                return {
+                    ...item,
+                    purchased: true,
+                };
+            });
 
-        // navigate to purchased items page
+            await updateDoc(userRef, { cart: purchasedItems });
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
     useEffect(() => {
@@ -177,14 +190,17 @@ const Payment = () => {
             }
 
             <PaymentInitModal
-                amount={String(paymentCredentials.amount)} txtnId={paymentCredentials.txtnId}
-                payerMobile={paymentCredentials.phone} payerName={paymentCredentials.name}
+                amount={String(paymentCredentials.amount)} 
+                txtnId={paymentCredentials.txtnId}
+                payerMobile={paymentCredentials.phone} 
+                payerName={paymentCredentials.name}
                 payerEmail={paymentCredentials.email}
                 payerAddress={paymentCredentials.address}
                 clientCode={paymentCredentials.clientCode}
                 transUserPassword={paymentCredentials.transUserPassword}
                 transUserName={paymentCredentials.transUserName}
-                callbackUrl={paymentCredentials.callbackUrl} isOpen={paymentCredentials.isOpen}
+                callbackUrl={paymentCredentials.callbackUrl} 
+                isOpen={paymentCredentials.isOpen}
                 authkey={paymentCredentials.authkey}
                 authiv={paymentCredentials.authiv}
                 label={"testing"}
