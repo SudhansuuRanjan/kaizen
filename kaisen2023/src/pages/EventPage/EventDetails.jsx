@@ -100,7 +100,7 @@ const EventDetails = () => {
                   <div className='flex py-10 pt-6 lg:flex-row md:flex-row flex-col justify-between items-start gap-4 text-xl w-[100%] font-medium border-bottom'>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Prize Pool:</h3>
-                      <span className='text-yellow-500 font-bold text-2xl'> ₹{data.prize}</span>
+                      <span className='text-yellow-500 font-bold text-2xl'> {data.prize}</span>
                     </div>
                     <div className='flex items-center gap-2 justify-center'>
                       <h3>Registration Fee:</h3>

@@ -41,7 +41,7 @@ const CompleteProfile = () => {
             navigate('/events');
             setUpdating(false);
         } catch (error) {
-            toast.error(error.message);
+            toast.error("Something went wrong!");
             setUpdating(false);
         }
     }
@@ -53,7 +53,7 @@ const CompleteProfile = () => {
     // get profile from firestore
     const getProfile = async () => {
         const docSnap = await getDoc(docRef);
-        const { gender, phone, address, college, year, course, caCode, city } = docSnap.data();
+        const { gender, phone, address, college, year, course, city } = docSnap.data();
         if (gender && phone && address && college && year && course  && city) {
             navigate('/events');
         }
@@ -83,7 +83,7 @@ const CompleteProfile = () => {
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="name" className='text-yellow-500 font-medium text-lg pb-1'>CA Referral Code (If any)</label>
-                            <input type="text" placeholder="AXD8DEDG43" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.caCode} />
+                            <input type="text" id="caCode" placeholder="AXD8DEDG43" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.caCode} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="name" className='text-yellow-500 font-medium text-lg pb-1'>Gender</label>
