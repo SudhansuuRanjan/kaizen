@@ -95,7 +95,7 @@ const CompleteProfile = () => {
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="gender" className='text-yellow-500 font-medium text-lg pb-1'>Year</label>
-                            <Creatable value={formData.caCode} required onChange={(e) => onChange("year", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={yearOptions} />
+                            <Creatable required onChange={(e) => onChange("year", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={yearOptions} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="year" className='text-yellow-500 font-medium text-lg pb-1'>Course</label>
