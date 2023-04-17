@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './CAStyles.scss'
-import Footer from '../../components/HomePage/Footer'
 import FAQIems from '../../components/HomePage/FAQIems'
+import { db } from '../../firebase.config';
+import { getAuth } from 'firebase/auth';
+import { getDoc, doc, updateDoc, setDoc } from "firebase/firestore";
+import { toast } from 'react-toastify';
+import { useNavigate, Link } from 'react-router-dom';
 
 const CAPortal = () => {
 
@@ -23,13 +27,97 @@ const CAPortal = () => {
         }
     ]
 
+    const incentives = [
+        {
+            name: "Early Access",
+            image: "ca/workshop.png"
+        },
+        {
+            name: "Free Passes",
+            image: "ca/ticket.png"
+        },
+        {
+            name: "Swag Kits",
+            image: "ca/cap.png"
+        },
+        {
+            name: "Awards",
+            image: "ca/award.png"
+        },
+        {
+            name: "Prizes",
+            image: "ca/first-prize.png"
+        },
+        {
+            name: "Certificate of Appreciation",
+            image: "ca/certificate.png"
+        },
+    ]
+
+    const auth = getAuth();
+    const navigate = useNavigate();
+    const userRef = doc(db, 'users', auth.currentUser.uid);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        college: '',
+        city: '',
+        year: ''
+    })
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            // check if user is already registered as CA in CA collection
+            const docSnap = await getDoc(doc(db, 'campus-ambassadors', auth.currentUser.uid));
+            if (docSnap.exists()) {
+                toast.error("You are already registered as CA");
+                return;
+            }
+            // check if user is already registered as CA in users collection
+
+            if (user.isCA) {
+                toast.error("You are already registered as CA");
+                return;
+            }
+            // update user in users collection
+            await updateDoc(userRef, { isCA: true });
+            // add user to CA collection
+            await setDoc(doc(db, 'campus-ambassadors', auth.currentUser.uid), formData);
+            toast.success("Successfully applied for CA!");
+            navigate('/profile');
+        } catch (error) {
+            toast.error("Something went wrong!");
+        }
+    }
+
+    useEffect(() => {
+        const getUser = async () => {
+            const docSnap = await getDoc(userRef);
+            setUser(docSnap.data());
+            const user = docSnap.data();
+            const { name, email, phone, college, city, year } = user;
+            setFormData({ name, email, phone, college, city, year });
+        }
+        getUser();
+    }, [])
+
+
+
     return (
         <>
             <div className='ca-container'>
                 <div className='ca-banner'>
                     <div className='ca-head-left'>
                         <h2 className='ca-head-text'>Campus Ambassador</h2>
-                        <p>Be the emissary of Kaizen 2022</p>
+                        <p>Be the emissary of Kaizen 2023</p>
                         <div className='ca-btn-container'>
                             <button className='ca-signup-btn'>Sign Up</button>
                             <button className='ca-explore-btn'>Explore</button>
@@ -75,7 +163,7 @@ const CAPortal = () => {
             <div className='m-auto max-w-[80rem] px-6 py-16'>
 
                 <div>
-                    <h2 className='text-6xl leading-[5rem] font-bold'>What is <br /><span className='text-underline'>Campus Ambassador</span><br /> Program?</h2>
+                    <h2 className='text-6xl leading-[5rem] font-bold'>What is <span className='text-underline'>CA</span><br /> Program?</h2>
                     <p className='py-16 leading-8 font-light opacity-70 text-lg'>As a part of the campus ambassador programme, KAIZEN offers students the chance to represent and promote the organization at their colleges and universities. Their responsibilities comprise developing our pressure and promoting KAIZEN events among students & educators by serving as a link between their college and us.
                     </p>
                 </div>
@@ -99,72 +187,99 @@ const CAPortal = () => {
             <div className='bg-gray-900 pb-[5rem]'>
                 <div>
                     <h1 className='text-4xl font-bold text-center py-16'>Incentives</h1>
-                    <div className='grid grid-cols-3 m-auto max-w-[75rem] gap-[3rem]'>
-                        <div className='flex items-center justify-center flex-col'>
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2 className='text-pink-600 text-lg font-medium'>Event Passes</h2>
-                        </div>
+                    <div className='flex flex-wrap items-center justify-evenly m-auto max-w-[65rem] px-5 lg:gap-20 gap-10'>
+                        {
 
-                        <div className='flex items-center justify-center flex-col'>
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2>Prizes/Goodies</h2>
-                        </div>
-
-                        <div className='flex items-center justify-center flex-col' >
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2>Merchandise</h2>
-                        </div>
-
-                        <div className='flex items-center justify-center flex-col'>
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2>Workshop</h2>
-                        </div>
+                            incentives.map((incentive, index) => (
+                                <div key={index} className='flex items-center justify-center flex-col mb-8'>
+                                    <div className='lg:w-[13rem] md:w-[13rem] w-[50%] overflow-hidden flex items-center justify-center rounded-2xl '>
+                                        <img className='h-auto w-[100%] hover:scale-105 transition-all delay-75 ease-in' src={incentive.image} alt="" />
+                                    </div>
+                                    <h2 className='text-yellow-500 text-xl font-medium pt-4'>{incentive.name}</h2>
+                                </div>
+                            ))}
 
 
-                        <div className='flex items-center justify-center flex-col'>
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2>Certificates</h2>
-                        </div>
-
-                        <div className='flex items-center justify-center flex-col'>
-                            <div className='h-fit w-[15rem] overflow-hidden flex items-center justify-center rounded-2xl bg-pink-600'>
-                                <img className='h-auto w-[100%]' src="https://img.freepik.com/free-vector/halloween-card-ticket-design-luxury-gradient-colorful_483537-1990.jpg" alt="" />
-                            </div>
-                            <h2>Event Passes</h2>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="relative bg-no-repeat min-h-fit bg-center bg-cover w-[100%] bg-[url('https://ragam.co.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftheyyam%202.98e82130.png&w=1080&q=75')]">
-            <div className='flex lg:flex-row md:flex-row flex-col justify-between lg:items-start md:items-start items-center absolute w-[100%] lg:top-[20%] md:top-[20%] top-[10%] z-0 h-[32rem]'>
-                {/* <img src="coin.png" alt="wheel" data-aos="fade-up-right" className='lg:h-[17rem] md:h-[15rem] h-[15rem] brightness-75' />
-                <img src="hat.png" alt="hat" data-aos="zoom-in-up" className='lg:h-[22rem] md:h-[20rem] h-[15rem] self-end brightness-75' />
-                <img src="map.png" alt="cpmpass" data-aos="fade-up-left" className='lg:h-[17rem] md:h-[15rem] h-[15rem] brightness-75' /> */}
-            </div>
+            
 
-            <div className='flex flex-col bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto z-[1999999]'>
-                <h3 className='text-center font-bold text-4xl pt-20 text-yellow-500 decoration-red-500 underline underline-offset[1px]'>FAQs</h3>
-                <div className='flex flex-col items-center justify-center py-24 gap-6'>
-                    {
-                        faqs.map((faq, index) => (
-                            <FAQIems key={index} faq={faq} />
-                        ))
-                    }
+            <div>
+                <h1 className='text-4xl font-bold text-center py-16'>How to Apply?</h1>
+                <div className='flex flex-col items-center justify-center gap-10 pb-32'>
+                    <div className='flex flex-col items-center justify-center gap-5'>
+                        <h2 className='text-2xl font-bold text-yellow-500'>Step 1</h2>
+                        <p className='text-lg font-light text-center'>Fill the <strong className='text-semibold text-pink-400'>form</strong> below and submit it.</p>
+                    </div>
+                    <div className='flex flex-col items-center justify-center gap-5'>
+                        <h2 className='text-2xl font-bold text-yellow-500'>Step 2</h2>
+                        <p className='text-lg font-light text-center'>Wait for the <strong className='text-semibold text-pink-400'>confirmation</strong> mail from us.</p>
+                    </div>
+                    <div className='flex flex-col items-center justify-center gap-5'>
+                        <h2 className='text-2xl font-bold text-yellow-500'>Step 3</h2>
+                        <p className='text-lg font-light text-center'>Start <strong className='text-semibold text-pink-400'>promoting</strong> KAIZEN and get ready for the fest.</p>
+                    </div>
+                    <h2 className='text-2xl font-bold text-green-500'>Finally</h2>
+                    <p className='text-lg font-light text-center lg:max-w-[32rem] md:max-w-[32rem] max-w-[90%]'>Get <strong className='text-semibold text-pink-400'>rewarded</strong> on the basis of your promotion stats, also be a part of the fest and have <strong className='text-semibold text-pink-400'>fun.</strong></p>
                 </div>
             </div>
 
-        </div>
+
+            <div className="relative bg-no-repeat min-h-fit bg-center bg-cover w-[100%] bg-[url('https://ragam.co.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftheyyam%202.98e82130.png&w=1080&q=75')]">
+                <div className='flex lg:flex-row md:flex-row flex-col justify-between lg:items-start md:items-start items-center absolute w-[100%] lg:top-[20%] md:top-[20%] top-[10%] z-0 h-[32rem]'>
+                </div>
+
+                <div className='flex flex-col bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto z-[1999999]'>
+                    <h3 className='text-center font-bold text-4xl pt-20 text-yellow-500 decoration-red-500 underline underline-offset[1px]'>FAQs</h3>
+                    <div className='flex flex-col items-center justify-center py-24 gap-6'>
+                        {
+                            faqs.map((faq, index) => (
+                                <FAQIems key={index} faq={faq} />
+                            ))
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div className='border border-gray-700 rounded-[2rem] lg:p-10 md:p-10 p-6 py-10  lg:w-[32rem] md:w-[27rem] w-[95%] m-auto my-32'>
+                <h1 className='lg:text-4xl md:text-4xl text-3xl font-bold text-center mb-6'>Apply Now</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className='flex flex-col w-full'>
+                        <label htmlFor="name">Name</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="text" id="name" onChange={handleChange} disabled={true} placeholder='Tom Holland' value={formData.name} />
+                    </div>
+                    <div className='flex flex-col w-full mt-5'>
+                        <label htmlFor="email">Email</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="email" id="email" onChange={handleChange} disabled={true} placeholder='tomholland@marvel.com' value={formData.email} />
+                    </div>
+                    <div className='flex flex-col w-full mt-5'>
+                        <label htmlFor="phone">Phone</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="tel" id="phone" onChange={handleChange} disabled={true} placeholder='+91 1234567890' value={formData.phone} />
+                    </div>
+                    <div className='flex flex-col w-full mt-5'>
+                        <label htmlFor="college">College</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="text" id="college" onChange={handleChange} disabled={true} placeholder='MIT' value={formData.college} />
+                    </div>
+                    <div className='flex flex-col w-full mt-5'>
+                        <label htmlFor="year">Year</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="text" id="year" onChange={handleChange} disabled={true} placeholder='2nd Year' value={formData.year} />
+                    </div>
+                    <div className='flex flex-col w-full mt-5'>
+                        <label htmlFor="city">City</label>
+                        <input className='w-full px-3 py-2 rounded-lg text-gray-400 border-gray-700 font-medium bg-gray-900 mt-1' type="text" id="city" onChange={handleChange} disabled={true} placeholder='Mumbai' value={formData.city} />
+                    </div>
+                    <div>
+                        <p className='text-red-500 py-5'>* You can modify the details in your <Link to="/profile" className='text-yellow-400 underline font-medium'>profile</Link>.</p>
+                        <button className='bg-yellow-500 text-gray-900 font-semibold px-3 w-full py-2.5 rounded-xl cursor-pointer'>
+                            Apply
+                        </button>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }

@@ -30,7 +30,8 @@ const Payment = () => {
         address: '',
         amount: 0,
         udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
-        env: 'prod'
+        env: 'prod',
+
     })
 
     // get url query params
@@ -203,8 +204,10 @@ const Payment = () => {
                 isOpen={paymentCredentials.isOpen}
                 authkey={paymentCredentials.authkey}
                 authiv={paymentCredentials.authiv}
-                label={"testing"}
+                label={"prod"}
                 env={paymentCredentials.env}
+                clientTxnId={shortid.generate()}
+                amountType={'INR'}
             />
         </main>
     )

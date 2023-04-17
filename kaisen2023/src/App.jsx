@@ -76,13 +76,15 @@ function App() {
             </>
           } />
 
-          <Route path='/ca' element={
+          <Route path='/campus-ambassdor' element={<PrivateRoute />}>
+          <Route path='/campus-ambassdor' element={
             <>
               <NavBar />
               <CAPortal />
               <Footer />
             </>
           } />
+          </Route>
 
 
           <Route path='/events' element={
