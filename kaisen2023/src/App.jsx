@@ -30,28 +30,28 @@ import GetPass from './pages/GetPasses/GetPass'
 function App() {
 
   // fonction to load razorpay script in the head
-  const loadScript = (src) => {
-    return new Promise((resolve) => {
-      const script = document.createElement('script');
-      script.src = src;
+  // const loadScript = (src) => {
+  //   return new Promise((resolve) => {
+  //     const script = document.createElement('script');
+  //     script.src = src;
 
-      script.onload = () => {
-        resolve(true);
-      }
+  //     script.onload = () => {
+  //       resolve(true);
+  //     }
 
-      script.onerror = () => {
-        resolve(false);
-      }
+  //     script.onerror = () => {
+  //       resolve(false);
+  //     }
 
-      document.body.appendChild(script);
-    })
-  }
+  //     document.body.appendChild(script);
+  //   })
+  // }
 
   // load razorpay script
   useEffect(() => {
     AOS.init();
     AOS.refresh();
-    loadScript('https://checkout.razorpay.com/v1/checkout.js')
+    // loadScript('https://checkout.razorpay.com/v1/checkout.js')
   }, [])
 
   return (

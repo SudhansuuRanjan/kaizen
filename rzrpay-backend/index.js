@@ -5,6 +5,7 @@ const cors = require("cors");
 const Razorpay = require("razorpay");
 const shortid = require("shortid");
 const path = require("path");
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 // express app
 const app = express();
@@ -54,6 +55,92 @@ app.post("/api/paymentgateway", (req, res) => {
     }
   });
 });
+
+
+// send mail on registration confirmation
+app.post("/api/sendRegConf", async (req, res) => {
+  const { name, kaizenId, events, email } = req.body;
+  for (let i = 0; i < events.length; i++) {
+    events[i] = (i + 1) + ". " + events[i];
+  }
+
+  const courier_options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.APIKEY2,
+    },
+    body: JSON.stringify({
+      message: {
+        to: {
+          email,
+        },
+        template: "KDYM9E7XGKMV21MSN1H6KB5E07XB",
+        data: {
+          Name: name,
+          KAIZENID: kaizenId,
+          listofevents: events.join("\n")
+        },
+        routing: {
+          method: "all",
+          channels: ["email"],
+        },
+      },
+    }),
+  };
+
+  try {
+    await fetch("https://api.courier.com/send", courier_options);
+    res.status(200).json({ message: "Mail Sent" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+// send mail on purchasing passes
+app.post("/api/sendPassMail", async (req, res) => {
+  const peoples = req.body;
+
+  for (let i = 0; i < peoples.length; i++) {
+    const courier_options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + process.env.APIKEY2,
+      },
+      body: JSON.stringify({
+        message: {
+          to: {
+            email: peoples[i].email,
+          },
+          template: "JT3V640FK7MBKCGH8TWPDDBBGA6X",
+          data: {
+            name: peoples[i].name,
+            passid: peoples[i].id.toUpperCase(),
+          },
+          routing: {
+            method: "all",
+            channels: ["email"],
+          },
+        },
+      }),
+    };
+
+    try {
+      await fetch("https://api.courier.com/send", courier_options);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
+
+  res.status(200).json({ message: "Mail Sent" });
+})
+
+// Certificates
+
 
 // listen to port
 app.listen(PORT, () => {
