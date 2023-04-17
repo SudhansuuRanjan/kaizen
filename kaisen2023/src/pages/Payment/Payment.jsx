@@ -7,6 +7,17 @@ import { PaymentInitModal } from 'pg-test-project';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
 
+const generateTxnId = () => {
+    var chars = '0123456789';
+    var string_length = 10;
+    var randomstring = '';
+    for (var i = 0; i < string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+    return randomstring;
+}
+
 const Payment = () => {
 
     const auth = getAuth();
@@ -19,7 +30,7 @@ const Payment = () => {
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
         transUserName: import.meta.env.VITE_PAYMENT_USERNAME,
-        txtnId: shortid.generate(),
+        txtnId: generateTxnId(),
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
@@ -158,7 +169,7 @@ const Payment = () => {
 
             </div>
 
-                : <div className='m-auto flex items-center w-[100%]'>
+                : <div className='m-auto flex items-center lg:w-[100%] md:w-[100%] px-5'>
                     <form onSubmit={handleSubmit} className='w-[27rem] flex flex-col gap-4 m-auto'>
                         <div className='flex flex-col'>
                             <label htmlFor='name'>Name</label>
@@ -191,16 +202,16 @@ const Payment = () => {
             }
 
             <PaymentInitModal
-                amount={String(paymentCredentials.amount)} 
+                amount={String(paymentCredentials.amount)}
                 txtnId={paymentCredentials.txtnId}
-                payerMobile={paymentCredentials.phone} 
+                payerMobile={paymentCredentials.phone}
                 payerName={paymentCredentials.name}
                 payerEmail={paymentCredentials.email}
                 payerAddress={paymentCredentials.address}
                 clientCode={paymentCredentials.clientCode}
                 transUserPassword={paymentCredentials.transUserPassword}
                 transUserName={paymentCredentials.transUserName}
-                callbackUrl={paymentCredentials.callbackUrl} 
+                callbackUrl={paymentCredentials.callbackUrl}
                 isOpen={paymentCredentials.isOpen}
                 authkey={paymentCredentials.authkey}
                 authiv={paymentCredentials.authiv}
