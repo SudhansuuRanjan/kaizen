@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase.config'
-import { collection, doc, getDoc, updateDoc, writeBatch, addDoc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, updateDoc, addDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
-import shortid from 'shortid'
 import { PaymentInitModal } from 'pg-test-project';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
+
 
 const generateTxnId = () => {
     var chars = '0123456789';
@@ -42,7 +42,6 @@ const Payment = () => {
         amount: 0,
         udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
         env: 'prod',
-
     })
 
     // get url query params
@@ -217,6 +216,7 @@ const Payment = () => {
                 env={paymentCredentials.env}
                 clientTxnId={paymentCredentials.txtnId}
                 amountType={'INR'}
+                label={'prod'}
             />
         </main>
     )
