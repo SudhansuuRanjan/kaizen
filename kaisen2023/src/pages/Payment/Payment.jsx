@@ -41,10 +41,10 @@ const Payment = () => {
         if (params.status === 'SUCCESS' && amount !== 0 && amount === parseInt(params.amount)) {
             toast.success('Payment Successful!' + amount);
             await updatePurchase();
-            navigate('/profile');
+            // navigate('/profile');
         } else if (params.status === 'FAILED') {
             toast.error('Payment Failed!');
-            navigate('/cart')
+            // navigate('/cart')
         }
         // console.log(params);
     }
