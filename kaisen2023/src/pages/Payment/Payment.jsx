@@ -34,7 +34,7 @@ const Payment = () => {
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout',
+        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout/',
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         phone: '',
@@ -203,7 +203,6 @@ const Payment = () => {
 
             <PaymentInitModal
                 amount={String(paymentCredentials.amount)}
-                txtnId={paymentCredentials.txtnId}
                 payerMobile={paymentCredentials.phone}
                 payerName={paymentCredentials.name}
                 payerEmail={paymentCredentials.email}
@@ -215,9 +214,8 @@ const Payment = () => {
                 isOpen={paymentCredentials.isOpen}
                 authkey={paymentCredentials.authkey}
                 authiv={paymentCredentials.authiv}
-                label={"prod"}
                 env={paymentCredentials.env}
-                clientTxnId={shortid.generate()}
+                clientTxnId={paymentCredentials.txtnId}
                 amountType={'INR'}
             />
         </main>
