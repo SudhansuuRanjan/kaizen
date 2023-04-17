@@ -81,7 +81,7 @@ const NavBar2 = () => {
                             }
 
                         >
-                            <Link to="/getpass">Get pass</Link>
+                            <Link to="/">Get pass</Link>
                         </li>
                         <li
                             className={
@@ -184,7 +184,7 @@ const NavBar2 = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/getpass">
+                            <Link to="/">
                                 <button
                                     onClick={() => {
                                         setMenu(false);
