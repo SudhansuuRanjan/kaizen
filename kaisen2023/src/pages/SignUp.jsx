@@ -82,7 +82,7 @@ const SignUp = () => {
       if (docSnap.exists()) {
         const { otp: otpFromDB } = docSnap.data();
         await updateDoc(emailRef, { isVerified: true });
-        console.log(otpFromDB, otp);
+        // console.log(otpFromDB, otp);
         if (otpFromDB == otp) {
           setVerified(true);
           toast.success('Email Verified Successfully!');
