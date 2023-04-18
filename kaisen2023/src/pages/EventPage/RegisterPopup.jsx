@@ -43,8 +43,7 @@ const RegisterPopup = ({ event, setPopup }) => {
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
             setUser({
-                ...user,
-                id: docSnap.id,
+                ...user
             });
             const cart = user.cart;
             const eventInCart = cart.find((item) => item.name === event.name);
@@ -59,14 +58,14 @@ const RegisterPopup = ({ event, setPopup }) => {
                 setPopup(false);
                 return;
             } else {
-                await addEventToCart();
+                await addEventToCart(user);
             }
         } catch (error) {
             toast.error("Could not add event to cart");
         }
     }
 
-    const addEventToCart = async () => {
+    const addEventToCart = async (user) => {
         if (event.minMem > team.length + 1) return toast.error(`Minimum number of members required is ${event.minMem}`);
         const newEvent = {
             name: event.name,
@@ -96,7 +95,7 @@ const RegisterPopup = ({ event, setPopup }) => {
                 email: auth.currentUser.email,
                 name: auth.currentUser.displayName,
                 events: [event.name],
-                kaizenId: user.id ? user.id : auth.currentUser.uid,
+                kaizenId: user.id,
             }
             const res = await axios.post('https://kaizen-api.vercel.app/api/sendRegConf', mailData);
         }

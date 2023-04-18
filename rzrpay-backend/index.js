@@ -78,8 +78,8 @@ app.post("/api/sendRegConf", async (req, res) => {
         },
         template: "KDYM9E7XGKMV21MSN1H6KB5E07XB",
         data: {
-          Name: name,
-          KAIZENID: kaizenId,
+          name: name,
+          kaizenid: kaizenId,
           listofevents: events.join("\n")
         },
         routing: {
@@ -127,7 +127,7 @@ app.post("/api/sendPassMail", async (req, res) => {
         },
       }),
     };
-    
+
 
     try {
       await fetch("https://api.courier.com/send", courier_options);
