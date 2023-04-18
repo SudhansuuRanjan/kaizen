@@ -25,7 +25,8 @@ const Payment = () => {
     const navigate = useNavigate();
     const userRef = doc(db, 'users', auth.currentUser.uid);
     const [urlParams, setUrlParams] = useState({});
-    const [paymentStatus, setPaymentStatus] = useState("UPDATING")
+    const [paymentStatus, setPaymentStatus] = useState("UPDATING");
+    const [user, setUser] = useState({});
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -74,6 +75,7 @@ const Payment = () => {
             const queryParams = new URLSearchParams(window.location.search);
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
+            setUser(user);
             const { name, email, phone, address } = user;
             const notPurchased = docSnap.data().cart.filter((item) => !item.purchased);
             const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
@@ -104,6 +106,11 @@ const Payment = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // validate if user has added all his info on profile 
+        if (user.name === "" || user.email === "" || user.gender === "" || user.course === "" || user.phone === "" || user.address === "" || user.college === "" || user.year === "" || user.branch === "") {
+            toast.warn("Please complete your profile first!");
+            navigate('/complete-profile');
+        }
         const txnId = generateTxnId();
         await updateDoc(userRef, { txtnId: txnId });
         setPaymentCredentials({
