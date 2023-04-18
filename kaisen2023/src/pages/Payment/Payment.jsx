@@ -47,16 +47,14 @@ const Payment = () => {
     // get url query params
     const getQueryParams = async () => {
         let params = getJsonFromUrl();
-        setUrlParams(params);
-        if (params.status === 'SUCCESS' && amount !== 0 && amount === parseInt(params.amount)) {
-            toast.success('Payment Successful!' + amount);
+        if (params.status === 'SUCCESS') {
+            toast.success('Payment Successful!');
             await updatePurchase();
-            // navigate('/profile');
+            navigate('/profile');
         } else if (params.status === 'FAILED') {
             toast.error('Payment Failed!');
-            // navigate('/cart')
+            navigate('/cart')
         }
-        // console.log(params);
     }
 
     function getJsonFromUrl() {
@@ -65,8 +63,8 @@ const Payment = () => {
         for (const [key, value] of queryParams.entries()) {
             paramsObject[key] = value;
         }
-        setUrlParams(paramsObject);
         // console.log(paramsObject)
+        setUrlParams(paramsObject);
         return paramsObject;
     }
 
@@ -93,6 +91,7 @@ const Payment = () => {
         } catch (error) {
             toast.error(error.message);
         }
+        await getQueryParams();
     }
 
     const handleChange = (e) => {
@@ -141,7 +140,6 @@ const Payment = () => {
     };
 
     useEffect(() => {
-        getQueryParams();
         getProfile();
     }, []);
 

@@ -124,7 +124,7 @@ const GetPass = () => {
             <div className='cart-banner'>
                 <h1 className='cart-head'>Get Passes</h1>
             </div>
-            <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-24'>
+            <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
                 <div className='px-5 py-5'>
                     <h1 className='text-xl font-semibold'>KAISEN AIIMS, Patna</h1>
                     <h2 className='text-base font-medium'>Annual Fest</h2>
