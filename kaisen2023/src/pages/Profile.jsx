@@ -94,7 +94,7 @@ const Profile = () => {
       }
 
       {
-        showQr && <ShowQr value={"http://127.0.0.1:5173/user/" + uid.toUpperCase().substring(0, 6)} setShowQr={setShowQr}></ShowQr>
+        showQr && <ShowQr value={"http://127.0.0.1:5173/user/" + user.id ? user.id : ''} setShowQr={setShowQr}></ShowQr>
       }
 
       <div className="bg-[#000000] bg-opacity-10 backdrop-blur-sm rounded-xl lg:w-[80%] md:w-[95%] w-[95%] bg-center m-auto mt-5 h-fit ">
@@ -117,7 +117,7 @@ const Profile = () => {
                 </div>
                 <div className='flex flex-col items-start'>
                   <p className='text-xl font-semibold text-center mt-4'>{name}</p>
-                  <p className='text-sm text-center text-gray-400'>KAIZEN ID : {uid.toUpperCase().substring(0, 6)}</p>
+                  <p className='text-sm text-center text-gray-400'>KAIZEN ID : {user.id ? user.id : ''}</p>
                 </div>
               </div>
 

@@ -7,6 +7,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import OAuth from '../components/OAuth';
+import shortid from 'shortid';
 
 
 const SignUp = () => {
@@ -42,6 +43,7 @@ const SignUp = () => {
       formDataCopy.year = "";
       formDataCopy.course = "";
       formDataCopy.cart = [];
+      formDataCopy.id = shortid.generate().toUpperCase();
       formDataCopy.purchasedEvents = [];
       await setDoc(doc(db, "users", user.uid), formDataCopy);
 

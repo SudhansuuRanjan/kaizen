@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import { setDoc, doc, serverTimestamp, getDoc } from 'firebase/firestore'
+import shortid from 'shortid'
 
 
 const OAuth = () => {
@@ -34,6 +35,7 @@ const OAuth = () => {
                     course: "",
                     cart: [],
                     purchasedEvents: [],
+                    id: shortid.generate().toUpperCase()
                 })
             }
             navigate('/complete-profile');
