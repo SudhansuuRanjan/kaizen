@@ -5,6 +5,7 @@ import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 import shortid from 'shortid';
+import axios from 'axios';
 
 
 const RegisterPopup = ({ event, setPopup }) => {
@@ -16,6 +17,7 @@ const RegisterPopup = ({ event, setPopup }) => {
     const [team, setTeam] = useState([]);
     const navigate = useNavigate();
     const auth = getAuth();
+    const [user, setUser] = useState({});
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,6 +42,10 @@ const RegisterPopup = ({ event, setPopup }) => {
             const userRef = doc(db, 'users', auth.currentUser.uid);
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
+            setUser({
+                ...user,
+                id: docSnap.id,
+            });
             const cart = user.cart;
             const eventInCart = cart.find((item) => item.name === event.name);
             const eventAlreadyPurchased = cart.find((item) => item.purchased === true && item.eventId === event.id);
@@ -86,6 +92,13 @@ const RegisterPopup = ({ event, setPopup }) => {
                 purchasedAt: new Date(),
             }
             await addDoc(regRef, data);
+            const mailData = {
+                email: auth.currentUser.email,
+                name: auth.currentUser.displayName,
+                event: [event.name],
+                kaizenId: user.id,
+            }
+            const res = await axios.post('https://kaizen-api.vercel.app/api/sendRegConf', mailData);
         }
 
         try {

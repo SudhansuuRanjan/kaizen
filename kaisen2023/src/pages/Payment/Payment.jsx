@@ -5,6 +5,7 @@ import { getAuth } from 'firebase/auth'
 import { PaymentInitModal } from 'pg-test-project';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 
 const generateTxnId = () => {
@@ -33,7 +34,7 @@ const Payment = () => {
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'http://localhost:5173/getpass/',
+        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout/',
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         phone: '',
@@ -87,7 +88,8 @@ const Payment = () => {
                 address,
                 amount: Number(amount),
             })
-            return user;
+
+            return { ...user, id: docSnap.id };
         } catch (error) {
             toast.error("Something went wrong! Error Code 3");
         }
@@ -139,6 +141,15 @@ const Payment = () => {
             });
 
             await updateDoc(userRef, { cart: purchasedItems });
+            // create array of cart item names
+            const cartNames = cart.map((item) => item.name);
+            const data = {
+                name: userData.name,
+                email: userData.email,
+                kaizenId: userData.id,
+                events: cartNames,
+            }
+            const res = await axios.post('https://kaizen-api.vercel.app/api/sendRegConf', data);
             setPaymentStatus("SUCCESS");
             toast.success('Payment Successful!');
         } catch (error) {

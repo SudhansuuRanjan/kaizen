@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase.config'
-import { collection, addDoc, writeBatch, doc, setDoc } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { AiFillDelete } from 'react-icons/ai'
 import shortid from 'shortid'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { PaymentInitModal } from 'pg-test-project';
+
+const generateTxnId = () => {
+    var chars = '0123456789';
+    var string_length = 10;
+    var randomstring = '';
+    for (var i = 0; i < string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+    return randomstring;
+}
+
+
 
 const GetPass = () => {
 
@@ -22,6 +36,49 @@ const GetPass = () => {
     const [discountedPrice, setDiscountedPrice] = useState(0);
     const [tnc, setTnc] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [urlParams, setUrlParams] = useState({});
+    const [paymentStatus, setPaymentStatus] = useState("UPDATING")
+    const [paymentCredentials, setPaymentCredentials] = useState({
+        isOpen: false,
+        clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
+        transUserName: import.meta.env.VITE_PAYMENT_USERNAME,
+        txtnId: '',
+        transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
+        authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
+        authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
+        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout/',
+        name: '',
+        email: '',
+        phone: '',
+        address: 'Patna, Bihar',
+        amount: 0,
+        udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
+        env: 'prod'
+    })
+
+    const getQueryParams = async () => {
+        let params = getJsonFromUrl();
+        if (!params.status) return;
+        if (params.status === 'SUCCESS') {
+            await handlePurchase(params);
+            navigate('/');
+        } else if (params.status === 'FAILED') {
+            toast.error('Payment Failed! Err code 3');
+            navigate('/')
+            setPaymentStatus("FAILED");
+        }
+    }
+
+    function getJsonFromUrl() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const paramsObject = {};
+        for (const [key, value] of queryParams.entries()) {
+            paramsObject[key] = value;
+        }
+        // console.log(paramsObject)
+        setUrlParams(paramsObject);
+        return paramsObject;
+    }
 
 
     const handleChange = (e) => {
@@ -47,7 +104,6 @@ const GetPass = () => {
         const newPeoples = peoples.filter((people) => people.id !== id);
         setPeoples(newPeoples);
     }
-
 
 
     const handlePromoCode = (e) => {
@@ -82,9 +138,8 @@ const GetPass = () => {
         }
     }
 
-    const handlePuchase = async (e) => {
+    const handlePaymentInit = async (e) => {
         e.preventDefault();
-        setLoading(true);
         if (peoples.length === 0) {
             toast.warn('Please add atleast one person to purchase!');
             return;
@@ -93,19 +148,29 @@ const GetPass = () => {
             toast.warn('Please accept terms and conditions to purchase!');
             return;
         }
+        const txnId = generateTxnId();
+        setPaymentStatus("UPDATING");
+        setPaymentCredentials({
+            ...paymentCredentials,
+            txtnId: txnId,
+            isOpen: true,
+            amount: isPromoCodeApplied ? discountedPrice : peoples.length * 21,
+        });
+    }
+
+    const handlePurchase = async (e) => {
+        e.preventDefault();
+        setLoading(true);
 
         const docRef = collection(db, 'passes');
         // store PASSES in firestore FOR EACH PEOPLE
-
         try {
             for (let i = 0; i < peoples.length; i++) {
                 const doc = await addDoc(docRef, peoples[i]);
-                // console.log("Document written with ID: ", doc.id);
             }
             const res = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peoples);
             toast.success('Passes Purchased Successfully! The pass will be sent to your email address shortly.');
         } catch (error) {
-            // console.log(error);
             toast.error('Something went wrong! Please try again later. If your money has been debited and you do not receive passes within 15 min, please contact us.');
         }
 
@@ -118,6 +183,9 @@ const GetPass = () => {
         setLoading(false);
     }
 
+    useEffect(() => {
+        getQueryParams();
+    }, []);
 
     return (
         <div className='bg-black pb-24'>
@@ -171,7 +239,7 @@ const GetPass = () => {
                                 </div>
                                 <div className='flex flex-col items-end justify-between'>
                                     <button onClick={() => handleDelete(people.id)} className='text-red-500 cursor-pointer' type="submit"><AiFillDelete size={25} /></button>
-                                    <h6 className='text-blue-500 font-semibold'>$2390</h6>
+                                    <h6 className='text-blue-500 font-semibold'>$21</h6>
                                 </div>
                             </div>
                         ))}
@@ -199,7 +267,7 @@ const GetPass = () => {
                         <h1 className='text-2xl font-semibold text-green-500'>
                             <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                 {
-                                    peoples.length === 0 ? '$0' : `$${peoples.length * 2390}`
+                                    peoples.length === 0 ? '$0' : `$${peoples.length * 21}`
                                 }
                             </span>
                             <span>
@@ -236,9 +304,28 @@ const GetPass = () => {
                 </div>
 
                 <div className='flex flex-col w-full px-6 py-8'>
-                    <button onClick={handlePuchase} className={`bg-yellow-500 text-gray-900 disabled:bg-yellow-600 py-2.5 my-3 rounded-lg font-semibold`}>Proceed to Pay</button>
+                    <button onClick={handlePaymentInit} className={`bg-yellow-500 text-gray-900 disabled:bg-yellow-600 py-2.5 my-3 rounded-lg font-semibold`}>Proceed to Pay</button>
                 </div>
             </div>
+
+            <PaymentInitModal
+                amount={String(paymentCredentials.amount)}
+                payerMobile={paymentCredentials.phone}
+                payerName={paymentCredentials.name}
+                payerEmail={paymentCredentials.email}
+                payerAddress={paymentCredentials.address}
+                clientCode={paymentCredentials.clientCode}
+                transUserPassword={paymentCredentials.transUserPassword}
+                transUserName={paymentCredentials.transUserName}
+                callbackUrl={paymentCredentials.callbackUrl}
+                isOpen={paymentCredentials.isOpen}
+                authkey={paymentCredentials.authkey}
+                authiv={paymentCredentials.authiv}
+                env={paymentCredentials.env}
+                clientTxnId={paymentCredentials.txtnId}
+                amountType={'INR'}
+                label={'prod'}
+            />
         </div>
     )
 }
