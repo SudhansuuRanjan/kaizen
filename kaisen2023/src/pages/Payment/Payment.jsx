@@ -112,12 +112,24 @@ const Payment = () => {
             navigate('/complete-profile');
         }
         const txnId = generateTxnId();
+
+        const address = user.email.split('@').pop();
         await updateDoc(userRef, { txtnId: txnId });
-        setPaymentCredentials({
-            ...paymentCredentials,
-            isOpen: true,
-            txtnId: txnId,
-        })
+        if (address === 'aiimspatna.org') {
+            setPaymentCredentials({
+                ...paymentCredentials,
+                isOpen: true,
+                txtnId: txnId,
+                amount: Math.max(Math.round(Number(paymentCredentials.amount) * 0.4), 21)
+            })
+            toast.success("Congratulations🥳, AIIMS Patna student discount of 60% applied!");
+        } else {
+            setPaymentCredentials({
+                ...paymentCredentials,
+                isOpen: true,
+                txtnId: txnId,
+            })
+        }
     }
 
     const updatePurchase = async (params) => {

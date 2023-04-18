@@ -86,7 +86,7 @@ const SignIn = () => {
         <p className='my-5 md:my-3 lg:my-2 text-yellow-700 text-lg'>or</p>
 
         <OAuth />
-
+        
         <p className='mt-16 md:mt-5 lg:mt-5'>Don't have an account? <Link to="/signup" className='text-yellow-500'>SignUp</Link></p>
       </div>
 
