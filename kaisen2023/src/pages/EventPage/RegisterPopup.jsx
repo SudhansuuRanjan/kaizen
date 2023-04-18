@@ -95,8 +95,8 @@ const RegisterPopup = ({ event, setPopup }) => {
             const mailData = {
                 email: auth.currentUser.email,
                 name: auth.currentUser.displayName,
-                event: [event.name],
-                kaizenId: user.id,
+                events: [event.name],
+                kaizenId: user.id ? user.id : auth.currentUser.uid,
             }
             const res = await axios.post('https://kaizen-api.vercel.app/api/sendRegConf', mailData);
         }
