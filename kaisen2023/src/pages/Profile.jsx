@@ -149,6 +149,7 @@ const Profile = () => {
                 <p className='text-yellow-500 mt-4'>College: <span className='text-white'>{user.college}</span></p>
                 <p className='text-yellow-500'>Year of Study: <span className='text-white'>{user.year}</span></p>
                 <p className='text-yellow-500'>Course: <span className='text-white'>{user.course}</span></p>
+                <p className='text-yellow-500'>CA Code: <span className='text-white'>{user.caCode ? user.caCode : ""}</span></p>
               </div>
             </div>
 

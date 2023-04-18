@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { ImCross } from 'react-icons/im'
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from './../firebase.config'
+import { toast } from 'react-toastify'
 
 
 const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
@@ -10,6 +13,7 @@ const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
         college: user.college,
         year: user.year,
         course: user.course,
+        caCode: user.caCode ? user.caCode : "",
     });
 
     const [updating, setUpdating] = useState(false);
@@ -17,8 +21,40 @@ const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
     const updateProfile = async (e) => {
         e.preventDefault();
         setUpdating(true);
-        await editProfile(formData);
+        try {
+            const caCode = formData.caCode;
+            const caRef = collection(db, "cacodes");
+            const caSnap = await getDocs(caRef);
+            const caDocs = caSnap.docs.map(doc => doc.data());
+            console.log(caDocs);
+            if (caDocs.some(doc => doc.code === caCode)) {
+                toast.success("Code Validated");
+            } else {
+                toast.error("Invalid Code!");
+                setFormData({ ...formData, caCode: "" });
+                return;
+            }
+            await editProfile(formData);
+        } catch (error) {
+            toast.error("Something went wrong!");
+        }
         setUpdating(false);
+    }
+
+    const checkCACode = async () => {
+        const caCode = formData.caCode;
+        const caRef = collection(db, "cacodes");
+        const caSnap = await getDocs(caRef);
+        const caDocs = caSnap.docs.map(doc => doc.data());
+        console.log(caDocs);
+        if (caDocs.some(doc => doc.code === caCode)) {
+            toast.success("Code Validated");
+            return true;
+        } else {
+            toast.error("Invalid Code!");
+            setFormData({ ...formData, caCode: "" });
+        }
+        return false;
     }
 
     const handleChange = (e) => {
@@ -61,6 +97,11 @@ const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
                     <div className='flex flex-col w-[100%]'>
                         <label htmlFor="course" className='text-sm pb-0.5'>Course</label>
                         <input required id="course" type="text" placeholder="Course" className='py-1.5 rounded-lg px-3 w-[100%] md:w-[20rem] lg:w-[20rem] border-2 border-yellow-400 bg-yellow-600 bg-opacity-10' value={formData.course} onChange={handleChange} />
+                    </div>
+
+                    <div className='flex flex-col w-[100%]'>
+                        <label htmlFor="caCode" className='text-sm pb-0.5'>CA Code</label>
+                        <input id="caCode" type="text" placeholder="CA Code" className='py-1.5 rounded-lg px-3 w-[100%] md:w-[20rem] lg:w-[20rem] border-2 border-yellow-400 bg-yellow-600 bg-opacity-10' value={formData.caCode} onChange={handleChange} />
                     </div>
 
                     {!updating ? (<button className='bg-yellow-600 py-1.5 px-10 rounded-lg w-[100%] md:w-[20rem] lg:w-[20rem] mt-3 flex items-center justify-center' type='submit'>
