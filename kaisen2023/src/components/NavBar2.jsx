@@ -8,7 +8,6 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 
 
-
 const NavBar2 = () => {
     const [menu, setMenu] = useState(false);
     const [focus, setFocus] = useState(-1);
