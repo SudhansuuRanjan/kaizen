@@ -40,6 +40,8 @@ const CompleteProfile = () => {
         const caDocs = caSnap.docs.map(doc => doc.data());
         if (caDocs.some(doc => doc.code === caCode)) {
             toast.success("Code Validated");
+        } else if (caCode === "") {
+            setFormData({ ...formData, caCode: "" });
         } else {
             toast.error("Invalid Code");
             setFormData({ ...formData, caCode: "" });

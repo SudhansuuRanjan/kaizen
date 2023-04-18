@@ -29,6 +29,8 @@ const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
             console.log(caDocs);
             if (caDocs.some(doc => doc.code === caCode)) {
                 toast.success("Code Validated");
+            }else if(caCode === ""){
+                setFormData({ ...formData, caCode: "" });
             } else {
                 toast.error("Invalid Code!");
                 setFormData({ ...formData, caCode: "" });
@@ -39,22 +41,6 @@ const UpdateProfile = ({ setChangeDetails, user, editProfile }) => {
             toast.error("Something went wrong!");
         }
         setUpdating(false);
-    }
-
-    const checkCACode = async () => {
-        const caCode = formData.caCode;
-        const caRef = collection(db, "cacodes");
-        const caSnap = await getDocs(caRef);
-        const caDocs = caSnap.docs.map(doc => doc.data());
-        console.log(caDocs);
-        if (caDocs.some(doc => doc.code === caCode)) {
-            toast.success("Code Validated");
-            return true;
-        } else {
-            toast.error("Invalid Code!");
-            setFormData({ ...formData, caCode: "" });
-        }
-        return false;
     }
 
     const handleChange = (e) => {
