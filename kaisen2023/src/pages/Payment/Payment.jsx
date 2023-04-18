@@ -23,18 +23,16 @@ const Payment = () => {
     const auth = getAuth();
     const navigate = useNavigate();
     const userRef = doc(db, 'users', auth.currentUser.uid);
-    const [user, setUser] = useState([]);
-    const [amount, setAmount] = useState(0);
     const [urlParams, setUrlParams] = useState({});
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
         transUserName: import.meta.env.VITE_PAYMENT_USERNAME,
-        txtnId: generateTxnId(),
+        txtnId: '',
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout/',
+        callbackUrl: 'http://localhost:5173/getpass/',
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
         phone: '',
@@ -47,13 +45,13 @@ const Payment = () => {
     // get url query params
     const getQueryParams = async () => {
         let params = getJsonFromUrl();
+        if (!params.status) return;
         if (params.status === 'SUCCESS') {
-            toast.success('Payment Successful!');
-            await updatePurchase();
-            navigate('/profile');
+            await updatePurchase(params);
+            // navigate('/profile');
         } else if (params.status === 'FAILED') {
             toast.error('Payment Failed!');
-            navigate('/cart')
+            // navigate('/cart')
         }
     }
 
@@ -70,14 +68,13 @@ const Payment = () => {
 
     const getProfile = async () => {
         try {
+            const queryParams = new URLSearchParams(window.location.search);
             const docSnap = await getDoc(userRef);
             const user = docSnap.data();
-            setUser(user);
             const { name, email, phone, address } = user;
             const notPurchased = docSnap.data().cart.filter((item) => !item.purchased);
             const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
-            setAmount(amount);
-            if (amount === 0) {
+            if (amount === 0 && !queryParams.has('status')) {
                 navigate('/events');
             }
             setPaymentCredentials({
@@ -88,10 +85,10 @@ const Payment = () => {
                 address,
                 amount: Number(amount),
             })
+            return user;
         } catch (error) {
-            toast.error(error.message);
+            toast.error("Something went wrong!");
         }
-        await getQueryParams();
     }
 
     const handleChange = (e) => {
@@ -101,18 +98,26 @@ const Payment = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const txnId = generateTxnId();
+        await updateDoc(userRef, { txtnId: txnId });
         setPaymentCredentials({
             ...paymentCredentials,
             isOpen: true,
+            txtnId: txnId,
         })
     }
 
-    const updatePurchase = async () => {
+    const updatePurchase = async (params) => {
+        const userData = await getProfile();
         try {
-            const cart = user.cart;
+            console.log(userData.txtnId, params.clientTxnId)
+            if (userData.txtnId !== urlParams.clientTxnId) return toast.error("Payment Failed! Err Code 0.");
+            const cart = userData.cart;
             const notPurchasedItems = cart.filter((item) => !item.purchased);
+            const amount = notPurchasedItems.reduce((acc, item) => acc + Number(item.price), 0);
+            if (amount !== Number(urlParams.amount)) return toast.error("Payment Failed! Err Code 1.");
 
             notPurchasedItems.forEach(async (item) => {
                 const regRef = collection(db, "registrations");
@@ -134,6 +139,7 @@ const Payment = () => {
             });
 
             await updateDoc(userRef, { cart: purchasedItems });
+            toast.success('Payment Successful!');
         } catch (error) {
             console.log(error.message);
         }
@@ -141,6 +147,7 @@ const Payment = () => {
 
     useEffect(() => {
         getProfile();
+        getQueryParams();
     }, []);
 
     return (

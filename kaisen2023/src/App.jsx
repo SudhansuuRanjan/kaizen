@@ -62,7 +62,6 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              {/* <NavBar /> */}
               <Home />
               <Footer />
             </>
@@ -142,15 +141,16 @@ function App() {
             } />
           </Route>
 
-
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
+
           <Route path='*' element={<>
             <NavBar />
             <Error />
             <Footer />
           </>} />
+
         </Routes>
       </Router>
     </ParallaxProvider>
