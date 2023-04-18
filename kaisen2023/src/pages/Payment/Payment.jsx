@@ -24,6 +24,7 @@ const Payment = () => {
     const navigate = useNavigate();
     const userRef = doc(db, 'users', auth.currentUser.uid);
     const [urlParams, setUrlParams] = useState({});
+    const [paymentStatus, setPaymentStatus] = useState("UPDATING")
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -48,10 +49,11 @@ const Payment = () => {
         if (!params.status) return;
         if (params.status === 'SUCCESS') {
             await updatePurchase(params);
-            // navigate('/profile');
+            navigate('/profile');
         } else if (params.status === 'FAILED') {
-            toast.error('Payment Failed!');
-            // navigate('/cart')
+            toast.error('Payment Failed! Err code 3');
+            navigate('/cart')
+            setPaymentStatus("FAILED");
         }
     }
 
@@ -87,7 +89,7 @@ const Payment = () => {
             })
             return user;
         } catch (error) {
-            toast.error("Something went wrong!");
+            toast.error("Something went wrong! Error Code 3");
         }
     }
 
@@ -112,12 +114,10 @@ const Payment = () => {
     const updatePurchase = async (params) => {
         const userData = await getProfile();
         try {
-            console.log(userData.txtnId, params.clientTxnId)
-            if (userData.txtnId !== urlParams.clientTxnId) return toast.error("Payment Failed! Err Code 0.");
+            if (!(userData.txtnId === params.clientTxnId)) return toast.error("Payment Failed! Err Code 0.");
             const cart = userData.cart;
             const notPurchasedItems = cart.filter((item) => !item.purchased);
-            const amount = notPurchasedItems.reduce((acc, item) => acc + Number(item.price), 0);
-            if (amount !== Number(urlParams.amount)) return toast.error("Payment Failed! Err Code 1.");
+
 
             notPurchasedItems.forEach(async (item) => {
                 const regRef = collection(db, "registrations");
@@ -139,9 +139,10 @@ const Payment = () => {
             });
 
             await updateDoc(userRef, { cart: purchasedItems });
+            setPaymentStatus("SUCCESS");
             toast.success('Payment Successful!');
         } catch (error) {
-            console.log(error.message);
+            toast.error("Something went wrong! Error Code 4");
         }
     };
 
@@ -158,7 +159,7 @@ const Payment = () => {
             {urlParams && urlParams.status ? <div className='m-auto w-[100%] flex items-center justify-center'>
                 <div>
                     <h1 className='text-2xl font-semibold'>Payment Info</h1>
-                    <h1 >Payment Status: {urlParams.status}</h1>
+                    <h1 >Payment Status: {paymentStatus}</h1>
                     <h1>Payment Message: {urlParams.sabpaisaMessage
                     }</h1>
                     <h1>

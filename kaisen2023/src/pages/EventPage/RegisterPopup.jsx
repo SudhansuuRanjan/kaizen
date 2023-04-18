@@ -74,6 +74,20 @@ const RegisterPopup = ({ event, setPopup }) => {
             purchased: Number(event.price) === 0 ? true : false,
             minMem: event.minMem,
         }
+
+        if (Number(event.price) === 0) {
+            // add it to the user's registered events
+            const regRef = collection(db, "registrations");
+            const data = {
+                ...newEvent,
+                uid: auth.currentUser.uid,
+                email: auth.currentUser.email,
+                name: auth.currentUser.displayName,
+                purchasedAt: new Date(),
+            }
+            await addDoc(regRef, data);
+        }
+
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);
             const docSnap = await getDoc(userRef);

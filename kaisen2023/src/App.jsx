@@ -13,7 +13,7 @@ import Footer from './components/Footer'
 import Legals from './pages/Legals/Legals'
 import ScrollToTop from './hooks/useScrollToTop'
 import PrivateRoute from './components/PrivateRoute'
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
 import AOS from 'aos';
@@ -76,13 +76,13 @@ function App() {
           } />
 
           <Route path='/campus-ambassdor' element={<PrivateRoute />}>
-          <Route path='/campus-ambassdor' element={
-            <>
-              <NavBar />
-              <CAPortal />
-              <Footer />
-            </>
-          } />
+            <Route path='/campus-ambassdor' element={
+              <>
+                <NavBar />
+                <CAPortal />
+                <Footer />
+              </>
+            } />
           </Route>
 
 
@@ -122,10 +122,10 @@ function App() {
           </Route>
 
           <Route path='/getpass' element={
-              <Layout>
-                <GetPass />
-              </Layout>
-            } />
+            <Layout>
+              <GetPass />
+            </Layout>
+          } />
 
           <Route path='/complete-profile' element={<PrivateRoute />}>
             <Route path='/complete-profile' element={
