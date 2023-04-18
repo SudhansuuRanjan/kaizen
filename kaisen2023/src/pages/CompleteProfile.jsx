@@ -34,7 +34,18 @@ const CompleteProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (checkCACode) return;
+        const caCode = formData.caCode;
+        const caRef = collection(db, "cacodes");
+        const caSnap = await getDocs(caRef);
+        const caDocs = caSnap.docs.map(doc => doc.data());
+        if (caDocs.some(doc => doc.code === caCode)) {
+            toast.success("Code Validated");
+        } else {
+            toast.error("Invalid Code");
+            setFormData({ ...formData, caCode: "" });
+            return;
+        }
+
         setUpdating(true);
         try {
             await updateDoc(docRef, formData);
@@ -49,22 +60,6 @@ const CompleteProfile = () => {
 
     const onChange = (field, value) => {
         setFormData({ ...formData, [field]: value });
-    }
-
-    const checkCACode = async () => {
-        // check if caCode is valid
-        const caCode = formData.caCode;
-        const caRef = collection(db, "cacodes");
-        const caSnap = await getDocs(caRef);
-        const caDocs = caSnap.docs.map(doc => doc.data());
-        if (caDocs.some(doc => doc.code === caCode)) {
-            toast.success("Code Validated");
-            return true;
-        } else {
-            toast.error("Invalid Code");
-            setFormData({ ...formData, caCode: "" });
-        }
-        return false;
     }
 
     // get profile from firestore
