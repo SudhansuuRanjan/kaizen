@@ -82,9 +82,8 @@ const CAPortal = () => {
                 return;
             }
             // check if user is already registered as CA in users collection
-
             if (user.isCA) {
-                toast.error("You are already registered as CA");
+                toast.error("You are already applied for CA.");
                 return;
             }
             // update user in users collection
