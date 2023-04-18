@@ -16,6 +16,7 @@ const CartPage = () => {
   const [Loading, setLoading] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [changed, setChanged] = useState(Date.now());
+  const [discount, setDiscount] = useState(0);
 
   const userRef = doc(db, 'users', auth.currentUser.uid);
 
@@ -25,6 +26,14 @@ const CartPage = () => {
     const docSnap = await getDoc(userRef);
     // filter not purchased events from cart
     const notPurchased = docSnap.data().cart.filter((item) => !item.purchased);
+    const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
+    // if user is from aiims patna then discount 60% from total amount
+    const address = docSnap.data().email.split('@').pop();
+    if (address === 'aiimspatna.org') {
+      setDiscount(Math.round(0.4 * amount));
+      toast.success("Congratulations🥳, AIIMS Patna student discount of 60% applied!");
+    }
+
     setCartItems(notPurchased);
     setLoading(false);
   }
@@ -96,10 +105,21 @@ const CartPage = () => {
         {
           cartItems.length !== 0 && <div className='flex flex-col items-center justify-between w-[100%] mt-24 mb-16'>
             <div className='flex items-center justify-between lg:w-[80%] md:w-[85%] w-[90%] px-2'>
-              <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600'>Total : <span className='font-bold'> ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span></span>
-              {/* <button disabled={disabled} className='bg-black shadow-xl py-2 px-5 rounded-xl border  border-[#ebe6d0] font-semibold text-lg font-mono text-[#ebe6d0] hover:bg-[#ebe6d0] hover:text-black transition-all delay-75 ease-out' onClick={handlepayment}>
-                Proceed to Pay
-              </button> */}
+              {discount === 0 ?
+                <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600'>
+                  Total <span className='font-bold'>
+                    ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}
+                  </span>
+                </span> :
+                <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600 flex gap-1'>
+                  Total <span className='text-[#ebe6d0] line-through'> ₹ {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span>
+                  <span className='font-bold '>
+                    ₹  {discount}
+                  </span>
+
+                </span>
+              }
+
 
               <Link to="/checkout">
                 <button disabled={disabled} className='bg-black shadow-xl py-2 px-5 rounded-xl border  border-[#ebe6d0] font-semibold text-lg font-mono text-[#ebe6d0] hover:bg-[#ebe6d0] hover:text-black transition-all delay-75 ease-out'>

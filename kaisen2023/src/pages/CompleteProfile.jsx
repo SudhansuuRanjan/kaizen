@@ -21,7 +21,7 @@ const CompleteProfile = () => {
         year: "",
         course: "",
         caCode: "",
-        city: '',
+        city: "",
     });
     const docRef = doc(db, "users", auth.currentUser.uid);
 

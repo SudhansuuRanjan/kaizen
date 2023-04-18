@@ -141,6 +141,42 @@ app.post("/api/sendPassMail", async (req, res) => {
 
 // Certificates
 
+// send otp to mail
+app.post("/api/verifyEmail", async (req, res) => {
+  const { email, otp } = req.body;
+
+  const courier_options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.APIKEY2,
+    },
+    body: JSON.stringify({
+      message: {
+        to: {
+          email,
+        },
+        template: "WDA1MAB8DTM2XQG12RCBV28ZS5BB",
+        data: {
+          code: otp,
+        },
+        routing: {
+          method: "all",
+          channels: ["email"],
+        },
+      },
+    }),
+  };
+
+  try {
+    await fetch("https://api.courier.com/send", courier_options);
+    res.status(200).json({ message: "Mail Sent" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 // listen to port
 app.listen(PORT, () => {
