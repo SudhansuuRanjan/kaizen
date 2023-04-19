@@ -35,7 +35,7 @@ const FAQs = () => {
             </div>
 
             <div className='flex flex-col bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto z-[1999999]'>
-                <h3 className='text-center font-bold text-4xl pt-20 text-yellow-500 decoration-red-500 underline underline-offset[1px]'>FAQs</h3>
+                <h3 data-aos="fade-up" className='text-center font-bold text-4xl pt-20 text-yellow-500 decoration-red-500 underline underline-offset[1px]'>FAQs</h3>
                 <div className='flex flex-col items-center justify-center py-24'>
                     {
                         faqs.map((faq, index) => (

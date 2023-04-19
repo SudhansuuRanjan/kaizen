@@ -120,9 +120,9 @@ const Payment = () => {
                 ...paymentCredentials,
                 isOpen: true,
                 txtnId: txnId,
-                amount: Math.max(Math.round(Number(paymentCredentials.amount) * 0.4), 21)
+                amount: Math.max(Math.round(Number(paymentCredentials.amount) * 0.2), 21)
             })
-            toast.success("Congratulations🥳, AIIMS Patna student discount of 60% applied!");
+            toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
         } else {
             setPaymentCredentials({
                 ...paymentCredentials,

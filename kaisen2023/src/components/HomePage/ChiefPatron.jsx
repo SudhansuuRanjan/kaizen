@@ -7,7 +7,7 @@ const ChiefPatron = () => {
                 <img src="wheel.png" alt="wheel" className='lg:h-[17rem] md:h-[17rem] h-[16rem] brightness-75 animate-spin' />
                 <img src="compass.png" alt="cpmpass" data-aos="fade-left" className='lg:h-[17rem] md:h-[17rem] h-[16rem] brightness-75' />
             </div>
-            <div className='bg-black bg-opacity-50 backdrop-blur-sm rounded-[2.5rem] lg:w-[78%] md:w-[90%] w-[90%] m-auto z-[1999999] lg:p-16 md:p-10 p-8 lg:py-20 md:py-20 py-10 border border-gray-500 flex lg:flex-row md:flex-row flex-col items-center gap-10'>
+            <div data-aos="fade-up" className='bg-black bg-opacity-50 backdrop-blur-sm rounded-[2.5rem] lg:w-[78%] md:w-[90%] w-[90%] m-auto z-[1999999] lg:p-16 md:p-10 p-8 lg:py-20 md:py-20 py-10 border border-gray-500 flex lg:flex-row md:flex-row flex-col items-center gap-10'>
                 <div className='flex items-center flex-col justify-center min-w-[11rem] w-[15rem] gap-4 text-center'>
                     <h3 className='font-semibold text-2xl text-red-500'>CHIEF PATRON</h3>
                     <div className='h-42 w-42 rounded-full overflow-hidden flex items-center justify-center'>

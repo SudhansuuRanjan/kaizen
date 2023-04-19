@@ -6,7 +6,7 @@ const FAQIems = ({ faq }) => {
     const [active, setActive] = useState(false)
 
     return (
-        <div className='lg:w-[45rem] md:w-[80%] w-[90%] text-lg overflow-hidden h-fit my-5'>
+        <div data-aos="fade-up" className='lg:w-[45rem] md:w-[80%] w-[90%] text-lg overflow-hidden h-fit my-5'>
             <div className='flex gap-4 items-center cursor-pointer' onClick={() => setActive((e) => !e)}>
                 <img src={`https://archive.hackmit.org/2020/assets/img/${faq.color}_arrow.svg`} alt="ssd" className={`h-5 transition-all ease-in-out delay-75 ${active && 'rotate-90'}`} />
                 <h3 className={`text-left font-bold text-2xl pt-2 ${faq.color === 'red' ? 'text-red-400' :(faq.color === 'blue' ? 'text-blue-400' :'text-yellow-400')} hover:text-sky-400`}>{faq.question}</h3>

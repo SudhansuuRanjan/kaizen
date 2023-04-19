@@ -18,6 +18,7 @@ const RegisterPopup = ({ event, setPopup }) => {
     const navigate = useNavigate();
     const auth = getAuth();
     const [user, setUser] = useState({});
+    const [disabled, setDisabled] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,6 +39,7 @@ const RegisterPopup = ({ event, setPopup }) => {
 
     // check if event is already in cart
     const checkCart = async () => {
+        setDisabled(true);
         try {
             const userRef = doc(db, 'users', auth.currentUser.uid);
             const docSnap = await getDoc(userRef);
@@ -63,6 +65,7 @@ const RegisterPopup = ({ event, setPopup }) => {
         } catch (error) {
             toast.error("Could not add event to cart");
         }
+        setDisabled(false);
     }
 
     const addEventToCart = async (user) => {
@@ -155,7 +158,7 @@ const RegisterPopup = ({ event, setPopup }) => {
                     }
 
                     <div className='flex relative mt-2 items-center justify-center gap-10 '>
-                        <button onClick={checkCart} className='relative flex items-center justify-center'>
+                        <button disabled={disabled} onClick={checkCart} className='relative flex items-center justify-center'>
                             <p className='text-green-500 border-green-500 hover:border-zinc-800 hover:text-zinc-800 hover:bg-green-500 border px-6 py-1.5 rounded-xl font-semibold text-xl font-mono'>Register</p>
                         </button>
 

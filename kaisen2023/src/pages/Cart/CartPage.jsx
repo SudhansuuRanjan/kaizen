@@ -30,8 +30,8 @@ const CartPage = () => {
     // if user is from aiims patna then discount 60% from total amount
     const address = docSnap.data().email.split('@').pop();
     if (address === 'aiimspatna.org') {
-      setDiscount(Math.round(0.4 * amount));
-      toast.success("Congratulations🥳, AIIMS Patna student discount of 60% applied!");
+      setDiscount(Math.round(0.2 * amount));
+      toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
     }
 
     setCartItems(notPurchased);

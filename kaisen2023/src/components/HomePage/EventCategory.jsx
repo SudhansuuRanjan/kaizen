@@ -14,31 +14,31 @@ const EventCategory = () => {
     const categories = [
         {
             name: 'Cultural',
-            image: "/images/cultural.png",
+            image: "/images/Cultural.webp",
         },
         {
             name: 'Sports',
-            image: "/images/sports.png",
+            image: "/images/sports.webp",
         },
         {
             name: 'Art',
-            image: "/images/painting.png",
+            image: "/images/arts.webp",
         },
         {
             name: 'Literary',
-            image: "/images/literary.png",
+            image: "/images/Literary.webp",
         },
         {
             name: 'Fashion',
-            image: "/images/fashion.png",
+            image: "/images/fashion.webp",
         },
         {
             name: 'Workshop',
-            image: "/images/workshop.png",
+            image: "/images/workshops.webp",
         },
         {
             name: 'Academics',
-            image: "/images/academics.png",
+            image: "/images/academics.webp",
         },
     ]
 
