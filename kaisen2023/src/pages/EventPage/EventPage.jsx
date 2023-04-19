@@ -104,7 +104,7 @@ const EventPage = () => {
                                             <h4 className='text-green-500'>{event.status}</h4>
                                         </div>
                                     </div>
-                                    <img src={event.image} alt="treasure-hunt" loading='lazy' />
+                                    <img src={event.image} alt={event.name} loading='lazy' />
                                 </div>
                             </Link>
                         ))

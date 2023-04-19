@@ -29,8 +29,8 @@ const CartPage = () => {
     const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
     // if user is from aiims patna then discount 60% from total amount
     const address = docSnap.data().email.split('@').pop();
-    if (address === 'aiimspatna.org') {
-      setDiscount(Math.round(0.2 * amount));
+    if (address === 'gmail.com') {
+      setDiscount(Math.ceil(0.2 * amount));
       toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
     }
 
@@ -82,7 +82,7 @@ const CartPage = () => {
 
 
   return (
-    <main className='bg-black'>
+    <main className='bg-black min-h-screen'>
       <div className='cart-banner'>
         <h1 className='cart-head'>Your Event<br />Cart</h1>
       </div>
@@ -104,15 +104,15 @@ const CartPage = () => {
 
         {
           cartItems.length !== 0 && <div className='flex flex-col items-center justify-between w-[100%] mt-24 mb-16'>
-            <div className='flex items-center justify-between lg:w-[80%] md:w-[85%] w-[90%] px-2'>
+            <div className='flex items-center justify-between lg:w-[80%] md:w-[85%] w-[90%] '>
               {discount === 0 ?
                 <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600'>
                   Total <span className='font-bold'>
                     ₹  {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}
                   </span>
                 </span> :
-                <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600 flex gap-1'>
-                  Total <span className='text-[#ebe6d0] line-through'> ₹ {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span>
+                <span className='text-xl md:text-2xl lg:text-2xl text-yellow-600 flex items-center gap-1'>
+                  Total <span className='text-red-500 text-base line-through'> ₹ {cartItems.reduce((acc, item) => acc + Number(item.price), 0)}</span>
                   <span className='font-bold '>
                     ₹  {discount}
                   </span>
@@ -122,7 +122,7 @@ const CartPage = () => {
 
 
               <Link to="/checkout">
-                <button disabled={disabled} className='bg-black shadow-xl py-2 px-5 rounded-xl border  border-[#ebe6d0] font-semibold text-lg font-mono text-[#ebe6d0] hover:bg-[#ebe6d0] hover:text-black transition-all delay-75 ease-out'>
+                <button disabled={disabled} className='bg-black shadow-xl py-2 lg:px-5  md:px-5 px-3 rounded-xl border  border-[#ebe6d0] font-semibold text-lg font-mono text-[#ebe6d0] hover:bg-[#ebe6d0] hover:text-black transition-all delay-75 ease-out'>
                   Proceed to Pay
                 </button>
               </Link>
