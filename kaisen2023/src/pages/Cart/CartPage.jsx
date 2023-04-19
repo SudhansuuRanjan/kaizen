@@ -29,7 +29,7 @@ const CartPage = () => {
     const amount = notPurchased.reduce((acc, item) => acc + Number(item.price), 0);
     // if user is from aiims patna then discount 60% from total amount
     const address = docSnap.data().email.split('@').pop();
-    if (address === 'gmail.com') {
+    if (address === 'aiimspatna.org') {
       setDiscount(Math.ceil(0.2 * amount));
       toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
     }
