@@ -91,7 +91,7 @@ const Payment = () => {
                 amount: Number(amount),
             })
 
-            return { ...user, id: docSnap.id };
+            return { ...user };
         } catch (error) {
             toast.error("Something went wrong! Error Code 3");
         }
