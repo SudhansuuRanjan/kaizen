@@ -7,11 +7,10 @@ import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 import PaymentGateway from '../../utils/PaymentGateway';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 
 const CartPage = () => {
   const auth = getAuth();
-  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [Loading, setLoading] = useState(true);
   const [disabled, setDisabled] = useState(false);
@@ -47,6 +46,11 @@ const CartPage = () => {
         cart: newCart
       });
       setCartItems(newCart);
+      const amount = newCart.reduce((acc, item) => acc + Number(item.price), 0);
+      const address = auth.currentUser.email.split('@').pop();
+      if (address === 'aiimspatna.org') {
+        setDiscount(Math.ceil(0.2 * amount));
+      }
       toast.success("Event removed from cart!");
     } catch (error) {
       toast.error(error.message);

@@ -124,11 +124,16 @@ const Payment = () => {
             })
             toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
         } else {
-            setPaymentCredentials({
+            console.log({
                 ...paymentCredentials,
                 isOpen: true,
                 txtnId: txnId,
             })
+            // setPaymentCredentials({
+            //     ...paymentCredentials,
+            //     isOpen: true,
+            //     txtnId: txnId,
+            // })
         }
     }
 

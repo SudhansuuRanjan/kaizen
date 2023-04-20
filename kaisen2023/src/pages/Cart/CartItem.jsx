@@ -75,7 +75,7 @@ const CartItem = ({ data, cartItems, deleteEvent }) => {
                 </div>
                 <div className='flex items-center justify-between w-[100%] lg:w-[auto] md:w-[auto]'>
                     <div className='flex gap-10'>
-                        <h3 className='event-members'>{data.participants} members</h3>
+                        {data.participants > 1 && <h3 className='event-members'>{data.participants} members</h3>}
                         <h1 className='event-price text-yellow-400 font-medium text-lg'>₹ {data.price}</h1>
                     </div>
                     <div className='pl-5'>

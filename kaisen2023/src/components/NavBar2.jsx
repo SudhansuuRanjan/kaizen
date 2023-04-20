@@ -33,8 +33,8 @@ const NavBar2 = () => {
     }, [])
 
     return (
-        <div className="backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed  bg-gray-800 bg-opacity-40 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-[#3a3a3a]">
-            <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-3">
+        <div className="backdrop-blur-md drop-shadow-md z-50 flex flex-row fixed  bg-gray-800 bg-opacity-40 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-[#161616]">
+            <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-4">
                 <div className="flex items-center">
                     <Link to="/">
                         <img src="/images/kaizen.png" alt="logo" className="h-10" />

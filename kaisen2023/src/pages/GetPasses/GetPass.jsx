@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase.config'
-import { collection, addDoc } from 'firebase/firestore'
+import { getDoc, doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { AiFillDelete } from 'react-icons/ai'
 import shortid from 'shortid'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { PaymentInitModal } from 'pg-test-project';
@@ -20,9 +20,8 @@ const generateTxnId = () => {
 }
 
 
-
 const GetPass = () => {
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         name: '',
@@ -37,7 +36,8 @@ const GetPass = () => {
     const [tnc, setTnc] = useState(false);
     const [loading, setLoading] = useState(false);
     const [urlParams, setUrlParams] = useState({});
-    const [paymentStatus, setPaymentStatus] = useState("UPDATING")
+    const [paymentStatus, setPaymentStatus] = useState("UPDATING");
+    const [gt10, setGt10] = useState(false);
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -46,7 +46,7 @@ const GetPass = () => {
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'https://www.kaizenaiimspatna.com/checkout/',
+        callbackUrl: 'https://www.kaizenaiimspatna.com/getpass/',
         name: '',
         email: '',
         phone: '',
@@ -67,6 +67,10 @@ const GetPass = () => {
             navigate('/')
             setPaymentStatus("FAILED");
         }
+    }
+
+    const getPeoples = async () => {
+        localStorage.getItem('peoples') && setPeoples(JSON.parse(localStorage.getItem('peoples')));
     }
 
     function getJsonFromUrl() {
@@ -93,15 +97,22 @@ const GetPass = () => {
         const data = formData;
         data.id = shortid.generate();
         setPeoples([...peoples, data]);
+        localStorage.setItem('peoples', JSON.stringify([...peoples, data]));
         setFormData({
             email: '',
             name: '',
             phone: '',
-        })
+        });
+        if (peoples.length >= 9) {
+            setGt10(true);
+            toast.success('Group Discount Applied!');
+        }
+        setIsPromoCodeApplied(false);
     }
 
     const handleDelete = (id) => {
         const newPeoples = peoples.filter((people) => people.id !== id);
+        localStorage.setItem('peoples', JSON.stringify(newPeoples));
         setPeoples(newPeoples);
     }
 
@@ -115,32 +126,26 @@ const GetPass = () => {
             return;
         }
 
-
-        if (promoCode === 'KAISEN2023') {
+        if (promoCode === 'KAIZEN2023' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
-            setDiscountedPrice((peoples.length * 2390) - ((peoples.length * 2390) * 0.1));
-            toast.success('Promo Code Applied! You gave got a discount of 10%');
+            setDiscountedPrice(0.75 * (peoples.length * 1000));
+            toast.success('Promo Code Applied! You have got a discount of 25%');
             return;
-        } else if (promoCode === 'KAISENEVENT2023') {
+        } else if (promoCode === 'KAIZEN2023' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
-            if (peoples.length >= 10) {
-                setDiscountedPrice((peoples.length * 2390) - ((peoples.length * 2390) * 0.2));
-                toast.success('Promo Code Applied! You gave got a discount of 20%');
-                return;
-            } else {
-                toast.error('Minimum 10 people required to apply this promo code!');
-                setIsPromoCodeApplied(false);
-                return;
-            }
+            setGt10(true);
+            setDiscountedPrice(0.75 * ((peoples.length * 1000) - 1000));
+            toast.success('Promo Code Applied! You have got a discount of 25%');
+            return;
         } else {
             toast.error('Invalid Promo Code!');
+            setDiscountedPrice(peoples.length * 1000);
             setIsPromoCodeApplied(false);
         }
     }
 
-    const handlePaymentInit = async (e) => {
-        e.preventDefault();
-        if (peoples.length === 0) {
+    const handlePaymentInit = async () => {
+        if (peoples.length < 1) {
             toast.warn('Please add atleast one person to purchase!');
             return;
         }
@@ -148,47 +153,75 @@ const GetPass = () => {
             toast.warn('Please accept terms and conditions to purchase!');
             return;
         }
+        setLoading(true);
         const txnId = generateTxnId();
         setPaymentStatus("UPDATING");
+        // create a new doc in firestore in temp-passes collection and store peoples in it and then use the doc id as txnId
+        const docRef = doc(db, 'temp-passes', txnId);
+        await setDoc(docRef, { peoples: peoples, txnId: txnId, timestamp: serverTimestamp() });
         setPaymentCredentials({
             ...paymentCredentials,
             txtnId: txnId,
             isOpen: true,
-            amount: isPromoCodeApplied ? discountedPrice : peoples.length * 21,
+            amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
+            name: peoples[0].name,
+            phone: peoples[0].phone,
+            email: peoples[0].email
         });
+        setLoading(false);
     }
 
-    const handlePurchase = async (e) => {
-        e.preventDefault();
+    const handlePurchase = async (params) => {
+        // console.log(params);
         setLoading(true);
 
-        const docRef = collection(db, 'passes');
-        // store PASSES in firestore FOR EACH PEOPLE
-        try {
-            for (let i = 0; i < peoples.length; i++) {
-                const doc = await addDoc(docRef, peoples[i]);
+        if (params.clientTxnId) {
+            // get the doc from firestore using the clientTxnId
+            const docRef = doc(db, 'temp-passes', params.clientTxnId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                try {
+                    const data = docSnap.data();
+                    const res = await axios.post('https://kaizen-api.vercel.app/api/generatePasses', data);
+                    const peopleData = res.data.peoples;
+                    // console.log(peopleData);
+                    for (let i = 0; i < peopleData.length; i++) {
+                        const docRef = doc(db, 'passes', peopleData[i].id);
+                        await setDoc(docRef, peopleData[i]);
+                        const res2 = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peopleData[i]);
+                        // console.log(res2.data);
+                    }
+                    localStorage.removeItem('peoples');
+                    toast.success('Passes Purchased Successfully! The pass will be sent to your email address shortly.');
+                    setPaymentStatus("SUCCESS");
+                } catch (error) {
+                    toast.error("Something went wrong while generating passes!");
+                }
+            } else {
+                toast.error('Something went wrong! Please try again later. If your money has been debited and you do not receive passes within 15 min, please contact us.');
+                setPaymentStatus("FAILED");
             }
-            const res = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peoples);
-            toast.success('Passes Purchased Successfully! The pass will be sent to your email address shortly.');
-        } catch (error) {
-            toast.error('Something went wrong! Please try again later. If your money has been debited and you do not receive passes within 15 min, please contact us.');
         }
 
-        setPeoples([]);
-        setPromoCode('');
-        setHasPromoCode(false);
-        setIsPromoCodeApplied(false);
-        setDiscountedPrice(0);
-        setTnc(false);
         setLoading(false);
     }
 
     useEffect(() => {
+        getPeoples();
         getQueryParams();
     }, []);
 
     return (
         <div className='bg-black pb-24'>
+            {
+                loading && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900'>
+                    </div>
+                    <p>
+                        Generating Passes...
+                    </p>
+                </div>
+            }
             <div className='cart-banner'>
                 <h1 className='cart-head'>Get Passes</h1>
             </div>
@@ -239,7 +272,7 @@ const GetPass = () => {
                                 </div>
                                 <div className='flex flex-col items-end justify-between'>
                                     <button onClick={() => handleDelete(people.id)} className='text-red-500 cursor-pointer' type="submit"><AiFillDelete size={25} /></button>
-                                    <h6 className='text-blue-500 font-semibold'>$21</h6>
+                                    <h6 className='text-blue-500 font-semibold'>$1000</h6>
                                 </div>
                             </div>
                         ))}
@@ -264,10 +297,10 @@ const GetPass = () => {
                     </div>
                     <div className='flex justify-between px-6 py-2'>
                         <h1 className='text-base font-semibold text'>Total Amount</h1>
-                        <h1 className='text-2xl font-semibold text-green-500'>
+                        {peoples.length < 2 ? <h1 className='text-2xl font-semibold text-green-500'>
                             <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                 {
-                                    peoples.length === 0 ? '$0' : `$${peoples.length * 21}`
+                                    peoples.length === 0 ? '$0' : `$${peoples.length * 1000}`
                                 }
                             </span>
                             <span>
@@ -275,7 +308,20 @@ const GetPass = () => {
                                     isPromoCodeApplied && "$" + discountedPrice
                                 }
                             </span>
-                        </h1>
+                        </h1> :
+                            <h1 className='text-2xl font-semibold text-green-500'>
+                                <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
+                                    {
+                                        `$${peoples.length * 1000 - 1000}`
+                                    }
+                                </span>
+                                <span>
+                                    {
+                                        isPromoCodeApplied && "$" + discountedPrice
+                                    }
+                                </span>
+                            </h1>
+                        }
                     </div>
                 </div>
 
@@ -298,8 +344,8 @@ const GetPass = () => {
                         <label className='text-sm font-medium'>Have a Promo Code ?</label>
                     </div>
                     {hasPromoCode && <div className='flex gap-3 items-center'>
-                        <input value={promoCode} onChange={(e) => setPromoCode((e.target.value).trim(""))} className='text-gray-700 px-4 py-2 border rounded-lg font-medium' type="text" id="promo" placeholder="Enter Promo Code" />
-                        <button onClick={handlePromoCode} className='font-medium text-gray-900  bg-yellow-500 rounded-full px-5 py-2'>Apply</button>
+                        <input value={promoCode} onChange={(e) => setPromoCode((e.target.value).trim(""))} className='text-gray-700 px-2 py-1.5 border rounded-lg font-medium w-[12rem]' type="text" id="promo" placeholder="Enter Promo Code" />
+                        <button onClick={handlePromoCode} className='font-medium text-gray-900  bg-yellow-500 rounded-full px-5 py-1.5'>Apply</button>
                     </div>}
                 </div>
 

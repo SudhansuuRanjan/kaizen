@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import './CAStyles.scss'
-import FAQIems from '../../components/HomePage/FAQIems'
+import React, { useState, useEffect } from 'react';
+import './CAStyles.scss';
+import FAQIems from '../../components/HomePage/FAQIems';
 import { db } from '../../firebase.config';
 import { getAuth } from 'firebase/auth';
 import { getDoc, doc, updateDoc, setDoc } from "firebase/firestore";
@@ -203,7 +203,7 @@ const CAPortal = () => {
                 </div>
             </div>
 
-            
+
 
             <div>
                 <h1 className='text-4xl font-bold text-center py-16'>How to Apply?</h1>

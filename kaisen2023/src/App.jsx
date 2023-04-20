@@ -26,6 +26,7 @@ import CAPortal from './pages/CAPortal/CAPortal'
 import CompleteProfile from './pages/CompleteProfile'
 import Payment from './pages/Payment/Payment'
 import GetPass from './pages/GetPasses/GetPass'
+import Pass from './pages/GetPasses/Pass'
 
 function App() {
 
@@ -89,6 +90,12 @@ function App() {
           <Route path='/events' element={
             <Layout>
               <EventPage />
+            </Layout>
+          } />
+
+          <Route path='/pass/:passId' element={
+            <Layout>
+              <Pass />
             </Layout>
           } />
 
