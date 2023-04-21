@@ -83,6 +83,7 @@ const GetPass = () => {
     }
 
     const getPeoples = async () => {
+        if (localStorage.getItem('peoples') === null) return setPeoples([]);
         localStorage.getItem('peoples') && setPeoples(JSON.parse(localStorage.getItem('peoples')));
     }
 
