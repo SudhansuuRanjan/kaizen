@@ -62,9 +62,30 @@ const Pass = () => {
                     <hr className='border-t-2 border-dotted border-gray-400  bg-[#fff] h-[2px] w-[90%]' />
                     <div className='bg-black h-8 w-8 rounded-full mr-[-1rem] z-30'></div>
                 </div>
-                <div className='z-0'>
-                    <img className='w-full h-fit mt-[-1rem]' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="event" />
+                <div className='bg-[url("bsic-reg.jpg")] mt-[-1rem] bg-cover bg-center w-full h-fit text-sm text-white font-normal'>
+                    <div className='h-full w-full bg-black bg-opacity-80 p-5'>
+                        <p className='pb-2 text-yellow-400 text-base'>This Basic Registration includes:</p>
+                        <ul className='list-inside'>
+                            <li>✅Lunch on all 5 days</li>
+                            <li>✅ Kaizen Merchandise & Goodies</li>
+                            <li>✅ Access to all the events</li>
+                            <li>✅ A seat in Medical Workshops lead under eminent faculty of AIIMS Patna:</li>
+                            <ul className='list-inside ml-4'>
+                                <li>👉 Basic Life Support (BLS)  Workshop</li>
+                                <li>👉 Workshop on Laporoscopic Surgery</li>
+                                <li>👉 Suturing Workshop</li>
+                                <li>👉 Hand Hygiene Skill Station</li>
+                            </ul>
+                            <li>✅ Participation in Gully Cricket, Darts, Arm Wrestling and Push-up Challenge</li>
+                            <li>✅ Access to our 360° Selfie Booth</li>
+                            <li>✅ Bus transportation facility against designated routes in Patna</li>
+                            <li>✅ Audience viewership across all events held under Kaizen, AIIMS Patna</li>
+                        </ul>
+                    </div>
                 </div>
+                {/* <div className='z-0'>
+                    <img className='w-full h-fit mt-[-1rem]' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="event" />
+                </div> */}
                 <div className='z-0 flex flex-col items-center justify-center m-10 h-[16rem]'>
                     <QRCode
                         size={256}
