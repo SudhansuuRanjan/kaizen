@@ -226,7 +226,7 @@ const CAPortal = () => {
             </div>
 
 
-            <div className="relative bg-no-repeat min-h-fit bg-center bg-cover w-[100%] bg-[url('./faq-wall.jpg')]">
+            <div className="relative bg-no-repeat min-h-fit bg-center bg-cover w-[100%] bg-[url('https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/images%2Ffaq-wall.jpg?alt=media&token=498b8d16-4b22-4077-889b-27772bd768e9')]">
                 <div className='h-full w-full bg-black bg-opacity-60'>
                     <div className='flex lg:flex-row md:flex-row flex-col justify-between lg:items-start md:items-start items-center absolute w-[100%] lg:top-[20%] md:top-[20%] top-[10%] z-0 h-[32rem]'>
                     </div>
