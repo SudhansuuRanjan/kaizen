@@ -59,7 +59,7 @@ const GetPass = () => {
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'https://www.kaizenaiimspatna.com/basic-registration/',
+        callbackUrl: 'https://www.kaizenaiimspatna.com/basicregistration',
         name: '',
         email: '',
         phone: '',
@@ -279,6 +279,7 @@ const GetPass = () => {
             <div className='cart-banner'>
                 <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
             </div>
+            <p className='text-center text-yellow-500 text-lg mb-[7rem] lg:max-w-[55rem] md:max-w-[40rem] w-full px-6 m-auto'>Your basic registration <span className='text-red-500 font-medium'>DOES NOT</span> include participation in cultural, literary, arts, informals and sports competitions. To participate in them, register seperately by <Link to="/events" className='text-blue-400 font-medium'>clicking here</Link>.</p>
             <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
                 <div className='px-5 py-5'>
                     <h1 className='text-xl font-semibold'>KAIZEN AIIMS, Patna</h1>

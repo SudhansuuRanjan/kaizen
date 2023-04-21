@@ -30,7 +30,7 @@ const ParallaxComponent = () => {
             children: (
               <div className="absolute inset-0 flex flex-col justify-center items-center mt-[16rem]">
                 <div className='flex flex-col items-center gap-4'>
-                  {/* <CustomBtn1 /> */}
+                  <CustomBtn1 />
                   <CustomBtn2 />
                 </div>
               </div>

@@ -4,8 +4,8 @@ import './CustomBtns.scss'
 
 const CustomBtn1 = () => {
     return (
-        <Link to="/">
-            <button className="custom-btn btn-11">Get Passes<div className="dot"></div></button>
+        <Link to="/basicregistration">
+            <button className="custom-btn btn-11">KAIZEN - Basic Registration<div className="dot"></div></button>
         </Link>
     )
 }

@@ -128,7 +128,7 @@ function App() {
             } />
           </Route>
 
-          <Route path='/basic-registration' element={
+          <Route path='/basicregistration' element={
             <Layout>
               <GetPass />
             </Layout>
