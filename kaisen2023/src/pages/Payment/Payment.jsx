@@ -27,6 +27,8 @@ const Payment = () => {
     const [urlParams, setUrlParams] = useState({});
     const [paymentStatus, setPaymentStatus] = useState("UPDATING");
     const [user, setUser] = useState({});
+    const [proceedingToPay, setProceedingToPay] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -111,8 +113,8 @@ const Payment = () => {
             toast.warn("Please complete your profile first!");
             navigate('/complete-profile');
         }
+        setProceedingToPay(true);
         const txnId = generateTxnId();
-
         const address = user.email.split('@').pop();
         await updateDoc(userRef, { txtnId: txnId });
         if (address === 'aiimspatna.org') {
@@ -124,20 +126,22 @@ const Payment = () => {
             })
             toast.success("Congratulations🥳, AIIMS Patna student discount of 80% applied!");
         } else {
-            console.log({
-                ...paymentCredentials,
-                isOpen: true,
-                txtnId: txnId,
-            })
-            // setPaymentCredentials({
+            // console.log({
             //     ...paymentCredentials,
             //     isOpen: true,
             //     txtnId: txnId,
             // })
+            setPaymentCredentials({
+                ...paymentCredentials,
+                isOpen: true,
+                txtnId: txnId,
+            })
         }
+        setProceedingToPay(false);
     }
 
     const updatePurchase = async (params) => {
+        setLoading(true);
         const userData = await getProfile();
         try {
             if (!(userData.txtnId === params.clientTxnId)) return toast.error("Payment Failed! Err Code 0.");
@@ -179,6 +183,7 @@ const Payment = () => {
         } catch (error) {
             toast.error("Something went wrong! Error Code 4");
         }
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -188,6 +193,32 @@ const Payment = () => {
 
     return (
         <main className='bg-black pb-36'>
+            {
+                proceedingToPay && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
+                    </div>
+                    <p>
+                        Proceeding to Payment...
+                    </p>
+                    <p>
+                        Please do not close this window or press back button.
+                    </p>
+                </div>
+            }
+
+            {
+                loading && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
+                    </div>
+                    <p>
+                        Registering you...
+                    </p>
+                    <p>
+                        Please do not close this window or press back button.
+                    </p>
+                </div>
+            }
+
             <div className='cart-banner'>
                 <h1 className='cart-head'>Checkout</h1>
             </div>
