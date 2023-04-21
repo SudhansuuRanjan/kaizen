@@ -36,7 +36,7 @@ const Pass = () => {
 
             {Loading ? <div className='text-center pt-10 font-medium text-yellow-500 text-xl'>Loading...</div> : <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
                 <div className='px-5 py-5'>
-                    <h1 className='text-xl font-semibold'>KAISEN AIIMS, Patna</h1>
+                    <h1 className='text-xl font-semibold'>KAIZEN AIIMS, Patna</h1>
                     <h2 className='text-base font-medium'>Annual Fest</h2>
                 </div>
                 <div className='flex justify-between items-center'>
@@ -59,6 +59,10 @@ const Pass = () => {
                     <div className='flex gap-2 items-center'>
                         <p className='font-semibold text-lg text-black'>Email :</p>
                         <p className='font-medium'>{data.email}</p>
+                    </div>
+                    <div className='flex gap-2 items-center'>
+                        <p className='font-semibold text-lg text-black'>Email :</p>
+                        <p className='font-medium'>{data.college}</p>
                     </div>
                     <div className='flex gap-2 items-center'>
                         <p className='font-semibold text-lg text-black'>Phone :</p>

@@ -195,7 +195,6 @@ const NavBar2 = () => {
                                 </button>
                             </Link>
                         </li> */}
-
                     </ul>
                 </div>
             )}

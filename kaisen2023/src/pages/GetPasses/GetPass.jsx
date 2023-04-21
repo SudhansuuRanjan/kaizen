@@ -26,6 +26,7 @@ const GetPass = () => {
         email: '',
         name: '',
         phone: '',
+        college: '',
     })
 
     const [peoples, setPeoples] = useState([]);
@@ -102,6 +103,7 @@ const GetPass = () => {
             email: '',
             name: '',
             phone: '',
+            college: '',
         });
         if (peoples.length >= 9) {
             setGt10(true);
@@ -227,7 +229,7 @@ const GetPass = () => {
             </div>
             <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
                 <div className='px-5 py-5'>
-                    <h1 className='text-xl font-semibold'>KAISEN AIIMS, Patna</h1>
+                    <h1 className='text-xl font-semibold'>KAIZEN AIIMS, Patna</h1>
                     <h2 className='text-base font-medium'>Annual Fest</h2>
                 </div>
                 <div className='flex justify-between items-center'>
@@ -245,11 +247,15 @@ const GetPass = () => {
                 <form onSubmit={handleSubmit} className='flex gap-2 flex-col w-full p-6'>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="text">Name</label>
-                        <input required className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.name} type="text" id="name" placeholder="Lionel Messi" onChange={handleChange} />
+                        <input required className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.name} type="text" id="name" placeholder="Captain Jack Sparrow" onChange={handleChange} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="email">Email</label>
-                        <input required className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.email} type="email" id="email" placeholder="lionelmessi@gmail.com" onChange={handleChange} />
+                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.email} type="email" id="email" placeholder="capjacksparrow@gmail.com" onChange={handleChange} />
+                    </div>
+                    <div className='flex flex-col w-full'>
+                        <label className='font-medium' htmlFor="college">College</label>
+                        <input required className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.college} type="college" id="college" placeholder="AIIMS, Patna" onChange={handleChange} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="mobile">Mobile No.</label>
@@ -272,7 +278,7 @@ const GetPass = () => {
                                 </div>
                                 <div className='flex flex-col items-end justify-between'>
                                     <button onClick={() => handleDelete(people.id)} className='text-red-500 cursor-pointer' type="submit"><AiFillDelete size={25} /></button>
-                                    <h6 className='text-blue-500 font-semibold'>$1000</h6>
+                                    <h6 className='text-blue-500 font-semibold'>₹1000</h6>
                                 </div>
                             </div>
                         ))}
@@ -297,27 +303,27 @@ const GetPass = () => {
                     </div>
                     <div className='flex justify-between px-6 py-2'>
                         <h1 className='text-base font-semibold text'>Total Amount</h1>
-                        {peoples.length < 2 ? <h1 className='text-2xl font-semibold text-green-500'>
+                        {peoples.length < 10 ? <h1 className='text-2xl font-semibold text-green-500'>
                             <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                 {
-                                    peoples.length === 0 ? '$0' : `$${peoples.length * 1000}`
+                                    peoples.length === 0 ? '₹0' : `₹${peoples.length * 1000}`
                                 }
                             </span>
                             <span>
                                 {
-                                    isPromoCodeApplied && "$" + discountedPrice
+                                    isPromoCodeApplied && "₹" + discountedPrice
                                 }
                             </span>
                         </h1> :
                             <h1 className='text-2xl font-semibold text-green-500'>
                                 <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                     {
-                                        `$${peoples.length * 1000 - 1000}`
+                                        `₹${peoples.length * 1000 - 1000}`
                                     }
                                 </span>
                                 <span>
                                     {
-                                        isPromoCodeApplied && "$" + discountedPrice
+                                        isPromoCodeApplied && "₹" + discountedPrice
                                     }
                                 </span>
                             </h1>
