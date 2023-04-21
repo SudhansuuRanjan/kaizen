@@ -183,15 +183,15 @@ const GetPass = () => {
             phone: peoples[0].phone,
             email: peoples[0].email
         });
-        console.log({
-            ...paymentCredentials,
-            txtnId: txnId,
-            isOpen: true,
-            amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
-            name: peoples[0].name,
-            phone: peoples[0].phone,
-            email: peoples[0].email
-        })
+        // console.log({
+        //     ...paymentCredentials,
+        //     txtnId: txnId,
+        //     isOpen: true,
+        //     amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
+        //     name: peoples[0].name,
+        //     phone: peoples[0].phone,
+        //     email: peoples[0].email
+        // })
         setLoading(false);
     }
 
@@ -215,9 +215,14 @@ const GetPass = () => {
                     const peopleData = data.peoples;
 
                     for (let i = 0; i < peopleData.length; i++) {
-                        const docRef = doc(db, 'passes', peopleData[i].id);
-                        await setDoc(docRef, peopleData[i]);
-                        const res2 = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peopleData[i]);
+                        try {
+                            const docRef = doc(db, 'passes', peopleData[i].id);
+                            await setDoc(docRef, peopleData[i]);
+                            const res2 = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peopleData[i]);
+                            console.log(peopleData[i]);
+                        } catch (error) {
+                            console.log(error.message);
+                        }
                         // console.log(res2.data);
                     }
                     localStorage.removeItem('peoples');

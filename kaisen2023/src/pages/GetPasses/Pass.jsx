@@ -17,11 +17,11 @@ const Pass = () => {
         try {
             const passRef = collection(db, 'passes');
             // console.log(id);
-            const passSnap = await getDocs(query(passRef, where('passId', '==', id)));
+            const passSnap = await getDocs(query(passRef, where('id', '==', id)));
             const pass = passSnap.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
             // console.log(pass);
             setData(pass[0]);
-            if(pass.length === 0) {
+            if (pass.length === 0) {
                 setError(true);
                 toast.error('Invalid PassID!');
             }
@@ -36,7 +36,7 @@ const Pass = () => {
         getPass();
     }, [])
 
-    if(error) return (
+    if (error) return (
         <div className='bg-black pb-24'>
             <div className='cart-banner'>
                 <h1 className='cart-head'>Your Basic Pass</h1>
