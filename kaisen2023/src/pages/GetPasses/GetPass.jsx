@@ -129,6 +129,8 @@ const GetPass = () => {
         const newPeoples = peoples.filter((people) => people.id !== id);
         localStorage.setItem('peoples', JSON.stringify(newPeoples));
         setPeoples(newPeoples);
+        setIsPromoCodeApplied(false);
+        setPromoCode('');
     }
 
 
@@ -144,13 +146,13 @@ const GetPass = () => {
         if (promoCode === 'EARLYBIRD' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.58 * (peoples.length * 1200));
-            toast.success('Promo Code Applied! You have got a discount of 25%');
+            toast.success('Promo Code Applied! You have got a discount of 42%');
             return;
         } else if (promoCode === 'EARLYBIRD' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
             setDiscountedPrice(0.58 * ((peoples.length * 1200) - 1200));
-            toast.success('Promo Code Applied! You have got a discount of 25%');
+            toast.success('Promo Code Applied! You have got a discount of 42%');
             return;
         } else {
             toast.error('Invalid Promo Code!');
@@ -295,7 +297,7 @@ const GetPass = () => {
                     <img className='w-full h-fit mt-[-1rem]' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="event" />
                 </div>
                 <div className='flex p-6'>
-                        <p className='font-medium text-red-500 text-center'>*Confirmation mail will be sent to each email separately.</p>
+                    <p className='font-medium text-red-500 text-center'>*Confirmation mail will be sent to each email separately.</p>
                 </div>
                 <form onSubmit={handleSubmit} className='flex gap-2 flex-col w-full p-6 pt-0'>
                     <div className='flex flex-col w-full'>

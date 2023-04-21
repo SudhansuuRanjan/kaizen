@@ -1,0 +1,199 @@
+Date : 2023-04-21 17:01:44
+Directory : d:\Kaisen 2023
+Total : 127 files,  24709 codes, 313 comments, 1196 blanks, all 26218 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |         11 |     15,931 |          0 |          6 |     15,937 |
+| JavaScript JSX |         79 |      6,236 |        248 |        816 |      7,300 |
+| CSS            |          6 |        937 |         27 |        142 |      1,106 |
+| SCSS           |          7 |        921 |         10 |        158 |      1,089 |
+| JavaScript     |         12 |        583 |         27 |         63 |        673 |
+| HTML           |          2 |         83 |          1 |          9 |         93 |
+| SVG            |          9 |         17 |          0 |          1 |         18 |
+| Markdown       |          1 |          1 |          0 |          1 |          2 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                       |        127 |     24,709 |        313 |      1,196 |     26,218 |
+| . (Files)                                                               |          1 |          1 |          0 |          1 |          2 |
+| kaisen2023                                                              |         83 |     13,940 |        200 |        826 |     14,966 |
+| kaisen2023 (Files)                                                      |          7 |      7,840 |          3 |         13 |      7,856 |
+| kaisen2023\public                                                       |          6 |         14 |          0 |          1 |         15 |
+| kaisen2023\public (Files)                                               |          2 |          2 |          0 |          0 |          2 |
+| kaisen2023\public\favicon_io                                            |          1 |          1 |          0 |          0 |          1 |
+| kaisen2023\public\images                                                |          3 |         11 |          0 |          1 |         12 |
+| kaisen2023\src                                                          |         70 |      6,086 |        197 |        812 |      7,095 |
+| kaisen2023\src (Files)                                                  |          5 |        353 |         43 |         63 |        459 |
+| kaisen2023\src\assets                                                   |          1 |          1 |          0 |          0 |          1 |
+| kaisen2023\src\components                                               |         29 |      1,645 |         82 |        220 |      1,947 |
+| kaisen2023\src\components (Files)                                       |         15 |        832 |         48 |         99 |        979 |
+| kaisen2023\src\components\HomePage                                      |         14 |        813 |         34 |        121 |        968 |
+| kaisen2023\src\context                                                  |          1 |          0 |          0 |          1 |          1 |
+| kaisen2023\src\hooks                                                    |          3 |         52 |          0 |         14 |         66 |
+| kaisen2023\src\pages                                                    |         27 |      3,648 |         64 |        479 |      4,191 |
+| kaisen2023\src\pages (Files)                                            |          7 |        660 |         14 |         91 |        765 |
+| kaisen2023\src\pages\CAPortal                                           |          2 |        503 |          5 |         71 |        579 |
+| kaisen2023\src\pages\Cart                                               |          3 |        383 |          8 |         59 |        450 |
+| kaisen2023\src\pages\EventPage                                          |          4 |        706 |         10 |         97 |        813 |
+| kaisen2023\src\pages\GetPasses                                          |          2 |        491 |         18 |         51 |        560 |
+| kaisen2023\src\pages\Legals                                             |          6 |        378 |          0 |         47 |        425 |
+| kaisen2023\src\pages\Payment                                            |          1 |        230 |          9 |         27 |        266 |
+| kaisen2023\src\pages\Proshow                                            |          2 |        297 |          0 |         36 |        333 |
+| kaisen2023\src\utils                                                    |          4 |        387 |          8 |         35 |        430 |
+| kaizen-admin                                                            |         39 |      7,805 |         98 |        337 |      8,240 |
+| kaizen-admin (Files)                                                    |          7 |      5,446 |          2 |          6 |      5,454 |
+| kaizen-admin\public                                                     |          3 |          3 |          0 |          0 |          3 |
+| kaizen-admin\public (Files)                                             |          1 |          1 |          0 |          0 |          1 |
+| kaizen-admin\public\images                                              |          2 |          2 |          0 |          0 |          2 |
+| kaizen-admin\src                                                        |         29 |      2,356 |         96 |        331 |      2,783 |
+| kaizen-admin\src (Files)                                                |          5 |        183 |          0 |         23 |        206 |
+| kaizen-admin\src\assets                                                 |          1 |          1 |          0 |          0 |          1 |
+| kaizen-admin\src\components                                             |          9 |        481 |         20 |         47 |        548 |
+| kaizen-admin\src\hooks                                                  |          1 |         24 |          0 |          6 |         30 |
+| kaizen-admin\src\pages                                                  |         13 |      1,667 |         76 |        255 |      1,998 |
+| kaizen-admin\src\pages (Files)                                          |          6 |        595 |         23 |         95 |        713 |
+| kaizen-admin\src\pages\EventPage                                        |          5 |        942 |         30 |        130 |      1,102 |
+| kaizen-admin\src\pages\participant                                      |          1 |        121 |         23 |         27 |        171 |
+| kaizen-admin\src\pages\verify                                           |          1 |          9 |          0 |          3 |         12 |
+| rzrpay-backend                                                          |          4 |      2,963 |         15 |         32 |      3,010 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                | language       | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| d:\Kaisen 2023\README.md                                                | Markdown       |          1 |          0 |          1 |          2 |
+| d:\Kaisen 2023\kaisen2023\index.html                                    | HTML           |         70 |          1 |          8 |         79 |
+| d:\Kaisen 2023\kaisen2023\package-lock.json                             | JSON           |      7,707 |          0 |          1 |      7,708 |
+| d:\Kaisen 2023\kaisen2023\package.json                                  | JSON           |         39 |          0 |          1 |         40 |
+| d:\Kaisen 2023\kaisen2023\postcss.config.cjs                            | JavaScript     |          6 |          0 |          1 |          7 |
+| d:\Kaisen 2023\kaisen2023\public\favicon_io\site.webmanifest            | JSON           |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\public\images\Ambulance.svg                   | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\public\images\Ambulance_lights.svg            | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\public\images\reveal.svg                      | SVG            |          9 |          0 |          1 |         10 |
+| d:\Kaisen 2023\kaisen2023\public\site.webmanifest                       | JSON           |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\public\vite.svg                               | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\src\App.css                                   | CSS            |        188 |          0 |         30 |        218 |
+| d:\Kaisen 2023\kaisen2023\src\App.jsx                                   | JavaScript JSX |        127 |         16 |         25 |        168 |
+| d:\Kaisen 2023\kaisen2023\src\assets\react.svg                          | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaisen2023\src\components\CartIcon.jsx                   | JavaScript JSX |         11 |          0 |          2 |         13 |
+| d:\Kaisen 2023\kaisen2023\src\components\CustomBtns.jsx                 | JavaScript JSX |         18 |          0 |          3 |         21 |
+| d:\Kaisen 2023\kaisen2023\src\components\CustomBtns.scss                | SCSS           |         89 |          0 |          6 |         95 |
+| d:\Kaisen 2023\kaisen2023\src\components\EditProfile.jsx                | JavaScript JSX |         91 |          0 |         15 |        106 |
+| d:\Kaisen 2023\kaisen2023\src\components\EventCard.jsx                  | JavaScript JSX |         22 |          0 |          2 |         24 |
+| d:\Kaisen 2023\kaisen2023\src\components\EventDetails.jsx               | JavaScript JSX |         88 |          0 |         18 |        106 |
+| d:\Kaisen 2023\kaisen2023\src\components\Footer.jsx                     | JavaScript JSX |         55 |          3 |          9 |         67 |
+| d:\Kaisen 2023\kaisen2023\src\components\Footer2.jsx                    | JavaScript JSX |         22 |          0 |          2 |         24 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\About.jsx             | JavaScript JSX |         18 |          0 |          2 |         20 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\ArtistLineup.jsx      | JavaScript JSX |         47 |          0 |          7 |         54 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\CAPopup.jsx           | JavaScript JSX |         17 |          0 |          2 |         19 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\ChiefPatron.jsx       | JavaScript JSX |         36 |          0 |          5 |         41 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\EventCategory.jsx     | JavaScript JSX |        100 |          0 |          7 |        107 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\FAQIems.jsx           | JavaScript JSX |         16 |          1 |          4 |         21 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\FAQs.jsx              | JavaScript JSX |         46 |          0 |          6 |         52 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\Footer.jsx            | JavaScript JSX |         87 |          0 |          2 |         89 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\Highlights.jsx        | JavaScript JSX |         39 |          0 |          2 |         41 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\NavBar.jsx            | JavaScript JSX |         61 |         23 |          8 |         92 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\NavBar.scss           | SCSS           |        226 |          9 |         59 |        294 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\ParallaxComponent.jsx | JavaScript JSX |         44 |          1 |          3 |         48 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\Sponsors.jsx          | JavaScript JSX |         26 |          0 |          7 |         33 |
+| d:\Kaisen 2023\kaisen2023\src\components\HomePage\Timer.jsx             | JavaScript JSX |         50 |          0 |          7 |         57 |
+| d:\Kaisen 2023\kaisen2023\src\components\Layout.jsx                     | JavaScript JSX |         13 |          0 |          2 |         15 |
+| d:\Kaisen 2023\kaisen2023\src\components\Loader.jsx                     | JavaScript JSX |         13 |          0 |          2 |         15 |
+| d:\Kaisen 2023\kaisen2023\src\components\NavBar.jsx                     | JavaScript JSX |        148 |         15 |          6 |        169 |
+| d:\Kaisen 2023\kaisen2023\src\components\NavBar2.jsx                    | JavaScript JSX |        161 |         27 |         17 |        205 |
+| d:\Kaisen 2023\kaisen2023\src\components\OAuth.jsx                      | JavaScript JSX |         48 |          3 |          7 |         58 |
+| d:\Kaisen 2023\kaisen2023\src\components\PrivateRoute.jsx               | JavaScript JSX |         13 |          0 |          5 |         18 |
+| d:\Kaisen 2023\kaisen2023\src\components\PurchasedEventItem.jsx         | JavaScript JSX |         40 |          0 |          3 |         43 |
+| d:\Kaisen 2023\kaisen2023\src\context\KaizenContext.js                  | JavaScript     |          0 |          0 |          1 |          1 |
+| d:\Kaisen 2023\kaisen2023\src\firebase.config.js                        | JavaScript     |         13 |          0 |          3 |         16 |
+| d:\Kaisen 2023\kaisen2023\src\hooks\useAuthStatus.jsx                   | JavaScript JSX |         24 |          0 |          6 |         30 |
+| d:\Kaisen 2023\kaisen2023\src\hooks\useScrollToTop.jsx                  | JavaScript JSX |          9 |          0 |          3 |         12 |
+| d:\Kaisen 2023\kaisen2023\src\hooks\useWindowDimensions.jsx             | JavaScript JSX |         19 |          0 |          5 |         24 |
+| d:\Kaisen 2023\kaisen2023\src\index.css                                 | CSS            |         16 |         27 |          3 |         46 |
+| d:\Kaisen 2023\kaisen2023\src\main.jsx                                  | JavaScript JSX |          9 |          0 |          2 |         11 |
+| d:\Kaisen 2023\kaisen2023\src\pages\CAPortal\CAPortal.jsx               | JavaScript JSX |        250 |          4 |         32 |        286 |
+| d:\Kaisen 2023\kaisen2023\src\pages\CAPortal\CAStyles.scss              | SCSS           |        253 |          1 |         39 |        293 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Cart\CartItem.jsx                   | JavaScript JSX |        115 |          2 |         18 |        135 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Cart\CartPage.jsx                   | JavaScript JSX |        118 |          6 |         17 |        141 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Cart\CartPage.scss                  | SCSS           |        150 |          0 |         24 |        174 |
+| d:\Kaisen 2023\kaisen2023\src\pages\CompleteProfile.jsx                 | JavaScript JSX |        123 |          4 |         12 |        139 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Error.jsx                           | JavaScript JSX |         16 |          0 |          2 |         18 |
+| d:\Kaisen 2023\kaisen2023\src\pages\EventPage\Event.css                 | CSS            |        335 |          0 |         52 |        387 |
+| d:\Kaisen 2023\kaisen2023\src\pages\EventPage\EventDetails.jsx          | JavaScript JSX |        115 |          3 |         12 |        130 |
+| d:\Kaisen 2023\kaisen2023\src\pages\EventPage\EventPage.jsx             | JavaScript JSX |        100 |          4 |         15 |        119 |
+| d:\Kaisen 2023\kaisen2023\src\pages\EventPage\RegisterPopup.jsx         | JavaScript JSX |        156 |          3 |         18 |        177 |
+| d:\Kaisen 2023\kaisen2023\src\pages\ForgotPassword.jsx                  | JavaScript JSX |         62 |          0 |         13 |         75 |
+| d:\Kaisen 2023\kaisen2023\src\pages\GetPasses\GetPass.jsx               | JavaScript JSX |        386 |         16 |         37 |        439 |
+| d:\Kaisen 2023\kaisen2023\src\pages\GetPasses\Pass.jsx                  | JavaScript JSX |        105 |          2 |         14 |        121 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Home.jsx                            | JavaScript JSX |         28 |          2 |          3 |         33 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\CnC.jsx                      | JavaScript JSX |         38 |          0 |          2 |         40 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\Legals.jsx                   | JavaScript JSX |         80 |          0 |         14 |         94 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\Legals.scss                  | SCSS           |         44 |          0 |          7 |         51 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\PrivacyPolicy.jsx            | JavaScript JSX |         78 |          0 |          9 |         87 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\RefundPolicy.jsx             | JavaScript JSX |         13 |          0 |          2 |         15 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Legals\TnC.jsx                      | JavaScript JSX |        125 |          0 |         13 |        138 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Payment\Payment.jsx                 | JavaScript JSX |        230 |          9 |         27 |        266 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Profile.jsx                         | JavaScript JSX |        175 |          7 |         29 |        211 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Proshow\Pronite.jsx                 | JavaScript JSX |        144 |          0 |         14 |        158 |
+| d:\Kaisen 2023\kaisen2023\src\pages\Proshow\Proshow.scss                | SCSS           |        153 |          0 |         22 |        175 |
+| d:\Kaisen 2023\kaisen2023\src\pages\SignIn.jsx                          | JavaScript JSX |         80 |          0 |         17 |         97 |
+| d:\Kaisen 2023\kaisen2023\src\pages\SignUp.jsx                          | JavaScript JSX |        176 |          1 |         15 |        192 |
+| d:\Kaisen 2023\kaisen2023\src\utils\Confetti.jsx                        | JavaScript JSX |         61 |          0 |         14 |         75 |
+| d:\Kaisen 2023\kaisen2023\src\utils\FormOptions.js                      | JavaScript     |        255 |          0 |          5 |        260 |
+| d:\Kaisen 2023\kaisen2023\src\utils\Payment.scss                        | SCSS           |          6 |          0 |          1 |          7 |
+| d:\Kaisen 2023\kaisen2023\src\utils\PaymentGateway.js                   | JavaScript     |         65 |          8 |         15 |         88 |
+| d:\Kaisen 2023\kaisen2023\tailwind.config.cjs                           | JavaScript     |         10 |          1 |          0 |         11 |
+| d:\Kaisen 2023\kaisen2023\vercel.json                                   | JSON           |          3 |          0 |          0 |          3 |
+| d:\Kaisen 2023\kaisen2023\vite.config.js                                | JavaScript     |          5 |          1 |          2 |          8 |
+| d:\Kaisen 2023\kaizen-admin\index.html                                  | HTML           |         13 |          0 |          1 |         14 |
+| d:\Kaisen 2023\kaizen-admin\package-lock.json                           | JSON           |      5,378 |          0 |          1 |      5,379 |
+| d:\Kaisen 2023\kaizen-admin\package.json                                | JSON           |         31 |          0 |          1 |         32 |
+| d:\Kaisen 2023\kaizen-admin\postcss.config.cjs                          | JavaScript     |          6 |          0 |          1 |          7 |
+| d:\Kaisen 2023\kaizen-admin\public\images\Ambulance.svg                 | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaizen-admin\public\images\Ambulance_lights.svg          | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaizen-admin\public\vite.svg                             | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaizen-admin\src\App.css                                 | CSS            |         47 |          0 |          3 |         50 |
+| d:\Kaisen 2023\kaizen-admin\src\App.jsx                                 | JavaScript JSX |         98 |          0 |         13 |        111 |
+| d:\Kaisen 2023\kaizen-admin\src\assets\react.svg                        | SVG            |          1 |          0 |          0 |          1 |
+| d:\Kaisen 2023\kaizen-admin\src\components\CartIcon.jsx                 | JavaScript JSX |         11 |          1 |          2 |         14 |
+| d:\Kaisen 2023\kaizen-admin\src\components\Footer.jsx                   | JavaScript JSX |         68 |          0 |          8 |         76 |
+| d:\Kaisen 2023\kaizen-admin\src\components\Footer2.jsx                  | JavaScript JSX |         22 |          0 |          2 |         24 |
+| d:\Kaisen 2023\kaizen-admin\src\components\Loader.jsx                   | JavaScript JSX |         13 |          0 |          2 |         15 |
+| d:\Kaisen 2023\kaizen-admin\src\components\NavBar.jsx                   | JavaScript JSX |        170 |          1 |          6 |        177 |
+| d:\Kaisen 2023\kaizen-admin\src\components\NavBar2.jsx                  | JavaScript JSX |        106 |         15 |         12 |        133 |
+| d:\Kaisen 2023\kaizen-admin\src\components\OAuth.jsx                    | JavaScript JSX |         38 |          3 |          7 |         48 |
+| d:\Kaisen 2023\kaizen-admin\src\components\PrivateRoute.jsx             | JavaScript JSX |         13 |          0 |          5 |         18 |
+| d:\Kaisen 2023\kaizen-admin\src\components\PurchasedEventItem.jsx       | JavaScript JSX |         40 |          0 |          3 |         43 |
+| d:\Kaisen 2023\kaizen-admin\src\firebase.config.js                      | JavaScript     |         13 |          0 |          3 |         16 |
+| d:\Kaisen 2023\kaizen-admin\src\hooks\useAuthStatus.jsx                 | JavaScript JSX |         24 |          0 |          6 |         30 |
+| d:\Kaisen 2023\kaizen-admin\src\index.css                               | CSS            |         16 |          0 |          2 |         18 |
+| d:\Kaisen 2023\kaizen-admin\src\main.jsx                                | JavaScript JSX |          9 |          0 |          2 |         11 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\Cart.jsx                          | JavaScript JSX |        251 |          3 |         24 |        278 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\EventPage\EditEvent.jsx           | JavaScript JSX |        266 |          9 |         28 |        303 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\EventPage\Event.css               | CSS            |        335 |          0 |         52 |        387 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\EventPage\EventDetails.jsx        | JavaScript JSX |        101 |         12 |         11 |        124 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\EventPage\EventPage.jsx           | JavaScript JSX |        121 |          8 |         21 |        150 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\EventPage\RegisterPopup.jsx       | JavaScript JSX |        119 |          1 |         18 |        138 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\ForgotPassword.jsx                | JavaScript JSX |         61 |          0 |         13 |         74 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\Home.jsx                          | JavaScript JSX |         27 |         17 |         12 |         56 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\Profile.jsx                       | JavaScript JSX |         98 |          3 |         15 |        116 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\SignIn.jsx                        | JavaScript JSX |         73 |          0 |         17 |         90 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\SignUp.jsx                        | JavaScript JSX |         85 |          0 |         14 |         99 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\participant\Participant.jsx       | JavaScript JSX |        121 |         23 |         27 |        171 |
+| d:\Kaisen 2023\kaizen-admin\src\pages\verify\Verify.jsx                 | JavaScript JSX |          9 |          0 |          3 |         12 |
+| d:\Kaisen 2023\kaizen-admin\tailwind.config.cjs                         | JavaScript     |         10 |          1 |          0 |         11 |
+| d:\Kaisen 2023\kaizen-admin\vercel.json                                 | JSON           |          3 |          0 |          0 |          3 |
+| d:\Kaisen 2023\kaizen-admin\vite.config.js                              | JavaScript     |          5 |          1 |          2 |          8 |
+| d:\Kaisen 2023\rzrpay-backend\index.js                                  | JavaScript     |        195 |         15 |         30 |        240 |
+| d:\Kaisen 2023\rzrpay-backend\package-lock.json                         | JSON           |      2,729 |          0 |          1 |      2,730 |
+| d:\Kaisen 2023\rzrpay-backend\package.json                              | JSON           |         24 |          0 |          1 |         25 |
+| d:\Kaisen 2023\rzrpay-backend\vercel.json                               | JSON           |         15 |          0 |          0 |         15 |
+| Total                                                                   |                |     24,709 |        313 |      1,196 |     26,218 |
++-------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
