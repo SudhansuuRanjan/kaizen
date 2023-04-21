@@ -61,7 +61,7 @@ const Pass = () => {
                         <p className='font-medium'>{data.email}</p>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        <p className='font-semibold text-lg text-black'>Email :</p>
+                        <p className='font-semibold text-lg text-black'>College :</p>
                         <p className='font-medium'>{data.college}</p>
                     </div>
                     <div className='flex gap-2 items-center'>

@@ -274,6 +274,7 @@ const GetPass = () => {
                                 <div className='flex flex-col gap-2'>
                                     <h1 className='text-base font-semibold'>Name : {people.name}</h1>
                                     <h2 className='text-sm font-medium'>Email: {people.email}</h2>
+                                    <h2 className='text-sm font-medium'>College : {people.college}</h2>
                                     <h2 className='text-sm font-medium'>Mobile No. : {people.phone}</h2>
                                 </div>
                                 <div className='flex flex-col items-end justify-between'>
