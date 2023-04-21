@@ -295,7 +295,7 @@ const GetPass = () => {
                     </div>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="email">Email</label>
-                        <input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.email} type="email" id="email" placeholder="capjacksparrow@gmail.com" onChange={handleChange} />
+                        <input required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.email} type="email" id="email" placeholder="capjacksparrow@gmail.com" onChange={handleChange} />
                     </div>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="college">College</label>

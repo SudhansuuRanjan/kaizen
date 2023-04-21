@@ -104,8 +104,8 @@ const CompleteProfile = () => {
                             <Select required onChange={(e) => onChange("gender", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={genderOptions} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
-                            <label htmlFor="gender" className='text-yellow-500 font-medium text-lg pb-1'>College</label>
-                            <Creatable required onChange={(e) => onChange("college", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={collegeOptions} />
+                            <label htmlFor="college" className='text-yellow-500 font-medium text-lg pb-1'>College</label>
+                            <input type="text" id="college" placeholder="AIIMS, Patna" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.college} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="gender" className='text-yellow-500 font-medium text-lg pb-1'>Year</label>
