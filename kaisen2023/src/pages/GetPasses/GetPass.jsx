@@ -19,6 +19,17 @@ const generateTxnId = () => {
     return randomstring;
 }
 
+const generatePassID = () => {
+    var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var string_length = 10;
+    var randomstring = '';
+    for (var i = 0; i < string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+    return randomstring;
+}
+
 
 const GetPass = () => {
     const navigate = useNavigate();
@@ -39,6 +50,7 @@ const GetPass = () => {
     const [urlParams, setUrlParams] = useState({});
     const [paymentStatus, setPaymentStatus] = useState("UPDATING");
     const [gt10, setGt10] = useState(false);
+    const [generatingPass, setGeneratingPass] = useState(false);
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -170,12 +182,21 @@ const GetPass = () => {
             phone: peoples[0].phone,
             email: peoples[0].email
         });
+        console.log({
+            ...paymentCredentials,
+            txtnId: txnId,
+            isOpen: true,
+            amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
+            name: peoples[0].name,
+            phone: peoples[0].phone,
+            email: peoples[0].email
+        })
         setLoading(false);
     }
 
     const handlePurchase = async (params) => {
         // console.log(params);
-        setLoading(true);
+        setGeneratingPass(true);
 
         if (params.clientTxnId) {
             // get the doc from firestore using the clientTxnId
@@ -184,9 +205,14 @@ const GetPass = () => {
             if (docSnap.exists()) {
                 try {
                     const data = docSnap.data();
-                    const res = await axios.post('https://kaizen-api.vercel.app/api/generatePasses', data);
-                    const peopleData = res.data.peoples;
-                    // console.log(peopleData);
+                    // const res = await axios.post('https://kaizen-api.vercel.app/api/generatePasses', data);
+                    // const peopleData = res.data.peoples;
+                    for (let i = 0; i < data.peoples.length; i++) {
+                        data.peoples[i].passId = generatePassID();
+                    }
+
+                    const peopleData = data.peoples;
+
                     for (let i = 0; i < peopleData.length; i++) {
                         const docRef = doc(db, 'passes', peopleData[i].id);
                         await setDoc(docRef, peopleData[i]);
@@ -194,10 +220,11 @@ const GetPass = () => {
                         // console.log(res2.data);
                     }
                     localStorage.removeItem('peoples');
+                    getPeoples();
                     toast.success('Passes Purchased Successfully! The pass will be sent to your email address shortly.');
                     setPaymentStatus("SUCCESS");
                 } catch (error) {
-                    toast.error("Something went wrong while generating passes!");
+                    toast.error(error.message);
                 }
             } else {
                 toast.error('Something went wrong! Please try again later. If your money has been debited and you do not receive passes within 15 min, please contact us.');
@@ -205,7 +232,7 @@ const GetPass = () => {
             }
         }
 
-        setLoading(false);
+        setGeneratingPass(false);
     }
 
     useEffect(() => {
@@ -217,13 +244,30 @@ const GetPass = () => {
         <div className='bg-black pb-24'>
             {
                 loading && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
-                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900'>
+                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
+                    </div>
+                    <p>
+                        Proceeding to Payment...
+                    </p>
+                    <p>
+                        Please do not close this window or press back button.
+                    </p>
+                </div>
+            }
+
+            {
+                generatingPass && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                    <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
                     </div>
                     <p>
                         Generating Passes...
                     </p>
+                    <p>
+                        Please do not close this window or press back button.
+                    </p>
                 </div>
             }
+
             <div className='cart-banner'>
                 <h1 className='cart-head'>Get Passes</h1>
             </div>

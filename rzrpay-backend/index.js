@@ -136,7 +136,7 @@ app.post("/api/sendPassMail", async (req, res) => {
         data: {
           name: people.name,
           brid: people.passId,
-          link: "https://kaizenaiimspatna.com/pass/" + people.passId,
+          link: "https://kaizenaiimspatna.com/pass/" + people.id,
         },
         routing: {
           method: "all",

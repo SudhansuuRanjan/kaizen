@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
+import QRCode from "react-qr-code";
 
 const Pass = () => {
 
@@ -9,16 +10,24 @@ const Pass = () => {
     const id = url.substring(url.lastIndexOf('/') + 1);
     const [Loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
+    const [error, setError] = useState(false);
 
     const getPass = async () => {
         setLoading(true);
         try {
             const passRef = collection(db, 'passes');
+            // console.log(id);
             const passSnap = await getDocs(query(passRef, where('passId', '==', id)));
             const pass = passSnap.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
+            // console.log(pass);
             setData(pass[0]);
+            if(pass.length === 0) {
+                setError(true);
+                toast.error('Invalid PassID!');
+            }
         } catch (error) {
-            toast.error('Something went wrong, please try again later');
+            setError(true);
+            toast.error('Something went wrong, please try again later.');
         }
         setLoading(false);
     }
@@ -26,6 +35,15 @@ const Pass = () => {
     useEffect(() => {
         getPass();
     }, [])
+
+    if(error) return (
+        <div className='bg-black pb-24'>
+            <div className='cart-banner'>
+                <h1 className='cart-head'>Your Basic Pass</h1>
+            </div>
+            <div className='text-center pt-10 font-medium text-yellow-500 text-xl'>Something went wrong, please try again later</div>
+        </div>
+    );
 
 
     return (
@@ -47,9 +65,14 @@ const Pass = () => {
                 <div className='z-0'>
                     <img className='w-full h-fit mt-[-1rem]' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="event" />
                 </div>
-                <div className='z-0 flex flex-col items-center justify-center'>
-                    <img className='w-[16rem] h-fit mt-[2rem]' src={data.passQr} alt="event" />
-                    <p className='text-xl font-semibold'>{data.passId}</p>
+                <div className='z-0 flex flex-col items-center justify-center m-10 h-[16rem]'>
+                    <QRCode
+                        size={256}
+                        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                        value={"https://www.kaisenaiimspatna.com/pass/" + data.passId}
+                        viewBox={`0 0 256 256`}
+                    />
+                    <p className='text-xl font-semibold pt-2'>{data.passId}</p>
                 </div>
                 <div className='flex flex-col p-6 gap-2'>
                     <div className='flex gap-2 items-center'>
