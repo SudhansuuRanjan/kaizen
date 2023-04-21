@@ -59,7 +59,7 @@ const GetPass = () => {
         transUserPassword: import.meta.env.VITE_PAYMENT_PASSWORD,
         authkey: import.meta.env.VITE_PAYMENT_AUTH_KEY,
         authiv: import.meta.env.VITE_PAMENT_AUTH_IV,
-        callbackUrl: 'https://www.kaizenaiimspatna.com/getpass/',
+        callbackUrl: 'https://www.kaizenaiimspatna.com/basic-registration/',
         name: '',
         email: '',
         phone: '',
@@ -141,20 +141,20 @@ const GetPass = () => {
             return;
         }
 
-        if (promoCode === 'KAIZEN2023' && peoples.length < 10) {
+        if (promoCode === 'EARLYBIRD' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
-            setDiscountedPrice(0.75 * (peoples.length * 1000));
+            setDiscountedPrice(0.58 * (peoples.length * 1200));
             toast.success('Promo Code Applied! You have got a discount of 25%');
             return;
-        } else if (promoCode === 'KAIZEN2023' && peoples.length >= 10) {
+        } else if (promoCode === 'EARLYBIRD' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
-            setDiscountedPrice(0.75 * ((peoples.length * 1000) - 1000));
+            setDiscountedPrice(0.58 * ((peoples.length * 1200) - 1200));
             toast.success('Promo Code Applied! You have got a discount of 25%');
             return;
         } else {
             toast.error('Invalid Promo Code!');
-            setDiscountedPrice(peoples.length * 1000);
+            setDiscountedPrice(peoples.length * 1200);
             setIsPromoCodeApplied(false);
         }
     }
@@ -178,7 +178,7 @@ const GetPass = () => {
             ...paymentCredentials,
             txtnId: txnId,
             isOpen: true,
-            amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
+            amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1200),
             name: peoples[0].name,
             phone: peoples[0].phone,
             email: peoples[0].email
@@ -187,7 +187,7 @@ const GetPass = () => {
         //     ...paymentCredentials,
         //     txtnId: txnId,
         //     isOpen: true,
-        //     amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1000),
+        //     amount: Number(isPromoCodeApplied ? discountedPrice : peoples.length * 1200),
         //     name: peoples[0].name,
         //     phone: peoples[0].phone,
         //     email: peoples[0].email
@@ -227,7 +227,7 @@ const GetPass = () => {
                     }
                     localStorage.removeItem('peoples');
                     getPeoples();
-                    toast.success('Passes Purchased Successfully! The pass will be sent to your email address shortly.');
+                    toast.success('Registration Successfull! The confirmation mail will be sent to your email address shortly.');
                     setPaymentStatus("SUCCESS");
                 } catch (error) {
                     toast.error(error.message);
@@ -266,7 +266,7 @@ const GetPass = () => {
                     <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
                     </div>
                     <p>
-                        Generating Passes...
+                        Registering you...
                     </p>
                     <p>
                         Please do not close this window or press back button.
@@ -275,12 +275,12 @@ const GetPass = () => {
             }
 
             <div className='cart-banner'>
-                <h1 className='cart-head'>Get Passes</h1>
+                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
             </div>
             <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
                 <div className='px-5 py-5'>
                     <h1 className='text-xl font-semibold'>KAIZEN AIIMS, Patna</h1>
-                    <h2 className='text-base font-medium'>Annual Fest</h2>
+                    <h2 className='text-base font-medium'>Get your basic registration done!</h2>
                 </div>
                 <div className='flex justify-between items-center'>
                     <div className='bg-black h-8 w-8 rounded-full ml-[-1rem] z-30'>
@@ -294,7 +294,10 @@ const GetPass = () => {
                 <div className='z-0'>
                     <img className='w-full h-fit mt-[-1rem]' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/concert.png" alt="event" />
                 </div>
-                <form onSubmit={handleSubmit} className='flex gap-2 flex-col w-full p-6'>
+                <div className='flex p-6'>
+                        <p className='font-medium text-red-500 text-center'>*Confirmation mail will be sent to each email separately.</p>
+                </div>
+                <form onSubmit={handleSubmit} className='flex gap-2 flex-col w-full p-6 pt-0'>
                     <div className='flex flex-col w-full'>
                         <label className='font-medium' htmlFor="text">Name</label>
                         <input required className='text-gray-700 px-4 py-2 border rounded-lg font-medium' value={formData.name} type="text" id="name" placeholder="Captain Jack Sparrow" onChange={handleChange} />
@@ -329,7 +332,7 @@ const GetPass = () => {
                                 </div>
                                 <div className='flex flex-col items-end justify-between'>
                                     <button onClick={() => handleDelete(people.id)} className='text-red-500 cursor-pointer' type="submit"><AiFillDelete size={25} /></button>
-                                    <h6 className='text-blue-500 font-semibold'>₹1000</h6>
+                                    <h6 className='text-blue-500 font-semibold'>₹1200</h6>
                                 </div>
                             </div>
                         ))}
@@ -357,7 +360,7 @@ const GetPass = () => {
                         {peoples.length < 10 ? <h1 className='text-2xl font-semibold text-green-500'>
                             <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                 {
-                                    peoples.length === 0 ? '₹0' : `₹${peoples.length * 1000}`
+                                    peoples.length === 0 ? '₹0' : `₹${peoples.length * 1200}`
                                 }
                             </span>
                             <span>
@@ -369,7 +372,7 @@ const GetPass = () => {
                             <h1 className='text-2xl font-semibold text-green-500'>
                                 <span className={`${isPromoCodeApplied && 'line-through text-lg mr-3 text-red-500'}`}>
                                     {
-                                        `₹${peoples.length * 1000 - 1000}`
+                                        `₹${peoples.length * 1200 - 1200}`
                                     }
                                 </span>
                                 <span>

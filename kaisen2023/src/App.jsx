@@ -93,7 +93,7 @@ function App() {
             </Layout>
           } />
 
-          <Route path='/pass/:passId' element={
+          <Route path='/br/:passId' element={
             <Layout>
               <Pass />
             </Layout>
@@ -128,7 +128,7 @@ function App() {
             } />
           </Route>
 
-          <Route path='/getpass' element={
+          <Route path='/basic-registration' element={
             <Layout>
               <GetPass />
             </Layout>

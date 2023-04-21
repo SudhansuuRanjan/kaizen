@@ -136,7 +136,7 @@ app.post("/api/sendPassMail", async (req, res) => {
         data: {
           name: people.name,
           brid: people.passId,
-          link: "https://kaizenaiimspatna.com/pass/" + people.id,
+          link: "https://kaizenaiimspatna.com/br/" + people.id,
         },
         routing: {
           method: "all",
@@ -205,7 +205,7 @@ app.post("/api/generatePasses", async (req, res) => {
       const uploadPath = path.join(__dirname, "uploads", passId + ".png");
 
       await new Promise((resolve, reject) => {
-        qr.toFile(uploadPath, "https://kaizenaiimspatna.com/pass/" + passId, (err, res) => {
+        qr.toFile(uploadPath, "https://kaizenaiimspatna.com/br/" + passId, (err, res) => {
           if (err) {
             reject(err);
           } else {

@@ -5,7 +5,7 @@ import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
 import Select from 'react-select'
 import Creatable from 'react-select/creatable';
-import { genderOptions, collegeOptions, yearOptions, courseOptions } from '../utils/FormOptions'
+import { genderOptions, yearOptions } from '../utils/FormOptions'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -113,7 +113,7 @@ const CompleteProfile = () => {
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="year" className='text-yellow-500 font-medium text-lg pb-1'>Course</label>
-                            <Creatable required onChange={(e) => onChange("course", e.value)} className='ml-0 pl-0 border-2 border-yellow-400 w-[100%] rounded-md' options={courseOptions} />
+                            <input type="text" id="course" placeholder="MBBS" className='py-1.5 text-black bg-white md:py-2 lg:py-2 rounded-lg px-3 lg:w-[25rem] md:w-[22rem] w-[80vw] border-2 border-yellow-400' onChange={handleChange} value={formData.course} />
                         </div>
                         <div className='lg:mt-4 flex flex-col items-start justify-start w-[100%]'>
                             <label htmlFor="address" className='text-yellow-500 font-medium text-lg pb-1'>Address</label>

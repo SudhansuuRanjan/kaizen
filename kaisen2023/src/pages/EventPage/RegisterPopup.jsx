@@ -131,7 +131,7 @@ const RegisterPopup = ({ event, setPopup }) => {
                 <h1 className='text-3xl font-bold text-center mt-5 lg:mt-0 md:mt-0'>Register for {event.name}</h1>
                 <div className='flex flex-col gap-2 mt-6'>
                     <div className='text-sm text-red-500 mb-2'>
-                        {event.participants > 1 && event.participants - 1 > team.length && <li>This is a team event, <span className='text-base font-semibold'>add your team members other than you</span> and then proceed to register, you can update your team list in Event Cart.</li>}
+                        {event.participants > 1 && event.participants - 1 > team.length && <li>This is a team event, <span className='text-base font-semibold text-yellow-500'>add your team members other than you</span> and then proceed to register, you can update your team list in Event Cart.</li>}
                         <li>On registration the events are added to your cart, then you need to go to cart and pay for the events you want to register.</li>
                     </div>
 
