@@ -49,7 +49,7 @@ const Pass = () => {
     return (
         <div className='bg-black pb-24 min-h-screen'>
             <div className='cart-banner'>
-                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Your Basic Pass</h1>
+                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Your BR Card</h1>
             </div>
 
             {Loading ? <div className='text-center pt-10 font-medium text-yellow-500 text-xl'>Loading...</div> : <div className='lg:w-[37rem] md:w-[32rem] w-[90%] bg-white rounded-2xl text-gray-700 m-auto mt-5'>
@@ -90,7 +90,7 @@ const Pass = () => {
                     <QRCode
                         size={256}
                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                        value={"https://www.kaisenaiimspatna.com/br/" + data.passId}
+                        value={"https://www.kaizenaiimspatna.com/br/" + data.passId}
                         viewBox={`0 0 256 256`}
                     />
                     <p className='text-xl font-semibold pt-2'>{data.passId}</p>
