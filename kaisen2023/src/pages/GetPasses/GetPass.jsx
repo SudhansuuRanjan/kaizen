@@ -249,6 +249,17 @@ const GetPass = () => {
     }, []);
 
     return (
+        <div className='bg-black pb-24 min-h-screen'>
+            <div className='cart-banner'>
+                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
+            </div>
+            <div className='m-auto text-center'>
+                <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span>. Please check again later.</p>
+            </div>
+        </div>
+    )
+
+    return (
         <div className='bg-black pb-24'>
             {
                 loading && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
