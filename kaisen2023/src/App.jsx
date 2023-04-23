@@ -27,6 +27,7 @@ import CompleteProfile from './pages/CompleteProfile'
 import Payment from './pages/Payment/Payment'
 import GetPass from './pages/GetPasses/GetPass'
 import Pass from './pages/GetPasses/Pass'
+import Schedule from './pages/Schedule/Schedule'
 
 function App() {
 
@@ -90,6 +91,12 @@ function App() {
           <Route path='/events' element={
             <Layout>
               <EventPage />
+            </Layout>
+          } />
+
+          <Route path='/schedule' element={
+            <Layout>
+              <Schedule />
             </Layout>
           } />
 

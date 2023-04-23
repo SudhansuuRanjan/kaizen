@@ -72,6 +72,16 @@ const NavBar2 = () => {
                         >
                             <Link to="/pronite">Pronite</Link>
                         </li>
+                        <li
+                            className={
+                                focus === 1
+                                    ? "hover:underline mx-3 border-yellow-300  border-[3px]  bg-yellow-50 dark:bg-[#7b2c5d] px-2 py-1"
+                                    : "hover:underline px-2 py-1 mx-3 border-[3px] border-none dark:border-gray-800"
+                            }
+
+                        >
+                            <Link to="/schedule">Schedule</Link>
+                        </li>
                         {/* <li
                             className={
                                 focus === 1
@@ -179,6 +189,19 @@ const NavBar2 = () => {
                                     className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
                                 >
                                     Pronite
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/schedule">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Schedule
                                 </button>
                             </Link>
                         </li>

@@ -162,7 +162,7 @@ const Profile = () => {
               <div>
                 <div className='flex flex-col gap-4 w-[100%] mt-5'>
                   {
-                    purchasedEvents.map((item, index) => (
+                    purchasedEvents.length < 1 ? <div>You haven't registered for any events.</div> : purchasedEvents.map((item, index) => (
                       <PurchasedEventItem key={index} data={item} />
                     ))
                   }
