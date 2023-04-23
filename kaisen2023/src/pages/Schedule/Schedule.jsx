@@ -84,7 +84,7 @@ const Schedule = () => {
                         <div className='flex flex-col gap-6 my-5'>
                             {
                                 day.special.map((item, idx) => (
-                                    <div key={idx} className='bg-zinc-900 rounded-xl py-5 px-5  border-yellow-500 border-2 lg:mr-10 md:mr-10 mr-5  font-bold text-2xl text-yellow-500 shadow-lg flex flex-col gap-2'>
+                                    <div data-aos="fade-up" key={idx} className='bg-zinc-900 rounded-xl py-5 px-5  border-yellow-500 border-2 lg:mr-10 md:mr-10 mr-5  font-bold text-2xl text-yellow-500 shadow-lg flex flex-col gap-2'>
                                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>{item.name}</h1>
                                         <div className='flex items-center gap-2'>
                                             <MdLocationPin className='inline-block text-yellow-500' size={27} />
