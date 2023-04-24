@@ -376,10 +376,9 @@ const day5 = {
         },
         {
             time: '7:00 PM',
-            name: 'Darshan Raval',
+            name: 'Bollywood Singer',
             venue: 'KAIZEN ARENA',
             id: '10'
-
         },
         {
             time: '9:00 PM',
