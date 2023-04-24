@@ -47,41 +47,27 @@ const NavBar = () => {
             <nav id="main-navigation" className={`nav-main bg-gray-900 transform transition-all h-[100%] w-[100%] delay-100 ease-in-out fixed top-0 z-10 flex justify-center items-center ${!active && "translate-x-[-100%]"}`}>
                 <ul className="menu">
                     <li className="menu__item">
-                        <Link onClick={()=> document.body.style.overflow = 'unset'} className="menu__link" to="/">Home</Link>
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/">Home</Link>
                     </li>
                     <li className="menu__item">
-                        <Link onClick={()=> document.body.style.overflow = 'unset'} className="menu__link" to="/events">Events</Link>
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/events">Events</Link>
+                        <ul className="submenu">
+                            <li className="menu__item">
+                                <Link className="menu__link" to="/schedule">Event Schedule</Link>
+                            </li>
+                            <li className="menu__item">
+                                <Link className="menu__link" to="/cart">My Cart</Link>
+                            </li>
+                        </ul>
                     </li>
                     <li className="menu__item">
-                        <Link onClick={()=> document.body.style.overflow = 'unset'} className="menu__link" to="/pronite">Pronite</Link>
-                        {/* <ul className="submenu">
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Burger King</a>
-                            </li>
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Southwest Airlines</a>
-                            </li>
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Levi Strauss</a>
-                            </li>
-                        </ul> */}
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/pronite">Pronite</Link>
                     </li>
                     <li className="menu__item">
-                        <Link onClick={()=> document.body.style.overflow = 'unset'} className="menu__link" to="/profile">Profile</Link>
-                        {/* <ul className="submenu">
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Print Design</a>
-                            </li>
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Web Design</a>
-                            </li>
-                            <li className="menu__item">
-                                <a className="menu__link" href="#0">Mobile App Development</a>
-                            </li>
-                        </ul> */}
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/profile">Profile</Link>
                     </li>
                     <li className="menu__item">
-                        <Link onClick={()=> document.body.style.overflow = 'unset'} className="menu__link" to="/cart">Cart</Link>
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/basicregistration">Basic Reg.</Link>
                     </li>
                 </ul>
             </nav>

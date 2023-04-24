@@ -42,7 +42,7 @@ const ArtistLineup = () => {
 
             <div className='flex items-center justify-center pb-20'>
                 <Link to="/pronite">
-                    <button className='m-auto transition-all delay-75 ease-in-out transform hover:bg-red-500 bg-red-600 hover:shadow-2xl hover:scale-105 shadow-lg text-white py-3.5 px-16 rounded-2xl'>
+                    <button className='m-auto animate-bounce transition-all delay-75 ease-in-out transform hover:bg-red-500 bg-red-600 hover:shadow-2xl hover:scale-105 shadow-lg text-white py-3.5 px-16 rounded-2xl'>
                         Explore
                     </button>
                 </Link>

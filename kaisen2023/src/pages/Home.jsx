@@ -9,6 +9,7 @@ import Timer from '../components/HomePage/Timer'
 import NavBar from '../components/HomePage/NavBar'
 import ChiefPatron from '../components/HomePage/ChiefPatron'
 import CAPopup from '../components/HomePage/CAPopup'
+import EventSchedule from '../components/HomePage/EventSchedule'
 
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
       <ChiefPatron/>
       {/* <Sponsors /> */}
       <FAQs />
+      <EventSchedule/>
     </div>
   )
 }

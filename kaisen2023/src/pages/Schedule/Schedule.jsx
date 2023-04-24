@@ -60,7 +60,7 @@ const Schedule = () => {
                                                 <div data-aos="fade-up" key={event.id} className='flex flex-col justify-center items-start bg-gray-900 rounded-xl p-5 ml-5 gap-2 w-[90%]'>
                                                     <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>{event.name}</h1>
                                                     <div className='flex items-center gap-2'>
-                                                        <MdLocationPin className='inline-block text-yellow-500' size={27} />
+                                                        <MdLocationPin className='inline-block text-yellow-500 -ml-1' size={27} />
                                                         <p className='inline-block font-medium lg:text-lg md:text-lg text-base text-gray-400'>{event.venue}</p>
                                                     </div>
                                                     <div className='flex items-center gap-2'>
@@ -87,7 +87,7 @@ const Schedule = () => {
                                     <div data-aos="fade-up" key={idx} className='bg-zinc-900 rounded-xl py-5 px-5  border-yellow-500 border-2 lg:mr-10 md:mr-10 mr-5  font-bold text-2xl text-yellow-500 shadow-lg flex flex-col gap-2'>
                                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>{item.name}</h1>
                                         <div className='flex items-center gap-2'>
-                                            <MdLocationPin className='inline-block text-yellow-500' size={27} />
+                                            <MdLocationPin className='inline-block text-yellow-500 -ml-1' size={27} />
                                             <p className='inline-block font-medium lg:text-lg md:text-lg text-base text-gray-400'>{item.venue}</p>
                                         </div>
                                         <div className='flex items-center gap-2'>

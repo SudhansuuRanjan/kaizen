@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
 import Participant from './pages/participant/Participant'
 import Verify from './pages/verify/Verify'
+import CreatePass from './pages/CreatePass/CreatePass'
 
 
 function App() {
@@ -81,6 +82,16 @@ function App() {
               <>
                 <NavBar2 />
                 <Profile />
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/create-pass' element={<PrivateRoute />}>
+            <Route path='/create-pass' element={
+              <>
+                <NavBar2 />
+                <CreatePass />
                 <Footer2 />
               </>
             } />
