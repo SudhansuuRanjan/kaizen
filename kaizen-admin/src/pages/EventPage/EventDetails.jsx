@@ -9,8 +9,10 @@ const EventDetails = () => {
   const auth = getAuth();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
+  const [registrations, setRegistrations] = useState(null);
   const [popup, setPopup] = useState(false);
   const [Loading, setLoading] = useState(true);
+  const [regLoading, setRegLoading] = useState(true);
 
   // get event id from url
   const url = window.location.href;
@@ -26,8 +28,20 @@ const EventDetails = () => {
     setLoading(false);
   }
 
+
+  const getRegistrations = async () => {
+    setRegLoading(true);
+    const regRef = collection(db, 'registrations');
+    const regSnap = await getDocs(query(regRef, where('eventId', '==', id)));
+    const registrations = regSnap.docs.map(doc => ({ ...doc.data() }));
+    setRegistrations(registrations);
+    // console.log(registrations);
+    setRegLoading(false);
+  }
+
   useEffect(() => {
     getEvent();
+    getRegistrations();
   }, [])
 
   // handle register button
@@ -109,6 +123,53 @@ const EventDetails = () => {
               </div>
             </div>
 
+            <p className='text-center my-16'>
+              <span className='text-yellow-500 font-bold text-4xl text-center my-16'>Registrations</span>
+            </p>
+
+            <div className='flex flex-wrap items-center gap-2'>
+              {
+                regLoading ? <div className='flex pt-[10rem] w-[100%] justify-evenly '> <p>Loading...</p></div> : (
+                  registrations.map((item, index) => {
+                    return (
+                      <div key={index} className='flex flex-col items-start justify-start gap-2 w-[100%] lg:w-1/3 md:w-1/2 p-3 border rounded-2xl m-2'>
+                        <div className='flex items-start justify-start gap-2'>
+                          {/* <img src={item.image} alt="user" className='w-16 h-16 rounded-full' /> */}
+                          <h3 className='text-xl font-medium'>Serial no: {index + 1}</h3>
+                        </div>
+                        <div className='flex items-start justify-start gap-2'>
+                          {/* <img src={item.image} alt="user" className='w-16 h-16 rounded-full' /> */}
+                          <h3 className='text-xl font-medium'>Name: {item.name}</h3>
+                        </div>
+                        <div className='flex items-center justify-center gap-2'>
+                          <h3 className='text-xl font-medium'>Email:</h3>
+                          <h3 className='text-xl font-medium'>{item.email}</h3>
+                        </div>
+
+                        <div>
+                          <h3 className='text-xl font-medium'>Members:</h3>
+                          <div className='py-2 flex gap-2 flex-col'>
+                            {
+                              item.members.map((member, index) => (
+                                <div key={index} className='flex flex-col justify-start text-gray-400'>
+                                  <div>
+                                    <h3 className='text-base font-medium'>{index + 1}. Name : {member.name}</h3>
+
+                                  </div>
+                                  <div>
+                                    <h3 className='text-base font-medium'>Email : {member.email}</h3>
+                                  </div>
+
+                                </div>
+
+                              ))
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }))}
+            </div>
             <div className='flex items-center justify-center gap-3 pt-[10rem]'>
               <div className='h-3 w-3 bg-[#ebe6d0] rotate-45' />
               <div className='h-3 w-3 bg-[#ebe6d0] rotate-45' />
