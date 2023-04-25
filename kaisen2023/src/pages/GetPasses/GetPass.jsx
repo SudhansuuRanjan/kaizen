@@ -248,16 +248,16 @@ const GetPass = () => {
         getQueryParams();
     }, []);
 
-    return (
-        <div className='bg-black pb-24 min-h-screen'>
-            <div className='cart-banner'>
-                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
-            </div>
-            <div className='m-auto text-center'>
-                <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span>. Please check again later.</p>
-            </div>
-        </div>
-    )
+    // return (
+    //     <div className='bg-black pb-24 min-h-screen'>
+    //         <div className='cart-banner'>
+    //             <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
+    //         </div>
+    //         <div className='m-auto text-center'>
+    //             <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span>. Please check again later.</p>
+    //         </div>
+    //     </div>
+    // )
 
     return (
         <div className='bg-black pb-24'>
