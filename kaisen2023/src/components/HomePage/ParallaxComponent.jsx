@@ -14,9 +14,9 @@ const ParallaxComponent = () => {
           {
             speed: -20,
             children: (
-              <div className="absolute inset-0 flex flex-col justify-center items-center lg:mt-[-10rem] md:mt-[-10rem] mt-[-17rem]">
+              <div className="absolute inset-0 flex flex-col justify-center items-center lg:mt-[-10rem] md:mt-[-10rem] mt-[-15rem]">
                 <h1 className="text-2xl md:text-3xl lg:text-3xl text-white lg:tracking-widest tracking-tight font-semibold">AIIMS PATNA PRESENTS</h1>
-                <img src="TEXT-KAIZEN-01-min.png" alt="logo" className='lg:w-[29rem] md:w-[25rem] w-[20rem] h-auto lg:mt-[-4rem] md:mt-[-3rem] mt-[-2rem]' />
+                <img src="TEXT-KAIZEN-01-min.png" alt="logo" className='lg:w-[29rem] md:w-[25rem] w-[18rem] h-auto lg:mt-[-4rem] md:mt-[-3rem] mt-[-2rem]' />
                 <h1 className="text-6xl font-extrabold lg:mt-[-4rem] md:mt-[-3rem]
                 mt-[-2rem] tracking-widest text-red-100">'2023'</h1>
                 <h1 className="my-2 text-lg md:text-xl lg:text-xl  lg:tracking-widest tracking-tight font-semibold text-blue-900">10<sup>th</sup> - 14<sup>th</sup> May</h1>
@@ -37,7 +37,7 @@ const ParallaxComponent = () => {
             ),
           },
         ]}
-        className="lg:aspect-[2/1] md:aspect-[4/3] aspect-[2/3.5]"
+        className="lg:aspect-[2/1] md:aspect-[4/3] aspect-[2/4]"
       />
       <div className='h-24 w-[100%] bg-gradient-to-b from-[#062959] to-[#0b0c14]'>
       </div>
