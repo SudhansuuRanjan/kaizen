@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, getDoc, doc } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { db } from '../../firebase.config';
 import RegisterPopup from './RegisterPopup';
@@ -39,9 +39,35 @@ const EventDetails = () => {
     setRegLoading(false);
   }
 
+  const getUsersWithRegistrations = async () => {
+    try {
+      // console.log('here');
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("cart.eventId", "==", id), where("cart.purchased", "==", true));
+      // console.log('here2');
+      const querySnapshot = await getDocs(q);
+      let data = querySnapshot.docs.map(doc => doc.data());
+      // console.log('here3')
+      console.log(data);
+    } catch (error) {
+      console.log("Error getting documents: ", error);
+    }
+
+  }
+
+  const getUser = async () => {
+    if (auth.currentUser) {
+      const userRef = doc(db, 'users', auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
+      console.log(userSnap.data());
+    }
+  }
+
   useEffect(() => {
+    // getUser();
     getEvent();
     getRegistrations();
+    // getUsersWithRegistrations();
   }, [])
 
   // handle register button
@@ -130,7 +156,7 @@ const EventDetails = () => {
             <div className='flex flex-wrap items-center gap-2'>
               {
                 regLoading ? <div className='flex pt-[10rem] w-[100%] justify-evenly '> <p>Loading...</p></div> : (
-                  registrations.map((item, index) => {
+                  registrations.length === 0 ? <div className='p-10 text-center'>No Data.</div> : registrations.map((item, index) => {
                     return (
                       <div key={index} className='flex flex-col items-start justify-start gap-2 w-[100%] lg:w-1/3 md:w-1/2 p-3 border rounded-2xl m-2'>
                         <div className='flex items-start justify-start gap-2'>
