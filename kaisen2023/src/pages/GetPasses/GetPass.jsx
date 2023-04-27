@@ -144,18 +144,19 @@ const GetPass = () => {
         }
 
         // if promocode matches any in promoCodes array set the respective discount
-        if (promoCode === 'IGIMSKIS' && peoples.length < 10) {
-            setIsPromoCodeApplied(true);
-            setDiscountedPrice(0.58 * (peoples.length * 1200));
-            toast.success('Promo Code Applied! You have got a discount of 42%');
-            return;
-        } else if (promoCode === 'IGIMSKIS' && peoples.length >= 10) {
-            setIsPromoCodeApplied(true);
-            setGt10(true);
-            setDiscountedPrice(0.58 * ((peoples.length * 1200) - 1200));
-            toast.success('Promo Code Applied! You have got a discount of 42%');
-            return;
-        }else if (promoCode === 'BLACKPEARL' && peoples.length < 10) {
+        // if (promoCode === 'IGIMSKIS' && peoples.length < 10) {
+        //     setIsPromoCodeApplied(true);
+        //     setDiscountedPrice(0.58 * (peoples.length * 1200));
+        //     toast.success('Promo Code Applied! You have got a discount of 42%');
+        //     return;
+        // } else if (promoCode === 'IGIMSKIS' && peoples.length >= 10) {
+        //     setIsPromoCodeApplied(true);
+        //     setGt10(true);
+        //     setDiscountedPrice(0.58 * ((peoples.length * 1200) - 1200));
+        //     toast.success('Promo Code Applied! You have got a discount of 42%');
+        //     return;
+        // }else 
+        if (promoCode === 'BLACKPEARL' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.70 * (peoples.length * 1200));
             toast.success('Promo Code Applied! You have got a discount of 30%');
