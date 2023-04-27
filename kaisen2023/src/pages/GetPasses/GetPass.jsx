@@ -68,7 +68,7 @@ const GetPass = () => {
         udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
         env: 'prod'
     })
-
+    
     const getQueryParams = async () => {
         let params = getJsonFromUrl();
         if (!params.status) return;
@@ -143,7 +143,19 @@ const GetPass = () => {
             return;
         }
 
-        if (promoCode === 'BLACKPEARL' && peoples.length < 10) {
+        // if promocode matches any in promoCodes array set the respective discount
+        if (promoCode === 'IGIMSKIS' && peoples.length < 10) {
+            setIsPromoCodeApplied(true);
+            setDiscountedPrice(0.58 * (peoples.length * 1200));
+            toast.success('Promo Code Applied! You have got a discount of 42%');
+            return;
+        } else if (promoCode === 'IGIMSKIS' && peoples.length >= 10) {
+            setIsPromoCodeApplied(true);
+            setGt10(true);
+            setDiscountedPrice(0.58 * ((peoples.length * 1200) - 1200));
+            toast.success('Promo Code Applied! You have got a discount of 42%');
+            return;
+        }else if (promoCode === 'BLACKPEARL' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.70 * (peoples.length * 1200));
             toast.success('Promo Code Applied! You have got a discount of 30%');

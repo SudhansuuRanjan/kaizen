@@ -40,13 +40,17 @@ const EventDetails = () => {
   }
 
   const getUsersWithRegistrations = async () => {
+    // get event id from url
+    const url = window.location.href;
+    const id = url.substring(url.lastIndexOf('/') + 1);
     try {
-      // console.log('here');
+      console.log(id);
       const usersRef = collection(db, "users");
       const q = query(usersRef, where("cart.eventId", "==", id), where("cart.purchased", "==", true));
       // console.log('here2');
       const querySnapshot = await getDocs(q);
       let data = querySnapshot.docs.map(doc => doc.data());
+
       // console.log('here3')
       console.log(data);
     } catch (error) {
@@ -67,7 +71,7 @@ const EventDetails = () => {
     // getUser();
     getEvent();
     getRegistrations();
-    // getUsersWithRegistrations();
+    getUsersWithRegistrations();
   }, [])
 
   // handle register button
