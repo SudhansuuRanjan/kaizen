@@ -156,15 +156,15 @@ const GetPass = () => {
         //     toast.success('Promo Code Applied! You have got a discount of 42%');
         //     return;
         // }else 
-        if (promoCode === 'BLACKPEARL' && peoples.length < 10) {
+        if (promoCode === 'TMB' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
-            setDiscountedPrice(0.70 * (peoples.length * 1200));
+            setDiscountedPrice(0.83 * (peoples.length * 1200));
             toast.success('Promo Code Applied! You have got a discount of 30%');
             return;
-        } else if (promoCode === 'BLACKPEARL' && peoples.length >= 10) {
+        } else if (promoCode === 'TMB' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
-            setDiscountedPrice(0.70 * ((peoples.length * 1200) - 1200));
+            setDiscountedPrice(0.83 * ((peoples.length * 1200) - 1200));
             toast.success('Promo Code Applied! You have got a discount of 30%');
             return;
         } else {

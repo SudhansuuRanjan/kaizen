@@ -7,7 +7,7 @@ import CountUp from 'react-countup';
 
 const Highlights = () => {
     return (
-        <div className='bg-[url("https://ragam.co.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fghoomar.6656243d.jpeg&w=1080&q=75")] bg-no-repeat bg-cover flex items-center justify-center flex-col py-10'>
+        <div className='bg-[url("https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5")] bg-no-repeat bg-cover flex items-center justify-center flex-col py-10'>
             <div data-aos="fade-up" className='text-center pt-10 pb-10'>
                 <h3 className='text-red-600 text-4xl font-bold'>KAIZEN</h3>
                 <p className='text-4xl font-bold'>Highlights</p>
