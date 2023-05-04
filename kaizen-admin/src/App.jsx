@@ -20,6 +20,7 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 import Participant from './pages/participant/Participant'
 import Verify from './pages/verify/Verify'
 import CreatePass from './pages/CreatePass/CreatePass'
+import Users from './pages/Users/Users'
 
 
 function App() {
@@ -92,6 +93,16 @@ function App() {
               <>
                 <NavBar2 />
                 <CreatePass />
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/users' element={<PrivateRoute />}>
+            <Route path='/users' element={
+              <>
+                <NavBar2 />
+                <Users />
                 <Footer2 />
               </>
             } />

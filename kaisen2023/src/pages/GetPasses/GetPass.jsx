@@ -159,13 +159,13 @@ const GetPass = () => {
         if (promoCode === 'TMB' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.83 * (peoples.length * 1200));
-            toast.success('Promo Code Applied! You have got a discount of 30%');
+            toast.success('Promo Code Applied! You have got a discount of 17%');
             return;
         } else if (promoCode === 'TMB' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
             setDiscountedPrice(0.83 * ((peoples.length * 1200) - 1200));
-            toast.success('Promo Code Applied! You have got a discount of 30%');
+            toast.success('Promo Code Applied! You have got a discount of 17%');
             return;
         } else {
             toast.error('Invalid Promo Code!');
