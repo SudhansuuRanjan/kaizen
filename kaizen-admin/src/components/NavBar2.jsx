@@ -12,8 +12,8 @@ const NavBar = () => {
     const [focus, setFocus] = useState(-1);
 
     return (
-        <div className="bg-opacity-5 backdrop-blur-md drop-shadow-md z-50 font-mono flex flex-row fixed bg-yellow-400 dark:bg-gray-800 dark:bg-opacity-5 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-gray-200 dark:border-[#2F304E]">
-            <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-3">
+        <div className="backdrop-blur-md text-lg font-medium drop-shadow-md z-50 flex flex-row fixed  bg-gray-800 bg-opacity-40 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-[#161616]">
+            <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-4">
                 <div className="flex items-center">
                     <Link to="/">
                         <p
@@ -37,6 +37,16 @@ const NavBar = () => {
 
                         >
                             <Link to="/events">Events</Link>
+                        </li>
+                        <li
+                            className={
+                                focus === 0
+                                    ? "hover:underline mx-3 border-yellow-300  border-[3px]  bg-yellow-50 dark:bg-[#7b2c5d] px-2 py-1"
+                                    : "hover:underline px-2 py-1 mx-3 border-[3px] border-none dark:border-gray-800"
+                            }
+
+                        >
+                            <Link to="/users">Users</Link>
                         </li>
                         <li
                             className={
@@ -129,6 +139,19 @@ const NavBar = () => {
                                     className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
                                 >
                                     Profile
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/users">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Users
                                 </button>
                             </Link>
                         </li>
