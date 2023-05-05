@@ -19,7 +19,7 @@ const Home = () => {
       </h1>
 
       <div className="pt-10 flex items-center justify-center m-auto ">
-        <Link to='/signin'>
+        <Link to='/dashboard'>
           <button className="text-white  bg-gradient-to-r  from-pink-500 to-purple-700 px-[4rem] font-semibold py-[0.7rem] rounded-3xl  hover:from-purple-700 hover:to-pink-500 dark:hover:bg-[#0F1221]  m-auto">Get Started</button>
         </Link>
       </div>

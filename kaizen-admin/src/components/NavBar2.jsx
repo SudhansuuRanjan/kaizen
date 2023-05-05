@@ -36,7 +36,7 @@ const NavBar = () => {
                             }
 
                         >
-                            <Link to="/events">Events</Link>
+                            <Link to="/dashboard">Dashboard</Link>
                         </li>
                         <li
                             className={
@@ -46,7 +46,7 @@ const NavBar = () => {
                             }
 
                         >
-                            <Link to="/users">Users</Link>
+                            <Link to="/events">Events</Link>
                         </li>
                         <li
                             className={

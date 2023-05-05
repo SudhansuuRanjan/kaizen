@@ -21,6 +21,8 @@ import Participant from './pages/participant/Participant'
 import Verify from './pages/verify/Verify'
 import CreatePass from './pages/CreatePass/CreatePass'
 import Users from './pages/Users/Users'
+import UsersDashboard from './pages/UsersDashboard/UsersDashboard'
+import GetUsersByEvent from './pages/Users/GetUsersByEvent'
 
 
 function App() {
@@ -103,6 +105,26 @@ function App() {
               <>
                 <NavBar2 />
                 <Users />
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/get-user-by-eventid' element={<PrivateRoute />}>
+            <Route path='/get-user-by-eventid' element={
+              <>
+                <NavBar2 />
+                <GetUsersByEvent/>
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/dashboard' element={<PrivateRoute />}>
+            <Route path='/dashboard' element={
+              <>
+                <NavBar2 />
+                <UsersDashboard />
                 <Footer2 />
               </>
             } />

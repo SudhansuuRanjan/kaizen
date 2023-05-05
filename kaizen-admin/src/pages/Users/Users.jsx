@@ -20,7 +20,7 @@ const Users = () => {
         const usersList = snapshot.docs.map(doc => doc.data());
         setUsers(usersList);
         setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-        // console.log(usersList);
+        console.log(usersList);
         setLoading(false);
     }
 
@@ -91,7 +91,7 @@ const Users = () => {
                 <div className='flex flex-col justify-center items-center gap-5'>
                     {
                         loading ? "loading..." : users.map((user, index) => (
-                            <div key={index} className='border w-[30rem] p-5 rounded-2xl'>
+                            <div key={index} className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-2xl'>
                                 <p>Name: {user.name}</p>
                                 <p>KaizenID: {user.id}</p>
                                 <p>Email: {user.email}</p>
