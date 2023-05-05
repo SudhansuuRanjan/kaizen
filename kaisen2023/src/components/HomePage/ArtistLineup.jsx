@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ArtistLineup = () => {
     return (
-        <div className="bg-[url('images/girl-dancing.png')] after:bg-gradient-to-b after:absolute after:from-white after:to-black bg-repeat-y  min-h-fit bg-center bg-cover after:z-50 ">
+        <div className="bg-[url('https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2FA%20warehouse%20in%20a%20jungle%20with%20a%20sunset.jpg?alt=media&token=f0dd85d2-2746-4069-a0a2-ff677dc6331d')] after:bg-gradient-to-b after:absolute after:from-white after:to-black bg-repeat-y  min-h-fit bg-center bg-cover after:z-50 ">
             <h3 className='text-center font-bold text-4xl pt-16'>PRONITES</h3>
             <div className="flex relative justify-center items-center py-20 flex-wrap lg:gap-8 md:gap-8 gap-16">
 

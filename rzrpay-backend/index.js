@@ -156,6 +156,47 @@ app.post("/api/sendPassMail", async (req, res) => {
   res.status(200).json({ message: "Mail Sent" });
 })
 
+
+
+// send alumni mail 
+app.post("/api/sendAlumniMail", async (req, res) => {
+  const people = req.body;
+  // console.log(people);
+
+  const courier_options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + process.env.APIKEY2,
+    },
+    body: JSON.stringify({
+      message: {
+        to: {
+          email: people.email,
+        },
+        template: "HSW2487G984YAPGMHVNN2GQ6VVJG",
+        data:{
+
+        },
+        routing: {
+          method: "all",
+          channels: ["email"],
+        },
+      },
+    }),
+  };
+
+
+  try {
+    await fetch("https://api.courier.com/send", courier_options);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+
+  res.status(200).json({ message: "Mail Sent" });
+})
+
 // Certificates
 
 // send otp to mail

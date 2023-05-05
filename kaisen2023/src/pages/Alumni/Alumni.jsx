@@ -27,7 +27,7 @@ const Alumni = () => {
         batch: '',
         attending: false,
     })
-    const [amount, setAmount] = useState(1000);
+    const [amount, setAmount] = useState(21);
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -110,7 +110,7 @@ const Alumni = () => {
                 txtnId: txnId,
             });
         } catch (error) {
-            toast.error('Some error occured! Please try again later!' + error.message);
+            toast.error('Some error occured! Please try again later!');
         }
         setLoading(false);
     }
@@ -118,42 +118,47 @@ const Alumni = () => {
     const handlePaymentSuccess = async (params) => {
         try {
             setVerifyingPayment(true);
-            const txnId = params.txnId;
-            const docRef = doc(db, 'alumni-temp', txnId);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                // console.log(docSnap.data())
-                const data = docSnap.data();
-                await setDoc(doc(db, 'alumni', txnId), {
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    batch: data.batch,
-                    attending: data.attending,
-                    amount: data.amount,
-                    txnId: data.txnId,
-                    timestamp: serverTimestamp(),
-                    paymentVerified: true,
-                    paymentdata: params,
-                });
-                await setDoc(doc(db, 'alumni-temp', txnId), {
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    batch: data.batch,
-                    attending: data.attending,
-                    amount: data.amount,
-                    txnId: data.txnId,
-                    timestamp: serverTimestamp(),
-                    paymentVerified: true,
-                    paymentdata: params,
-                });
-                toast.success('Payment Successful! Thank you for your contribution!');
+            if (params.clientTxnId) {
+                const txnId = params.clientTxnId;
+                const docRef = doc(db, 'alumni-temp', txnId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    // console.log(docSnap.data())
+                    const data = docSnap.data();
+                    await setDoc(doc(db, 'alumni', txnId), {
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        batch: data.batch,
+                        attending: data.attending,
+                        amount: data.amount,
+                        txnId: data.txnId,
+                        timestamp: serverTimestamp(),
+                        paymentVerified: true,
+                        paymentdata: params,
+                    });
+                    await setDoc(doc(db, 'alumni-temp', txnId), {
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        batch: data.batch,
+                        attending: data.attending,
+                        amount: data.amount,
+                        txnId: data.txnId,
+                        timestamp: serverTimestamp(),
+                        paymentVerified: true,
+                        paymentdata: params,
+                    });
+                    const res2 = await axios.post('https://kaizen-api.vercel.app/api/sendAlumniMail', { email: data.email });
+                    toast.success('Payment Successful! Thank you for your contribution!');
+                } else {
+                    toast.error('Something went wrong! Please try again later. If your money has been debited, please contact us.');
+                }
             } else {
                 toast.error('Something went wrong! Please try again later. If your money has been debited, please contact us.');
             }
         } catch (error) {
-            toast.error('Some error occured! Please try again later!' + error.message);
+            toast.error('Some error occured! Please try again later!');
         }
     }
 
@@ -229,7 +234,7 @@ const Alumni = () => {
                         </div>
                         <div className='flex flex-col w-full relative'>
                             <label className='font-medium text-[#ebe6d0]' htmlFor="amount">Amount</label>
-                            <input required className='text-gray-200 px-4 py-2.5 border rounded-lg font-medium pl-16 bg-[#0e0d1b]' value={amount} type="number" min={1000} id="batch" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
+                            <input required className='text-gray-200 px-4 py-2.5 border rounded-lg font-medium pl-16 bg-[#0e0d1b]' value={amount} type="number" min={21} id="batch" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
                             <div className='absolute top-[1.55rem] bg-gray-300 py-2.5 px-4 rounded-lg left-[1px]'>
                                 ₹
                             </div>
@@ -242,7 +247,7 @@ const Alumni = () => {
                             <label className='text-gray-200 font-medium'>I will be attending this year's KAIZEN. </label>
                         </div>
                         <div className='flex flex-col w-full mt-5'>
-                            <button className='bg-yellow-500 text-gray-900 py-2.5 my-3 rounded-lg font-semibold' type="submit">Donate</button>
+                            <button className='bg-yellow-500 text-gray-900 py-2.5 my-3 rounded-lg font-semibold' type="submit">Contribute</button>
                         </div>
                     </form>
                 </div>

@@ -64,7 +64,7 @@ const Schedule = () => {
                                                         <p className='inline-block font-medium lg:text-lg md:text-lg text-base text-gray-400'>{event.venue}</p>
                                                     </div>
                                                     <div className='flex items-center gap-2'>
-                                                        <MdAccessTimeFilled className='inline-block text-yellow-500' size={22} />
+                                                        <MdAccessTimeFilled className='inline-block text-red-500' size={22} />
                                                         <p className='inline-block font-medium lg:text-lg md:text-lg text-base text-gray-400 ml-1.5'>{item.time}</p>
                                                     </div>
                                                 </div>

@@ -43,7 +43,7 @@ const EventCategory = () => {
     ]
 
     return (
-        <div className="bg-[url('/images/girl-dancing.png')] bg-no-repeat min-h-fit bg-center bg-cover flex flex-col relative justify-center items-center">
+        <div className="bg-[url('https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2Fgirl-dancing.webp?alt=media&token=d2851fda-6cdd-4dbc-a339-2c9dca90850b')] bg-no-repeat min-h-fit bg-center bg-cover flex flex-col relative justify-center items-center">
             <h3 className='text-center font-bold text-4xl py-20'>MAJOR EVENTS</h3>
             <div className='flex overflow-hidden justify-center items-center mb-52'>
                 <div className="flex max-w-6xl items-center justify-center m-auto">
