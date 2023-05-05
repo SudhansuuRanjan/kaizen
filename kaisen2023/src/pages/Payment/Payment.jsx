@@ -146,7 +146,7 @@ const Payment = () => {
         try {
             if (!(userData.txtnId === params.clientTxnId)) return toast.error("Payment Failed! Err Code 0.");
             const cart = userData.cart;
-            const notPurchasedItems = cart.filter((item) => !item.purchased);
+            const notPurchasedItems = cart;
 
 
             notPurchasedItems.forEach(async (item) => {
