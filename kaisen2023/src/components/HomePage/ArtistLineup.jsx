@@ -33,7 +33,7 @@ const ArtistLineup = () => {
 
                 <div className="card lg:scale-100 md:scale-100 scale-105">
                     <div className="wrapper">
-                        <img src="images/0_band night.png" className="cover-image" />
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F0_band%20night%20(1).webp?alt=media&token=a320853c-cd8d-43e8-b285-7ede754df6ab" className="cover-image" />
                     </div>
                     <img src="images/reveal.svg" className="title" />
                     <img src="images/unknown.png" className="character" />

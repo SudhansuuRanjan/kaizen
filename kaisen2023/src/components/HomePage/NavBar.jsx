@@ -61,7 +61,7 @@ const NavBar = () => {
                         </ul>
                     </li>
                     <li className="menu__item">
-                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/pronite">Pronite</Link>
+                        <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/alumni-connect">Alumni</Link>
                     </li>
                     <li className="menu__item">
                         <Link onClick={() => document.body.style.overflow = 'unset'} className="menu__link" to="/profile">Profile</Link>

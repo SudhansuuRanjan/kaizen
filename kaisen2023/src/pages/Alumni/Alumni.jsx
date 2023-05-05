@@ -27,7 +27,7 @@ const Alumni = () => {
         batch: '',
         attending: false,
     })
-    const [amount, setAmount] = useState(21);
+    const [amount, setAmount] = useState(1000);
     const [paymentCredentials, setPaymentCredentials] = useState({
         isOpen: false,
         clientCode: import.meta.env.VITE_PAYMENT_CLIENT_CODE,
@@ -102,7 +102,7 @@ const Alumni = () => {
 
             setPaymentCredentials({
                 ...paymentCredentials,
-                name: formData.name,
+                name: 'Alumni ' + formData.name,
                 email: formData.email,
                 phone: formData.phone,
                 amount: amount,
@@ -176,7 +176,7 @@ const Alumni = () => {
                 <p className='mb-5 text-2xl'>Respected Senior,</p>
                 <p className='text-lg'>Warm greetings from Team <span className='text-yellow-500'>KAIZEN!</span></p>
                 <p className='text-lg'>We, your juniors, are pleased to inform you that our KAIZEN, is going to be back with a big bang after three years. KAIZEN is going to be held between 10th and 14th May, 2023. We're sure just the mention of KAIZEN brings a wide smile on your face with pleasant memories of sleepless nights and adventurous days.</p>
-                <p className='text-lg'>We hope to see you in <span className='text-yellow-500'>KAIZEN!</span> this year!</p>
+                <p className='text-lg pt-2'>We hope to see you in <span className='text-yellow-500'>KAIZEN!</span> this year!</p>
             </div>
 
             {
@@ -234,8 +234,8 @@ const Alumni = () => {
                         </div>
                         <div className='flex flex-col w-full relative'>
                             <label className='font-medium text-[#ebe6d0]' htmlFor="amount">Amount</label>
-                            <input required className='text-gray-200 px-4 py-2.5 border rounded-lg font-medium pl-16 bg-[#0e0d1b]' value={amount} type="number" min={21} id="batch" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
-                            <div className='absolute top-[1.55rem] bg-gray-300 py-2.5 px-4 rounded-lg left-[1px]'>
+                            <input required className='text-gray-200 px-4 py-2.5 border rounded-lg font-medium pl-16 bg-[#0e0d1b]' value={amount} type="number" min={1000} id="batch" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
+                            <div className='absolute top-[1.55rem] bg-gray-700 text-white font-medium py-2.5 px-4 rounded-lg left-[1px]'>
                                 ₹
                             </div>
                         </div>
