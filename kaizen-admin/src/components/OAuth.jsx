@@ -25,6 +25,7 @@ const OAuth = () => {
                 await setDoc(userRef, {
                     name: user.displayName,
                     email: user.email,
+                    cart: [],
                     timestamp: serverTimestamp()
                 })
             }

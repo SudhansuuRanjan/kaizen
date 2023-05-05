@@ -28,6 +28,7 @@ import Payment from './pages/Payment/Payment'
 import GetPass from './pages/GetPasses/GetPass'
 import Pass from './pages/GetPasses/Pass'
 import Schedule from './pages/Schedule/Schedule'
+import Alumni from './pages/Alumni/Alumni'
 
 function App() {
 
@@ -138,6 +139,12 @@ function App() {
           <Route path='/basicregistration' element={
             <Layout>
               <GetPass />
+            </Layout>
+          } />
+
+          <Route path='/alumni-connect' element={
+            <Layout>
+              <Alumni />
             </Layout>
           } />
 

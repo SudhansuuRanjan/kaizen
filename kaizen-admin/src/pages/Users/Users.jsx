@@ -20,7 +20,12 @@ const Users = () => {
         const usersList = snapshot.docs.map(doc => doc.data());
         setUsers(usersList);
         setLastVisible(snapshot.docs[snapshot.docs.length - 1]);
-        console.log(usersList);
+        // console.log(usersList.map((user)=>{
+        //     return {
+        //         name: user.name,
+        //         cart: user.cart,
+        //     }
+        // }));
         setLoading(false);
     }
 

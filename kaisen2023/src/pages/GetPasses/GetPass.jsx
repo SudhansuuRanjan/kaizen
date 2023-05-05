@@ -231,6 +231,7 @@ const GetPass = () => {
 
                     for (let i = 0; i < peopleData.length; i++) {
                         try {
+                            peopleData[i].paymentInfo = params;
                             const docRef = doc(db, 'passes', peopleData[i].id);
                             await setDoc(docRef, peopleData[i]);
                             const res2 = await axios.post('https://kaizen-api.vercel.app/api/sendPassMail', peopleData[i]);
