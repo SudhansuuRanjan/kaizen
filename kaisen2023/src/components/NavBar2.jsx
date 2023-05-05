@@ -80,7 +80,7 @@ const NavBar2 = () => {
                             }
 
                         >
-                            <Link to="/alumni-connect">Alumni</Link>
+                            <Link to="/alumni-connect">Alumni Connect</Link>
                         </li>
                         <li
                             className={
@@ -199,6 +199,19 @@ const NavBar2 = () => {
                                     className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
                                 >
                                     Pronite
+                                </button>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/alumni-connect">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Alumni Connect
                                 </button>
                             </Link>
                         </li>
