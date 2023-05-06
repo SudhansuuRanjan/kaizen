@@ -29,7 +29,7 @@ const OAuth = () => {
                     timestamp: serverTimestamp()
                 })
             }
-            navigate('/events');
+            navigate('/dashboard');
             toast.success('Logged In Successfully!');
         } catch (error) {
             // toast.error('Bad User Credentials')

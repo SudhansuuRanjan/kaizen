@@ -33,7 +33,7 @@ const SignIn = () => {
 
       if (userCredential.user) {
         toast.success('Logged In Successfully!')
-        navigate('/profile');
+        navigate('/dashboard');
       }
     } catch (error) {
       toast.error('Bad User Credentials')

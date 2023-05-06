@@ -39,7 +39,7 @@ const SignUp = () => {
       await setDoc(doc(db, "users", user.uid), formDataCopy);
 
       toast.success('Signed Up Successfully!')
-      navigate('/events');
+      navigate('/dashboard');
     } catch (error) {
       toast.error('Bad User Credentials')
     }
