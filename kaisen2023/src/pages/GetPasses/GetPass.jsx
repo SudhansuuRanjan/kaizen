@@ -324,7 +324,7 @@ const GetPass = () => {
                         <p className='pb-2 text-yellow-400 text-base'>This Basic Registration includes:</p>
                         <ul className='list-inside'>
                             {/* <li>✅Lunch on all 5 days</li> */}
-                            <li>✅ Kaizen Merchandise & Goodies</li>
+                            {/* <li>✅ Kaizen Merchandise & Goodies</li> */}
                             <li>✅ Access to all the events</li>
                             <li>✅ A seat in Medical Workshops lead under eminent faculty of AIIMS Patna:</li>
                             <ul className='list-inside ml-4'>
