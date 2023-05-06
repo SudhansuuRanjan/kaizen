@@ -17,7 +17,7 @@ const UsersDashboard = () => {
             const userRef = collection(db, 'users');
             const snapshot = await getCountFromServer(userRef);
             setTotalUsers(snapshot.data().count);
-            console.log(snapshot.data().count);
+            // console.log(snapshot.data().count);
         } catch (error) {
             toast.error(error.message);
         }
@@ -30,7 +30,7 @@ const UsersDashboard = () => {
             const passRef = collection(db, 'passes');
             const snapshot = await getCountFromServer(passRef);
             setTotalPasses(snapshot.data().count);
-            console.log(snapshot.data().count);
+            // console.log(snapshot.data().count);
         } catch (error) {
             toast.error(error.message);
         }
