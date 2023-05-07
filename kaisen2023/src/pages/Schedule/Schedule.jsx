@@ -5,6 +5,7 @@ import { MdLocationPin, MdAccessTimeFilled } from 'react-icons/md'
 
 const Schedule = () => {
     const [day, setDay] = useState(day1);
+    document.title = 'Schedule | Kaisen 2023';
 
     return (
         <div className='bg-black pb-24 min-h-screen'>
