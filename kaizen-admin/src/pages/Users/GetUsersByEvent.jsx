@@ -28,7 +28,7 @@ const GetUsersByEvent = () => {
 
             const data = [];
             setUsers(usersList);
-
+            const count = 0;
             for (let i = 0; i < actualData.length; i++) {
                 const { name, email, college, gender, cart, phone } = actualData[i];
                 const userData = {
@@ -47,7 +47,7 @@ const GetUsersByEvent = () => {
                         eventId: cart[j].eventId,
                         purchased: cart[j].purchased,
                         members: cart[j].members,
-                        serialNo: i+j+1,
+                        serialNo: ++count,
                     }
                     if (eventdata.purchased && eventdata.eventId === eventId) {
                         data.push(eventdata);
