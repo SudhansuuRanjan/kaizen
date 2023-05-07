@@ -112,6 +112,7 @@ const GetUsersByEvent = () => {
                     {
                         eventData.map((data, id) => (
                             <div className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-2xl' key={id}>
+                                <p>Serial No.: {data.serialNo}</p>
                                 <p>Name: {data.name}</p>
                                 <p>Email: {data.email}</p>
                                 <p>College: {data.college}</p>
