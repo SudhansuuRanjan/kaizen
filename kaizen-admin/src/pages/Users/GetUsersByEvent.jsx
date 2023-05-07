@@ -47,10 +47,12 @@ const GetUsersByEvent = () => {
                         eventId: cart[j].eventId,
                         purchased: cart[j].purchased,
                         members: cart[j].members,
-                        serialNo: ++count,
                     }
                     if (eventdata.purchased && eventdata.eventId === eventId) {
-                        data.push(eventdata);
+                        data.push({
+                            ...eventData,
+                            serialNo: ++count,
+                        });
                     }
                 }
             }
