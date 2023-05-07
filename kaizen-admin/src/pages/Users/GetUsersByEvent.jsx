@@ -28,7 +28,7 @@ const GetUsersByEvent = () => {
 
             const data = [];
             setUsers(usersList);
-            const count = 0;
+            let count = 0;
             for (let i = 0; i < actualData.length; i++) {
                 const { name, email, college, gender, cart, phone } = actualData[i];
                 const userData = {
