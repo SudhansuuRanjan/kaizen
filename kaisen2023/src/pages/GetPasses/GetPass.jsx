@@ -262,20 +262,20 @@ const GetPass = () => {
         getQueryParams();
     }, []);
 
-    return (
-        <div className='bg-black pb-24 min-h-screen'>
-            <div className='cart-banner'>
-                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
-            </div>
-            <div className="m-auto text-center flex flex-col items-center justify-center gap-3 max-w-[45rem]">
-                <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span> ⛑️. Please check again later.</p>
-                <p className='px-5 text-lg'>Due to heavy number 🚀 of Basic Registrations our site server is down.</p>
-                <p className='px-5 text-lg'>It will 😃 reopen soon but with limited slots. Please try again after some time. Keep visiting for latest updates.</p>
-                <p className='px-5 text-lg'>USE code '<span className='text-xl font-medium text-amber-400'>TMB</span>' at checkout for <span className='text-yellow-500'>The Mind Blowing</span>🤯 offer.</p>
-                <p className='px-5 text-lg mt-5'>Sorry 🙇 for the inconvenience.</p>
-            </div>
-        </div>
-    )
+    // return (
+    //     <div className='bg-black pb-24 min-h-screen'>
+    //         <div className='cart-banner'>
+    //             <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
+    //         </div>
+    //         <div className="m-auto text-center flex flex-col items-center justify-center gap-3 max-w-[45rem]">
+    //             <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span> ⛑️. Please check again later.</p>
+    //             <p className='px-5 text-lg'>Due to heavy number 🚀 of Basic Registrations our site server is down.</p>
+    //             <p className='px-5 text-lg'>It will 😃 reopen soon but with limited slots. Please try again after some time. Keep visiting for latest updates.</p>
+    //             <p className='px-5 text-lg'>USE code '<span className='text-xl font-medium text-amber-400'>TMB</span>' at checkout for <span className='text-yellow-500'>The Mind Blowing</span>🤯 offer.</p>
+    //             <p className='px-5 text-lg mt-5'>Sorry 🙇 for the inconvenience.</p>
+    //         </div>
+    //     </div>
+    // )
 
     return (
         <div className='bg-black pb-24'>
