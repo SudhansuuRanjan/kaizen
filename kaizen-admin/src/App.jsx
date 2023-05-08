@@ -14,7 +14,7 @@ import Cart from './pages/Cart'
 import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
 import EditEvent from './pages/EventPage/EditEvent'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ParallaxProvider } from 'react-scroll-parallax'
 import Participant from './pages/participant/Participant'
@@ -23,12 +23,16 @@ import CreatePass from './pages/CreatePass/CreatePass'
 import Users from './pages/Users/Users'
 import UsersDashboard from './pages/UsersDashboard/UsersDashboard'
 import GetUsersByEvent from './pages/Users/GetUsersByEvent'
+import VerifyUsers from './pages/Users/VerifyUsers'
+import ScrollToTop from './hooks/useScrollToTop'
+import VerifyPass from './pages/Users/VerifyPass'
 
 
 function App() {
   return (
     <ParallaxProvider>
       <Router>
+        <ScrollToTop />
         <ToastContainer />
         <Routes>
           <Route path='/' element={
@@ -115,6 +119,26 @@ function App() {
               <>
                 <NavBar2 />
                 <GetUsersByEvent/>
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/verify-users' element={<PrivateRoute />}>
+            <Route path='/verify-users' element={
+              <>
+                <NavBar2 />
+                <VerifyUsers/>
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/verify-pass' element={<PrivateRoute />}>
+            <Route path='/verify-pass' element={
+              <>
+                <NavBar2 />
+                <VerifyPass/>
                 <Footer2 />
               </>
             } />

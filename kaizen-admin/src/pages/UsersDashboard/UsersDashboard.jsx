@@ -72,11 +72,11 @@ const UsersDashboard = () => {
                     <h1>Get Users by Registered Events</h1>
                 </Link>
 
-                <Link to="/users" className='border-dashed delay-75 ease-in transition-all   border-2 shadow-md border-[#ebe6d0] border-2xl h-20 lg:w-[28rem] md:w-[28rem] w-[100%] flex items-center text-xl font-medium rounded-2xl text-center justify-center hover:bg-[#ebe6d0] text-[#ebe6d0] hover:border-black hover:text-black'>
+                <Link to="/verify-users" className='border-dashed delay-75 ease-in transition-all   border-2 shadow-md border-[#ebe6d0] border-2xl h-20 lg:w-[28rem] md:w-[28rem] w-[100%] flex items-center text-xl font-medium rounded-2xl text-center justify-center hover:bg-[#ebe6d0] text-[#ebe6d0] hover:border-black hover:text-black'>
                     <h1>Verify Users</h1>
                 </Link>
 
-                <Link to="/users" className='border-dashed delay-75 ease-in transition-all   border-2 shadow-md border-[#ebe6d0] border-2xl h-20 lg:w-[28rem] md:w-[28rem] w-[100%] flex items-center text-xl font-medium rounded-2xl text-center justify-center hover:bg-[#ebe6d0] text-[#ebe6d0] hover:border-black hover:text-black'>
+                <Link to="/verify-pass" className='border-dashed delay-75 ease-in transition-all   border-2 shadow-md border-[#ebe6d0] border-2xl h-20 lg:w-[28rem] md:w-[28rem] w-[100%] flex items-center text-xl font-medium rounded-2xl text-center justify-center hover:bg-[#ebe6d0] text-[#ebe6d0] hover:border-black hover:text-black'>
                     <h1>Verify Pass</h1>
                 </Link>
             </div>
