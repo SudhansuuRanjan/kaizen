@@ -26,6 +26,7 @@ import GetUsersByEvent from './pages/Users/GetUsersByEvent'
 import VerifyUsers from './pages/Users/VerifyUsers'
 import ScrollToTop from './hooks/useScrollToTop'
 import VerifyPass from './pages/Users/VerifyPass'
+import VerifyPassAdmin from './pages/Users/VerifyPassAdmin'
 
 
 function App() {
@@ -139,6 +140,16 @@ function App() {
               <>
                 <NavBar2 />
                 <VerifyPass/>
+                <Footer2 />
+              </>
+            } />
+          </Route>
+
+          <Route path='/verify-pass-admin' element={<PrivateRoute />}>
+            <Route path='/verify-pass-admin' element={
+              <>
+                <NavBar2 />
+                <VerifyPassAdmin/>
                 <Footer2 />
               </>
             } />

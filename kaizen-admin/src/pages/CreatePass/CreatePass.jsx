@@ -32,7 +32,7 @@ const CreatePass = () => {
     })
 
     const [loading, setLoading] = useState(false);
-    const { name, email } = auth.currentUser
+    const { name, email } = auth.currentUser;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
