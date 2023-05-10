@@ -34,10 +34,6 @@ const VerifyPassAdmin = () => {
     const [formData, setFormData] = useState([
         {
             checked: false,
-            date: '10-05-2023',
-        },
-        {
-            checked: false,
             date: '11-05-2023',
         },
         {
@@ -52,7 +48,8 @@ const VerifyPassAdmin = () => {
             checked: false,
             date: '14-05-2023',
         }
-    ])
+    ]);
+    const [checkedinData, setCheckedInData] = useState([]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -78,6 +75,7 @@ const VerifyPassAdmin = () => {
             e.preventDefault();
         }
         setLoading(true);
+        setCheckInID('');
         try {
 
             const querySnapshot = await getDocs(query(collection(db, 'passes'), where('passId', '>=', searchTerm), where('passId', '<=', searchTerm + '\uf8ff'), limit(10)));
@@ -87,12 +85,44 @@ const VerifyPassAdmin = () => {
             if (results[0].checkInData) {
                 // console.log(results[0].checkInData);
                 setFormData(results[0].checkInData);
-                for (let i = 0; i < results[0].checkInData.length; i++) {
-                    if (isTodaysDate(results[0].checkInData[i].checked)) {
-                        setTodayCheckedIn(true);
-                        break;
+                setCheckedInData(results[0].checkInData);
+            } else {
+                setFormData([
+                    {
+                        checked: false,
+                        date: '11-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '12-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '13-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '14-05-2023',
                     }
-                }
+                ])
+                setCheckedInData([
+                    {
+                        checked: false,
+                        date: '11-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '12-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '13-05-2023',
+                    },
+                    {
+                        checked: false,
+                        date: '14-05-2023',
+                    }
+                ]);
             }
             setLoading(false);
         } catch (error) {
@@ -121,12 +151,7 @@ const VerifyPassAdmin = () => {
             setLoading2(true);
             // console.log(formData, id);
             await setDoc(doc(db, 'passes', id), { checkInData: formData }, { merge: true });
-            setTodayCheckedIn(true);
             setFormData([
-                {
-                    checked: false,
-                    date: '10-05-2023',
-                },
                 {
                     checked: false,
                     date: '11-05-2023',
@@ -145,6 +170,7 @@ const VerifyPassAdmin = () => {
                 }
             ])
             handleSubmit();
+            setTodayCheckedIn(false);
             setLoading2(false);
             toast.success('Check-in successful');
         } catch (error) {
@@ -164,6 +190,7 @@ const VerifyPassAdmin = () => {
                             checked: item.checked,
                         }
                     } else {
+                        setTodayCheckedIn(true);
                         return {
                             ...item,
                             checked: !item.checked,
@@ -272,12 +299,23 @@ const VerifyPassAdmin = () => {
                                                 e.preventDefault();
                                                 handleCheckIn(searchResults.id);
                                             }} className='mt-5'>
-                                                {formData.map((day, idx) => <div className='flex gap-6' key={idx}>
-                                                    <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
-                                                    <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} />
-                                                </div>)}
+                                                <div className='flex gap-6'>
+                                                    <div>
+                                                        {formData.map((day, idx) => <div className='flex gap-6' key={idx}>
+                                                            <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
+                                                            <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} />
+                                                        </div>)}
+                                                    </div>
+                                                    <div className='flex flex-col gap-1'>
+                                                        {
+                                                            checkedinData.map((day, idx) => <div className='flex' key={idx}>
+                                                                <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
+                                                            </div>)
+                                                        }
+                                                    </div>
+                                                </div>
                                                 {
-                                                    !todayCheckedIn && <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
+                                                    todayCheckedIn && <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
                                                 }
                                             </form>}
                                         </div>
