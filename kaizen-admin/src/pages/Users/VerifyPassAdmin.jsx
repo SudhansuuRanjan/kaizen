@@ -88,7 +88,7 @@ const VerifyPassAdmin = () => {
                 // console.log(results[0].checkInData);
                 setFormData(results[0].checkInData);
                 for (let i = 0; i < results[0].checkInData.length; i++) {
-                    if (isTodaysDate(results[0].checkInData[i].date)) {
+                    if (isTodaysDate(results[0].checkInData[i].checked)) {
                         setTodayCheckedIn(true);
                         break;
                     }
