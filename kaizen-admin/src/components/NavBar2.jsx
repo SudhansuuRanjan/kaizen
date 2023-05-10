@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { FiX } from "react-icons/fi";
-import { FaShoppingCart } from "react-icons/fa";
 import CartIcon from "./CartIcon";
 
 
@@ -12,7 +10,7 @@ const NavBar = () => {
     const [focus, setFocus] = useState(-1);
 
     return (
-        <div className="backdrop-blur-md text-lg font-medium drop-shadow-md z-50 flex flex-row fixed  bg-gray-800 bg-opacity-40 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-[#161616]">
+        <div className="backdrop-blur-md text-md font-medium drop-shadow-md z-50 flex flex-row fixed  bg-gray-800 bg-opacity-40 dark:backdrop-blur-md dark:drop-shadow-md  w-[100vw] items-center justify-center text-gray-800 dark:text-white border-b-[1px] border-[#161616]">
             <div className="flex items-center justify-between w-[100%] md:w-[70rem] px-4 md:px-3 py-4">
                 <div className="flex items-center">
                     <Link to="/">
@@ -114,8 +112,21 @@ const NavBar = () => {
                 </div>
             </div>
             {menu && (
-                <div className="md:hidden fixed mt-[12rem] right-0 bg-white rounded-md w-[12rem] py-2 mr-5 shadow-md text-gray-800 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 border">
+                <div className="md:hidden fixed mt-[16rem] right-0 bg-white rounded-md w-[12rem] py-2 mr-5 shadow-md text-gray-800 dark:text-white dark:bg-gray-700 border-gray-200 dark:border-gray-500 border">
                     <ul>
+                        <li>
+                            <Link to="/dashboard">
+                                <button
+                                    onClick={() => {
+                                        setMenu(false);
+
+                                    }}
+                                    className="hover:underline hover:border-yellow-300 dark:hover:border-yellow-300  border-4 border-white dark:border-gray-700 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-yellow-50 dark:hover:bg-gray-400 text-left"
+                                >
+                                    Dashboard
+                                </button>
+                            </Link>
+                        </li>
                         <li>
                             <Link to="/events">
                                 <button

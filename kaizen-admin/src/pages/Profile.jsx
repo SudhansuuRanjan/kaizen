@@ -65,7 +65,7 @@ const Profile = () => {
           </div>
 
           <div>
-            <div className='flex items-center justify-between'>
+            {/* <div className='flex items-center justify-between'>
               <p className='font-medium'>Personal Details</p>
               <p className='text-pink-500 cursor-pointer font-bold' onClick={() => {
                 changeDetails && onSubmit();
@@ -73,7 +73,7 @@ const Profile = () => {
               }}>
                 {changeDetails ? 'done' : 'change'}
               </p>
-            </div>
+            </div> */}
 
             <div>
               <form>

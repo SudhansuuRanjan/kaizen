@@ -4,6 +4,7 @@ import { collection, getDocs, getDoc, query, where, limit, setDoc, doc } from 'f
 import { toast } from 'react-toastify'
 import { getAuth } from 'firebase/auth'
 
+
 const isTodaysDate = (date) => {
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
@@ -16,12 +17,20 @@ const isTodaysDate = (date) => {
 const VerifyPassAdmin = () => {
     const auth = getAuth();
     const { name, email } = auth.currentUser;
+    const allowedUsers = [
+        'dpk.rnjn.s@gmail.com',
+        'sudhanshuranjan2k18@gmail.com',
+        'sudhanshur.ug20.ee@nitp.ac.in'
+    ]
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [searchResults, setSearchResults] = useState({});
     const [loading, setLoading] = useState(false);
     const [suggestionsVisible, setSuggestionsVisible] = useState(false);
     const [checkInID, setCheckInID] = useState('');
+    const [todayCheckedIn, setTodayCheckedIn] = useState(false);
+    const [loading1, setLoading1] = useState(false);
+    const [loading2, setLoading2] = useState(false);
     const [formData, setFormData] = useState([
         {
             checked: false,
@@ -78,6 +87,12 @@ const VerifyPassAdmin = () => {
             if (results[0].checkInData) {
                 // console.log(results[0].checkInData);
                 setFormData(results[0].checkInData);
+                for (let i = 0; i < results[0].checkInData.length; i++) {
+                    if (isTodaysDate(results[0].checkInData[i].date)) {
+                        setTodayCheckedIn(true);
+                        break;
+                    }
+                }
             }
             setLoading(false);
         } catch (error) {
@@ -90,18 +105,23 @@ const VerifyPassAdmin = () => {
         // get pass with doc id and update checkInID
 
         try {
+            setLoading1(true);
             await setDoc(doc(db, 'passes', id), { checkInID: checkInID }, { merge: true });
             handleSubmit();
+            setLoading1(false);
             toast.success('Check-in ID updated successfully');
         } catch (error) {
+            setLoading1(false);
             toast.error('Error updating check-in ID');
         }
     }
 
     const handleCheckIn = async (id) => {
         try {
+            setLoading2(true);
             // console.log(formData, id);
             await setDoc(doc(db, 'passes', id), { checkInData: formData }, { merge: true });
+            setTodayCheckedIn(true);
             setFormData([
                 {
                     checked: false,
@@ -125,8 +145,10 @@ const VerifyPassAdmin = () => {
                 }
             ])
             handleSubmit();
+            setLoading2(false);
             toast.success('Check-in successful');
         } catch (error) {
+            setLoading2(false);
             toast.error('Error checking in');
         }
     }
@@ -136,9 +158,16 @@ const VerifyPassAdmin = () => {
         setFormData((prevState) => {
             return prevState.map((item, index) => {
                 if (index === parseInt(id)) {
-                    return {
-                        ...item,
-                        checked: !item.checked,
+                    if (item.checked) {
+                        return {
+                            ...item,
+                            checked: item.checked,
+                        }
+                    } else {
+                        return {
+                            ...item,
+                            checked: !item.checked,
+                        }
                     }
                 } else {
                     return item;
@@ -153,7 +182,33 @@ const VerifyPassAdmin = () => {
                 <div className='event-banner'>
                     <h1 className='event-head'>Check In</h1>
                 </div>
-                {email !== "dpk.rnjn.s@gmail.com" ? <div className='pt-32 min-h-screen text-center px-4 text-lg'>You don't have permission to view this page.</div> : <div className='m-auto'>
+
+                {
+                    loading1 && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
+                        </div>
+                        <p>
+                            Adding CheckIn ID...
+                        </p>
+                        <p>
+                            Please do not close this window or press back button.
+                        </p>
+                    </div>
+                }
+
+                {
+                    loading2 && <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center flex-col gap-3'>
+                        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-500'>
+                        </div>
+                        <p>
+                            Checking In...
+                        </p>
+                        <p>
+                            Please do not close this window or press back button.
+                        </p>
+                    </div>
+                }
+                {!allowedUsers.includes(email) ? <div className='pt-32 min-h-screen text-center px-4 text-lg'>You don't have permission to view this page.</div> : <div className='m-auto'>
                     <div className='flex relative items-center flex-col justify-center m-auto max-w-[25rem]'>
                         <form onSubmit={handleSubmit}>
                             <input
@@ -191,14 +246,14 @@ const VerifyPassAdmin = () => {
                     <div className='flex flex-col justify-center items-center gap-5 pb-16'>
                         {
                             loading ? "loading..." : searchResults.name === undefined ? 'No results.' :
-                                <div className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-2xl'>
+                                <div className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
                                     <p>Name: {searchResults.name}</p>
                                     <p>PassID: {searchResults.passId}</p>
-                                    <p>Email: {searchResults.email}</p>
+                                    <p>Email: {email}</p>
                                     <p>Phone: {searchResults.phone}</p>
                                     <p>College: {searchResults.college}</p>
-                                    <p>ID: {searchResults.id}</p>
-                                    <div className='border border-dashed p-3 rounded-xl mt-3'>
+                                    {/* <p>ID: {searchResults.id}</p> */}
+                                    <div className='border border-dashed p-3 pb-4 rounded-xl mt-3'>
                                         <div>
                                             {searchResults.checkInID ? <div>
                                                 <p className='text-lg font-semibold'> CheckIn ID: {searchResults.checkInID}</p>
@@ -221,12 +276,13 @@ const VerifyPassAdmin = () => {
                                                     <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
                                                     <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} />
                                                 </div>)}
-                                                <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
+                                                {
+                                                    !todayCheckedIn && <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
+                                                }
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
                         }
                     </div>
                 </div>}
