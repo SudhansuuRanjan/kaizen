@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="bg-[#000000] text-sm pt-10">
 
-      <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-[auto] items-start justify-items-center">
+      <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
 
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-1 md:order-1 lg:order-1'>
 
@@ -33,12 +33,22 @@ const Footer = () => {
         </div>
 
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
+          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Useful Links</h1></div>
+          <ul className='mt-4 flex flex-col gap-3 text-base'>
+            <li className='hover:text-red-600 text-gray-500'><Link to="/events">Events</Link></li>
+            <li className='hover:text-red-600 text-gray-500'><Link to="/basicregistration">Basic Registration</Link></li>
+            <li className=' hover:text-red-600 text-gray-500'><Link to="/alumni-connect">Alumni Connect</Link></li>
+            <li className=' hover:text-red-600 text-gray-500'><Link to="/pronite">Pronites</Link></li>
+          </ul>
+        </div>
+
+        <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Legals</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
-            <li className='hover:text-red-600'><Link to="/legals/privacy-policy">Privacy   Policy</Link></li>
-            <li className='hover:text-red-600'><Link to="/legals/terms-of-service">Terms</Link></li>
-            <li className=' hover:text-red-600'><Link to="/legals/code-of-conduct">Code of Conduct</Link></li>
-            <li className=' hover:text-red-600'><Link to="/legals/refund-policy">Refund Policy</Link></li>
+            <li className='hover:text-red-600 text-gray-500'><Link to="/legals/privacy-policy">Privacy   Policy</Link></li>
+            <li className='hover:text-red-600 text-gray-500'><Link to="/legals/terms-of-service">Terms</Link></li>
+            <li className=' hover:text-red-600 text-gray-500'><Link to="/legals/code-of-conduct">Code of Conduct</Link></li>
+            <li className=' hover:text-red-600 text-gray-500'><Link to="/legals/refund-policy">Refund Policy</Link></li>
           </ul>
         </div>
 
@@ -52,7 +62,7 @@ const Footer = () => {
       </div>
 
       <div className="w-[90%] m-[auto] bg-gray-800 h-[2px]"></div>
-      <div className="m-[auto] pb-8 pt-5 text-gray-800 dark:text-gray-400 dark:font-light flex flex-col md:flex-row lg:flex-row justify-between items-center w-[90%] text-base">
+      <div className="m-[auto] pb-8 pt-5 text-gray-800 dark:text-gray-500 dark:font-light flex flex-col md:flex-row lg:flex-row justify-between items-center w-[90%] text-base">
         <p>
           © {year} Kaizen. All Rights Reserved.
         </p>
