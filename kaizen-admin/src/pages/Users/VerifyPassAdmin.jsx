@@ -20,7 +20,7 @@ const VerifyPassAdmin = () => {
     const allowedUsers = [
         'dpk.rnjn.s@gmail.com',
         'sudhanshuranjan2k18@gmail.com',
-        'sudhanshur.ug20.ee@nitp.ac.in'
+        'sudhanshur.ug20.ee@nitp.ac.in',
     ]
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -249,7 +249,7 @@ const VerifyPassAdmin = () => {
                                 <div className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
                                     <p>Name: {searchResults.name}</p>
                                     <p>PassID: {searchResults.passId}</p>
-                                    <p>Email: {email}</p>
+                                    <p>Email: {searchResults.email}</p>
                                     <p>Phone: {searchResults.phone}</p>
                                     <p>College: {searchResults.college}</p>
                                     {/* <p>ID: {searchResults.id}</p> */}
@@ -268,7 +268,7 @@ const VerifyPassAdmin = () => {
                                                 </form>
                                             </div>}
 
-                                            <form onSubmit={(e) => {
+                                            {searchResults.checkInID && <form onSubmit={(e) => {
                                                 e.preventDefault();
                                                 handleCheckIn(searchResults.id);
                                             }} className='mt-5'>
@@ -279,7 +279,7 @@ const VerifyPassAdmin = () => {
                                                 {
                                                     !todayCheckedIn && <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
                                                 }
-                                            </form>
+                                            </form>}
                                         </div>
                                     </div>
                                 </div>

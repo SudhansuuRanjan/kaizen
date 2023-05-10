@@ -129,9 +129,10 @@ const Pass = () => {
                 </div>
 
                 <div>
-                    <div className='flex justify-between items-center p-10'>
-                        <p className='font-semibold text-lg text-black'>Total :</p>
-                        <p className='font-bold text-xl text-yellow-500'>₹ 1200</p>
+                    <div className='flex justify-between items-center lg:p-10 md:p-10 p-5'>
+                        {/* <p className='font-semibold text-lg text-black'>Total :</p>
+                        <p className='font-bold text-xl text-yellow-500'>₹ 1200</p> */}
+                        <img className='w-full h-auto' src="/images/sponsors.jpg" alt="Sponsors" />
                     </div>
                 </div>
             </div>}
