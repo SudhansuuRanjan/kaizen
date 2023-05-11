@@ -21,6 +21,7 @@ const VerifyPassAdmin = () => {
         'dpk.rnjn.s@gmail.com',
         'sudhanshuranjan2k18@gmail.com',
         'sudhanshur.ug20.ee@nitp.ac.in',
+        'abhinavkumar@aiimspatna.org'
     ]
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
