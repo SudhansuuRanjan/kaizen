@@ -18,10 +18,7 @@ const VerifyPassAdmin = () => {
     const auth = getAuth();
     const { name, email } = auth.currentUser;
     const allowedUsers = [
-        'dpk.rnjn.s@gmail.com',
         'sudhanshuranjan2k18@gmail.com',
-        'sudhanshur.ug20.ee@nitp.ac.in',
-        'abhinavkumar@aiimspatna.org'
     ]
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
