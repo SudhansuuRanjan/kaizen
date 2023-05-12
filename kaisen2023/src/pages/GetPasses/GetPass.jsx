@@ -159,16 +159,16 @@ const GetPass = () => {
         if (promoCode === 'KZNAMSP' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.83 * (peoples.length * 1200));
-            toast.success('Promo Code Applied! You have got a discount of 17%');
+            toast.success('😃 Promo Code Applied! You have got a discount of 17%');
             return;
         } else if (promoCode === 'KZNAMSP' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
             setDiscountedPrice(0.83 * ((peoples.length * 1200) - 1200));
-            toast.success('Promo Code Applied! You have got a discount of 17%');
+            toast.success('😃 Promo Code Applied! You have got a discount of 17%');
             return;
         } else {
-            toast.error('Invalid Promo Code!');
+            toast.error('Invalid Promo Code or Promo Code Expired 😟!');
             setDiscountedPrice(peoples.length * 1200);
             setIsPromoCodeApplied(false);
         }
@@ -243,7 +243,7 @@ const GetPass = () => {
                     }
                     localStorage.removeItem('peoples');
                     getPeoples();
-                    toast.success('Registration Successfull! The confirmation mail will be sent to your email address shortly.');
+                    toast.success('😃 Registration Successfull! The confirmation mail will be sent to your email address shortly.');
                     setPaymentStatus("SUCCESS");
                 } catch (error) {
                     toast.error(error.message);
