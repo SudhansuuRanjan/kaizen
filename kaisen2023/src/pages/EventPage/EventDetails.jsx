@@ -24,6 +24,7 @@ const EventDetails = () => {
     const eventsSnap = await getDocs(query(eventsRef, where('id', '==', id)));
     const events = eventsSnap.docs.map(doc => ({ uid: doc.id, ...doc.data() }));
     setData(events[0]);
+    document.title = `${events[0].name} | KAIZEN 2023`;
     setLoading(false);
   }
 

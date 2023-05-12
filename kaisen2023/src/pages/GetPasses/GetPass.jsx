@@ -32,6 +32,7 @@ const generatePassID = () => {
 
 
 const GetPass = () => {
+    document.title = "Kaizen | Basic Registration"
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',

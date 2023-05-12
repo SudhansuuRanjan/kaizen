@@ -2,6 +2,7 @@ import React from 'react'
 import './Proshow.scss'
 
 const Pronite = () => {
+    document.title = "Pronite | KAIZEN 2023"
   return (
     <div className='pronite-container'>
       <div className='pronite-banner'>

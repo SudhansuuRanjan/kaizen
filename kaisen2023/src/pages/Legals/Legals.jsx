@@ -9,6 +9,7 @@ import RefundPolicy from './RefundPolicy'
 const Legals = () => {
     const { pageName } = useParams("");
     const [page, setPage] = useState(0);
+    document.title = "Legals | KAIZEN 2023"
 
     useEffect(() => {
         if (pageName === "privacy-policy") setPage(1);
@@ -69,13 +70,13 @@ const Legals = () => {
                             page === 0 ? <TnC /> : null
                         }
                         {
-                            page === 1 ? <PrivacyPolicy/> : null
+                            page === 1 ? <PrivacyPolicy /> : null
                         }
                         {
-                            page === 2 ? <CnC/> : null
+                            page === 2 ? <CnC /> : null
                         }
                         {
-                            page === 3 ? <RefundPolicy/> : null
+                            page === 3 ? <RefundPolicy /> : null
                         }
                     </div>
 

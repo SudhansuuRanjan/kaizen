@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 
 const CartPage = () => {
+  document.title = 'Cart | KAIZEN 2023';
   const auth = getAuth();
   const [cartItems, setCartItems] = useState([]);
   const [Loading, setLoading] = useState(true);

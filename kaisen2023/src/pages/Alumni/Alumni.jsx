@@ -19,6 +19,7 @@ const generateTxnId = () => {
 }
 
 const Alumni = () => {
+    document.title = 'Alumni Connect | KAIZEN 2023';
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',

@@ -8,6 +8,7 @@ import { db } from '../../firebase.config';
 import { toast } from 'react-toastify';
 
 const EventPage = () => {
+    document.title = 'Events | KAIZEN 2023';
     const [selectedEvent, setSelectedEvent] = useState(0);
     const [events, setEvents] = useState([]);
     const [Loading, setLoading] = useState(true);

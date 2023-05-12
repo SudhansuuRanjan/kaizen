@@ -13,10 +13,10 @@ import EventSchedule from '../components/HomePage/EventSchedule'
 
 
 const Home = () => {
-  document.title = 'Kaizen 2023'
+  document.title = "KAIZEN 2023"
   return (
     <div className="w-[100%] overflow-hidden">
-      <NavBar/>
+      <NavBar />
       <ParallaxComponent />
       <Timer />
       <EventCategory />
@@ -24,10 +24,10 @@ const Home = () => {
       <About />
       <Highlights />
       <CAPopup />
-      <ChiefPatron/>
+      <ChiefPatron />
       <Sponsors />
       <FAQs />
-      <EventSchedule/>
+      <EventSchedule />
     </div>
   )
 }
