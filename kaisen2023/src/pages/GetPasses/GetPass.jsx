@@ -156,12 +156,12 @@ const GetPass = () => {
         //     toast.success('Promo Code Applied! You have got a discount of 42%');
         //     return;
         // }else 
-        if (promoCode === 'TMB' && peoples.length < 10) {
+        if (promoCode === 'KZNAMSP' && peoples.length < 10) {
             setIsPromoCodeApplied(true);
             setDiscountedPrice(0.83 * (peoples.length * 1200));
             toast.success('Promo Code Applied! You have got a discount of 17%');
             return;
-        } else if (promoCode === 'TMB' && peoples.length >= 10) {
+        } else if (promoCode === 'KZNAMSP' && peoples.length >= 10) {
             setIsPromoCodeApplied(true);
             setGt10(true);
             setDiscountedPrice(0.83 * ((peoples.length * 1200) - 1200));
@@ -271,7 +271,7 @@ const GetPass = () => {
     //             <p className='px-5 text-lg'>This page is under <span className='text-yellow-500'>maintainance</span> ⛑️. Please check again later.</p>
     //             <p className='px-5 text-lg'>Due to heavy number 🚀 of Basic Registrations our site server is down.</p>
     //             <p className='px-5 text-lg'>It will 😃 reopen soon but with limited slots. Please try again after some time. Keep visiting for latest updates.</p>
-    //             <p className='px-5 text-lg'>USE code '<span className='text-xl font-medium text-amber-400'>TMB</span>' at checkout for <span className='text-yellow-500'>The Mind Blowing</span>🤯 offer.</p>
+    //             <p className='px-5 text-lg'>USE code '<span className='text-xl font-medium text-amber-400'>KZNAMSP</span>' at checkout for <span className='text-yellow-500'>The Mind Blowing</span>🤯 offer.</p>
     //             <p className='px-5 text-lg mt-5'>Sorry 🙇 for the inconvenience.</p>
     //         </div>
     //     </div>

@@ -21,6 +21,11 @@ const generatePassID = () => {
 
 const CreatePass = () => {
 
+    const allowedUsers = [
+        'sudhanshuranjan2k18@gmail.com',
+        'deepakranjan488@gmail.com'
+    ]
+
     const auth = getAuth();
     const [formData, setFormData] = useState({
         name: "",
@@ -74,7 +79,7 @@ const CreatePass = () => {
 
     return (
         <>
-            {email !== "sudhanshuranjan2k18@gmail.com" ? <div className='pt-48 min-h-screen text-center px-4 text-lg'>You don't have permission to view this page.</div> : <div className='pt-32 min-h-screen'>
+            {!allowedUsers.includes(email) ? <div className='pt-48 min-h-screen text-center px-4 text-lg'>You don't have permission to view this page.</div> : <div className='pt-32 min-h-screen'>
                 <h1 className='text-4xl font-bold text-center mb-10'>Create Pass</h1>
                 <div className='lg:w-[37rem] md:w-[32rem] w-[90%] m-auto'>
                     <form onSubmit={handleSubmit} className='flex gap-2 flex-col w-full p-6 pt-0'>
