@@ -29,7 +29,7 @@ const NavBar = () => {
 
     return (
         <>
-            <div className={`fixed z-10 w-[100%] ${colorChange && "border-b bg-gray-700 transition-all delay-100 ease-in-out bg-opacity-20 backdrop-blur-md border-gray-700 shadow-md"}`}>
+            <div className={`fixed z-10 w-[100%] ${colorChange && "border-b bg-gray-700 transition-all delay-100 ease-in-out bg-opacity-20 backdrop-blur-md border-gray-800 shadow-md"}`}>
                 <div className='p-4'>
                     <Link to="/">
                         <img src="/images/kaizen.png" alt="logo" className="h-12" />

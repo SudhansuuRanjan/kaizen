@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
 
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
-          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Useful Links</h1></div>
+          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-bold'>Useful Links</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
             <li className='hover:text-red-600 text-gray-500'><Link to="/events">Events</Link></li>
             <li className='hover:text-red-600 text-gray-500'><Link to="/basicregistration">Basic Registration</Link></li>
@@ -43,17 +43,17 @@ const Footer = () => {
         </div>
 
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
-          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Legals</h1></div>
+          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-bold'>Legals</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
             <li className='hover:text-red-600 text-gray-500'><Link to="/legals/privacy-policy">Privacy   Policy</Link></li>
-            <li className='hover:text-red-600 text-gray-500'><Link to="/legals/terms-of-service">Terms</Link></li>
+            <li className='hover:text-red-600 text-gray-500'><Link to="/legals/terms-of-service">Terms & Cond.</Link></li>
             <li className=' hover:text-red-600 text-gray-500'><Link to="/legals/code-of-conduct">Code of Conduct</Link></li>
             <li className=' hover:text-red-600 text-gray-500'><Link to="/legals/refund-policy">Refund Policy</Link></li>
           </ul>
         </div>
 
         <div data-aos="fade-up" className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-3 md:order-3 lg:order-3 text-base'>
-          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Contact Us</h1></div>
+          <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-red-700 mr-3'>|</h1><h1 className='text-lg font-bold'>Contact Us</h1></div>
           <p className='max-w-[16rem] pt-4 text'>AIIMS Patna, Phulwarisharif, Patna, Bihar-801507, India</p>
           <p className='pt-2'>Ph : <a href="tel:+918207372732" className='text-red-700 ml-2 font-semibold'>+91 82073 72732</a></p>
           <p className='pt-2'>Mail : <a href="mailto:kaizen@aiimspatna.org" className='text-red-700 ml-2 font-semibold'>kaizen@aiimspatna.org</a></p>
@@ -61,8 +61,8 @@ const Footer = () => {
 
       </div>
 
-      <div className="w-[90%] m-[auto] bg-gray-800 h-[2px]"></div>
-      <div className="m-[auto] pb-8 pt-5 text-gray-800 dark:text-gray-500 dark:font-light flex flex-col md:flex-row lg:flex-row justify-between items-center w-[90%] text-base">
+      <div className="w-[90%] m-[auto] bg-gray-900 h-[1px]"></div>
+      <div className="m-[auto] py-7 text-gray-500  flex flex-col md:flex-row lg:flex-row justify-between items-center w-[90%] text-base">
         <p>
           © {year} Kaizen. All Rights Reserved.
         </p>
