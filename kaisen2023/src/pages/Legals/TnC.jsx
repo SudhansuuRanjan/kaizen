@@ -7,7 +7,16 @@ const TnC = () => {
                 <p className='leading-8 text-opacity-60 font-normal my-3'>01 / Introduction</p>
                 <p className='leading-8 my-2'>Welcome to KAIZEN 2023!</p>
                 <p className='leading-8 my-2 '>
-                    These terms and conditions outline the rules and regulations for the use of KAIZEN's Website, located at <a href="https://kaizenaiimspatna.com">https://kaizenaiimspatna.com</a>.
+                    These terms and conditions outline the rules and regulations for the use of KAIZEN's Website, located at <a href="https://kaizenaiimspatna.com">https://www.kaizenaiimspatna.com/</a>.
+                </p>
+                <p className='leading-8 my-6'>
+                    All communication will be done through our <span className='font-semibold text-rose-500'>Instagram page</span>. You must follow our page and view regular updates there. Our Instagram page is here : <a target='_blank' href="https://www.instagram.com/kaizen.aiimspatna">https://www.instagram.com/kaizen.aiimspatna</a>.
+                </p>
+                <p className='leading-8 my-6'>
+                    We KAIZEN 2023 AIIMS Patna are not responsible if you miss any of the communication posted there.
+                </p>
+                <p className='leading-8 my-6'>
+                    By accepting terms and conditions anywhere on our website you confirm that you followed our Instagram page.
                 </p>
                 <p className='leading-8 my-6'>
                     The terms "Client", "You" and "Your" refer to the user who accesses this website. This terminology also applies to all agreements: the "Terms and Conditions'', the "Privacy Statement", the "Disclaimer Notice" and all related documents. Our organization is referred to as "KAIZEN, AIIMS Patna", "Ourselves", "We", "Ours'' and "Us". The terms "Party", "Parties" or "Us" include both the user and us. All phrases refer to the provision of our support to the client in the most effective manner for the specific goal of addressing that client's needs in relation to the rendering of the organization's stated services. Any usage of the aforementioned terminology or other words in the singular, plural, he/she or they format is understood to be interchangeable and to be referring to the same.
