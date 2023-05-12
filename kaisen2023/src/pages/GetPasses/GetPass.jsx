@@ -68,7 +68,7 @@ const GetPass = () => {
         udf1: "", udf2: "", udf3: "", udf4: "", udf5: "", udf6: "", udf7: "", udf8: "", udf9: "", udf10: "", udf11: "", udf12: "", udf13: "", udf14: "", udf15: "", udf16: "", udf17: "", udf18: "", udf19: "", udf20: "", channelId: "", programId: "", mcc: "",
         env: 'prod'
     })
-    
+
     const getQueryParams = async () => {
         let params = getJsonFromUrl();
         if (!params.status) return;
@@ -276,6 +276,24 @@ const GetPass = () => {
     //         </div>
     //     </div>
     // )
+
+    const isValidTime = () => {
+        const now = new Date();
+        const hour = now.getHours();
+        return hour >= 18 && hour <= 22; // 6pm to 10pm
+    };
+
+
+    if (isValidTime()) return (
+        <div className='bg-black pb-24 min-h-screen'>
+            <div className='cart-banner'>
+                <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
+            </div>
+            <div className="m-auto text-center flex flex-col items-center justify-center gap-3 max-w-[45rem]">
+                <p className='px-5 text-lg'>Only spot 📍 registrations are allowed from <span className='text-yellow-500'>6pm to 10pm</span>. Please 😟 check again later!</p>
+            </div>
+        </div>
+    )
 
     return (
         <div className='bg-black pb-24'>
