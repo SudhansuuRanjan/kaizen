@@ -258,20 +258,20 @@ const VerifyPassAdmin = () => {
 
 
 
-                    <div className='flex flex-col justify-center items-center gap-5 pb-16'>
+                    <div className='flex mt-12 flex-col justify-center items-center gap-5 pb-16'>
                         {
-                            loading ? "loading..." : searchResults.name === undefined ? 'No results.' :
-                                <div className='border lg:w-[30rem] md:w-[30rem] w-[95%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
-                                    <p>Name: <a href={`https://kaizenaiimspatna.com/br/${searchResults.id}`} target="_blank" rel="noopener noreferrer">{searchResults.name}</a></p>
+                            loading ? <div className='my-10'>loading...</div> : searchResults.name === undefined ? <div className='my-10'>No results.</div> :
+                                <div className='border border-gray-700 lg:w-[30rem] md:w-[30rem] w-[95%] lg:p-7 md:p-6 p-5 rounded-3xl bg-gray-900 bg-opacity-40 shadow-md'>
+                                    <p>Name: <a className='text-yellow-400 underline' href={`https://kaizenaiimspatna.com/br/${searchResults.id}`} target="_blank" rel="noopener noreferrer">{searchResults.name}</a></p>
                                     <p>PassID: {searchResults.passId}</p>
                                     <p>Email: {searchResults.email}</p>
                                     <p>Phone: {searchResults.phone}</p>
                                     <p>College: {searchResults.college}</p>
                                     {/* <p>ID: {searchResults.id}</p> */}
-                                    <div className='border border-dashed p-3 pb-4 rounded-xl mt-3'>
+                                    <div className='border border-gray-600 border-dashed p-3 pb-4 rounded-xl mt-3'>
                                         <div className='flex flex-col items-center justify-center'>
                                             {searchResults.checkInID ? <div>
-                                                <p className='text-xl font-semibold pt-4'> CheckIn ID: {searchResults.checkInID}</p>
+                                                <p className='text-2xl font-semibold pt-4 text-green-500'> CheckIn ID: {searchResults.checkInID}</p>
                                             </div> : <div>
                                                 <label className='text-yellow-500 text-lg font-medium' htmlFor="CheckIn ID">CheckIn ID</label>
                                                 <form onSubmit={(e) => {
@@ -297,7 +297,7 @@ const VerifyPassAdmin = () => {
                                                     </div>
                                                 </div>
                                                 {
-                                                    searchResults.checkInID && todayCheckedIn ? <button className='font-medium m-auto text-gray-900 lg:w-[17rem] md:w-[17rem] w-[90%] flex items-center justify-center gap-2  bg-yellow-500 rounded-xl py-2 my-5' type="submit"><BsCheckAll size={24} /> <span>Check In</span></button> : <button className='font-medium flex items-center justify-center gap-2 text-white m-auto lg:w-[17rem] md:w-[17rem] w-[90%]  bg-red-500 rounded-xl py-2 my-5' disabled={true} type="submit"><FaUserCheck size={19} /><span>Already Checked In</span></button>
+                                                    searchResults.checkInID && todayCheckedIn ? <button className='font-medium m-auto text-gray-900 lg:w-[17rem] ease-in transition-all delay-[20ms] hover:scale-105 hover:bg-yellow-500 md:w-[17rem] w-[90%] flex items-center justify-center gap-2  bg-yellow-400 rounded-xl py-2 my-5' type="submit"><BsCheckAll size={24} /> <span>Check In</span></button> : <button className='font-medium flex items-center justify-center gap-2 text-white m-auto lg:w-[17rem] md:w-[17rem] w-[90%]  bg-red-500 hover:bg-red-600 rounded-xl py-2 my-5' disabled={true} type="submit"><FaUserCheck size={19} /><span>Already Checked In</span></button>
                                                 }
                                             </form>}
                                         </div>
@@ -306,7 +306,7 @@ const VerifyPassAdmin = () => {
                         }
                     </div>
                 </div>}
-                <SearchPass/>
+                {/* <SearchPass/> */}
             </main>
         </>
     )

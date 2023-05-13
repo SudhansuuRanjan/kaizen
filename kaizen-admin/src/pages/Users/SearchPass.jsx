@@ -22,6 +22,7 @@ const SearchPass = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [suggestionsVisible, setSuggestionsVisible] = useState(false);
+    const [todayCheckedIn, setTodayCheckedIn] = useState(false);
 
     const handleSubmit = async (e) => {
         if (e) {
@@ -42,6 +43,10 @@ const SearchPass = () => {
             toast.error("error");
         }
     };
+
+    const handleCheckIn = async (id) => {
+
+    }
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -90,7 +95,7 @@ const SearchPass = () => {
 
                 <div className='m-auto'>
                     <div className='m-auto'>
-                        {searchResults.length === 0 ? <div className='mt-10'>No results.</div>:  searchResults.map((user) => (
+                        {searchResults.length === 0 ? <div className='mt-10'>No results.</div> : searchResults.map((user) => (
                             <div className='border lg:w-[30rem] md:w-[30rem] w-[95%] p-5 rounded-3xl bg-gray-900 bg-opacity-75 mt-10'>
                                 <p>Name: <a href={`https://kaizenaiimspatna.com/br/${user.id}`} target="_blank" rel="noopener noreferrer">{user.name}</a></p>
                                 <p>PassID: {user.passId}</p>
@@ -100,15 +105,23 @@ const SearchPass = () => {
                                 <div className='border border-dashed p-3 pb-4 rounded-xl mt-3'>
                                     <div className='flex flex-col items-center justify-center'>
                                         <p className='text-xl font-semibold pt-4'> CheckIn ID: {user.checkInID}</p>
-                                        <div className='flex lg:gap-6 md:gap-6 gap-2.5 mt-7 mb-5'>
-                                           {user.checkInData && <div>
-                                                {user.checkInData.map((day, idx) => <div className='flex lg:gap-6 md:gap-6 gap-2.5' key={idx}>
-                                                    <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
-                                                    {/* <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} /> */}
-                                                    <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
-                                                </div>)}
-                                            </div>}
-                                        </div>
+                                        {searchResults.checkInID && <form onSubmit={(e) => {
+                                                e.preventDefault();
+                                                handleCheckIn(searchResults.id);
+                                            }} className='mt-5'>
+                                                <div className='flex lg:gap-6 md:gap-6 gap-2.5'>
+                                                    <div>
+                                                        {user.checkInData.map((day, idx) => <div className='flex lg:gap-6 md:gap-6 gap-2.5' key={idx}>
+                                                            <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
+                                                            {/* <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} /> */}
+                                                            <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
+                                                        </div>)}
+                                                    </div>
+                                                </div>
+                                                {
+                                                    searchResults.checkInID && todayCheckedIn ? <button className='font-medium m-auto text-gray-900 lg:w-[17rem] md:w-[17rem] w-[90%] flex items-center justify-center gap-2  bg-yellow-500 rounded-xl py-2 my-5' type="submit"><BsCheckAll size={24} /> <span>Check In</span></button> : <button className='font-medium flex items-center justify-center gap-2 text-white m-auto lg:w-[17rem] md:w-[17rem] w-[90%]  bg-red-500 rounded-xl py-2 my-5' disabled={true} type="submit"><FaUserCheck size={19} /><span>Already Checked In</span></button>
+                                                }
+                                            </form>}
                                     </div>
                                 </div>
                             </div>
