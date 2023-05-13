@@ -290,7 +290,7 @@ const VerifyPassAdmin = () => {
                                                 <div className='flex lg:gap-6 md:gap-6 gap-2.5'>
                                                     <div>
                                                         {formData.map((day, idx) => <div className='flex lg:gap-6 md:gap-6 gap-2.5' key={idx}>
-                                                            <label className={`text-lg font-bold ${isTodaysDate(day.date) && 'text-rose-500'}`} htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
+                                                            <label className={`text-lg font-bold ${isTodaysDate(day.date) && 'text-cyan-500'}`} htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
                                                             {/* <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} /> */}
                                                             <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
                                                         </div>)}

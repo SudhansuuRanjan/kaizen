@@ -285,13 +285,14 @@ const GetPass = () => {
     };
 
 
-    if (isValidTime()) return (
+    if (true) return (
         <div className='bg-black pb-24 min-h-screen'>
             <div className='cart-banner'>
                 <h1 className='cart-head lg:mx-0 md:mx-0 mx-5'>Basic Registration</h1>
             </div>
             <div className="m-auto text-center flex flex-col items-center justify-center gap-3 max-w-[45rem]">
-                <p className='px-5 text-lg'>Only spot 📍 registrations are allowed from <span className='text-yellow-500'>6pm to 10pm</span>. Please 😟 check again later!</p>
+                <p className='px-5 text-lg'>Basic registration for <span className='text-rose-500 font-semibold'>KAIZEN 2023</span> has been closed 🔒 in all formats.</p>
+                <p className='px-5 text-lg'><span className='text-yellow-500 font-semibold'>Thanks 🙏</span> to all those who participated.</p>
             </div>
         </div>
     )

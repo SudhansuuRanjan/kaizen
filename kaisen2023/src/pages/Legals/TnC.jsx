@@ -7,10 +7,10 @@ const TnC = () => {
                 <p className='leading-8 text-opacity-60 font-normal my-3'>01 / Introduction</p>
                 <p className='leading-8 my-2'>Welcome to KAIZEN 2023!</p>
                 <p className='leading-8 my-2 '>
-                    These terms and conditions outline the rules and regulations for the use of KAIZEN's Website, located at <a href="https://kaizenaiimspatna.com">https://www.kaizenaiimspatna.com/</a>.
+                    These terms and conditions outline the rules and regulations for the use of KAIZEN's Website, located at <a href="https://kaizenaiimspatna.com">https://kaizenaiimspatna.com</a>.
                 </p>
                 <p className='leading-8 my-6'>
-                    All communication will be done through our <span className='font-semibold text-rose-500'>Instagram page</span>. You must follow our page and view regular updates there. Our Instagram page is here : <a target='_blank' href="https://www.instagram.com/kaizen.aiimspatna">https://www.instagram.com/kaizen.aiimspatna</a>.
+                    All communication will be done through our <span className='font-semibold text-rose-500'>Instagram page</span>. You must follow our page and view regular updates there. Our Instagram page is here : <a target='_blank' href="https://www.instagram.com/kaizen.aiimspatna">https://instagram.com/kaiz..</a>.
                 </p>
                 <p className='leading-8 my-6'>
                     We KAIZEN 2023 AIIMS Patna are not responsible if you miss any of the communication posted there.

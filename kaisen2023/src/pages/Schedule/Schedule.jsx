@@ -14,27 +14,27 @@ const Schedule = () => {
             </div>
             <div >
                 <div className='flex lg:w-[40rem] md:w-[35rem] w-[87%] justify-center items-center m-auto flex-wrap lg:gap-10 md:gap-5 gap-6 text-[#ebe6d0]'>
-                    <button onClick={() => setDay(day1)} className={`transition-all delay-[40] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day1 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
+                    <button onClick={() => setDay(day1)} className={`transition-all delay-[20ms] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day1 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>May</h1>
                         <p className='font-medium lg:text-xl md:text-xl text-lg'>10<sup>th</sup></p>
                     </button>
 
-                    <button onClick={() => setDay(day2)} className={`transition-all delay-[40] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day2 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
+                    <button onClick={() => setDay(day2)} className={`transition-all delay-[20ms] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day2 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>May</h1>
                         <p className='font-medium lg:text-xl md:text-xl text-lg'>11<sup>th</sup></p>
                     </button>
 
-                    <button onClick={() => setDay(day3)} className={`transition-all delay-[40] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day3 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
+                    <button onClick={() => setDay(day3)} className={`transition-all delay-[20ms] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day3 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>May</h1>
                         <p className='font-medium lg:text-xl md:text-xl text-lg'>12<sup>th</sup></p>
                     </button>
 
-                    <button onClick={() => setDay(day4)} className={`transition-all delay-[40] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day4 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
+                    <button onClick={() => setDay(day4)} className={`transition-all delay-[20ms] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day4 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>May</h1>
                         <p className='font-medium lg:text-xl md:text-xl text-lg'>13<sup>th</sup></p>
                     </button>
 
-                    <button onClick={() => setDay(day5)} className={`transition-all delay-[40] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day5 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
+                    <button onClick={() => setDay(day5)} className={`transition-all delay-[20ms] ease-in border border-[#ebe6d0] lg:rounded-2xl md:rounded-2xl rounded-xl flex flex-col justify-center items-center w-fit lg:px-4 md:px-4 px-4 lg:py-3 md:py-3 py-2.5 ${day === day5 && 'bg-[#ebe6d0] border-black text-gray-900'}`}>
                         <h1 className='font-semibold lg:text-2xl md:text-2xl text-xl'>May</h1>
                         <p className='font-medium lg:text-xl md:text-xl text-lg'>14<sup>th</sup></p>
                     </button>

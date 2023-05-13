@@ -65,7 +65,7 @@ const Legals = () => {
                         }>Privacy Policy</button>
                     </div>
 
-                    <div className='px-5 md:px-10 text-lg font-extralight lg:px-10 text-justify pt-20 pb-10'>
+                    <div className='px-4 md:px-10 text-lg font-extralight lg:px-10 text-justify pt-20 pb-10'>
                         {
                             page === 0 ? <TnC /> : null
                         }
