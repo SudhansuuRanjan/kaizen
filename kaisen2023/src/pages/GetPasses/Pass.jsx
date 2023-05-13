@@ -93,7 +93,7 @@ const Pass = () => {
                         value={"https://www.kaizenaiimspatna.com/br/" + data.passId}
                         viewBox={`0 0 256 256`}
                     />
-                    <p className='text-xl font-semibold pt-2'>{data.passId}</p>
+                    <p className='text-2xl font-semibold pt-2'>{data.passId}</p>
                 </div>
                 <div className='flex flex-col lg:p-6 md:p-6 p-3 gap-2'>
                     <div className='flex gap-2 items-center'>
@@ -113,7 +113,13 @@ const Pass = () => {
                         <p className='font-medium lg:text-base md:text-base text-sm'>{data.phone}</p>
                     </div>
 
-                    <div className='flex gap-2 items-center'>
+                    {data.checkInID ? <div>
+                        <p className='text-lg font-semibold'> CheckIn ID: {data.checkInID}</p>
+                    </div> : <div>
+                        <p className='font-medium text-red-500 text-center px-5'>Warning ⚠️ No physical I'd card issued. Collect physical I'd card first.</p>
+                    </div>}
+
+                    <div className='flex gap-2 items-center justify-center'>
                         <p className='font-medium text-red-500 text-center'>*Do not share this link or QR code with anyone.</p>
                     </div>
                 </div>
@@ -129,6 +135,15 @@ const Pass = () => {
                 </div>
 
                 <div>
+                    <div className="text-2xl text-center font-bold text-cyan-700">Your Check In Stats</div>
+                    {data.checkInID ? <div className='flex lg:text-lg md:text-lg text-base flex-col m-auto justify-between items-center pt-5'>
+                        {data.checkInData.map((day, index) => (
+                            <div key={index} className='flex m-auto items-start gap-3'>
+                                <p className='font-semibold text-black'>Day {index + 1} <span className='text-blue-500'>({day.date})</span> :</p>
+                                <p className={`font-semibold ${day.checked ? 'text-green-600' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
+                            </div>
+                        ))}
+                    </div> : <p className='font-medium py-5 text-center'>Collect physical I'd card first to get your data.</p>}
                     <div className='flex justify-between items-center lg:p-10 md:p-10 p-5'>
                         {/* <p className='font-semibold text-lg text-black'>Total :</p>
                         <p className='font-bold text-xl text-yellow-500'>₹ 1200</p> */}
