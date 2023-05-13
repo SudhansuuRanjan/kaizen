@@ -145,7 +145,7 @@ const VerifyPassAdmin = () => {
 
     const setCheckInIDHandler = async (id) => {
         // get pass with doc id and update checkInID
-
+        if (checkInID === "") return;
         try {
             setLoading1(true);
             await setDoc(doc(db, 'passes', id), { checkInID: checkInID }, { merge: true });
@@ -286,7 +286,7 @@ const VerifyPassAdmin = () => {
                                                     e.preventDefault();
                                                     setCheckInIDHandler(searchResults.id);
                                                 }} className='flex gap-3 items-center pt-1'>
-                                                    <input value={checkInID} onChange={(e) => setCheckInID(e.target.value)} className='text-gray-700 px-2 py-1.5 border rounded-lg font-medium w-[12rem]' type="text" id="promo" placeholder="Enter CheckIn ID" />
+                                                    <input required value={checkInID} onChange={(e) => setCheckInID(e.target.value)} className='text-gray-700 px-2 py-1.5 border rounded-lg font-medium w-[12rem]' type="text" id="promo" placeholder="Enter CheckIn ID" />
                                                     <button type="submit" className='font-medium text-gray-900  bg-yellow-500 rounded-full px-5 py-1.5'>Add</button>
                                                 </form>
                                             </div>}
