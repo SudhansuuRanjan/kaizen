@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { getAuth } from 'firebase/auth'
 import { BsCheckAll } from 'react-icons/bs'
 import { FaUserCheck } from 'react-icons/fa'
+import SearchPass from './SearchPass'
 
 
 const isTodaysDate = (date) => {
@@ -88,18 +89,19 @@ const VerifyPassAdmin = () => {
 
             const results = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             setSearchResults(results[0]);
-            if (results[0].checkInData) {
-                // console.log(results[0].checkInData);
+            if (results[0].checkInData !== undefined) {
                 setFormData(results[0].checkInData);
                 setCheckedInData(results[0].checkInData);
                 for (let i = 0; i < results[0].checkInData.length; i++) {
+                    // console.log(results[0].checkInData[i].checked, isTodaysDate(results[0].checkInData[i].date));
                     if (!results[0].checkInData[i].checked && isTodaysDate(results[0].checkInData[i].date)) {
                         setTodayCheckedIn(true);
                         break;
                     }
                 }
             } else {
-                setFormData([
+                console.log('no checkInData');
+                const temp = [
                     {
                         checked: false,
                         date: '11-05-2023',
@@ -116,25 +118,16 @@ const VerifyPassAdmin = () => {
                         checked: false,
                         date: '14-05-2023',
                     }
-                ])
-                setCheckedInData([
-                    {
-                        checked: false,
-                        date: '11-05-2023',
-                    },
-                    {
-                        checked: false,
-                        date: '12-05-2023',
-                    },
-                    {
-                        checked: false,
-                        date: '13-05-2023',
-                    },
-                    {
-                        checked: false,
-                        date: '14-05-2023',
+                ];
+
+                for (let i = 0; i < temp.length; i++) {
+                    if (!temp[i].checked && isTodaysDate(temp[i].date)) {
+                        setTodayCheckedIn(true);
+                        break;
                     }
-                ]);
+                }
+                setFormData(temp)
+                setCheckedInData(temp);
             }
             setLoading(false);
         } catch (error) {
@@ -232,16 +225,19 @@ const VerifyPassAdmin = () => {
                     </div>
                 }
                 {!allowedUsers.includes(email) ? <div className='pt-32 min-h-screen text-center px-4 text-lg'>You don't have permission to view this page.</div> : <div className='m-auto'>
+                    <div>
+                        <h1 className='text-center lg:text-4xl md:text4xl text-3xl font-bold py-10'>Get Users by Pass ID</h1>
+                    </div>
                     <div className='flex relative items-center flex-col justify-center m-auto max-w-[25rem]'>
                         <form onSubmit={handleSubmit}>
                             <input
-                                type="text"
+                                type="search"
                                 value={searchTerm}
                                 onChange={(e) => {
                                     setSearchTerm(e.target.value);
                                     setSuggestionsVisible(true);
                                 }}
-                                placeholder="Search users"
+                                placeholder="Enter BR ID"
                                 className='border w-[15rem] text-gray-600 border-gray-500 rounded-xl p-2.5'
                             />
                             <button onClick={() => setSuggestionsVisible(false)} className='category-btn hover:bg-[#ebe6d0] hover:text-gray-900' type="submit">Search</button>
@@ -258,10 +254,6 @@ const VerifyPassAdmin = () => {
                                 </button>
                             ))}
                         </ul>
-                    </div>
-
-                    <div>
-                        <h1 className='text-center text-4xl font-bold py-10'>Users</h1>
                     </div>
 
 
@@ -314,6 +306,7 @@ const VerifyPassAdmin = () => {
                         }
                     </div>
                 </div>}
+                <SearchPass/>
             </main>
         </>
     )
