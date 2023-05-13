@@ -12,6 +12,25 @@ const Pass = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(false);
 
+    const temp = [
+        {
+            checked: false,
+            date: '11-05-2023',
+        },
+        {
+            checked: false,
+            date: '12-05-2023',
+        },
+        {
+            checked: false,
+            date: '13-05-2023',
+        },
+        {
+            checked: false,
+            date: '14-05-2023',
+        }
+    ];
+
     const getPass = async () => {
         setLoading(true);
         try {
@@ -137,7 +156,12 @@ const Pass = () => {
                 <div>
                     <div className="text-2xl text-center font-bold text-cyan-700">Your Check In Stats</div>
                     {data.checkInID ? <div className='flex lg:text-lg md:text-lg text-base flex-col m-auto justify-between items-center pt-5'>
-                        {data.checkInData.map((day, index) => (
+                        {!data.checkInData ? temp.map((day, index) => (
+                            <div key={index} className='flex m-auto items-start gap-3'>
+                                <p className='font-semibold text-black'>Day {index + 1} <span className='text-blue-500'>({day.date})</span> :</p>
+                                <p className={`font-semibold ${day.checked ? 'text-green-600' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
+                            </div>
+                        )) : data.checkInData.map((day, index) => (
                             <div key={index} className='flex m-auto items-start gap-3'>
                                 <p className='font-semibold text-black'>Day {index + 1} <span className='text-blue-500'>({day.date})</span> :</p>
                                 <p className={`font-semibold ${day.checked ? 'text-green-600' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
