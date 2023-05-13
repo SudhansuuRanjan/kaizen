@@ -3,6 +3,8 @@ import { db } from '../../firebase.config'
 import { collection, getDocs, getDoc, query, where, limit, setDoc, doc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import { getAuth } from 'firebase/auth'
+import { BsCheckAll } from 'react-icons/bs'
+import { FaUserCheck } from 'react-icons/fa'
 
 
 const isTodaysDate = (date) => {
@@ -11,7 +13,7 @@ const isTodaysDate = (date) => {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
     const todayDate = dd + '-' + mm + '-' + yyyy;
-    return date !== todayDate;
+    return date === todayDate;
 }
 
 const VerifyPassAdmin = () => {
@@ -23,7 +25,8 @@ const VerifyPassAdmin = () => {
         'prachi@aiimspatna.org',
         'rudrapriya@aiimspatna.org',
         'abhinavkumar@aiimspatna.org',
-        'deepakranjan488@gmail.com'
+        'deepakranjan488@gmail.com',
+        'sudhanshur.ug20.ee@nitp.ac.in'
     ]
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
@@ -89,6 +92,12 @@ const VerifyPassAdmin = () => {
                 // console.log(results[0].checkInData);
                 setFormData(results[0].checkInData);
                 setCheckedInData(results[0].checkInData);
+                for (let i = 0; i < results[0].checkInData.length; i++) {
+                    if (!results[0].checkInData[i].checked && isTodaysDate(results[0].checkInData[i].date)) {
+                        setTodayCheckedIn(true);
+                        break;
+                    }
+                }
             } else {
                 setFormData([
                     {
@@ -153,7 +162,15 @@ const VerifyPassAdmin = () => {
         try {
             setLoading2(true);
             // console.log(formData, id);
-            await setDoc(doc(db, 'passes', id), { checkInData: formData }, { merge: true });
+            const temp = formData.map((data) => {
+                if (isTodaysDate(data.date)) {
+                    return { checked: true, date: data.date }
+                } else {
+                    return data;
+                }
+            });
+            await setDoc(doc(db, 'passes', id), { checkInData: temp }, { merge: true });
+            setTodayCheckedIn(false);
             setFormData([
                 {
                     checked: false,
@@ -173,7 +190,6 @@ const VerifyPassAdmin = () => {
                 }
             ])
             handleSubmit();
-            setTodayCheckedIn(false);
             setLoading2(false);
             toast.success('Check-in successful');
         } catch (error) {
@@ -182,29 +198,6 @@ const VerifyPassAdmin = () => {
         }
     }
 
-    const handleChange = (e) => {
-        const { id } = e.target;
-        setFormData((prevState) => {
-            return prevState.map((item, index) => {
-                if (index === parseInt(id)) {
-                    if (item.checked) {
-                        return {
-                            ...item,
-                            checked: item.checked,
-                        }
-                    } else {
-                        setTodayCheckedIn(true);
-                        return {
-                            ...item,
-                            checked: !item.checked,
-                        }
-                    }
-                } else {
-                    return item;
-                }
-            })
-        })
-    }
 
     return (
         <>
@@ -277,16 +270,16 @@ const VerifyPassAdmin = () => {
                         {
                             loading ? "loading..." : searchResults.name === undefined ? 'No results.' :
                                 <div className='border lg:w-[30rem] md:w-[30rem] w-[95%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
-                                    <p>Name: {searchResults.name}</p>
+                                    <p>Name: <a href={`https://kaizenaiimspatna.com/br/${searchResults.id}`} target="_blank" rel="noopener noreferrer">{searchResults.name}</a></p>
                                     <p>PassID: {searchResults.passId}</p>
                                     <p>Email: {searchResults.email}</p>
                                     <p>Phone: {searchResults.phone}</p>
                                     <p>College: {searchResults.college}</p>
                                     {/* <p>ID: {searchResults.id}</p> */}
                                     <div className='border border-dashed p-3 pb-4 rounded-xl mt-3'>
-                                        <div>
+                                        <div className='flex flex-col items-center justify-center'>
                                             {searchResults.checkInID ? <div>
-                                                <p className='text-xl font-semibold'> CheckIn ID: {searchResults.checkInID}</p>
+                                                <p className='text-xl font-semibold pt-4'> CheckIn ID: {searchResults.checkInID}</p>
                                             </div> : <div>
                                                 <label className='text-yellow-500 text-lg font-medium' htmlFor="CheckIn ID">CheckIn ID</label>
                                                 <form onSubmit={(e) => {
@@ -306,19 +299,13 @@ const VerifyPassAdmin = () => {
                                                     <div>
                                                         {formData.map((day, idx) => <div className='flex lg:gap-6 md:gap-6 gap-2.5' key={idx}>
                                                             <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
-                                                            <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} />
+                                                            {/* <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} /> */}
+                                                            <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
                                                         </div>)}
-                                                    </div>
-                                                    <div className='flex flex-col gap-1'>
-                                                        {
-                                                            checkedinData.map((day, idx) => <div className='flex' key={idx}>
-                                                                <p className={`font-semibold ${day.checked ? 'text-lime-500' : 'text-rose-500'}`}>{day.checked ? 'Checked In' : "Unchecked"}</p>
-                                                            </div>)
-                                                        }
                                                     </div>
                                                 </div>
                                                 {
-                                                    todayCheckedIn && <button className='font-medium text-gray-900 w-[12rem]  bg-yellow-500 rounded-xl py-2 my-5' type="submit">Check In</button>
+                                                    searchResults.checkInID && todayCheckedIn ? <button className='font-medium m-auto text-gray-900 lg:w-[17rem] md:w-[17rem] w-[90%] flex items-center justify-center gap-2  bg-yellow-500 rounded-xl py-2 my-5' type="submit"><BsCheckAll size={24} /> <span>Check In</span></button> : <button className='font-medium flex items-center justify-center gap-2 text-white m-auto lg:w-[17rem] md:w-[17rem] w-[90%]  bg-red-500 rounded-xl py-2 my-5' disabled={true} type="submit"><FaUserCheck size={19} /><span>Already Checked In</span></button>
                                                 }
                                             </form>}
                                         </div>
