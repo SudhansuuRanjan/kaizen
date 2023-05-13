@@ -276,7 +276,7 @@ const VerifyPassAdmin = () => {
                     <div className='flex flex-col justify-center items-center gap-5 pb-16'>
                         {
                             loading ? "loading..." : searchResults.name === undefined ? 'No results.' :
-                                <div className='border lg:w-[30rem] md:w-[30rem] w-[90%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
+                                <div className='border lg:w-[30rem] md:w-[30rem] w-[95%] p-5 rounded-3xl bg-gray-900 bg-opacity-75'>
                                     <p>Name: {searchResults.name}</p>
                                     <p>PassID: {searchResults.passId}</p>
                                     <p>Email: {searchResults.email}</p>
@@ -286,7 +286,7 @@ const VerifyPassAdmin = () => {
                                     <div className='border border-dashed p-3 pb-4 rounded-xl mt-3'>
                                         <div>
                                             {searchResults.checkInID ? <div>
-                                                <p className='text-lg font-semibold'> CheckIn ID: {searchResults.checkInID}</p>
+                                                <p className='text-xl font-semibold'> CheckIn ID: {searchResults.checkInID}</p>
                                             </div> : <div>
                                                 <label className='text-yellow-500 text-lg font-medium' htmlFor="CheckIn ID">CheckIn ID</label>
                                                 <form onSubmit={(e) => {
@@ -302,9 +302,9 @@ const VerifyPassAdmin = () => {
                                                 e.preventDefault();
                                                 handleCheckIn(searchResults.id);
                                             }} className='mt-5'>
-                                                <div className='flex gap-6'>
+                                                <div className='flex lg:gap-6 md:gap-6 gap-2.5'>
                                                     <div>
-                                                        {formData.map((day, idx) => <div className='flex gap-6' key={idx}>
+                                                        {formData.map((day, idx) => <div className='flex lg:gap-6 md:gap-6 gap-2.5' key={idx}>
                                                             <label className='text-lg font-bold' htmlFor="CheckIn ID">Day {idx + 1} <span className='text-yellow-500 font-medium'>({day.date})</span></label>
                                                             <input onChange={handleChange} checked={day.checked} disabled={isTodaysDate(day.date)} type="checkbox" name="day1" id={`${idx}`} />
                                                         </div>)}

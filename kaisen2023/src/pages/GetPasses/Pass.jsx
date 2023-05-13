@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import QRCode from "react-qr-code";
 
 const Pass = () => {
-    document.title = 'KAIZEN 2023 | BRPass';
+    document.title = 'BR Card | KAIZEN 2023';
     const url = window.location.href;
     const id = url.substring(url.lastIndexOf('/') + 1);
     const [Loading, setLoading] = useState(true);
