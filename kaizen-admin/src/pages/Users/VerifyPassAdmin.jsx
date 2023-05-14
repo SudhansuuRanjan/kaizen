@@ -228,6 +228,7 @@ const VerifyPassAdmin = () => {
                     <div>
                         <h1 className='text-center lg:text-4xl md:text4xl text-3xl font-bold py-10'>Get Users by Pass ID</h1>
                     </div>
+                    <SearchPass/>
                     <div className='flex relative items-center flex-col justify-center m-auto max-w-[25rem]'>
                         <form onSubmit={handleSubmit}>
                             <input
@@ -306,7 +307,6 @@ const VerifyPassAdmin = () => {
                         }
                     </div>
                 </div>}
-                {/* <SearchPass/> */}
             </main>
         </>
     )
