@@ -20,7 +20,7 @@ const generatePassID = () => {
 
 
 const CreatePass = () => {
-
+    return;
     const allowedUsers = [
         'sudhanshuranjan2k18@gmail.com',
         'deepakranjan488@gmail.com',

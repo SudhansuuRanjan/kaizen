@@ -71,6 +71,7 @@ const GetPass = () => {
     })
 
     const getQueryParams = async () => {
+        return;
         let params = getJsonFromUrl();
         if (!params.status) return;
         if (params.status === 'SUCCESS') {
@@ -108,6 +109,7 @@ const GetPass = () => {
     }
 
     const handleSubmit = (e) => {
+        return;
         e.preventDefault();
         const data = formData;
         data.id = shortid.generate();
@@ -136,6 +138,7 @@ const GetPass = () => {
 
 
     const handlePromoCode = (e) => {
+        return;
         e.preventDefault();
         if (promoCode === "") return;
         if (peoples.length === 0) {
@@ -176,6 +179,7 @@ const GetPass = () => {
     }
 
     const handlePaymentInit = async () => {
+        return;
         if (peoples.length < 1) {
             toast.warn('Please add atleast one person to purchase!');
             return;
@@ -212,6 +216,7 @@ const GetPass = () => {
     }
 
     const handlePurchase = async (params) => {
+        return;
         // console.log(params);
         setGeneratingPass(true);
 
