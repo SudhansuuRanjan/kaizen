@@ -18,7 +18,6 @@ const generatePassID = () => {
     return randomstring;
 }
 
-
 const CreatePass = () => {
     const allowedUsers = [
         'sudhanshuranjan2k18@gmail.com',

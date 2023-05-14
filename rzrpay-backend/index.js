@@ -13,21 +13,23 @@ const fs = require("fs");
 
 // express app
 const app = express();
-var allowedOrigins = ['https://kaizen-admin.vercel.app/',
-                      'https://kaizenaiimspatna.com/'];
-app.use(cors({
-  origin: function(origin, callback){
-    // allow requests with no origin 
-    // (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+const allowedOrigins = [
+  'https://kaizen-admin.vercel.app',
+  'http://localhost:5173',
+  'https://kaizenaiimspatna.com'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
-    return callback(null, true);
   }
-}));
+};
+
+app.use(cors(corsOptions));
 // app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
@@ -191,7 +193,7 @@ app.post("/api/sendAlumniMail", async (req, res) => {
           email: people.email,
         },
         template: "HSW2487G984YAPGMHVNN2GQ6VVJG",
-        data:{
+        data: {
 
         },
         routing: {
