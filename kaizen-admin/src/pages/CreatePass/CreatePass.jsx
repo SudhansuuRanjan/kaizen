@@ -23,7 +23,8 @@ const CreatePass = () => {
         'sudhanshuranjan2k18@gmail.com',
         'deepakranjan488@gmail.com',
         'prachi@aiimspatna.org',
-        'rudrapriya@aiimspatna.org'
+        'rudrapriya@aiimspatna.org',
+        'abhinavkumar@aiimspatna.org'
     ]
 
     const auth = getAuth();
