@@ -110,7 +110,7 @@ app.post("/api/sendRegConf", async (req, res) => {
         to: {
           email,
         },
-        template: "KDYM9E7XGKMV21MSN1H6KB5E07XB",
+        template: process.env.EVENT_REG_CONF,
         data: {
           name: name,
           kaizenid: kaizenId,
@@ -149,7 +149,7 @@ app.post("/api/sendPassMail", async (req, res) => {
         to: {
           email: people.email,
         },
-        template: "JT3V640FK7MBKCGH8TWPDDBBGA6X",
+        template: process.env.PASS_PURCHASE_CONF,
         data: {
           name: people.name,
           brid: people.passId,
@@ -192,7 +192,7 @@ app.post("/api/sendAlumniMail", async (req, res) => {
         to: {
           email: people.email,
         },
-        template: "HSW2487G984YAPGMHVNN2GQ6VVJG",
+        template: process.env.ALUMNI_MAIL,
         data: {
 
         },
@@ -232,7 +232,7 @@ app.post("/api/verifyEmail", async (req, res) => {
         to: {
           email,
         },
-        template: "WDA1MAB8DTM2XQG12RCBV28ZS5BB",
+        template: process.env.OTP_MAIL,
         data: {
           code: otp,
         },
