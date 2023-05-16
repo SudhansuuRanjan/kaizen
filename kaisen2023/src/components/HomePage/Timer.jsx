@@ -6,7 +6,7 @@ const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
 
 const Timer = () => {
-    const [selectedDate, setSelectedDate] = useState("May, 10, 2023");
+    const [selectedDate, setSelectedDate] = useState("May, 10, 2024");
     const parsedDeadline = useMemo(
         () => Date.parse(selectedDate),
         [selectedDate]
@@ -27,7 +27,7 @@ const Timer = () => {
             <div data-aos="zoom-in-up" className="flex bg-gray-800 bg-opacity-30 backdrop-blur-md m-auto gap-12 rounded-3xl lg:p-14 md:p-10 p-5 lg:my-32 md:my-26 my-24 border border-gray-500">
                 <img src="/images/kaizen1.png" alt="ship" className="lg:h-[16rem] md:h-[13rem] lg:block md:block hidden" />
                 <div className="flex flex-col items-center justify-center lg:gap-10 md:gap-9 gap-8">
-                    <h3 className="font-semibold lg:text-4xl md:text-3xl text-2xl text-pink-600">THE SHIP SAILS IN</h3>
+                    <h3 className="font-semibold lg:text-4xl md:text-3xl text-2xl text-pink-600">KAIZEN RETURNS IN</h3>
                     <div className="timer flex lg:gap-7 md:gap-6 gap-0">
                         {Object.entries({
                             DAYS: time / DAY < 0 ? 0 : time / DAY,
@@ -45,7 +45,7 @@ const Timer = () => {
                     </div>
                     <h2 className="font-semibold  md:text-3xl text-2xl lg:text-4xl">
                         <span className="text-rose-500">STATUS : </span>
-                        <span className="text-lime-500">SAILING</span>
+                        <span className="text-lime-500">ENDED</span>
                     </h2>
                 </div>
             </div>

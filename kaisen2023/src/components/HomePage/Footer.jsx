@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { IoLogoWhatsapp } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
+
+    const [year, setYear] = useState(getCurrentYear())
+
     return (
         <div className='bg-black'>
             <div className='grid lg:grid-cols-[30%_25%_45%]
@@ -76,7 +79,7 @@ const Footer = () => {
             </div>
             <div className='flex justify-between items-center bg-black py-5 px-8 text-gray-500 text-sm border-t-[3px] border-gray-800'>
                 <div>
-                    <p>©2023 - KAIZEN AIIMSP</p>
+                    <p>©{year} - KAIZEN AIIMSP</p>
                 </div>
                 <div>
                     <p>Terms & Conditions, Privacy</p>
