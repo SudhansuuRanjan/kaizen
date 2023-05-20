@@ -175,7 +175,13 @@ function App() {
             } />
           </Route>
 
-          <Route path='/verify' element={<Verify />}/>
+          <Route path='/get-pass-data' element={
+            <>
+                <NavBar2 />
+                <Verify />
+                <Footer2 />
+              </>
+          }/>
 
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
